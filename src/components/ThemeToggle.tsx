@@ -2,7 +2,11 @@
 
 import { useTheme } from './ThemeProvider';
 
-export default function ThemeToggle() {
+interface ThemeToggleProps {
+  isScrolled?: boolean;
+}
+
+export default function ThemeToggle({ isScrolled = true }: ThemeToggleProps) {
   const { theme, setTheme, resolvedTheme } = useTheme();
 
   const cycleTheme = () => {
@@ -18,7 +22,11 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={cycleTheme}
-      className="p-2 rounded-lg bg-earth-100 dark:bg-mountain-700 hover:bg-earth-200 dark:hover:bg-mountain-600 transition-colors"
+      className={`p-2 rounded-lg transition-colors ${
+        isScrolled 
+          ? 'bg-earth-100 dark:bg-mountain-700 hover:bg-earth-200 dark:hover:bg-mountain-600' 
+          : 'bg-white/20 hover:bg-white/30'
+      }`}
       aria-label={`Current theme: ${theme}. Click to change.`}
       title={`Theme: ${theme}`}
     >
@@ -31,7 +39,11 @@ export default function ThemeToggle() {
           />
         </svg>
       ) : (
-        <svg className="w-5 h-5 text-mountain-600" fill="currentColor" viewBox="0 0 20 20">
+        <svg 
+          className={`w-5 h-5 ${isScrolled ? 'text-mountain-600' : 'text-white'}`} 
+          fill="currentColor" 
+          viewBox="0 0 20 20"
+        >
           <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
         </svg>
       )}

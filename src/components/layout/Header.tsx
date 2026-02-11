@@ -179,15 +179,36 @@ export default function Header() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-white/95 dark:bg-mountain-900/95 backdrop-blur-md shadow-lg dark:shadow-mountain-950/50'
-            : 'bg-transparent'
+            ? 'shadow-lg dark:shadow-mountain-950/50'
+            : ''
         }`}
       >
-      <div className="container-custom">
-        <nav className="flex items-center justify-between h-20">
+        {/* Fixed Background Image - doesn't move or resize */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            backgroundImage: 'url(/images/logos/menu-bar.jpg)',
+            backgroundRepeat: 'repeat-x',
+            backgroundSize: 'auto 96px',
+            backgroundPosition: 'top center',
+          }}
+        />
+        
+        {/* Dark Blue & Green Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-950/50 via-emerald-900/40 to-blue-900/50" />
+        
+        {/* Overlay for better readability */}
+        <div className={`absolute inset-0 transition-all duration-300 ${
+          isScrolled
+            ? 'bg-white/85 dark:bg-mountain-900/90 backdrop-blur-sm'
+            : 'bg-black/50'
+        }`} />
+        
+      <div className="container-custom relative">
+        <nav className="flex items-center justify-between h-24">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
-            <div className="relative w-14 h-14">
+            <div className="relative w-16 h-16">
               <Image
                 src="/images/logos/HSC-logo-dark-border.png"
                 alt="HSC Logo"
@@ -213,6 +234,17 @@ export default function Header() {
               </p>
             </div>
           </Link>
+
+          {/* Mobile Center - Tibetan Script */}
+          <div className="flex-1 flex justify-center lg:hidden px-2 min-w-0">
+            <p className={`font-tibetan text-xs sm:text-sm font-bold transition-colors text-center truncate ${
+              isScrolled 
+                ? 'text-burgundy-800 dark:text-burgundy-300' 
+                : 'text-white'
+            }`}>
+              ༄༅། ཧི་མ་ལ་ཡ་ཤར་པ་སྐྱིད་སྡུག
+            </p>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1">
@@ -256,7 +288,7 @@ export default function Header() {
             
             {/* Theme Toggle */}
             <div className="ml-2">
-              <ThemeToggle />
+              <ThemeToggle isScrolled={isScrolled} />
             </div>
             
             {/* Donate Button */}
@@ -270,8 +302,8 @@ export default function Header() {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex items-center gap-2 lg:hidden">
-            <ThemeToggle />
+          <div className="flex items-center gap-2 lg:hidden flex-shrink-0">
+            <ThemeToggle isScrolled={isScrolled} />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={`p-2 rounded-lg transition-colors ${

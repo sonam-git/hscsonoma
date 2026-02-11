@@ -35,7 +35,7 @@ export default function IntroductionPage() {
             {/* AI Generated Image */}
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/hero/hsc-ai-image.png"
+                src="/images/logos/hsc-wine.png"
                 alt="Himalayan Sherpa Community"
                 fill
                 className="object-cover"

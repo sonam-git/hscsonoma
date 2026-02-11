@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Metadata } from 'next';
-import HeroSlideshow from '@/components/HeroSlideshow';
+import HeroPhotoReel from '@/components/HeroPhotoReel';
+import styles from '@/components/hero3d.module.css';
 
 export const metadata: Metadata = {
   title: 'Home | Himalayan Sherpa Club of Sonoma',
@@ -58,17 +59,20 @@ export default function HomePage() {
     <>
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Slideshow */}
-        <HeroSlideshow interval={6000} />
-
-        {/* Mountain Silhouette Bottom */}
-        <div className="absolute inset-x-0 bottom-0 h-32 z-10">
-          <svg viewBox="0 0 1440 120" className="w-full h-full" preserveAspectRatio="none">
-            <path
-              className="fill-cream-50 dark:fill-mountain-900"
-              d="M0,120 L0,80 L120,60 L240,90 L360,40 L480,70 L600,30 L720,80 L840,50 L960,90 L1080,35 L1200,75 L1320,55 L1440,85 L1440,120 Z"
-            />
-          </svg>
+        {/* 3D Background Image */}
+        <div className={`absolute inset-0 w-full h-full ${styles.heroBg}`}>  
+          <Image
+            src="/images/hero/summitlegend.jpg"
+            alt="Summit Legend"
+            fill
+            priority
+            className="object-cover object-center select-none pointer-events-none"
+            sizes="100vw"
+            style={{ objectFit: 'cover', objectPosition: 'center' }}
+          />
+          {/* Dark Blue Overlay for readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-blue-950/70 via-blue-900/50 to-mountain-900/60" />
+          <div className="absolute inset-0 bg-black/30" />
         </div>
 
         {/* Content */}
@@ -99,6 +103,19 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
+
+        {/* Mountain Silhouette Bottom (Zig-Zag Border) */}
+        <div className="absolute inset-x-0 bottom-0 h-32 z-10">
+          <svg viewBox="0 0 1440 120" className="w-full h-full" preserveAspectRatio="none">
+            <path
+              className="fill-cream-50 dark:fill-mountain-900"
+              d="M0,120 L0,80 L120,60 L240,90 L360,40 L480,70 L600,30 L720,80 L840,50 L960,90 L1080,35 L1200,75 L1320,55 L1440,85 L1440,120 Z"
+            />
+          </svg>
+        </div>
+
+        {/* 3D Photo Reel at Bottom */}
+        <HeroPhotoReel />
       </section>
 
       {/* About Section */}
@@ -149,8 +166,19 @@ export default function HomePage() {
       </section>
 
       {/* Mission & Values Section */}
-      <section className="py-20 bg-white dark:bg-mountain-800">
-        <div className="container-custom">
+      <section className="relative py-20 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/logos/hsc-wine.png"
+            alt="Wine Country Background"
+            fill
+            className="object-content"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/85 to-white/90 dark:from-mountain-900/95 dark:via-mountain-800/90 dark:to-mountain-900/95" />
+        </div>
+
+        <div className="relative container-custom">
           <div className="text-center mb-16">
             <p className="text-burgundy-600 dark:text-burgundy-400 font-medium mb-2 uppercase tracking-wide text-sm">
               Our Purpose
@@ -160,7 +188,7 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {/* Culture */}
-            <div className="bg-cream-50 dark:bg-mountain-700 rounded-2xl p-8 text-center hover:shadow-xl dark:hover:shadow-mountain-950/50 transition-shadow">
+            <div className="bg-white/80 dark:bg-mountain-800/80 backdrop-blur-sm rounded-2xl p-8 text-center hover:shadow-xl dark:hover:shadow-mountain-950/50 transition-shadow border border-cream-200/50 dark:border-mountain-600/50">
               <div className="w-20 h-20 bg-burgundy-100 dark:bg-burgundy-900/50 rounded-full flex items-center justify-center mx-auto mb-6">
                 <svg className="w-10 h-10 text-burgundy-700 dark:text-burgundy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -173,7 +201,7 @@ export default function HomePage() {
             </div>
 
             {/* Community */}
-            <div className="bg-cream-50 dark:bg-mountain-700 rounded-2xl p-8 text-center hover:shadow-xl dark:hover:shadow-mountain-950/50 transition-shadow">
+            <div className="bg-white/80 dark:bg-mountain-800/80 backdrop-blur-sm rounded-2xl p-8 text-center hover:shadow-xl dark:hover:shadow-mountain-950/50 transition-shadow border border-cream-200/50 dark:border-mountain-600/50">
               <div className="w-20 h-20 bg-forest-100 dark:bg-forest-900/50 rounded-full flex items-center justify-center mx-auto mb-6">
                 <svg className="w-10 h-10 text-forest-700 dark:text-forest-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -186,7 +214,7 @@ export default function HomePage() {
             </div>
 
             {/* Future */}
-            <div className="bg-cream-50 dark:bg-mountain-700 rounded-2xl p-8 text-center hover:shadow-xl dark:hover:shadow-mountain-950/50 transition-shadow">
+            <div className="bg-white/80 dark:bg-mountain-800/80 backdrop-blur-sm rounded-2xl p-8 text-center hover:shadow-xl dark:hover:shadow-mountain-950/50 transition-shadow border border-cream-200/50 dark:border-mountain-600/50">
               <div className="w-20 h-20 bg-gold-100 dark:bg-gold-900/50 rounded-full flex items-center justify-center mx-auto mb-6">
                 <svg className="w-10 h-10 text-gold-700 dark:text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
@@ -257,8 +285,16 @@ export default function HomePage() {
       </section>
 
       {/* Events Section */}
-      <section className="py-20 bg-white dark:bg-mountain-800">
-        <div className="container-custom">
+      <section className="py-20 relative overflow-hidden">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-top bg-no-repeat"
+          style={{ backgroundImage: 'url(/images/logos/hero-image.png)' }}
+        />
+        {/* Overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-cream-50/85 to-white/90 dark:from-mountain-900/95 dark:via-mountain-800/90 dark:to-mountain-900/95" />
+        
+        <div className="container-custom relative z-10">
           <div className="text-center mb-12">
             <p className="text-burgundy-600 dark:text-burgundy-400 font-medium mb-2 uppercase tracking-wide text-sm">
               Celebrate With Us
@@ -295,7 +331,7 @@ export default function HomePage() {
                       <span className="flex items-center gap-1">
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                         </svg>
                         {event.location}
                       </span>

@@ -1,0 +1,15 @@
+.heroBg {
+  perspective: 1200px;
+}
+
+.heroBgImg {
+  will-change: transform;
+  transform: scale(1.04) rotateX(6deg);
+  filter: brightness(0.92) saturate(1.1) contrast(1.08);
+  transition: filter 0.5s, transform 0.5s;
+}
+
+.heroBgImg:hover {
+  filter: brightness(1) saturate(1.2) contrast(1.1);
+  transform: scale(1.07) rotateX(2deg) rotateZ(-1deg);
+}
