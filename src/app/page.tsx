@@ -220,11 +220,12 @@ export default function HomePage() {
             {featuredNews.map((news, index) => (
               <article key={index} className="card card-hover group">
                 <div className="relative aspect-[16/10] overflow-hidden">
-                  <div className="w-full h-full bg-gradient-to-br from-burgundy-100 to-burgundy-200 dark:from-burgundy-900/50 dark:to-burgundy-800/50 flex items-center justify-center">
-                    <svg className="w-16 h-16 text-burgundy-300 dark:text-burgundy-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-                    </svg>
-                  </div>
+                  <Image
+                    src={news.image}
+                    alt={news.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
                   <span className="absolute top-4 left-4 px-3 py-1 bg-burgundy-700 text-white text-xs font-medium rounded-full">
                     {news.category}
                   </span>
@@ -309,6 +310,213 @@ export default function HomePage() {
           <div className="text-center mt-10">
             <Link href="/events" className="btn-secondary">
               View All Events
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 bg-cream-50 dark:bg-mountain-900">
+        <div className="container-custom">
+          <div className="text-center mb-12">
+            <p className="text-burgundy-600 dark:text-burgundy-400 font-medium mb-2 uppercase tracking-wide text-sm">
+              Got Questions?
+            </p>
+            <h2 className="section-title">Frequently Asked Questions</h2>
+            <p className="section-subtitle mt-4">
+              Learn more about the Himalayan Sherpa Club, our community, and our heritage.
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="grid gap-4">
+              {/* FAQ Item 1 */}
+              <details className="group bg-white dark:bg-mountain-800 rounded-xl shadow-md overflow-hidden">
+                <summary className="flex items-center justify-between cursor-pointer p-6 text-left">
+                  <span className="text-lg font-semibold text-mountain-900 dark:text-cream-50 pr-4">
+                    When did the Himalayan Sherpa Club establish?
+                  </span>
+                  <span className="flex-shrink-0 w-8 h-8 bg-burgundy-100 dark:bg-burgundy-900/50 rounded-full flex items-center justify-center group-open:rotate-180 transition-transform duration-300">
+                    <svg className="w-5 h-5 text-burgundy-700 dark:text-burgundy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </span>
+                </summary>
+                <div className="px-6 pb-6 text-mountain-600 dark:text-mountain-300 leading-relaxed">
+                  The Himalayan Sherpa Club was established in <strong className="text-burgundy-700 dark:text-burgundy-400">2011</strong> to unite Sherpas living in and around Sonoma County. Its mission is to preserve and promote Sherpa culture abroad, educate younger generations about their heritage, and collaborate with other organizations on community-based events.
+                </div>
+              </details>
+
+              {/* FAQ Item 2 */}
+              <details className="group bg-white dark:bg-mountain-800 rounded-xl shadow-md overflow-hidden">
+                <summary className="flex items-center justify-between cursor-pointer p-6 text-left">
+                  <span className="text-lg font-semibold text-mountain-900 dark:text-cream-50 pr-4">
+                    What is the main goal of HSC?
+                  </span>
+                  <span className="flex-shrink-0 w-8 h-8 bg-burgundy-100 dark:bg-burgundy-900/50 rounded-full flex items-center justify-center group-open:rotate-180 transition-transform duration-300">
+                    <svg className="w-5 h-5 text-burgundy-700 dark:text-burgundy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </span>
+                </summary>
+                <div className="px-6 pb-6 text-mountain-600 dark:text-mountain-300 leading-relaxed">
+                  Our main goal is to preserve and promote Sherpa culture and establish a united and prosperous community with a unique and rich cultural heritage, and to strengthen the Sherpa community living in the North Bay Areas.
+                </div>
+              </details>
+
+              {/* FAQ Item 3 */}
+              <details className="group bg-white dark:bg-mountain-800 rounded-xl shadow-md overflow-hidden">
+                <summary className="flex items-center justify-between cursor-pointer p-6 text-left">
+                  <span className="text-lg font-semibold text-mountain-900 dark:text-cream-50 pr-4">
+                    How can I become a member of Himalayan Sherpa Club?
+                  </span>
+                  <span className="flex-shrink-0 w-8 h-8 bg-burgundy-100 dark:bg-burgundy-900/50 rounded-full flex items-center justify-center group-open:rotate-180 transition-transform duration-300">
+                    <svg className="w-5 h-5 text-burgundy-700 dark:text-burgundy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </span>
+                </summary>
+                <div className="px-6 pb-6 text-mountain-600 dark:text-mountain-300 leading-relaxed">
+                  To become a member of HSC, you must be of Nepalese origin, reside in Sonoma County, and be willing to volunteer for the organization whenever available. Membership is entirely based on voluntary contributions. Please fill out our <Link href="/join-us" className="text-burgundy-700 dark:text-burgundy-400 underline hover:text-burgundy-800 dark:hover:text-burgundy-300">membership form</Link> and submit.
+                </div>
+              </details>
+
+              {/* FAQ Item 4 */}
+              <details className="group bg-white dark:bg-mountain-800 rounded-xl shadow-md overflow-hidden">
+                <summary className="flex items-center justify-between cursor-pointer p-6 text-left">
+                  <span className="text-lg font-semibold text-mountain-900 dark:text-cream-50 pr-4">
+                    How to get involved in activities organized by HSC?
+                  </span>
+                  <span className="flex-shrink-0 w-8 h-8 bg-burgundy-100 dark:bg-burgundy-900/50 rounded-full flex items-center justify-center group-open:rotate-180 transition-transform duration-300">
+                    <svg className="w-5 h-5 text-burgundy-700 dark:text-burgundy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </span>
+                </summary>
+                <div className="px-6 pb-6 text-mountain-600 dark:text-mountain-300 leading-relaxed">
+                  As a member of HSC, you are welcome to participate in all events organized by the club. Since membership is entirely voluntary, your involvement depends on your availability and willingness to contribute. Check our <Link href="/events" className="text-burgundy-700 dark:text-burgundy-400 underline hover:text-burgundy-800 dark:hover:text-burgundy-300">Events page</Link> for upcoming activities.
+                </div>
+              </details>
+
+              {/* FAQ Item 5 */}
+              <details className="group bg-white dark:bg-mountain-800 rounded-xl shadow-md overflow-hidden">
+                <summary className="flex items-center justify-between cursor-pointer p-6 text-left">
+                  <span className="text-lg font-semibold text-mountain-900 dark:text-cream-50 pr-4">
+                    How to contact HSC members?
+                  </span>
+                  <span className="flex-shrink-0 w-8 h-8 bg-burgundy-100 dark:bg-burgundy-900/50 rounded-full flex items-center justify-center group-open:rotate-180 transition-transform duration-300">
+                    <svg className="w-5 h-5 text-burgundy-700 dark:text-burgundy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </span>
+                </summary>
+                <div className="px-6 pb-6 text-mountain-600 dark:text-mountain-300 leading-relaxed">
+                  You can directly email us through our <Link href="/contact" className="text-burgundy-700 dark:text-burgundy-400 underline hover:text-burgundy-800 dark:hover:text-burgundy-300">Contact Us page</Link> or call us at the given number on the same page.
+                </div>
+              </details>
+
+              {/* FAQ Item 6 */}
+              <details className="group bg-white dark:bg-mountain-800 rounded-xl shadow-md overflow-hidden">
+                <summary className="flex items-center justify-between cursor-pointer p-6 text-left">
+                  <span className="text-lg font-semibold text-mountain-900 dark:text-cream-50 pr-4">
+                    Where is HSC office located?
+                  </span>
+                  <span className="flex-shrink-0 w-8 h-8 bg-burgundy-100 dark:bg-burgundy-900/50 rounded-full flex items-center justify-center group-open:rotate-180 transition-transform duration-300">
+                    <svg className="w-5 h-5 text-burgundy-700 dark:text-burgundy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </span>
+                </summary>
+                <div className="px-6 pb-6 text-mountain-600 dark:text-mountain-300 leading-relaxed">
+                  HSC does not have an official office yet. However, you can reach out to any of our <Link href="/about/functional-bodies" className="text-burgundy-700 dark:text-burgundy-400 underline hover:text-burgundy-800 dark:hover:text-burgundy-300">executive members</Link> for information and assistance.
+                </div>
+              </details>
+
+              {/* FAQ Item 7 */}
+              <details className="group bg-white dark:bg-mountain-800 rounded-xl shadow-md overflow-hidden">
+                <summary className="flex items-center justify-between cursor-pointer p-6 text-left">
+                  <span className="text-lg font-semibold text-mountain-900 dark:text-cream-50 pr-4">
+                    What is Sherpa?
+                  </span>
+                  <span className="flex-shrink-0 w-8 h-8 bg-burgundy-100 dark:bg-burgundy-900/50 rounded-full flex items-center justify-center group-open:rotate-180 transition-transform duration-300">
+                    <svg className="w-5 h-5 text-burgundy-700 dark:text-burgundy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </span>
+                </summary>
+                <div className="px-6 pb-6 text-mountain-600 dark:text-mountain-300 leading-relaxed space-y-3">
+                  <p>The Sherpa are one of the ethnic groups native to the most mountainous regions of Nepal, Tingri County in the Tibet Autonomous Region and the Himalayas. The term sherpa or sherwa derive from the Sherpa language words <strong className="text-burgundy-700 dark:text-burgundy-400">ཤར shar</strong> (&ldquo;east&rdquo;) and <strong className="text-burgundy-700 dark:text-burgundy-400">པ pa</strong> (&ldquo;people&rdquo;), which refer to their geographical origin of eastern Tibet.</p>
+                  <p>Most Sherpa people live in the eastern regions of Nepal and Tingri County, though some live farther west in the Rolwaling Valley, Bigu and in the Helambu region north of Kathmandu. Sherpas establish gompas where they practice their religious traditions. The Sherpa language belongs to the south branch of the Tibeto-Burman languages.</p>
+                  <Link href="/about/sherpa" className="inline-flex items-center gap-2 text-burgundy-700 dark:text-burgundy-400 font-medium hover:text-burgundy-800 dark:hover:text-burgundy-300">
+                    Learn more about Sherpa heritage
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </Link>
+                </div>
+              </details>
+
+              {/* FAQ Item 8 */}
+              <details className="group bg-white dark:bg-mountain-800 rounded-xl shadow-md overflow-hidden">
+                <summary className="flex items-center justify-between cursor-pointer p-6 text-left">
+                  <span className="text-lg font-semibold text-mountain-900 dark:text-cream-50 pr-4">
+                    Chronology of Sherpa History
+                  </span>
+                  <span className="flex-shrink-0 w-8 h-8 bg-burgundy-100 dark:bg-burgundy-900/50 rounded-full flex items-center justify-center group-open:rotate-180 transition-transform duration-300">
+                    <svg className="w-5 h-5 text-burgundy-700 dark:text-burgundy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </span>
+                </summary>
+                <div className="px-6 pb-6 text-mountain-600 dark:text-mountain-300 leading-relaxed">
+                  <p className="mb-4 text-sm italic">Most dates are approximate</p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 text-sm">
+                    <div className="flex gap-3"><span className="font-semibold text-burgundy-700 dark:text-burgundy-400 w-12">1480</span><span>Sherpas originally came from Kham/Tibet</span></div>
+                    <div className="flex gap-3"><span className="font-semibold text-burgundy-700 dark:text-burgundy-400 w-12">1533</span><span>Sherpas cross Himalayas, settle in Khumbu</span></div>
+                    <div className="flex gap-3"><span className="font-semibold text-burgundy-700 dark:text-burgundy-400 w-12">1553</span><span>Settlement of Solu</span></div>
+                    <div className="flex gap-3"><span className="font-semibold text-burgundy-700 dark:text-burgundy-400 w-12">1667</span><span>Founding of Pangboche monastery</span></div>
+                    <div className="flex gap-3"><span className="font-semibold text-burgundy-700 dark:text-burgundy-400 w-12">1720</span><span>Founding of Zhung monastery</span></div>
+                    <div className="flex gap-3"><span className="font-semibold text-burgundy-700 dark:text-burgundy-400 w-12">1831</span><span>Founding of Khumjung monastery</span></div>
+                    <div className="flex gap-3"><span className="font-semibold text-burgundy-700 dark:text-burgundy-400 w-12">1916</span><span>Founding of Tengboche monastery</span></div>
+                    <div className="flex gap-3"><span className="font-semibold text-burgundy-700 dark:text-burgundy-400 w-12">1923</span><span>Founding of Chiwong monastery</span></div>
+                    <div className="flex gap-3"><span className="font-semibold text-burgundy-700 dark:text-burgundy-400 w-12">1953</span><span>Tenzing Norgay & Edmund Hillary summit Everest</span></div>
+                  </div>
+                </div>
+              </details>
+
+              {/* FAQ Item 9 */}
+              <details className="group bg-white dark:bg-mountain-800 rounded-xl shadow-md overflow-hidden">
+                <summary className="flex items-center justify-between cursor-pointer p-6 text-left">
+                  <span className="text-lg font-semibold text-mountain-900 dark:text-cream-50 pr-4">
+                    Why do all Sherpas have the same last name?
+                  </span>
+                  <span className="flex-shrink-0 w-8 h-8 bg-burgundy-100 dark:bg-burgundy-900/50 rounded-full flex items-center justify-center group-open:rotate-180 transition-transform duration-300">
+                    <svg className="w-5 h-5 text-burgundy-700 dark:text-burgundy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </span>
+                </summary>
+                <div className="px-6 pb-6 text-mountain-600 dark:text-mountain-300 leading-relaxed space-y-4">
+                  <p>Even though all Sherpas share the same last name, they are distinguished by different clans, known as <strong className="text-burgundy-700 dark:text-burgundy-400">Roo</strong>. These clans determine whether individuals are related or not.</p>
+                  <p><strong className="text-burgundy-700 dark:text-burgundy-400">Roo</strong>, a Sherpa word meaning &ldquo;bones,&rdquo; is inherited through the male lineage. This means a person&apos;s clan membership is determined by their father&apos;s lineage.</p>
+                  <div className="bg-cream-100 dark:bg-mountain-700 rounded-lg p-4">
+                    <h4 className="font-semibold text-mountain-900 dark:text-cream-50 mb-2">Four Original Clans from Kham, Tibet:</h4>
+                    <div className="flex flex-wrap gap-3">
+                      <span className="px-3 py-1 bg-burgundy-100 dark:bg-burgundy-900/50 text-burgundy-700 dark:text-burgundy-400 rounded-full text-sm font-medium">Thimmi</span>
+                      <span className="px-3 py-1 bg-burgundy-100 dark:bg-burgundy-900/50 text-burgundy-700 dark:text-burgundy-400 rounded-full text-sm font-medium">Tharktho</span>
+                      <span className="px-3 py-1 bg-burgundy-100 dark:bg-burgundy-900/50 text-burgundy-700 dark:text-burgundy-400 rounded-full text-sm font-medium">Chawa</span>
+                      <span className="px-3 py-1 bg-burgundy-100 dark:bg-burgundy-900/50 text-burgundy-700 dark:text-burgundy-400 rounded-full text-sm font-medium">Lama</span>
+                    </div>
+                  </div>
+                  <p className="text-sm">Over time, these clans branched into several brother-clans including Salakha, Gole, Gorcha, Phinasa, Serwa, Gombawa, and many more. According to Sherpa customs, marriage within the same clan or brother-clans is strictly forbidden.</p>
+                </div>
+              </details>
+            </div>
+          </div>
+
+          <div className="text-center mt-10">
+            <Link href="/about/sherpa" className="btn-secondary">
+              Explore Sherpa Heritage
             </Link>
           </div>
         </div>

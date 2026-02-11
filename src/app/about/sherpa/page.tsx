@@ -544,110 +544,185 @@ function TraditionTab() {
 function FamilyTreeTab() {
   return (
     <div className="space-y-12">
+      {/* Header */}
       <div className="text-center max-w-3xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-mountain-900 dark:text-white mb-6">
-          Sherpa Family Tree Project
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-burgundy-100 dark:bg-burgundy-900/50 text-burgundy-700 dark:text-burgundy-400 rounded-full text-sm font-medium mb-4">
+          <span>🌳</span>
+          <span>9,127 Relatives • 7,628 Photos</span>
+        </div>
+        <h2 className="text-3xl md:text-4xl font-bold text-mountain-900 dark:text-white mb-4">
+          Preserving Our Roots, One Generation at a Time
         </h2>
         <p className="text-lg text-mountain-700 dark:text-mountain-300 leading-relaxed">
-          Preserving our ancestral connections for future generations
+          Explore a beautifully detailed family tree capturing generations of Sherpa history and heritage
         </p>
       </div>
 
-      <div className="bg-gradient-to-br from-burgundy-50 to-gold-50 dark:from-burgundy-900/20 dark:to-gold-900/20 rounded-2xl p-8 md:p-12 border border-burgundy-100 dark:border-burgundy-800">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="w-20 h-20 bg-burgundy-100 dark:bg-burgundy-900/50 rounded-full flex items-center justify-center mx-auto mb-6">
-            <span className="text-4xl">🌳</span>
+      {/* Main Feature Card */}
+      <div className="bg-gradient-to-br from-burgundy-50 via-cream-50 to-gold-50 dark:from-burgundy-900/30 dark:via-mountain-800/50 dark:to-gold-900/20 rounded-3xl p-8 md:p-12 border border-burgundy-100 dark:border-burgundy-800 shadow-xl">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex flex-col md:flex-row gap-8 items-center mb-10">
+            {/* Tree Icon */}
+            <div className="flex-shrink-0">
+              <div className="w-32 h-32 bg-gradient-to-br from-burgundy-600 to-burgundy-800 rounded-2xl flex items-center justify-center shadow-2xl shadow-burgundy-600/30 transform rotate-3">
+                <svg className="w-16 h-16 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v18m0-18c-3 3-6 3-9 0m9 0c3 3 6 3 9 0m-9 6c-2 2-4 2-6 0m6 0c2 2 4 2 6 0m-6 6c-1.5 1.5-3 1.5-4.5 0m4.5 0c1.5 1.5 3 1.5 4.5 0" />
+                </svg>
+              </div>
+            </div>
+            
+            {/* Info */}
+            <div className="flex-grow text-center md:text-left">
+              <h3 className="text-2xl md:text-3xl font-bold text-mountain-900 dark:text-white mb-3">
+                Sherpa Tribal Family Tree
+              </h3>
+              <p className="text-mountain-600 dark:text-mountain-400 mb-4">
+                Created by <strong className="text-burgundy-700 dark:text-burgundy-400">Thukten Philip Sherpa</strong>, 
+                a dedicated member and advisor of the Himalayan Sherpa Club of Sonoma
+              </p>
+              <div className="flex flex-wrap justify-center md:justify-start gap-4 text-sm">
+                <span className="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-mountain-800 rounded-full shadow">
+                  <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  Launched: Nov 1, 2010
+                </span>
+                <span className="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-mountain-800 rounded-full shadow">
+                  <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                  </svg>
+                  Updated: Apr 9, 2025
+                </span>
+              </div>
+            </div>
           </div>
-          <h3 className="text-2xl font-bold text-mountain-900 dark:text-white mb-6">
-            Coming Soon: Interactive Family Tree
-          </h3>
-          <div className="prose prose-lg dark:prose-invert max-w-none text-center">
-            <p className="text-mountain-700 dark:text-mountain-300 leading-relaxed">
-              The Himalayan Sherpa Club is developing a comprehensive family tree project to document 
-              and preserve the genealogical connections of Sherpa families in our community and beyond. 
-              This interactive tool will help members trace their ancestry and connect with relatives 
-              across the global Sherpa diaspora.
-            </p>
-            <p className="text-mountain-700 dark:text-mountain-300 leading-relaxed">
-              Our goal is to create a living document that grows with each generation, ensuring that 
-              our children and grandchildren can understand their heritage and the network of family 
-              relationships that bind our community together.
+
+          {/* Description */}
+          <div className="prose prose-lg dark:prose-invert max-w-none mb-10">
+            <p className="text-mountain-700 dark:text-mountain-300 leading-relaxed text-lg">
+              This rich archive contains <strong className="text-mountain-900 dark:text-white">9,127 relatives</strong> and 
+              <strong className="text-mountain-900 dark:text-white"> 7,628 photos</strong>, capturing generations of Sherpa 
+              history and heritage. Thukten&apos;s heartfelt journey began with inspiration from his father and contributions 
+              from fellow Sherpas. This project honors the language, culture, and identity of the Sherpa people, 
+              reconnecting families across borders.
             </p>
           </div>
-        </div>
-      </div>
 
-      <div className="grid md:grid-cols-2 gap-8">
-        <div className="bg-white dark:bg-mountain-800/50 rounded-xl p-8 shadow-lg">
-          <h4 className="text-xl font-bold text-mountain-900 dark:text-white mb-4">
-            Project Goals
-          </h4>
-          <ul className="space-y-3">
-            <li className="flex items-start gap-3">
-              <span className="flex-shrink-0 w-6 h-6 bg-burgundy-100 dark:bg-burgundy-900/50 rounded-full flex items-center justify-center text-burgundy-700 dark:text-burgundy-400 text-sm">✓</span>
-              <span className="text-mountain-600 dark:text-mountain-400">Document family lineages of Sonoma Sherpa families</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="flex-shrink-0 w-6 h-6 bg-burgundy-100 dark:bg-burgundy-900/50 rounded-full flex items-center justify-center text-burgundy-700 dark:text-burgundy-400 text-sm">✓</span>
-              <span className="text-mountain-600 dark:text-mountain-400">Connect with ancestral villages in Solukhumbu</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="flex-shrink-0 w-6 h-6 bg-burgundy-100 dark:bg-burgundy-900/50 rounded-full flex items-center justify-center text-burgundy-700 dark:text-burgundy-400 text-sm">✓</span>
-              <span className="text-mountain-600 dark:text-mountain-400">Preserve stories and photos of ancestors</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="flex-shrink-0 w-6 h-6 bg-burgundy-100 dark:bg-burgundy-900/50 rounded-full flex items-center justify-center text-burgundy-700 dark:text-burgundy-400 text-sm">✓</span>
-              <span className="text-mountain-600 dark:text-mountain-400">Create searchable database by clan affiliation</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="flex-shrink-0 w-6 h-6 bg-burgundy-100 dark:bg-burgundy-900/50 rounded-full flex items-center justify-center text-burgundy-700 dark:text-burgundy-400 text-sm">✓</span>
-              <span className="text-mountain-600 dark:text-mountain-400">Enable members to contribute their family information</span>
-            </li>
-          </ul>
-        </div>
-
-        <div className="bg-white dark:bg-mountain-800/50 rounded-xl p-8 shadow-lg">
-          <h4 className="text-xl font-bold text-mountain-900 dark:text-white mb-4">
-            How to Participate
-          </h4>
-          <div className="prose prose-lg dark:prose-invert max-w-none">
-            <p className="text-mountain-600 dark:text-mountain-400 leading-relaxed mb-4">
-              We invite all Sherpa families to contribute to this important cultural preservation project. 
-              Your participation helps build a comprehensive record for future generations.
-            </p>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-3">
-                <span className="text-burgundy-600 dark:text-burgundy-400">1.</span>
-                <span className="text-mountain-600 dark:text-mountain-400">Gather information about your family tree</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-burgundy-600 dark:text-burgundy-400">2.</span>
-                <span className="text-mountain-600 dark:text-mountain-400">Collect old photographs and documents</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-burgundy-600 dark:text-burgundy-400">3.</span>
-                <span className="text-mountain-600 dark:text-mountain-400">Record stories from elder family members</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-burgundy-600 dark:text-burgundy-400">4.</span>
-                <span className="text-mountain-600 dark:text-mountain-400">Contact us to submit your information</span>
-              </li>
-            </ul>
+          {/* CTA Button */}
+          <div className="text-center">
+            <a
+              href="https://khumjung.tribalpages.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-burgundy-600 to-burgundy-700 hover:from-burgundy-700 hover:to-burgundy-800 text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all shadow-xl shadow-burgundy-600/30 hover:shadow-2xl hover:shadow-burgundy-600/40 hover:-translate-y-1"
+            >
+              <span>Visit the Sherpa Tribal Family Tree</span>
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
           </div>
         </div>
       </div>
 
-      {/* Contact CTA */}
-      <div className="text-center">
-        <a
-          href="/contact"
-          className="inline-flex items-center gap-2 bg-burgundy-700 hover:bg-burgundy-800 text-white px-8 py-4 rounded-xl font-semibold transition-colors shadow-lg"
-        >
-          <span>Contact Us to Contribute</span>
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+      {/* Quote Section */}
+      <div className="relative bg-mountain-900 dark:bg-mountain-800 rounded-3xl p-8 md:p-12 overflow-hidden">
+        {/* Decorative Background */}
+        <div className="absolute inset-0 opacity-10">
+          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <pattern id="tree-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+              <circle cx="10" cy="10" r="2" fill="currentColor" />
+            </pattern>
+            <rect width="100" height="100" fill="url(#tree-pattern)" />
           </svg>
-        </a>
+        </div>
+        
+        <div className="relative max-w-4xl mx-auto">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold text-white mb-2">About the Sherpa Tribal Family Tree</h3>
+            <p className="text-burgundy-400 font-medium">A Message from the Creator</p>
+          </div>
+          
+          {/* Quote */}
+          <div className="relative">
+            <svg className="absolute -top-4 -left-2 w-12 h-12 text-gold-500/30" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+            </svg>
+            <blockquote className="text-cream-100 text-lg md:text-xl leading-relaxed italic pl-8">
+              <p className="mb-6">
+                This project began with my father&apos;s words in 1989—reminding me how important it is to know our roots. 
+                Inspired by the efforts of others and driven by the desire to preserve our identity, I created this page 
+                to document the stories, names, and connections that make up our Sherpa heritage.
+              </p>
+              <p className="mb-8">
+                It&apos;s not just a family tree—it&apos;s a living archive of who we are, where we come from, and how we&apos;re 
+                all connected. I invite everyone to explore, contribute, and help keep our history alive for future generations.
+              </p>
+            </blockquote>
+            <footer className="flex items-center gap-4 pl-8">
+              <div className="w-12 h-12 bg-gradient-to-br from-gold-400 to-gold-600 rounded-full flex items-center justify-center text-mountain-900 font-bold text-lg">
+                TP
+              </div>
+              <div>
+                <cite className="not-italic font-bold text-white text-lg">Thukten Philip Sherpa</cite>
+                <p className="text-cream-300 text-sm">Creator & Curator of the Sherpa Tribal Family Tree</p>
+              </div>
+            </footer>
+          </div>
+        </div>
+      </div>
+
+      {/* Stats Grid */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        {[
+          { value: '9,127', label: 'Relatives Documented', icon: '👥' },
+          { value: '7,628', label: 'Photos Archived', icon: '📸' },
+          { value: '15+', label: 'Years of Work', icon: '⏳' },
+          { value: '∞', label: 'Generations Connected', icon: '🔗' },
+        ].map((stat, index) => (
+          <div key={index} className="bg-white dark:bg-mountain-800/50 rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-shadow">
+            <span className="text-3xl mb-2 block">{stat.icon}</span>
+            <p className="text-2xl md:text-3xl font-bold text-burgundy-700 dark:text-burgundy-400 mb-1">
+              {stat.value}
+            </p>
+            <p className="text-mountain-600 dark:text-mountain-400 text-sm">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* How to Contribute */}
+      <div className="bg-gradient-to-r from-gold-50 to-cream-50 dark:from-gold-900/20 dark:to-mountain-800/50 rounded-2xl p-8 md:p-10 border border-gold-200 dark:border-gold-800/50">
+        <div className="flex flex-col md:flex-row items-center gap-6">
+          <div className="flex-shrink-0">
+            <div className="w-16 h-16 bg-gold-500 rounded-full flex items-center justify-center shadow-lg">
+              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+              </svg>
+            </div>
+          </div>
+          <div className="flex-grow text-center md:text-left">
+            <h4 className="text-xl font-bold text-mountain-900 dark:text-white mb-2">
+              Want to Contribute Your Family Information?
+            </h4>
+            <p className="text-mountain-600 dark:text-mountain-400">
+              Help grow this living archive by adding your family&apos;s stories, photos, and connections. 
+              Visit the family tree website to explore and contribute.
+            </p>
+          </div>
+          <div className="flex-shrink-0">
+            <a
+              href="https://khumjung.tribalpages.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-mountain-900 dark:bg-white hover:bg-mountain-800 dark:hover:bg-cream-100 text-white dark:text-mountain-900 px-6 py-3 rounded-xl font-semibold transition-colors shadow-lg"
+            >
+              <span>Explore & Contribute</span>
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   );

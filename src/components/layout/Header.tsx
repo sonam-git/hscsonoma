@@ -187,7 +187,7 @@ export default function Header() {
         <nav className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
-            <div className="relative w-12 h-12">
+            <div className="relative w-14 h-14">
               <Image
                 src="/images/logos/HSC-logo-dark-border.png"
                 alt="HSC Logo"

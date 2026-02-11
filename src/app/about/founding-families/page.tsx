@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
+import FounderImageModal from '@/components/FounderImageModal';
 
 export const metadata: Metadata = {
   title: 'Founding Families | Himalayan Sherpa Club of Sonoma',
@@ -22,7 +22,7 @@ const founders = [
     image: '/images/founding-families/ongda.jpg',
   },
   {
-    name: 'Ngima Sherpa',
+    name: 'Nima Sherpa',
     image: '/images/founding-families/nima.jpg',
   },
 ];
@@ -158,26 +158,7 @@ export default function FoundingFamiliesPage() {
                 </p>
 
                 {/* Founder Photos */}
-                <div className="grid md:grid-cols-3 gap-8">
-                  {founders.map((founder, index) => (
-                    <div key={index} className="text-center">
-                      <div className="relative aspect-[3/4] rounded-xl overflow-hidden shadow-lg mb-4">
-                        <Image
-                          src={founder.image}
-                          alt={founder.name}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                      <h3 className="text-xl font-serif font-bold text-mountain-900 dark:text-cream-50">
-                        {founder.name}
-                      </h3>
-                      <p className="text-burgundy-600 dark:text-burgundy-400 text-sm">
-                        Founding Pioneer
-                      </p>
-                    </div>
-                  ))}
-                </div>
+                <FounderImageModal founders={founders} />
               </div>
             </div>
           </div>

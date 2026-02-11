@@ -11,7 +11,7 @@ export default function IntroductionPage() {
   return (
     <>
       {/* Hero */}
-yb      <section className="relative pt-40 pb-32 lg:pt-44 bg-gradient-himalayan">
+    <section className="relative pt-40 pb-32 lg:pt-44 bg-gradient-himalayan">
         <div className="relative container-custom text-center">
           <p className="font-tibetan text-xl text-gold-400 mb-4">༄༅། ཧི་མ་ལ་ཡ་ཤར་པ་སྐྱིད་སྡུག</p>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6">
@@ -216,6 +216,13 @@ yb      <section className="relative pt-40 pb-32 lg:pt-44 bg-gradient-himalayan"
                 ),
                 title: 'Cultural Exchange',
                 description: 'Promote cultural exchange locally and globally to enhance mutual understanding and enrichment.',
+              },
+              {
+                icon: (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                ),
+                title: 'Community Involvement',
+                description: 'Being part of the Sonoma Community ever since its establishment, contributing to local events and initiatives.',
               },
             ].map((objective, index) => (
               <div key={index} className="bg-white dark:bg-mountain-800 rounded-xl p-6 shadow-lg hover:shadow-xl dark:shadow-mountain-950/50 transition-shadow">
