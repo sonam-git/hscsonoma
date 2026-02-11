@@ -45,9 +45,9 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-tr      <section className="relative pt-40 pb-32 lg:pt-44 bg-gradient-wine">
+      <section className="relative pt-40 pb-32 lg:pt-44 bg-gradient-wine">
         <div className="relative container-custom text-center">
-          <p className="font-tibetan text-xl text-gold-400 mb-4">༄༅། ཧི་མ་ལ་ཡ་ཤར་པ་སྐྱིད་སྡུག</p>
+          <p className="font-tibetan text-xl text-gold-400 mb-4">༄༅། ང་ཚོའི་དམིགས་ཡུལ།</p>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6">
             About Us
           </h1>

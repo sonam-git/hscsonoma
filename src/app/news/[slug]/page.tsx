@@ -2,94 +2,7 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-
-// Mock data - In production, this would come from Storyblok
-const newsArticles: Record<string, {
-  title: string;
-  excerpt: string;
-  content: string;
-  date: string;
-  category: string;
-  image: string;
-  author: string;
-  readTime: string;
-}> = {
-  'sherpa-community-earthquake-relief-2024': {
-    title: 'Sherpa Community Raises Funds for Nepal Earthquake Victims',
-    excerpt: 'The Himalayan Sherpa Club of Sonoma organized a benefit event raising over $25,000 for earthquake relief efforts in remote Himalayan villages.',
-    content: `
-      <p>In a remarkable display of community solidarity, the Himalayan Sherpa Club of Sonoma organized a benefit event that raised over $25,000 for earthquake relief efforts in remote Himalayan villages.</p>
-      
-      <p>The fundraising event, held at the Sonoma Community Center, brought together over 200 community members, local business owners, and supporters from across Sonoma County. The evening featured traditional Sherpa cuisine, cultural performances, and an auction of Himalayan art and crafts.</p>
-      
-      <h2>Community Response</h2>
-      <p>"When disaster strikes our homeland, the Sherpa community here in Sonoma feels it deeply," said club president Karma Sherpa. "This fundraiser was not just about raising money—it was about showing our brothers and sisters in Nepal that they are not forgotten."</p>
-      
-      <p>The funds raised will be directed to rebuilding efforts in the Solukhumbu district, where many of our community members have family ties. The money will help reconstruct homes, schools, and essential infrastructure damaged by the earthquake.</p>
-      
-      <h2>Local Business Support</h2>
-      <p>Several local Sonoma County businesses contributed to the event's success. Wineries donated bottles for the auction, restaurants provided catering support, and local artists contributed works featuring Himalayan themes.</p>
-      
-      <p>"The generosity of our Sonoma community has been overwhelming," said event coordinator Nima Tenzing. "This disaster reminded us how connected we all are, across oceans and mountain ranges."</p>
-      
-      <h2>Ongoing Relief Efforts</h2>
-      <p>The club has established an ongoing relief fund for those who wish to continue supporting earthquake recovery efforts. Donations can be made through the club's website or at monthly community meetings.</p>
-    `,
-    date: 'December 15, 2024',
-    category: 'Community',
-    image: '/images/news/earthquake-relief.jpg',
-    author: 'HSCS Communications Team',
-    readTime: '5 min read',
-  },
-  'sonoma-sherpas-wine-country-restaurants': {
-    title: 'Sherpa Chefs Making Their Mark in Wine Country Restaurants',
-    excerpt: 'From Everest base camps to Sonoma kitchens, Sherpa culinary traditions are finding a new home in wine country\'s finest restaurants.',
-    content: `
-      <p>From the high-altitude kitchens of Everest base camps to the sophisticated dining rooms of Sonoma County, Sherpa chefs are bringing their unique culinary heritage to wine country's food scene.</p>
-      
-      <h2>A Culinary Journey</h2>
-      <p>For many Sherpa immigrants, the restaurant industry has provided both economic opportunity and a way to share their culture. Today, Sherpa chefs can be found in kitchens throughout Sonoma County, from casual eateries to Michelin-starred restaurants.</p>
-      
-      <p>"Cooking is in our blood," explains Pemba Sherpa, executive chef at a acclaimed Santa Rosa restaurant. "In the mountains, we learned to create nourishing, flavorful food with limited ingredients. That discipline and creativity translates well to any kitchen."</p>
-      
-      <h2>Fusion of Traditions</h2>
-      <p>Several chefs are finding creative ways to blend Himalayan flavors with California's farm-to-table ethos. Momo dumplings made with locally raised pork, thukpa soup featuring Sonoma County vegetables, and butter tea infused with local herbs are appearing on menus across the region.</p>
-      
-      <h2>Community Connections</h2>
-      <p>The restaurant industry has also become a hub for community building. Many Sherpa families have found employment and support networks through these culinary connections.</p>
-      
-      <p>"When a new family arrives from Nepal, one of the first things we do is help them find work," says Dawa Tenzing, who manages a popular Healdsburg restaurant. "The restaurant community takes care of its own."</p>
-    `,
-    date: 'November 28, 2024',
-    category: 'Culture',
-    image: '/images/news/sherpa-chefs.jpg',
-    author: 'HSCS Communications Team',
-    readTime: '7 min read',
-  },
-  'losar-2024-celebration-recap': {
-    title: 'Losar 2024: A Celebration to Remember',
-    excerpt: 'Over 250 community members gathered for our biggest Losar celebration yet, featuring traditional dances, food, and cultural performances.',
-    content: `
-      <p>The Himalayan Sherpa Club of Sonoma hosted its largest Losar (Tibetan New Year) celebration to date, welcoming over 250 community members for a day of cultural festivities, traditional performances, and community bonding.</p>
-      
-      <h2>A Day of Celebration</h2>
-      <p>The celebration began early in the morning with traditional butter tea and khapse (fried pastries), setting the tone for a day steeped in Sherpa traditions. Families arrived in traditional dress, with many children wearing chubas and elaborate headpieces for the first time.</p>
-      
-      <p>"Seeing our young people dressed in traditional clothing, learning the dances, speaking Sherpa words—this is what Losar is all about," reflected elder Pasang Sherpa. "We are passing on our heritage."</p>
-      
-      <h2>Cultural Performances</h2>
-      <p>The highlight of the day was the cultural performance program, featuring traditional Sherpa dances, songs, and a drama performed by the youth group. The performances showcased months of preparation and practice by community members of all ages.</p>
-      
-      <h2>Traditional Feast</h2>
-      <p>The community feast featured an impressive spread of traditional dishes: momos, thukpa, sha phaley, and numerous vegetarian options. Volunteer cooks had spent days preparing the food, continuing a tradition of communal cooking that stretches back generations.</p>
-    `,
-    date: 'February 15, 2024',
-    category: 'Events',
-    image: '/images/news/losar-2024.jpg',
-    author: 'HSCS Communications Team',
-    readTime: '4 min read',
-  },
-};
+import { getNewsArticleBySlug, getAllNewsSlugs } from '@/data/news';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -97,8 +10,8 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const article = newsArticles[slug];
-  
+  const article = getNewsArticleBySlug(slug);
+
   if (!article) {
     return {
       title: 'Article Not Found | Himalayan Sherpa Club of Sonoma',
@@ -106,7 +19,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   return {
-    title: `${article.title} | Himalayan Sherpa Club of Sonoma`,
+    title: `${article.title} | HSC News`,
     description: article.excerpt,
     openGraph: {
       title: article.title,
@@ -118,116 +31,200 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export async function generateStaticParams() {
-  return Object.keys(newsArticles).map((slug) => ({
-    slug,
-  }));
+  const slugs = getAllNewsSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export default async function NewsArticlePage({ params }: PageProps) {
   const { slug } = await params;
-  const article = newsArticles[slug];
+  const article = getNewsArticleBySlug(slug);
 
   if (!article) {
     notFound();
   }
 
   return (
-    <main className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative h-[50vh] min-h-[400px] flex items-end overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10" />
-        <div className="absolute inset-0">
-          <Image
-            src={article.image}
-            alt={article.title}
-            fill
-            className="object-cover"
-            priority
-          />
+    <main className="min-h-screen bg-cream-50 dark:bg-mountain-950">
+      {/* Hero Section with Image */}
+      <section className="relative pt-24 pb-0">
+        {/* Back Button */}
+        <div className="container-custom mb-6">
+          <Link
+            href="/news"
+            className="inline-flex items-center gap-2 text-mountain-600 dark:text-mountain-400 hover:text-burgundy-700 dark:hover:text-burgundy-400 transition-colors"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            <span>Back to News</span>
+          </Link>
         </div>
-        <div className="relative z-20 container mx-auto px-4 pb-12 max-w-4xl">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="bg-wine-600 text-white text-sm px-3 py-1 rounded-full">
-              {article.category}
-            </span>
-            <span className="text-mountain-200 text-sm">{article.date}</span>
-            <span className="text-mountain-200 text-sm">•</span>
-            <span className="text-mountain-200 text-sm">{article.readTime}</span>
+
+        {/* Featured Image */}
+        <div className="container-custom">
+          <div className="relative aspect-[21/9] md:aspect-[21/8] rounded-2xl overflow-hidden shadow-2xl">
+            <Image
+              src={article.image}
+              alt={article.title}
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+
+            {/* Overlay Content */}
+            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
+              <div className="flex flex-wrap gap-2 mb-4">
+                <span className="px-3 py-1 bg-burgundy-700 text-white text-sm font-medium rounded-full">
+                  {article.category}
+                </span>
+                {article.isRecent && (
+                  <span className="px-3 py-1 bg-gold-500 text-mountain-900 text-sm font-medium rounded-full">
+                    Recent
+                  </span>
+                )}
+                {article.featured && (
+                  <span className="px-3 py-1 bg-white/20 backdrop-blur-sm text-white text-sm font-medium rounded-full">
+                    Featured
+                  </span>
+                )}
+              </div>
+              <h1 className="text-2xl md:text-4xl lg:text-5xl font-serif font-bold text-white mb-3 max-w-4xl">
+                {article.title}
+              </h1>
+              <div className="flex flex-wrap items-center gap-4 text-cream-200">
+                <time className="flex items-center gap-2">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  {article.date}
+                </time>
+                {article.source && (
+                  <span className="flex items-center gap-2">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                    </svg>
+                    Source: {article.source}
+                  </span>
+                )}
+              </div>
+            </div>
           </div>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white mb-4">
-            {article.title}
-          </h1>
-          <p className="text-lg text-mountain-200">By {article.author}</p>
         </div>
       </section>
 
       {/* Article Content */}
-      <article className="py-12 md:py-16 bg-white dark:bg-mountain-900">
-        <div className="container mx-auto px-4 max-w-3xl">
-          {/* Excerpt */}
-          <p className="text-xl text-mountain-600 dark:text-mountain-300 leading-relaxed mb-8 font-medium">
-            {article.excerpt}
-          </p>
-          
-          {/* Main Content */}
-          <div 
-            className="prose prose-lg dark:prose-invert max-w-none
-              prose-headings:font-display prose-headings:text-mountain-800 dark:prose-headings:text-white
-              prose-p:text-mountain-600 dark:prose-p:text-mountain-300
-              prose-a:text-wine-600 dark:prose-a:text-wine-400"
-            dangerouslySetInnerHTML={{ __html: article.content }}
-          />
-          
-          {/* Share Section */}
-          <div className="mt-12 pt-8 border-t border-mountain-200 dark:border-mountain-700">
-            <h3 className="text-lg font-display font-bold text-mountain-800 dark:text-white mb-4">
-              Share this article
-            </h3>
-            <div className="flex gap-4">
-              <a
-                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://www.himalayansherpaclubsonoma.org/news/${slug}`)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-colors"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/>
-                </svg>
-              </a>
-              <a
-                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(article.title)}&url=${encodeURIComponent(`https://www.himalayansherpaclubsonoma.org/news/${slug}`)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-black rounded-full flex items-center justify-center text-white hover:bg-gray-800 transition-colors"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                </svg>
-              </a>
-              <a
-                href={`mailto:?subject=${encodeURIComponent(article.title)}&body=${encodeURIComponent(`Check out this article: https://www.himalayansherpaclubsonoma.org/news/${slug}`)}`}
-                className="w-10 h-10 bg-mountain-600 rounded-full flex items-center justify-center text-white hover:bg-mountain-700 transition-colors"
+      <section className="py-12 md:py-16">
+        <div className="container-custom">
+          <div className="max-w-4xl mx-auto">
+            {/* Article Body */}
+            <article className="bg-white dark:bg-mountain-800 rounded-2xl p-6 md:p-10 shadow-lg">
+              <div className="prose prose-lg dark:prose-invert max-w-none">
+                {article.content.split('\n\n').map((paragraph, index) => (
+                  <p key={index} className="text-mountain-700 dark:text-mountain-300 leading-relaxed mb-6">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+
+              {/* External Link CTA */}
+              {article.externalUrl && (
+                <div className="mt-10 pt-8 border-t border-cream-200 dark:border-mountain-700">
+                  <div className="bg-gradient-to-br from-burgundy-50 to-gold-50 dark:from-burgundy-900/30 dark:to-gold-900/20 rounded-xl p-6 md:p-8">
+                    <div className="flex flex-col md:flex-row items-center gap-6">
+                      <div className="flex-shrink-0">
+                        <div className="w-14 h-14 bg-burgundy-600 rounded-full flex items-center justify-center">
+                          <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                          </svg>
+                        </div>
+                      </div>
+                      <div className="flex-grow text-center md:text-left">
+                        <h3 className="text-lg font-bold text-mountain-900 dark:text-white mb-1">
+                          Read the Full Article
+                        </h3>
+                        <p className="text-mountain-600 dark:text-mountain-400 text-sm">
+                          View the original article on {article.source || 'the source website'}
+                        </p>
+                      </div>
+                      <div className="flex-shrink-0">
+                        <a
+                          href={article.externalUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 bg-burgundy-700 hover:bg-burgundy-800 text-white px-6 py-3 rounded-xl font-semibold transition-colors shadow-lg"
+                        >
+                          <span>Read More</span>
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </article>
+
+            {/* Share & Navigation */}
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <Link
+                href="/news"
+                className="inline-flex items-center gap-2 text-mountain-600 dark:text-mountain-400 hover:text-burgundy-700 dark:hover:text-burgundy-400 transition-colors"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
-              </a>
+                <span>Back to All News</span>
+              </Link>
+
+              <div className="flex items-center gap-3">
+                <span className="text-sm text-mountain-500 dark:text-mountain-400">Share:</span>
+                <a
+                  href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://hscsonoma.org/news/${article.slug}`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-full bg-cream-100 dark:bg-mountain-800 text-mountain-600 dark:text-mountain-400 hover:bg-burgundy-100 dark:hover:bg-burgundy-900/50 hover:text-burgundy-700 dark:hover:text-burgundy-400 transition-colors"
+                  aria-label="Share on Facebook"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                  </svg>
+                </a>
+                <a
+                  href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(`https://hscsonoma.org/news/${article.slug}`)}&text=${encodeURIComponent(article.title)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-full bg-cream-100 dark:bg-mountain-800 text-mountain-600 dark:text-mountain-400 hover:bg-burgundy-100 dark:hover:bg-burgundy-900/50 hover:text-burgundy-700 dark:hover:text-burgundy-400 transition-colors"
+                  aria-label="Share on Twitter"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </article>
+      </section>
 
-      {/* Back to News */}
-      <section className="py-8 bg-earth-50 dark:bg-mountain-800">
-        <div className="container mx-auto px-4 text-center">
+      {/* Related Stories CTA */}
+      <section className="py-12 bg-gradient-to-br from-cream-100 to-cream-50 dark:from-mountain-900 dark:to-mountain-950 border-t border-cream-200 dark:border-mountain-800">
+        <div className="container-custom text-center">
+          <h2 className="text-2xl font-bold text-mountain-900 dark:text-white mb-4">
+            Explore More Community Stories
+          </h2>
+          <p className="text-mountain-600 dark:text-mountain-400 mb-6 max-w-2xl mx-auto">
+            Discover more inspiring stories, achievements, and news from our Himalayan Sherpa community.
+          </p>
           <Link
             href="/news"
-            className="inline-flex items-center text-wine-600 dark:text-wine-400 font-medium hover:text-wine-700 dark:hover:text-wine-300 transition-colors"
+            className="inline-flex items-center gap-2 bg-burgundy-700 hover:bg-burgundy-800 text-white px-8 py-4 rounded-xl font-semibold transition-colors shadow-lg"
           >
-            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            View All News
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
-            Back to All News
           </Link>
         </div>
       </section>

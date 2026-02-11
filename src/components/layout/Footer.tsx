@@ -186,11 +186,10 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-mountain-700 dark:border-mountain-600 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-cream-400 text-center md:text-left">
-            Copyright © 2011 - {currentYear} Himalayan Sherpa Club Of Sonoma, USA | All rights reserved
+            | Copyright © 2011 - {currentYear} Himalayan Sherpa Club Of Sonoma,California USA | All rights reserved |
           </p>
           <p className="text-xs text-cream-500 text-center md:text-right">
-            HSC is incorporated as a non-profit and tax-exempt charitable organization 
-            under section 501(c)(3) of the Internal Revenue Code
+           Developed by: Sonam J Sherpa
           </p>
         </div>
       </div>

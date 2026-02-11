@@ -3,89 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-
-const newsArticles = [
-	{
-		slug: 'five-sherpa-siblings-makalu',
-		title: 'Five Sherpa siblings make history on Mt Makalu',
-		excerpt: 'Five Sherpa siblings from Sangkhuwasabha today scaled the world\'s fifth highest mountain...',
-		date: 'May 16, 2025',
-		category: 'News',
-		image: '/images/news/k2-summit.jpg',
-		featured: true,
-		isRecent: true,
-	},
-	{
-		slug: 'sherpas-launch-second-careers-wine-country',
-		title: 'Sherpas launch second careers in Wine Country, as restaurateurs',
-		excerpt: 'A small community of sherpas from Nepal now run locally favorite restaurants in Sonoma County. To...',
-		date: 'April 23, 2025',
-		category: 'News',
-		image: '/images/news/benefit.jpg',
-		featured: true,
-		isRecent: false,
-	},
-	{
-		slug: 'farmhouse-sonoma-opens',
-		title: 'A sneak peek at newly opened Farmhouse Sonoma',
-		excerpt: 'The former Palms Grill, which closed in 2021, has been reborn under new ownership as Farmhouse...',
-		date: 'April 21, 2025',
-		category: 'News',
-		image: '/images/news/benefit.jpg',
-		featured: false,
-		isRecent: true,
-	},
-	{
-		slug: 'sonoma-grille-flag-everest',
-		title: 'Climber waves Sonoma Grille flag atop Mount Everest',
-		excerpt: 'During his May 15 ascent, Pasang Tshering Sherpa waved the flag for Sonoma Grille, the popular...',
-		date: 'April 21, 2025',
-		category: 'News',
-		image: '/images/news/k2-summit.jpg',
-		featured: true,
-		isRecent: false,
-	},
-	{
-		slug: 'la-casa-everest-celebration',
-		title: 'Celebrating Sonoma\'s La Casa restaurant at the peak of Mount Everest',
-		excerpt: 'La Casa\'s flag is sitting on top of the world, some 29,032 feet towering in the sky. At the peak of...',
-		date: 'April 21, 2025',
-		category: 'News',
-		image: '/images/news/k2-summit.jpg',
-		featured: true,
-		isRecent: false,
-	},
-	{
-		slug: 'raising-funds-earthquake-victims',
-		title: 'Raising Funds for quake victims',
-		excerpt: 'The Sonoma community came together for a \'Wine Country Dinner – Sherpa Family Benefit\' Thursday, May...',
-		date: 'April 10, 2025',
-		category: 'News',
-		image: '/images/news/fundraising.jpg',
-		featured: false,
-		isRecent: false,
-	},
-	{
-		slug: 'sonoma-sherpas-plan-benefit',
-		title: 'Sonoma Sherpas plan benefit',
-		excerpt: 'A group of Sonoma Sherpas, some with guiding experience on Mt. Everest and at least 10 successful...',
-		date: 'April 10, 2025',
-		category: 'News',
-		image: '/images/news/benefit.jpg',
-		featured: false,
-		isRecent: false,
-	},
-	{
-		slug: 'sonoma-man-summits-k2',
-		title: 'Sonoma man summits K2, world\'s most dangerous mountain',
-		excerpt: 'At the end of July, Ang D Sherpa, the member of Himalayan Sherpa Club, flew back to his home in...',
-		date: 'April 10, 2025',
-		category: 'News',
-		image: '/images/news/k2-summit.jpg',
-		featured: true,
-		isRecent: false,
-	},
-];
+import { newsArticles } from '@/data/news';
 
 const categories = ['All', 'News', 'Recent'];
 
@@ -105,8 +23,9 @@ export default function NewsPage() {
 			{/* Hero Section */}
 			<section className="relative py-32 bg-gradient-himalayan">
 				<div className="relative container-custom text-center">
+					<p className="font-tibetan text-xl text-gold-400 mb-4">༄༅། གསར་འགྱུར།</p>
 					<h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6">
-						Community Buzz
+						Community Buzz | News
 					</h1>
 					<p className="text-xl text-cream-200 max-w-2xl mx-auto">
 						HSC community in the Spotlight

@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import HeroPhotoReel from '@/components/HeroPhotoReel';
+import ConnectWithUs from '@/components/ConnectWithUs';
 import styles from '@/components/hero3d.module.css';
 
 export const metadata: Metadata = {
@@ -40,17 +41,17 @@ const featuredNews = [
 const upcomingEvents = [
   {
     title: 'Annual Losar Celebration',
-    date: '2026-02-28',
-    time: '6:00 PM',
-    location: 'Sonoma Community Center',
+    date: '2026-03-01',
+    time: 'TBD',
+    location: 'TBD',
     description: 'Join us for the traditional Tibetan New Year celebration with cultural performances, authentic cuisine, and community gatherings.',
   },
   {
-    title: 'Spring Cultural Festival',
-    date: '2026-04-15',
-    time: '11:00 AM',
-    location: 'Sonoma Valley Regional Park',
-    description: 'A day of Sherpa traditions, music, dance, and food in the beautiful wine country setting.',
+    title: 'Annual Phang-ngi Celebration',
+    date: '2026-08-01',
+    time: 'TBD',
+    location: 'TBD',
+    description: 'A day of Sherpa traditions, music, dance, and food celebrating our rich cultural heritage.',
   },
 ];
 
@@ -89,7 +90,7 @@ export default function HomePage() {
           </h1>
 
           {/* Tagline */}
-          <p className="text-xl md:text-2xl lg:text-3xl text-cream-100 font-light italic mb-10 animate-fade-in">
+        <p className="satisfy-regular text-xl md:text-2xl lg:text-3xl text-cream-100 mb-10 animate-fade-in">
             "Preserving Heritage, Uniting Community."
           </p>
 
@@ -284,6 +285,7 @@ export default function HomePage() {
         </div>
       </section>
 
+
       {/* Events Section */}
       <section className="py-20 relative overflow-hidden">
         {/* Background Image */}
@@ -312,7 +314,7 @@ export default function HomePage() {
                 <div key={index} className="card p-6 flex gap-6">
                   <div className="flex-shrink-0 w-20 text-center">
                     <div className="bg-burgundy-100 dark:bg-burgundy-900/50 rounded-lg py-3">
-                      <span className="block text-3xl font-bold text-burgundy-700 dark:text-burgundy-400">{eventDate.getDate()}</span>
+                      <span className="block text-3xl font-bold text-burgundy-700 dark:text-burgundy-400">{/*eventDate.getDate()*/}</span>
                       <span className="block text-sm text-burgundy-600 dark:text-burgundy-500 uppercase">
                         {eventDate.toLocaleDateString('en-US', { month: 'short' })}
                       </span>
@@ -637,6 +639,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+{/* Facebook Connect Section */}
+      <ConnectWithUs />
     </>
   );
 }

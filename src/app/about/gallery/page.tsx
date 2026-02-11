@@ -155,7 +155,7 @@ export default function GalleryPage() {
       {/* Hero Section */}
       <section className="relative pt-40 pb-32 lg:pt-44 bg-gradient-himalayan">
         <div className="relative container-custom text-center">
-          <p className="font-tibetan text-xl text-gold-400 mb-4">༄༅། ཧི་མ་ལ་ཡ་ཤར་པ་སྐྱིད་སྡུག</p>
+          <p className="font-tibetan text-xl text-gold-400 mb-4">༄༅། འདྲ་པར་ཁང་།</p>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6">
             Photo Gallery
           </h1>

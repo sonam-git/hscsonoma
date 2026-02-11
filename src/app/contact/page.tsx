@@ -12,7 +12,7 @@ export default function ContactPage() {
       {/* Hero */}
       <section className="relative py-32 bg-gradient-himalayan">
         <div className="relative container-custom text-center">
-          <p className="font-tibetan text-xl text-gold-400 mb-4">༄༅། ཧི་མ་ལ་ཡ་ཤར་པ་སྐྱིད་སྡུག</p>
+          <p className="font-tibetan text-xl text-gold-400 mb-4">༄༅། ང་ཚོར་འབྲེལ་བ།</p>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6">
             Tashi Delek & Namaste!
           </h1>

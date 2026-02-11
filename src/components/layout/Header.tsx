@@ -185,7 +185,7 @@ export default function Header() {
       >
         {/* Fixed Background Image - doesn't move or resize */}
         <div 
-          className="absolute inset-0"
+          className="absolute inset-0 dark:brightness-50"
           style={{
             backgroundImage: 'url(/images/logos/menu-bar.jpg)',
             backgroundRepeat: 'repeat-x',
@@ -194,14 +194,14 @@ export default function Header() {
           }}
         />
         
-        {/* Dark Blue & Green Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-950/50 via-emerald-900/40 to-blue-900/50" />
+        {/* Light/Dark Overlay for background */}
+        <div className="absolute inset-0 bg-white/70 dark:bg-mountain-900/80" />
         
-        {/* Overlay for better readability */}
+        {/* Subtle gradient overlay */}
         <div className={`absolute inset-0 transition-all duration-300 ${
           isScrolled
-            ? 'bg-white/85 dark:bg-mountain-900/90 backdrop-blur-sm'
-            : 'bg-black/50'
+            ? 'bg-white/60 dark:bg-mountain-900/70 backdrop-blur-sm'
+            : 'bg-white/40 dark:bg-mountain-900/60'
         }`} />
         
       <div className="container-custom relative">
@@ -218,31 +218,22 @@ export default function Header() {
               />
             </div>
             <div className="hidden sm:block">
-              <p className={`font-tibetan text-sm font-bold transition-colors ${
-                isScrolled 
-                  ? 'text-burgundy-800 dark:text-burgundy-300' 
-                  : 'text-white'
-              }`}>
+              <p className="font-tibetan text-sm font-bold transition-colors text-burgundy-800 dark:text-burgundy-300">
                 ༄༅། ཧི་མ་ལ་ཡ་ཤར་པ་སྐྱིད་སྡུག
               </p>
-              <p className={`text-sm font-extrabold tracking-wider uppercase transition-colors ${
-                isScrolled 
-                  ? 'text-mountain-800 dark:text-mountain-100' 
-                  : 'text-cream-50'
-              }`}>
+              <p className="jaini-purva-regular text-md tracking-wider uppercase transition-colors text-blue-900 dark:text-cream-50">
                 HIMALAYAN SHERPA CLUB
               </p>
             </div>
           </Link>
 
-          {/* Mobile Center - Tibetan Script */}
-          <div className="flex-1 flex justify-center lg:hidden px-2 min-w-0">
-            <p className={`font-tibetan text-xs sm:text-sm font-bold transition-colors text-center truncate ${
-              isScrolled 
-                ? 'text-burgundy-800 dark:text-burgundy-300' 
-                : 'text-white'
-            }`}>
+          {/* Mobile Center - Tibetan Script & English */}
+          <div className="flex-1 flex flex-col items-center justify-center lg:hidden px-2 min-w-0">
+            <p className="font-tibetan text-md sm:text-sm font-bold transition-colors text-center truncate text-burgundy-800 dark:text-burgundy-300">
               ༄༅། ཧི་མ་ལ་ཡ་ཤར་པ་སྐྱིད་སྡུག
+            </p>
+            <p className="jaini-purva-regular text-[20px] sm:text-xs tracking-wider uppercase transition-colors text-blue-900 dark:text-cream-50 text-center">
+              Himalayan Sherpa Club
             </p>
           </div>
 
@@ -254,11 +245,7 @@ export default function Header() {
                 <div key={item.name} className="relative group">
                   {item.children ? (
                     <button
-                      className={`px-4 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2 ${
-                        isScrolled
-                          ? 'text-mountain-700 dark:text-mountain-200 hover:text-burgundy-700 dark:hover:text-burgundy-400 hover:bg-burgundy-50 dark:hover:bg-burgundy-900/30 hover:scale-105 hover:shadow-md'
-                          : 'text-white hover:text-gold-300 hover:bg-white/15 hover:scale-105'
-                      } ${pathname.startsWith(item.href) ? (isScrolled ? 'text-burgundy-700 dark:text-burgundy-400 bg-burgundy-100 dark:bg-burgundy-900/50 shadow-md font-bold border-b-2 border-burgundy-500' : 'text-gold-300 bg-white/20 font-bold border-b-2 border-gold-400') : ''}`}
+                      className={`px-4 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2 text-blue-900 dark:text-cream-50 hover:text-burgundy-700 dark:hover:text-burgundy-400 hover:bg-burgundy-50/80 dark:hover:bg-burgundy-900/30 hover:scale-105 hover:shadow-md ${pathname.startsWith(item.href) ? 'text-burgundy-700 dark:text-burgundy-400 bg-burgundy-100/80 dark:bg-burgundy-900/50 shadow-md font-bold border-b-2 border-burgundy-500' : ''}`}
                       onMouseEnter={() => setActiveDropdown(item.name)}
                       onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
                     >
@@ -271,11 +258,7 @@ export default function Header() {
                   ) : (
                     <Link
                       href={item.href}
-                      className={`px-4 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2 ${
-                        isScrolled
-                          ? 'text-mountain-700 dark:text-mountain-200 hover:text-burgundy-700 dark:hover:text-burgundy-400 hover:bg-burgundy-50 dark:hover:bg-burgundy-900/30 hover:scale-105 hover:shadow-md'
-                          : 'text-white hover:text-gold-300 hover:bg-white/15 hover:scale-105'
-                      } ${pathname === item.href ? (isScrolled ? 'text-burgundy-700 dark:text-burgundy-400 bg-burgundy-100 dark:bg-burgundy-900/50 shadow-md font-bold border-b-2 border-burgundy-500' : 'text-gold-300 bg-white/20 font-bold border-b-2 border-gold-400') : ''}`}
+                      className={`px-4 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2 text-blue-900 dark:text-cream-50 hover:text-burgundy-700 dark:hover:text-burgundy-400 hover:bg-burgundy-50/80 dark:hover:bg-burgundy-900/30 hover:scale-105 hover:shadow-md ${pathname === item.href ? 'text-burgundy-700 dark:text-burgundy-400 bg-burgundy-100/80 dark:bg-burgundy-900/50 shadow-md font-bold border-b-2 border-burgundy-500' : ''}`}
                       onMouseEnter={() => setActiveDropdown(null)}
                     >
                       <IconComponent />
@@ -306,11 +289,7 @@ export default function Header() {
             <ThemeToggle isScrolled={isScrolled} />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`p-2 rounded-lg transition-colors ${
-                isScrolled 
-                  ? 'text-mountain-700 dark:text-mountain-200 hover:bg-burgundy-50 dark:hover:bg-burgundy-900/30' 
-                  : 'text-white hover:bg-white/10'
-              }`}
+              className="p-2 rounded-lg transition-colors text-blue-900 dark:text-cream-50 hover:bg-burgundy-50/80 dark:hover:bg-burgundy-900/30"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {isMobileMenuOpen ? (
@@ -331,11 +310,7 @@ export default function Header() {
           onMouseEnter={() => setActiveDropdown('About')}
           onMouseLeave={() => { if (!pathname.startsWith('/about')) setActiveDropdown(null); }}
         >
-          <div className={`flex items-center justify-center gap-1 py-2 border-t ${
-            isScrolled 
-              ? 'bg-cream-50/80 dark:bg-mountain-800/80 border-cream-200 dark:border-mountain-700' 
-              : 'bg-black/20 backdrop-blur-sm border-white/10'
-          }`}>
+          <div className="flex items-center justify-center gap-1 py-2 border-t bg-cream-50/90 dark:bg-mountain-800/90 border-cream-200 dark:border-mountain-700">
             {navigation.find(item => item.name === 'About')?.children?.map((child) => {
               const ChildIcon = child.icon;
               return (
@@ -344,12 +319,8 @@ export default function Header() {
                   href={child.href}
                   className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-200 ${
                     pathname === child.href 
-                      ? (isScrolled 
-                          ? 'text-white bg-burgundy-600 dark:bg-burgundy-500 shadow-md' 
-                          : 'text-burgundy-900 bg-white shadow-md')
-                      : (isScrolled 
-                          ? 'text-mountain-600 dark:text-mountain-300 hover:text-burgundy-700 dark:hover:text-burgundy-400 hover:bg-burgundy-100 dark:hover:bg-burgundy-900/40' 
-                          : 'text-white/90 hover:text-white hover:bg-white/20')
+                      ? 'text-white bg-burgundy-600 dark:bg-burgundy-500 shadow-md'
+                      : 'text-blue-900 dark:text-cream-100 hover:text-burgundy-700 dark:hover:text-burgundy-400 hover:bg-burgundy-100/80 dark:hover:bg-burgundy-900/40'
                   }`}
                 >
                   <ChildIcon />

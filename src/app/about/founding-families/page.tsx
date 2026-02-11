@@ -33,7 +33,7 @@ export default function FoundingFamiliesPage() {
       {/* Hero Section */}
       <section className="relative pt-40 pb-32 lg:pt-44 bg-gradient-himalayan">
         <div className="relative container-custom text-center">
-          <p className="font-tibetan text-xl text-gold-400 mb-4">༄༅། ཧི་མ་ལ་ཡ་ཤར་པ་སྐྱིད་སྡུག</p>
+          <p className="font-tibetan text-xl text-gold-400 mb-4">༄༅། གསར་འཛུགས་མཛད་པའི་ཁྱིམ་ཚང་།</p>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6">
             Founding Families
           </h1>
@@ -82,7 +82,7 @@ export default function FoundingFamiliesPage() {
               <p>
                 A few years later, <strong className="text-mountain-900 dark:text-cream-50">Ongda Sherpa</strong>—also a trekking guide—followed 
                 a similar path to the United States. After winning the Diversity Visa (DV) lottery, he joined 
-                Chhiring in Sonoma. Not long after, their friend <strong className="text-mountain-900 dark:text-cream-50">Ngima Sherpa</strong>, 
+                Chhiring in Sonoma. Not long after, their friend <strong className="text-mountain-900 dark:text-cream-50">Nima Sherpa</strong>, 
                 who had been living in Colorado, also relocated to Sonoma to reunite with his close companions. 
                 The three settled in Glen Ellen and became the first Sherpas to establish roots in the area.
               </p>

@@ -40,7 +40,7 @@ export default function ThemeToggle({ isScrolled = true }: ThemeToggleProps) {
         </svg>
       ) : (
         <svg 
-          className={`w-5 h-5 ${isScrolled ? 'text-mountain-600' : 'text-white'}`} 
+          className="w-5 h-5 text-mountain-700 dark:text-mountain-600" 
           fill="currentColor" 
           viewBox="0 0 20 20"
         >
