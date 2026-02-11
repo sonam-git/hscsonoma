@@ -120,7 +120,7 @@ For the team at La Casa and the broader Sherpa community in Sonoma, this moment 
     source: "Sonoma Index-Tribune",
   },
   {
-    slug: "raising-funds-earthquake-victims",
+    slug: "raising-funds-for-quake-victims",
     title: "Raising Funds for quake victims",
     excerpt:
       "The Sonoma community came together for a 'Wine Country Dinner – Sherpa Family Benefit' Thursday, May...",
