@@ -1,0 +1,23 @@
+{
+  "name": "Himalayan Sherpa Club of Sonoma",
+  "short_name": "HSCS",
+  "description": "Preserving Heritage, Uniting Community - A 501(c)(3) non-profit in Sonoma, California.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFDF8",
+  "theme_color": "#722F37",
+  "icons": [
+    {
+      "src": "/images/logos/HSC-logo-dark-border.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/logos/HSC-logo-dark-border.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

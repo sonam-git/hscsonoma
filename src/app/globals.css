@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+Tibetan:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light theme colors */
+    --color-background: 253 251 247; /* cream-50 */
+    --color-foreground: 46 47 51; /* mountain-900 */
+    --color-card: 255 255 255;
+    --color-card-foreground: 46 47 51;
+    --color-primary: 171 32 73; /* burgundy-700 */
+    --color-primary-foreground: 255 255 255;
+    --color-secondary: 250 245 235; /* cream-200 */
+    --color-secondary-foreground: 46 47 51;
+    --color-muted: 226 227 229; /* mountain-100 */
+    --color-muted-foreground: 96 97 108; /* mountain-500 */
+    --color-accent: 212 160 5; /* gold-500 */
+    --color-accent-foreground: 26 26 29;
+    --color-border: 196 197 203; /* mountain-200 */
+    --color-input: 196 197 203;
+    --color-ring: 171 32 73;
+  }
+
+  .dark {
+    /* Dark theme colors */
+    --color-background: 26 26 29; /* mountain-950 */
+    --color-foreground: 253 251 247; /* cream-50 */
+    --color-card: 53 53 59; /* mountain-800 */
+    --color-card-foreground: 253 251 247;
+    --color-primary: 236 120 150; /* burgundy-400 */
+    --color-primary-foreground: 26 26 29;
+    --color-secondary: 63 64 71; /* mountain-700 */
+    --color-secondary-foreground: 253 251 247;
+    --color-muted: 63 64 71; /* mountain-700 */
+    --color-muted-foreground: 159 160 169; /* mountain-300 */
+    --color-accent: 250 204 21; /* gold-400 */
+    --color-accent-foreground: 26 26 29;
+    --color-border: 63 64 71; /* mountain-700 */
+    --color-input: 63 64 71;
+    --color-ring: 236 120 150;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-cream-50 dark:bg-mountain-950 text-mountain-900 dark:text-cream-50 antialiased transition-colors duration-300;
+  }
+  
+  ::selection {
+    @apply bg-burgundy-200 text-burgundy-900;
+  }
+
+  .dark ::selection {
+    @apply bg-burgundy-700 text-white;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-burgundy-700 hover:bg-burgundy-800 dark:bg-burgundy-600 dark:hover:bg-burgundy-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-burgundy-500 dark:focus:ring-offset-mountain-900 transition-all duration-200 shadow-lg hover:shadow-xl;
+  }
+  
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 border-2 border-burgundy-700 dark:border-burgundy-400 text-base font-medium rounded-md text-burgundy-700 dark:text-burgundy-400 bg-transparent hover:bg-burgundy-50 dark:hover:bg-burgundy-900/30 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-burgundy-500 dark:focus:ring-offset-mountain-900 transition-all duration-200;
+  }
+  
+  .btn-gold {
+    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-mountain-900 bg-gold-400 hover:bg-gold-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gold-500 dark:focus:ring-offset-mountain-900 transition-all duration-200 shadow-lg hover:shadow-xl;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-burgundy-900 dark:text-burgundy-300 mb-4;
+  }
+  
+  .section-subtitle {
+    @apply text-lg md:text-xl text-mountain-600 dark:text-mountain-300 max-w-3xl mx-auto;
+  }
+  
+  .card {
+    @apply bg-white dark:bg-mountain-800 rounded-xl shadow-md dark:shadow-mountain-950/50 overflow-hidden hover:shadow-xl dark:hover:shadow-mountain-950/70 transition-shadow duration-300;
+  }
+  
+  .card-hover {
+    @apply transform hover:-translate-y-1 transition-all duration-300;
+  }
+  
+  .gradient-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-mountain-950/80 via-mountain-950/40 to-transparent;
+  }
+  
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .input-field {
+    @apply block w-full px-4 py-3 border border-mountain-300 dark:border-mountain-600 rounded-lg shadow-sm bg-white dark:bg-mountain-800 text-mountain-900 dark:text-cream-50 placeholder-mountain-400 dark:placeholder-mountain-500 focus:outline-none focus:ring-2 focus:ring-burgundy-500 focus:border-burgundy-500 transition-colors duration-200;
+  }
+  
+  .label-text {
+    @apply block text-sm font-medium text-mountain-700 dark:text-mountain-200 mb-2;
+  }
+}
+
+@layer utilities {
+  .mountain-divider {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120'%3E%3Cpath fill='%23fdfbf7' d='M0,120 L0,80 L120,60 L240,90 L360,40 L480,70 L600,30 L720,80 L840,50 L960,90 L1080,35 L1200,75 L1320,55 L1440,85 L1440,120 Z'/%3E%3C/svg%3E");
+    background-size: cover;
+    background-position: center;
+    height: 80px;
+    margin-top: -1px;
+  }
+  
+  .tibetan-text {
+    @apply font-tibetan;
+  }
+  
+  .animate-on-scroll {
+    @apply opacity-0 translate-y-4;
+    animation: fadeInUp 0.6s ease forwards;
+  }
+  
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Dark mode overrides */
+.dark body {
+  @apply bg-mountain-950 text-cream-100;
+}
+
+.dark ::selection {
+  @apply bg-burgundy-700 text-white;
+}
+
+/* Custom scrollbar - Light mode */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-cream-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-burgundy-400 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-burgundy-600;
+}
+
+/* Custom scrollbar - Dark mode */
+.dark ::-webkit-scrollbar-track {
+  @apply bg-mountain-900;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-burgundy-600 rounded-full;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  @apply bg-burgundy-500;
+}
+
+/* Mountain divider - Dark mode variant */
+.dark .mountain-divider {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120'%3E%3Cpath fill='%231a1a1d' d='M0,120 L0,80 L120,60 L240,90 L360,40 L480,70 L600,30 L720,80 L840,50 L960,90 L1080,35 L1200,75 L1320,55 L1440,85 L1440,120 Z'/%3E%3C/svg%3E");
+}
