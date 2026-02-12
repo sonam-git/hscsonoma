@@ -58,7 +58,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-mountain-900 dark:bg-mountain-950 text-cream-100">
+    <footer className="bg-gradient-to-b from-mountain-900 to-mountain-950 dark:from-mountain-950 dark:to-black text-cream-100">
       {/* Mountain Divider */}
       <div className="bg-cream-50 dark:bg-mountain-900">
         <svg viewBox="0 0 1440 100" className="w-full h-auto">
@@ -69,12 +69,14 @@ export default function Footer() {
         </svg>
       </div>
 
-      <div className="container-custom py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
-          {/* Logo & About */}
-          <div className="lg:col-span-2">
-            <Link href="/" className="inline-flex items-center gap-3 mb-6">
-              <div className="relative w-16 h-16">
+      {/* Main Footer Content */}
+      <div className="container-custom py-12 lg:py-16">
+        {/* Top Section: Logo + Newsletter/CTA */}
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 pb-10 border-b border-mountain-700/50">
+          {/* Logo & Tagline */}
+          <div className="flex items-center gap-4">
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="relative w-14 h-14 lg:w-16 lg:h-16 rounded-full bg-mountain-800/50 p-1 group-hover:bg-burgundy-900/50 transition-colors">
                 <Image
                   src="/images/logos/HSC-logo-dark-border.png"
                   alt="HSC Logo"
@@ -83,63 +85,50 @@ export default function Footer() {
                 />
               </div>
               <div>
-                <p className="font-tibetan text-lg text-gold-400">
+                <p className="font-tibetan text-base lg:text-lg text-gold-400">
                   ༄༅། ཧི་མ་ལ་ཡ་ཤར་པ་སྐྱིད་སྡུག
                 </p>
-                <p className="text-sm font-semibold text-cream-200">
-                  HIMALAYAN SHERPA CLUB OF SONOMA
+                <p className="text-xs lg:text-sm font-semibold text-cream-200 tracking-wide">
+                  HIMALAYAN SHERPA CLUB
                 </p>
               </div>
             </Link>
-            <p className="text-cream-300 mb-6 max-w-md">
-              A 501(c)(3) non-profit organization dedicated to preserving and promoting 
-              Sherpa culture, heritage, and values in the North Bay Area of California.
-            </p>
-            <div className="flex items-center gap-2 text-sm text-cream-400 mb-4">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              <span>Sonoma Valley, CA 95476 USA</span>
-            </div>
-            
-            {/* Social Links */}
-            <div className="flex items-center gap-4 mt-6">
-              {socialLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-full bg-mountain-800 dark:bg-mountain-700 text-cream-300 hover:bg-burgundy-700 hover:text-white transition-colors"
-                  aria-label={link.name}
-                >
-                  {link.icon}
-                </a>
-              ))}
-            </div>
-
-            {/* US-Nepal Flag */}
-            <div className="mt-6">
-              <Image
-                src="/images/hero/us-nepal-flag.png"
-                alt="US-Nepal Friendship"
-                width={80}
-                height={50}
-                className="opacity-75 hover:opacity-100 transition-opacity"
-              />
-            </div>
           </div>
 
-          {/* About Links */}
+          {/* CTA Buttons */}
+          <div className="flex flex-wrap items-center gap-3">
+            <Link
+              href="/join-us"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-burgundy-700 hover:bg-burgundy-600 text-white text-sm font-medium rounded-full transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+              </svg>
+              Join Us
+            </Link>
+            <Link
+              href="/donate"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-gold-600 hover:bg-gold-500 text-mountain-900 text-sm font-medium rounded-full transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+              Donate
+            </Link>
+          </div>
+        </div>
+
+        {/* Middle Section: Links Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-12 py-10">
+          {/* About Column */}
           <div>
-            <h4 className="text-lg font-semibold text-gold-400 mb-4">About HSC</h4>
-            <ul className="space-y-2">
+            <h4 className="text-sm font-bold text-gold-400 uppercase tracking-wider mb-4">About HSC</h4>
+            <ul className="space-y-2.5">
               {footerLinks.about.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-cream-300 hover:text-white transition-colors"
+                    className="text-sm text-cream-400 hover:text-white hover:translate-x-1 transition-all inline-block"
                   >
                     {link.name}
                   </Link>
@@ -148,15 +137,15 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Community Links */}
+          {/* Community Column */}
           <div>
-            <h4 className="text-lg font-semibold text-gold-400 mb-4">Community</h4>
-            <ul className="space-y-2">
+            <h4 className="text-sm font-bold text-gold-400 uppercase tracking-wider mb-4">Community</h4>
+            <ul className="space-y-2.5">
               {footerLinks.community.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-cream-300 hover:text-white transition-colors"
+                    className="text-sm text-cream-400 hover:text-white hover:translate-x-1 transition-all inline-block"
                   >
                     {link.name}
                   </Link>
@@ -165,15 +154,15 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Culture Links */}
+          {/* Culture Column */}
           <div>
-            <h4 className="text-lg font-semibold text-gold-400 mb-4">Sherpa Culture</h4>
-            <ul className="space-y-2">
+            <h4 className="text-sm font-bold text-gold-400 uppercase tracking-wider mb-4">Sherpa Culture</h4>
+            <ul className="space-y-2.5">
               {footerLinks.culture.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-cream-300 hover:text-white transition-colors"
+                    className="text-sm text-cream-400 hover:text-white hover:translate-x-1 transition-all inline-block"
                   >
                     {link.name}
                   </Link>
@@ -181,16 +170,86 @@ export default function Footer() {
               ))}
             </ul>
           </div>
+
+          {/* Contact Info Column */}
+          <div className="col-span-2 sm:col-span-3 lg:col-span-2">
+            <h4 className="text-sm font-bold text-gold-400 uppercase tracking-wider mb-4">Get In Touch</h4>
+            <div className="space-y-4">
+              {/* Email */}
+              <a
+                href="mailto:clubhimalayansherpa@gmail.com"
+                className="flex items-center gap-3 text-sm text-cream-400 hover:text-white transition-colors group"
+              >
+                <span className="w-8 h-8 rounded-lg bg-mountain-800 flex items-center justify-center group-hover:bg-burgundy-700 transition-colors">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </span>
+                <span className="break-all">clubhimalayansherpa@gmail.com</span>
+              </a>
+
+              {/* Location */}
+              <div className="flex items-center gap-3 text-sm text-cream-400">
+                <span className="w-8 h-8 rounded-lg bg-mountain-800 flex items-center justify-center">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </span>
+                <span>Sonoma Valley, CA 95476 USA</span>
+              </div>
+
+              {/* Social Links */}
+              <div className="flex items-center gap-3 pt-2">
+                {socialLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 rounded-full bg-mountain-800 flex items-center justify-center text-cream-400 hover:bg-burgundy-700 hover:text-white transition-all hover:scale-110"
+                    aria-label={link.name}
+                  >
+                    {link.icon}
+                  </a>
+                ))}
+              </div>
+
+              {/* US-Nepal Flag */}
+              <div className="pt-2">
+                <Image
+                  src="/images/hero/us-nepal-flag.png"
+                  alt="US-Nepal Friendship"
+                  width={70}
+                  height={44}
+                  className="opacity-70 hover:opacity-100 transition-opacity"
+                />
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-mountain-700 dark:border-mountain-600 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-cream-400 text-center md:text-left">
-            | Copyright © 2011 - {currentYear} Himalayan Sherpa Club Of Sonoma,California USA | All rights reserved |
-          </p>
-          <p className="text-xs text-cream-500 text-center md:text-right">
-           Developed by: Sonam J Sherpa
-          </p>
+        {/* Bottom Section */}
+        <div className="border-t border-mountain-700/50 pt-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            {/* 501(c)(3) Badge */}
+            <div className="flex items-center gap-2 text-xs text-cream-500">
+              <svg className="w-4 h-4 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+              <span>501(c)(3) Non-Profit Organization</span>
+            </div>
+
+            {/* Copyright */}
+            <p className="text-xs text-cream-500 text-center">
+              | © 2011 – {currentYear} HSC Sonoma, California USA. All rights reserved |
+            </p>
+
+            {/* Developer Credit */}
+            <p className="text-xs text-cream-600">
+              Developed by <span className="text-cream-400">Sonam J Sherpa</span>
+            </p>
+          </div>
         </div>
       </div>
     </footer>

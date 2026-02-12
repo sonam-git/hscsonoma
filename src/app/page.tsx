@@ -84,9 +84,9 @@ export default function HomePage() {
           </p>
 
           {/* Club Name */}
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-serif font-bold text-white mb-6 text-shadow animate-slide-up">
-            Himalayan Sherpa Club
-            <span className="block text-gold-300">of Sonoma</span>
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-serif font-bold text-white mb-6 text-shadow animate-slide-up ">
+            Himalayan Sherpa Club 
+            <span className=" text-gold-300 inline"> of Sonoma</span>
           </h1>
 
           {/* Tagline */}
@@ -148,12 +148,12 @@ export default function HomePage() {
               <h2 className="section-title">
                 From the Peaks to the Vineyards
               </h2>
-              <p className="text-lg text-mountain-600 dark:text-mountain-300 mb-6 leading-relaxed">
+              <p className="text-md text-mountain-600 dark:text-mountain-300 mb-6 leading-relaxed font-[Georgia,'Times_New_Roman',Times,serif]">
                 The Himalayan Sherpa Club of Sonoma is a non-profit, non-political organization, 
                 officially established in January 2011 under California state law. We are recognized 
                 as a 501(c)(3) tax-exempt charitable organization by the IRS.
               </p>
-              <p className="text-lg text-mountain-600 dark:text-mountain-300 mb-8 leading-relaxed">
+              <p className="text-md text-mountain-600 dark:text-mountain-300 mb-8 leading-relaxed font-[Georgia,'Times_New_Roman',Times,serif]">
                 Our mission is to preserve and promote Sherpa culture, heritage, and values. 
                 We are deeply committed to fostering a strong, united, and thriving Sherpa 
                 community in the North Bay Area of California.
@@ -195,8 +195,8 @@ export default function HomePage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-mountain-900 dark:text-cream-50 mb-3">Preserve Culture</h3>
-              <p className="text-mountain-600 dark:text-mountain-300">
+              <h3 className="text-xl font-semibold text-mountain-900 dark:text-cream-50 mb-3 font-[Georgia,'Times_New_Roman',Times,serif]">Preserve Culture</h3>
+              <p className="text-mountain-600 dark:text-mountain-300 font-[Georgia,'Times_New_Roman',Times,serif]">
                 Protecting and promoting Sherpa cultural and linguistic heritage for future generations.
               </p>
             </div>
@@ -208,8 +208,8 @@ export default function HomePage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-mountain-900 dark:text-cream-50 mb-3">Unite Community</h3>
-              <p className="text-mountain-600 dark:text-mountain-300">
+              <h3 className="text-xl font-semibold text-mountain-900 dark:text-cream-50 mb-3 font-[Georgia,'Times_New_Roman',Times,serif]">Unite Community</h3>
+              <p className="text-mountain-600 dark:text-mountain-300 font-[Georgia,'Times_New_Roman',Times,serif]">
                 Building strong bonds and supporting one another as we thrive in our new home.
               </p>
             </div>
@@ -221,8 +221,8 @@ export default function HomePage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-mountain-900 dark:text-cream-50 mb-3">Inspire Youth</h3>
-              <p className="text-mountain-600 dark:text-mountain-300">
+              <h3 className="text-xl font-semibold text-mountain-900 dark:text-cream-50 mb-3 font-[Georgia,'Times_New_Roman',Times,serif]">Inspire Youth</h3>
+              <p className="text-mountain-600 dark:text-mountain-300 font-[Georgia,'Times_New_Roman',Times,serif]">
                 Engaging younger generations in Sherpa traditions through community events and education.
               </p>
             </div>
@@ -263,10 +263,10 @@ export default function HomePage() {
                   <time className="text-sm text-mountain-500 dark:text-mountain-400 mb-2 block">
                     {new Date(news.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                   </time>
-                  <h3 className="text-xl font-semibold text-mountain-900 dark:text-cream-50 mb-3 group-hover:text-burgundy-700 dark:group-hover:text-burgundy-400 transition-colors line-clamp-2">
+                  <h3 className="text-xl font-semibold text-mountain-900 dark:text-cream-50 mb-3 group-hover:text-burgundy-700 dark:group-hover:text-burgundy-400 transition-colors line-clamp-2 font-[Georgia,'Times_New_Roman',Times,serif]">
                     {news.title}
                   </h3>
-                  <p className="text-mountain-600 dark:text-mountain-300 line-clamp-3 mb-4">
+                  <p className="text-mountain-600 dark:text-mountain-300 line-clamp-3 mb-4 font-[Georgia,'Times_New_Roman',Times,serif]">
                     {news.excerpt}
                   </p>
                   <Link
@@ -302,7 +302,7 @@ export default function HomePage() {
               Celebrate With Us
             </p>
             <h2 className="section-title">Upcoming Events</h2>
-            <p className="section-subtitle mt-4">
+            <p className="section-subtitle mt-4 font-[Georgia,'Times_New_Roman',Times,serif]">
               Join us in celebrating our rich traditions and vibrant community through our annual and special events.
             </p>
           </div>
@@ -322,7 +322,7 @@ export default function HomePage() {
                     </div>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-mountain-900 dark:text-cream-50 mb-2">{event.title}</h3>
+                    <h3 className="text-lg font-semibold text-mountain-900 dark:text-cream-50 mb-2 font-[Georgia,'Times_New_Roman',Times,serif]">{event.title}</h3>
                     <div className="flex flex-wrap gap-3 text-sm text-mountain-500 dark:text-mountain-400 mb-3">
                       <span className="flex items-center gap-1">
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -338,7 +338,7 @@ export default function HomePage() {
                         {event.location}
                       </span>
                     </div>
-                    <p className="text-mountain-600 dark:text-mountain-300 text-sm">{event.description}</p>
+                    <p className="text-mountain-600 dark:text-mountain-300 text-sm font-[Georgia,'Times_New_Roman',Times,serif]">{event.description}</p>
                   </div>
                 </div>
               );
@@ -361,7 +361,7 @@ export default function HomePage() {
               Got Questions?
             </p>
             <h2 className="section-title">Frequently Asked Questions</h2>
-            <p className="section-subtitle mt-4">
+            <p className="section-subtitle mt-4 font-[Georgia,'Times_New_Roman',Times,serif]">
               Learn more about the Himalayan Sherpa Club, our community, and our heritage.
             </p>
           </div>
@@ -369,8 +369,8 @@ export default function HomePage() {
           <div className="max-w-4xl mx-auto">
             <div className="grid gap-4">
               {/* FAQ Item 1 */}
-              <details className="group bg-white dark:bg-mountain-800 rounded-xl shadow-md overflow-hidden">
-                <summary className="flex items-center justify-between cursor-pointer p-6 text-left">
+              <details className="group bg-white dark:bg-mountain-800 rounded-xl shadow-md overflow-hidden ">
+                <summary className="flex items-center justify-between cursor-pointer p-6 text-left ">
                   <span className="text-lg font-semibold text-mountain-900 dark:text-cream-50 pr-4">
                     When did the Himalayan Sherpa Club establish?
                   </span>

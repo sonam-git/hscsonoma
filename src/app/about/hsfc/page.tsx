@@ -82,7 +82,7 @@ export default function HSFCPage() {
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-mountain-900 dark:text-white mb-6">
+              <h2 className="text-3xl md:text-4xl font-serif font-bold text-mountain-900 dark:text-cream-50 mb-4">
                 About HSFC
               </h2>
               <div className="prose prose-lg dark:prose-invert max-w-none">
@@ -122,7 +122,7 @@ export default function HSFCPage() {
       <section className="py-16 bg-gradient-to-br from-green-50 to-cream-50 dark:from-green-900/20 dark:to-mountain-900">
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-mountain-900 dark:text-white mb-4">
+             <h2 className="text-3xl md:text-4xl font-serif font-bold text-mountain-900 dark:text-cream-50 mb-4">
               Our Mission & Values
             </h2>
           </div>
@@ -165,7 +165,7 @@ export default function HSFCPage() {
       <section className="py-16 md:py-24">
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-mountain-900 dark:text-white mb-4">
+             <h2 className="text-3xl md:text-4xl font-serif font-bold text-mountain-900 dark:text-cream-50 mb-4">
               Tournaments & Leagues
             </h2>
             <p className="text-lg text-mountain-700 dark:text-mountain-300">
@@ -190,7 +190,7 @@ export default function HSFCPage() {
       <section className="py-16 md:py-24 bg-gradient-to-br from-cream-50 to-green-50 dark:from-mountain-900 dark:to-green-900/20">
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-mountain-900 dark:text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-mountain-900 dark:text-cream-50 mb-4">
               🏆 Honors & Achievements
             </h2>
             <p className="text-lg text-mountain-700 dark:text-mountain-300">
@@ -237,7 +237,7 @@ export default function HSFCPage() {
       <section className="py-16 bg-white dark:bg-mountain-900">
         <div className="container-custom">
           <div className="bg-gradient-to-br from-green-700 to-green-900 rounded-2xl p-8 md:p-12 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+             <h2 className="text-3xl md:text-4xl font-serif font-bold text-mountain-100 dark:text-cream-50 mb-4">
               Join the HSFC Family!
             </h2>
             <p className="text-green-100 mb-8 max-w-2xl mx-auto">

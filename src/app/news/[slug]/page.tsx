@@ -89,7 +89,7 @@ export default async function NewsArticlePage({ params }: PageProps) {
                   </span>
                 )}
               </div>
-              <h1 className="text-2xl md:text-4xl lg:text-5xl font-serif font-bold text-white mb-3 max-w-4xl">
+              <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-3 max-w-4xl font-[Georgia,'Times_New_Roman',Times,serif]">
                 {article.title}
               </h1>
               <div className="flex flex-wrap items-center gap-4 text-cream-200">

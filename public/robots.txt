@@ -3,4 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://www.himalayansherpaclubsonoma.org
+Host: http://localhost:3000
+
+# Sitemaps
+Sitemap: http://localhost:3000/sitemap.xml

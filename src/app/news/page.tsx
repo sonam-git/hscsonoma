@@ -93,7 +93,7 @@ export default function NewsPage() {
 										<time className="text-sm text-mountain-500 dark:text-mountain-400">
 											{article.date}
 										</time>
-										<h3 className="text-xl font-bold text-mountain-900 dark:text-white mt-2 mb-3 group-hover:text-burgundy-700 dark:group-hover:text-burgundy-400 transition-colors">
+										<h3 className="text-xl font-bold text-mountain-900 dark:text-white mt-2 mb-3 group-hover:text-burgundy-700 dark:group-hover:text-burgundy-400 transition-colors font-[Georgia,'Times_New_Roman',Times,serif]">
 											{article.title}
 										</h3>
 										<p className="text-mountain-600 dark:text-mountain-400 mb-4">

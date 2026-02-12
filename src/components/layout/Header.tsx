@@ -92,6 +92,22 @@ const GalleryIcon = () => (
   </svg>
 );
 
+const HistoryIcon = () => (
+  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" 
+    />
+  </svg>
+);
+
+const BusinessIcon = () => (
+  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+      d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" 
+    />
+  </svg>
+);
+
 const CalendarIcon = () => (
   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
@@ -141,9 +157,11 @@ const navigation = [
     children: [
       { name: 'Introduction & Mission', href: '/about/introduction', icon: MissionIcon },
       { name: 'Our Vision', href: '/about/vision', icon: VisionIcon },
+      { name: 'Our History', href: '/about/history', icon: HistoryIcon },
       { name: 'Founding Families', href: '/about/founding-families', icon: FamilyIcon },
       { name: 'Functional Bodies', href: '/about/functional-bodies', icon: FunctionalIcon },
-      { name: 'Sherpa', href: '/about/sherpa', icon: MountainIcon },
+      { name: 'About Sherpa', href: '/about/sherpa', icon: MountainIcon },
+      { name: 'Sherpa Businesses', href: '/about/sherpa-businesses', icon: BusinessIcon },
       { name: 'HSFC', href: '/about/hsfc', icon: SoccerIcon },
       { name: 'Sathi Sewa', href: '/about/sathi-sewa', icon: HeartIcon },
       { name: 'Gallery', href: '/about/gallery', icon: GalleryIcon },
@@ -201,14 +219,14 @@ export default function Header() {
         <div className={`absolute inset-0 transition-all duration-300 ${
           isScrolled
             ? 'bg-white/60 dark:bg-mountain-900/70 backdrop-blur-sm'
-            : 'bg-white/40 dark:bg-mountain-900/60'
+            : 'bg-white/40 dark:bg-mountain-700/60'
         }`} />
         
       <div className="container-custom relative">
         <nav className="flex items-center justify-between h-24">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3">
-            <div className="relative w-16 h-16">
+          <Link href="/" className="flex items-center gap-2 sm:gap-3">
+            <div className="relative w-14 h-14 sm:w-18 sm:h-18 flex-shrink-0">
               <Image
                 src="/images/logos/HSC-logo-dark-border.png"
                 alt="HSC Logo"
@@ -217,28 +235,18 @@ export default function Header() {
                 priority
               />
             </div>
-            <div className="hidden sm:block">
-              <p className="font-tibetan text-sm font-bold transition-colors text-burgundy-800 dark:text-burgundy-300">
+            <div>
+              <p className="font-tibetan text-[15px] sm:text-md font-bold transition-colors text-burgundy-800 dark:text-burgundy-300">
                 ༄༅། ཧི་མ་ལ་ཡ་ཤར་པ་སྐྱིད་སྡུག
               </p>
-              <p className="jaini-purva-regular text-md tracking-wider uppercase transition-colors text-blue-900 dark:text-cream-50">
+              <p className="jaini-purva-regular text-lg sm:text-xl tracking-wider uppercase transition-colors text-blue-900 dark:text-cream-50">
                 HIMALAYAN SHERPA CLUB
               </p>
             </div>
           </Link>
 
-          {/* Mobile Center - Tibetan Script & English */}
-          <div className="flex-1 flex flex-col items-center justify-center lg:hidden px-2 min-w-0">
-            <p className="font-tibetan text-md sm:text-sm font-bold transition-colors text-center truncate text-burgundy-800 dark:text-burgundy-300">
-              ༄༅། ཧི་མ་ལ་ཡ་ཤར་པ་སྐྱིད་སྡུག
-            </p>
-            <p className="jaini-purva-regular text-[20px] sm:text-xs tracking-wider uppercase transition-colors text-blue-900 dark:text-cream-50 text-center">
-              Himalayan Sherpa Club
-            </p>
-          </div>
-
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden xl:flex items-center gap-1">
             {navigation.map((item) => {
               const IconComponent = item.icon;
               return (
@@ -285,7 +293,7 @@ export default function Header() {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex items-center gap-2 lg:hidden flex-shrink-0">
+          <div className="flex items-center gap-2 xl:hidden flex-shrink-0">
             <ThemeToggle isScrolled={isScrolled} />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -301,16 +309,17 @@ export default function Header() {
             </button>
           </div>
         </nav>
+      </div>
 
-        {/* Horizontal Submenu for About - Desktop */}
+        {/* Horizontal Submenu for About - Desktop - Full Width */}
         <div
-          className={`hidden lg:block transition-all duration-300 overflow-hidden ${
+          className={`hidden xl:block transition-all duration-300 overflow-hidden ${
             activeDropdown === 'About' || pathname.startsWith('/about') ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0'
           }`}
           onMouseEnter={() => setActiveDropdown('About')}
           onMouseLeave={() => { if (!pathname.startsWith('/about')) setActiveDropdown(null); }}
         >
-          <div className="flex items-center justify-center gap-1 py-2 border-t bg-cream-50/90 dark:bg-mountain-800/90 border-cream-200 dark:border-mountain-700">
+          <div className="w-full flex items-center justify-center gap-1 py-2 border-t bg-cream-50/95 dark:bg-mountain-800/95 border-cream-200 dark:border-mountain-700 backdrop-blur-sm">
             {navigation.find(item => item.name === 'About')?.children?.map((child) => {
               const ChildIcon = child.icon;
               return (
@@ -332,9 +341,10 @@ export default function Header() {
           </div>
         </div>
 
+      <div className="container-custom relative">
         {/* Mobile Menu */}
         <div
-          className={`lg:hidden transition-all duration-300 overflow-hidden ${
+          className={`xl:hidden transition-all duration-300 overflow-hidden ${
             isMobileMenuOpen ? 'max-h-screen pb-6' : 'max-h-0'
           }`}
         >

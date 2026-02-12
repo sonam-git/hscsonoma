@@ -157,27 +157,27 @@ const nextConfig = {
       },
       {
         source: '/ceremonies.html',
-        destination: '/life-ceremonies',
+        destination: '/events',
         permanent: true,
       },
       {
         source: '/life-ceremonies.html',
-        destination: '/life-ceremonies',
+        destination: '/events',
         permanent: true,
       },
       {
         source: '/membership.html',
-        destination: '/membership',
+        destination: '/join-us',
+        permanent: true,
+      },
+      {
+        source: '/membership',
+        destination: '/join-us',
         permanent: true,
       },
       {
         source: '/join',
-        destination: '/membership',
-        permanent: true,
-      },
-      {
-        source: '/join-us',
-        destination: '/membership',
+        destination: '/join-us',
         permanent: true,
       },
       // Catch common .html extensions

@@ -107,7 +107,7 @@ export default function SathiSewaPage() {
           <div className="max-w-4xl mx-auto">
             <div className="flex items-center gap-3 mb-6">
               <span className="text-3xl">🌱</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-mountain-900 dark:text-white">
+                <h2 className="text-3xl md:text-4xl font-serif font-bold text-mountain-900 dark:text-cream-50 mb-4">
                 Our Story
               </h2>
             </div>
@@ -138,21 +138,32 @@ export default function SathiSewaPage() {
         <div className="container-custom">
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {/* Vision */}
-            <div className="bg-gradient-to-br from-teal-600 to-teal-800 rounded-2xl p-8 text-white shadow-xl">
-              <div className="flex items-center gap-3 mb-6">
-                <span className="text-3xl">💡</span>
-                <h2 className="text-2xl font-bold">Our Vision</h2>
+            <div className="relative rounded-2xl overflow-hidden shadow-xl min-h-[280px]">
+              {/* Background Image */}
+              <Image
+                src="/images/sathi-sewa/sathi-sewa-event.jpg"
+                alt="Sathi Sewa Vision"
+                fill
+                className="object-cover"
+              />
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-red-900/60 to-blue-900/60" />
+              {/* Content */}
+              <div className="relative z-10 p-8 text-white h-full flex flex-col justify-start items-start">
+                <div className="flex items-center gap-3 mb-3">
+                  <h2 className="text-3xl md:text-4xl font-serif font-bold text-white">Our Vision</h2>
+                </div>
+                <p className="text-xl text-white/90 leading-relaxed max-w-sm">
+                  A world where language is never a barrier to quality healthcare.
+                </p>
               </div>
-              <p className="text-xl text-teal-100 leading-relaxed">
-                A world where language is never a barrier to quality healthcare.
-              </p>
             </div>
 
             {/* Mission */}
             <div className="bg-white dark:bg-mountain-800 rounded-2xl p-8 shadow-xl border border-cream-200 dark:border-mountain-700">
               <div className="flex items-center gap-3 mb-6">
                 <span className="text-3xl">🤝</span>
-                <h2 className="text-2xl font-bold text-mountain-900 dark:text-white">Our Mission</h2>
+                  <h2 className="text-3xl md:text-4xl font-serif font-bold text-mountain-900 dark:text-cream-50 mb-4">Our Mission</h2>
               </div>
               <p className="text-mountain-700 dark:text-mountain-300 mb-4">
                 To empower the Nepali community by:
@@ -178,7 +189,7 @@ export default function SathiSewaPage() {
           <div className="text-center max-w-3xl mx-auto mb-12">
             <div className="flex items-center justify-center gap-3 mb-4">
               <span className="text-3xl">🛠️</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-mountain-900 dark:text-white">
+                <h2 className="text-3xl md:text-4xl font-serif font-bold text-mountain-900 dark:text-cream-50 mb-4">
                 Our Services
               </h2>
             </div>
@@ -251,7 +262,7 @@ export default function SathiSewaPage() {
       <section className="py-16 md:py-24">
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-mountain-900 dark:text-white mb-4">
+             <h2 className="text-3xl md:text-4xl font-serif font-bold text-mountain-900 dark:text-cream-50 mb-4">
               Meet The Team
             </h2>
             <p className="text-lg text-mountain-700 dark:text-mountain-300">
@@ -273,9 +284,9 @@ export default function SathiSewaPage() {
                   />
                 </div>
                 <div className="p-5 text-center">
-                  <h3 className="font-bold text-mountain-900 dark:text-white mb-1">
+                  <h6 className="font-bold text-mountain-900 dark:text-white mb-1">
                     {member.name}
-                  </h3>
+                  </h6>
                   <p className="text-sm text-teal-700 dark:text-teal-400 mb-1">
                     {member.degree}
                   </p>
@@ -293,7 +304,7 @@ export default function SathiSewaPage() {
       <section className="py-16 bg-cream-100 dark:bg-mountain-900">
         <div className="container-custom">
           <div className="bg-gradient-to-br from-teal-600 to-teal-800 rounded-2xl p-8 md:p-12 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+             <h2 className="text-3xl md:text-4xl font-serif font-bold text-mountain-100 dark:text-cream-50 mb-4">
               Need Support or Want to Volunteer?
             </h2>
             <p className="text-teal-100 mb-8 max-w-2xl mx-auto">

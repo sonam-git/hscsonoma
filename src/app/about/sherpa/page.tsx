@@ -153,7 +153,7 @@ function HistoryTab() {
       {/* Origin Section */}
       <div className="grid lg:grid-cols-2 gap-12 items-center">
         <div>
-          <h2 className="text-3xl md:text-4xl font-bold text-mountain-900 dark:text-white mb-6">
+           <h2 className="text-3xl md:text-4xl font-serif font-bold text-mountain-900 dark:text-cream-50 mb-4">
             Origin of the Sherpa People
           </h2>
           <div className="prose prose-lg dark:prose-invert max-w-none">
@@ -254,7 +254,7 @@ function HistoryTab() {
       </div>
 
       {/* Global Diaspora */}
-      <div className="bg-gradient-to-br from-burgundy-50 to-gold-50 dark:from-burgundy-900/20 dark:to-gold-900/20 rounded-2xl p-8 md:p-12 border border-burgundy-100 dark:border-burgundy-800">
+      <div className="bg-white dark:bg-mountain-800/50 rounded-2xl p-8 md:p-12 border border-cream-200 dark:border-mountain-700 shadow-lg">
         <h3 className="text-2xl font-bold text-mountain-900 dark:text-white mb-6">
           The Global Sherpa Diaspora
         </h3>
@@ -280,125 +280,191 @@ function HistoryTab() {
 }
 
 function ClansTab() {
-  const clans = [
+  const majorClans = [
     {
-      name: "Thami Chhawa",
-      description:
-        "One of the ancient founding clans, associated with the Thami region.",
+      name: "Thimmi",
+      subClans: ["Paldorje", "Salaka", "Khambache", "Gobarma", "Chhusherwa", "Pya-Phullo", "Murmin", "Nawa", "Dhompa", "Lhungbuwa", "Shire", "Dotup"],
     },
     {
-      name: "Shangbu Chhawa",
-      description: "A prominent clan with roots in Buddhist monasticism.",
+      name: "Minyakpa",
+      subClans: ["Shire", "Taktok", "Pinasa", "Ngemaray", "Pangkarma", "Sharwa", "Dhongpa", "Garza", "Nyendawa", "Sharitokpa", "Gole", "Khapa Shaore"],
     },
     {
-      name: "Sholu Chhawa",
-      description: "From the Solu region, known for agricultural traditions.",
+      name: "Lama",
+      subClans: ["Lama Gonpa", "Lama Sharwa"],
     },
     {
-      name: "Khambu Chhawa",
-      description: "Tracing direct lineage to the Kham region of Tibet.",
+      name: "Chyawa",
+      subClans: ["Nawa", "Lhukpa"],
     },
     {
-      name: "Lhapa Chhawa",
-      description: "Known for their spiritual and healing traditions.",
+      name: "Ngompa",
+      subClans: ["Chakpa", "Tompa", "Dhakpo", "Zhuwa", "Dhawa"],
     },
     {
-      name: "Yawa Chhawa",
-      description:
-        "Associated with the yak-herding traditions of high pastures.",
-    },
-    {
-      name: "Mindok Chhawa",
-      description: "A clan with strong trading heritage.",
-    },
-    {
-      name: "Chusherwa Chhawa",
-      description: "From water-blessed valleys, known for their resilience.",
-    },
-    { name: "Goparma Chhawa", description: "Guardians of sacred locations." },
-    {
-      name: "Gardza Chhawa",
-      description: "Associated with protective traditions.",
-    },
-    {
-      name: "Pinasa Chhawa",
-      description: "Known for artistic and cultural contributions.",
-    },
-    {
-      name: "Paldorje Chhawa",
-      description: "Linked to religious scholarly traditions.",
-    },
-    { name: "Pankarma Chhawa", description: "Traders and community builders." },
-    { name: "Salaka Chhawa", description: "Known for craftsmanship." },
-    {
-      name: "Serwa Chhawa",
-      description: "Associated with gold and prosperity.",
-    },
-    {
-      name: "Nawa Chhawa",
-      description: "Newcomer clan, showing the community&apos;s growth.",
-    },
-    { name: "Murmin Chhawa", description: "Agricultural specialists." },
-    {
-      name: "Chyawa Chhawa",
-      description: "Known for their hospitality traditions.",
+      name: "Parwi-Tso",
+      subClans: ["Ronggi-Sharwa"],
     },
   ];
 
   return (
     <div className="space-y-12">
+      {/* Header */}
       <div className="text-center max-w-3xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-mountain-900 dark:text-white mb-6">
-          The Eighteen Original Clans
+        <h2 className="text-3xl md:text-4xl font-serif font-bold text-mountain-900 dark:text-cream-50 mb-4">
+          The Six Major Sherpa Clans
         </h2>
-        <p className="text-lg text-mountain-700 dark:text-mountain-300 leading-relaxed">
-          The Sherpa community is organized into eighteen original clans, called
-          &quot;Ru&quot; or &quot;Chhawa,&quot; each tracing their lineage to
-          the ancient families who first migrated from Tibet. These clans form
-          the foundation of Sherpa social structure and identity.
+        <p className="text-mountain-700 dark:text-mountain-300 leading-relaxed">
+          The Sherpa community is organized into six major clans, called &quot;Ru&quot; or &quot;Chhawa,&quot; 
+          each with their own sub-clans tracing lineage to the ancient families who first migrated from Tibet. 
+          These clans form the foundation of Sherpa social structure and identity.
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {clans.map((clan, index) => (
-          <div
+      {/* Desktop Table View */}
+      <div className="hidden lg:block overflow-hidden rounded-2xl border border-cream-200 dark:border-mountain-700 shadow-xl">
+        <table className="w-full">
+          <thead>
+            <tr className="bg-gradient-to-r from-burgundy-700 to-burgundy-800">
+              <th className="px-6 py-4 text-left text-white font-bold text-lg w-1/6">
+                <div className="flex items-center gap-2">
+                  <span className="text-gold-400">#</span>
+                  Major Clan
+                </div>
+              </th>
+              <th className="px-6 py-4 text-left text-white font-bold text-lg">
+                Sub-Clans (Ru)
+              </th>
+              <th className="px-6 py-4 text-center text-white font-bold text-lg w-24">
+                Count
+              </th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-cream-200 dark:divide-mountain-700">
+            {majorClans.map((clan, index) => (
+              <tr 
+                key={clan.name} 
+                className={`${index % 2 === 0 ? 'bg-white dark:bg-mountain-800/30' : 'bg-cream-50 dark:bg-mountain-800/50'} hover:bg-cream-100 dark:hover:bg-mountain-700/50 transition-colors`}
+              >
+                <td className="px-6 py-5 border-l-4 border-burgundy-600">
+                  <div className="flex items-center gap-3">
+                    <span className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm bg-burgundy-100 dark:bg-burgundy-900/50 text-burgundy-700 dark:text-burgundy-400">
+                      {index + 1}
+                    </span>
+                    <span className="font-bold text-lg text-mountain-900 dark:text-white">
+                      {clan.name}
+                    </span>
+                  </div>
+                </td>
+                <td className="px-6 py-5">
+                  <div className="flex flex-wrap gap-2">
+                    {clan.subClans.map((subClan) => (
+                      <span 
+                        key={subClan} 
+                        className="px-3 py-1.5 bg-cream-100 dark:bg-mountain-700 rounded-full text-sm text-mountain-700 dark:text-mountain-200 border border-cream-200 dark:border-mountain-600"
+                      >
+                        {subClan}
+                      </span>
+                    ))}
+                  </div>
+                </td>
+                <td className="px-6 py-5 text-center">
+                  <span className="inline-flex items-center justify-center w-10 h-10 rounded-full font-bold bg-burgundy-100 dark:bg-burgundy-900/50 text-burgundy-700 dark:text-burgundy-400">
+                    {clan.subClans.length}
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Mobile Card View */}
+      <div className="lg:hidden space-y-4">
+        {majorClans.map((clan, index) => (
+          <div 
             key={clan.name}
-            className="bg-white dark:bg-mountain-800/50 rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border-l-4 border-burgundy-600"
+            className="bg-white dark:bg-mountain-800/50 rounded-xl overflow-hidden shadow-lg border-l-4 border-burgundy-600"
           >
-            <div className="flex items-start gap-4">
-              <span className="flex-shrink-0 w-8 h-8 bg-burgundy-100 dark:bg-burgundy-900/50 rounded-full flex items-center justify-center text-burgundy-700 dark:text-burgundy-400 font-bold text-sm">
-                {index + 1}
+            {/* Clan Header */}
+            <div className="px-5 py-4 bg-cream-50 dark:bg-mountain-800 flex items-center justify-between border-b border-cream-200 dark:border-mountain-700">
+              <div className="flex items-center gap-3">
+                <span className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold bg-burgundy-100 dark:bg-burgundy-900/50 text-burgundy-700 dark:text-burgundy-400">
+                  {index + 1}
+                </span>
+                <div>
+                  <h3 className="font-bold text-xl text-mountain-900 dark:text-white">
+                    {clan.name}
+                  </h3>
+                  <p className="text-xs text-mountain-500 dark:text-mountain-400">
+                    Major Clan
+                  </p>
+                </div>
+              </div>
+              <span className="px-3 py-1 rounded-full text-sm font-bold bg-burgundy-100 dark:bg-burgundy-900/50 text-burgundy-700 dark:text-burgundy-400">
+                {clan.subClans.length} sub-clans
               </span>
-              <div>
-                <h3 className="font-bold text-mountain-900 dark:text-white mb-2">
-                  {clan.name}
-                </h3>
-                <p className="text-sm text-mountain-600 dark:text-mountain-400">
-                  {clan.description}
-                </p>
+            </div>
+            
+            {/* Sub-clans */}
+            <div className="px-5 py-4">
+              <p className="text-xs uppercase tracking-wide text-mountain-500 dark:text-mountain-400 mb-3 font-medium">
+                Sub-Clans (Ru)
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {clan.subClans.map((subClan) => (
+                  <span 
+                    key={subClan} 
+                    className="px-3 py-1.5 bg-cream-100 dark:bg-mountain-700 rounded-full text-sm text-mountain-700 dark:text-mountain-200 border border-cream-200 dark:border-mountain-600"
+                  >
+                    {subClan}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
         ))}
       </div>
 
-      <div className="bg-gradient-to-br from-burgundy-50 to-gold-50 dark:from-burgundy-900/20 dark:to-gold-900/20 rounded-2xl p-8 md:p-12 border border-burgundy-100 dark:border-burgundy-800">
+      {/* Summary Stats */}
+      <div className="grid grid-cols-3 gap-4">
+        <div className="bg-white dark:bg-mountain-800/50 rounded-xl p-6 text-center shadow-lg border border-cream-200 dark:border-mountain-700">
+          <p className="text-3xl font-bold text-burgundy-700 dark:text-burgundy-400 mb-1">6</p>
+          <p className="text-mountain-600 dark:text-mountain-400 text-sm">Major Clans</p>
+        </div>
+        <div className="bg-white dark:bg-mountain-800/50 rounded-xl p-6 text-center shadow-lg border border-cream-200 dark:border-mountain-700">
+          <p className="text-3xl font-bold text-burgundy-700 dark:text-burgundy-400 mb-1">
+            {majorClans.reduce((acc, clan) => acc + clan.subClans.length, 0)}
+          </p>
+          <p className="text-mountain-600 dark:text-mountain-400 text-sm">Total Sub-Clans</p>
+        </div>
+        <div className="bg-white dark:bg-mountain-800/50 rounded-xl p-6 text-center shadow-lg border border-cream-200 dark:border-mountain-700">
+          <p className="text-3xl font-bold text-burgundy-700 dark:text-burgundy-400 mb-1">600+</p>
+          <p className="text-mountain-600 dark:text-mountain-400 text-sm">Years of Heritage</p>
+        </div>
+      </div>
+
+      {/* Clan Structure Info */}
+      <div className="bg-white dark:bg-mountain-800/50 rounded-2xl p-8 md:p-12 border border-cream-200 dark:border-mountain-700 shadow-lg">
         <h3 className="text-2xl font-bold text-mountain-900 dark:text-white mb-6">
           Clan Structure & Significance
         </h3>
-        <div className="prose prose-lg dark:prose-invert max-w-none">
+        <div className="space-y-4">
           <p className="text-mountain-700 dark:text-mountain-300 leading-relaxed">
-            The clan system plays a vital role in Sherpa society. Clan
-            membership is patrilineal, passed from father to children. Marriage
-            within the same clan is traditionally prohibited, a practice that
-            strengthened inter-clan bonds and prevented genetic issues in the
-            small mountain communities.
+            The clan system plays a vital role in Sherpa society. Clan membership is patrilineal, 
+            passed from father to children. <strong className="text-burgundy-700 dark:text-burgundy-400">&quot;Ru&quot;</strong> (meaning &quot;bones&quot; in Sherpa) 
+            represents the ancestral lineage inherited through the male line.
           </p>
           <p className="text-mountain-700 dark:text-mountain-300 leading-relaxed">
-            Each clan carries its own history, legends, and specific traditions.
-            During important ceremonies, festivals, and rites of passage, clan
-            identity remains central to how Sherpas organize themselves and
-            maintain their cultural heritage.
+            Marriage within the same clan or sub-clan is traditionally prohibited, a practice that 
+            strengthened inter-clan bonds and prevented genetic issues in the small mountain communities. 
+            This exogamous marriage system ensured healthy genetic diversity while creating strong 
+            alliances between different clan families.
+          </p>
+          <p className="text-mountain-700 dark:text-mountain-300 leading-relaxed">
+            Each clan carries its own history, legends, and specific traditions. During important 
+            ceremonies, festivals, and rites of passage, clan identity remains central to how 
+            Sherpas organize themselves and maintain their cultural heritage.
           </p>
         </div>
       </div>
@@ -412,7 +478,7 @@ function LifeTab() {
       {/* Traditional Life */}
       <div className="grid lg:grid-cols-2 gap-12 items-center">
         <div>
-          <h2 className="text-3xl md:text-4xl font-bold text-mountain-900 dark:text-white mb-6">
+           <h2 className="text-3xl md:text-4xl font-serif font-bold text-mountain-900 dark:text-cream-50 mb-4">
             Life in the High Himalayas
           </h2>
           <div className="prose prose-lg dark:prose-invert max-w-none">
@@ -515,40 +581,40 @@ function LifeTab() {
 
       {/* Daily Life Aspects */}
       <div className="grid md:grid-cols-3 gap-6">
-        <div className="bg-gradient-to-br from-burgundy-50 to-cream-50 dark:from-burgundy-900/20 dark:to-mountain-800/50 rounded-xl p-6 border border-burgundy-100 dark:border-burgundy-800">
+        <div className="bg-white dark:bg-mountain-800/50 rounded-xl p-6 border border-cream-200 dark:border-mountain-700 shadow-lg">
           <div className="w-12 h-12 bg-burgundy-100 dark:bg-burgundy-900/50 rounded-full flex items-center justify-center mb-4">
             <span className="text-2xl">🏔️</span>
           </div>
           <h4 className="font-bold text-mountain-900 dark:text-white mb-3">
             Yak Herding
           </h4>
-          <p className="text-sm text-mountain-600 dark:text-mountain-400">
+          <p className="text-mountain-600 dark:text-mountain-400">
             Yaks are essential to Sherpa life, providing milk, butter, meat,
             wool, and transportation. Families move with their herds to high
             pastures (kharka) during summer months.
           </p>
         </div>
-        <div className="bg-gradient-to-br from-gold-50 to-cream-50 dark:from-gold-900/20 dark:to-mountain-800/50 rounded-xl p-6 border border-gold-100 dark:border-gold-800">
-          <div className="w-12 h-12 bg-gold-100 dark:bg-gold-900/50 rounded-full flex items-center justify-center mb-4">
+        <div className="bg-white dark:bg-mountain-800/50 rounded-xl p-6 border border-cream-200 dark:border-mountain-700 shadow-lg">
+          <div className="w-12 h-12 bg-burgundy-100 dark:bg-burgundy-900/50 rounded-full flex items-center justify-center mb-4">
             <span className="text-2xl">🌾</span>
           </div>
           <h4 className="font-bold text-mountain-900 dark:text-white mb-3">
             Agriculture
           </h4>
-          <p className="text-sm text-mountain-600 dark:text-mountain-400">
+          <p className="text-mountain-600 dark:text-mountain-400">
             At lower elevations, Sherpas cultivate potatoes, barley, buckwheat,
             and vegetables. Terraced fields carved into mountainsides
             demonstrate their agricultural ingenuity.
           </p>
         </div>
-        <div className="bg-gradient-to-br from-mountain-50 to-cream-50 dark:from-mountain-700/20 dark:to-mountain-800/50 rounded-xl p-6 border border-mountain-100 dark:border-mountain-700">
-          <div className="w-12 h-12 bg-mountain-100 dark:bg-mountain-700/50 rounded-full flex items-center justify-center mb-4">
+        <div className="bg-white dark:bg-mountain-800/50 rounded-xl p-6 border border-cream-200 dark:border-mountain-700 shadow-lg">
+          <div className="w-12 h-12 bg-burgundy-100 dark:bg-burgundy-900/50 rounded-full flex items-center justify-center mb-4">
             <span className="text-2xl">📿</span>
           </div>
           <h4 className="font-bold text-mountain-900 dark:text-white mb-3">
             Spiritual Practice
           </h4>
-          <p className="text-sm text-mountain-600 dark:text-mountain-400">
+          <p className="text-mountain-600 dark:text-mountain-400">
             Daily life is interwoven with Buddhist practice — morning prayers,
             offerings at home shrines, circumambulating stupas, and visiting
             monasteries are integral to Sherpa daily routine.
@@ -570,7 +636,7 @@ function TraditionTab() {
     <div className="space-y-12">
       {/* Buddhism */}
       <div className="text-center max-w-3xl mx-auto mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-mountain-900 dark:text-white mb-6">
+      <h2 className="text-3xl md:text-4xl font-serif font-bold text-mountain-900 dark:text-cream-50 mb-4">
           Traditions & Spirituality
         </h2>
         <p className="text-lg text-mountain-700 dark:text-mountain-300 leading-relaxed">
@@ -717,8 +783,8 @@ function TraditionTab() {
           title="Birth Ceremonies"
           shortText="Babies are named by lamas who consult astrological charts. A naming ceremony welcomes the child to the community, often with the name reflecting auspicious meanings or the day of birth."
           fullText="Babies are named by lamas who consult astrological charts. A naming ceremony welcomes the child to the community, often with the name reflecting auspicious meanings or the day of birth."
-          gradientClasses="bg-gradient-to-br from-burgundy-50 to-cream-50 dark:from-burgundy-900/20 dark:to-mountain-800/50"
-          borderClasses="border-burgundy-100 dark:border-burgundy-800"
+          gradientClasses="bg-white dark:bg-mountain-800/50"
+          borderClasses="border-cream-200 dark:border-mountain-700"
           id="birth-ceremonies"
           isExpanded={expandedCard === "birth-ceremonies"}
           onToggle={handleToggle}
@@ -727,8 +793,8 @@ function TraditionTab() {
           title="Marriage Customs"
           shortText="A Sherpa wedding consists of several stages: Sodene – the engagement or proposal. Demchang – the formal agreement, which sets the year and month of the final ceremony. Pechang – the consultation to determine the exact date of the wedding..."
           fullText="A Sherpa wedding consists of several stages: Sodene – the engagement or proposal. Demchang – the formal agreement, which sets the year and month of the final ceremony. Pechang – the consultation to determine the exact date of the wedding. Zendi – the final ceremony, during which the bride moves into the groom's home. For the Sodene, the local village lama is invited to the groom's house to perform a puja called Serkim. The groom's relatives gather for a meal before going to the bride's house to formally propose. They bring chang (rice beer) specially brewed for the occasion. If the bride and her parents accept the proposal, the Zendi ceremony is scheduled anytime between one month and two years later. A special day is chosen, and the families call the ngagpa (village lama) to perform the puja for the Zendi. The Zendi begins with the Lhapsang puja, first conducted at the groom's house. His family prepares tso (special cones of cooked rice) and displays the kholu (a flag symbolizing the wheel of life). All of his relatives gather to eat and drink. Then, the procession moves to the bride's house, carrying more special chang, which they present to her parents and relatives. While offering the chang, they pray to Guru Rinpoche and present kattas (white ceremonial scarves) to her family. A representative from each family then formally introduces the families and offers blessings for good fortune. The village lamas compose a speech for this occasion, known as the mola, which must be read by an experienced speaker. The bride's family gifts her presents and property as part of her official inheritance. A group of carefully chosen young women—who have both parents and are considered lucky—carry these belongings in a procession to the groom's home. Along the way, the groom's relatives and neighbors meet the procession at designated points to welcome the couple and present chang and kattas. This welcoming tradition is repeated when they arrive at the groom's house."
-          gradientClasses="bg-gradient-to-br from-gold-50 to-cream-50 dark:from-gold-900/20 dark:to-mountain-800/50"
-          borderClasses="border-gold-100 dark:border-gold-800"
+          gradientClasses="bg-white dark:bg-mountain-800/50"
+          borderClasses="border-cream-200 dark:border-mountain-700"
           id="marriage-customs"
           isExpanded={expandedCard === "marriage-customs"}
           onToggle={handleToggle}
@@ -737,8 +803,8 @@ function TraditionTab() {
           title="Sherpa Funerals"
           shortText="The sem is the mind of a person, while the loong is the energy of their mind. After death, the loong (energy) leaves the body but continues to exist. When a person dies, a lama is called to perform Phowa, a ritual aimed at guiding the spirit..."
           fullText="The sem is the mind of a person, while the loong is the energy of their mind. After death, the loong (energy) leaves the body but continues to exist. When a person dies, a lama is called to perform Phowa, a ritual aimed at guiding the spirit. The lama performing Phowa must merge his energy with that of the deceased to generate positive energy for their transition. He uses prayers and pulls the deceased's hair to encourage the spirit to leave through the head. A person's body heat may exit from various points, such as the soles of the feet, hands, eyes, ears, nose, mouth, or the top of the head. The spirit follows the path of this exit. If it leaves through the front or back passages, it is believed to lead to an unfortunate rebirth. Exiting through the nose or eyes may result in rebirth as either an animal or a human. However, if the spirit departs through the crown of the head, it may reach Dewachen (a pure realm). The lama conducting Phowa must be well-practiced in meditation to direct the spirit toward the head and prevent it from leaving through undesirable pathways. Later, lamas sit by the body and read the Thoedol—instructions guiding the spirit on which path to follow in the afterlife. They continue praying and offer tsog (ritual offerings). Funeral customs vary, but typically, the body is kept for three days before being taken to the cremation site. After being washed, the body is cremated as an offering to the deities. Special prayers, called Dum, are conducted every seven days following the death. Depending on the family's financial situation, these prayers can continue for up to fifteen days. A Shitro ritual is also performed to purify and gain merit for the deceased's spirit. Even if a person has never practiced meditation in their lifetime, Shitro is believed to cleanse their spirit. For example, if gold is dirty and blackened, heating and cleaning it can restore its shine. Similarly, our minds are unstable, clouded by desires and aversions—like dirt on a window. Through prayers, meditation, and Shitro rituals, we can cleanse this 'window' to perceive ourselves more clearly. Each evening, the family places sur (an offering of tsampa) on hot coals as food for the spirit of the deceased. The Bar-do is the state of existence between lives. By the end of 49 days after death, the person's next life is determined, and they may be reborn. When a child under the age of eight passes away, a special funeral called Len-chang torma is performed for the child's benefit and that of the parents. During the ceremony, tormas and tsampa food pellets are replaced hourly during prayer repetitions. The funeral lasts between three and four days, sometimes extending to fifteen. Dung-chog is a puja (ritual) performed for high lamas. While it appears similar to Phowa, its purpose differs. Dung-chog is conducted later to allow the lama's mind and energy to disengage. This energy is believed to travel to a deity's pure realm, from where it may reincarnate. The Dung-chog puja helps smooth the path this energy must follow."
-          gradientClasses="bg-gradient-to-br from-mountain-50 to-cream-50 dark:from-mountain-700/20 dark:to-mountain-800/50"
-          borderClasses="border-mountain-100 dark:border-mountain-700"
+          gradientClasses="bg-white dark:bg-mountain-800/50"
+          borderClasses="border-cream-200 dark:border-mountain-700"
           id="sherpa-funerals"
           isExpanded={expandedCard === "sherpa-funerals"}
           onToggle={handleToggle}
@@ -753,11 +819,7 @@ function FamilyTreeTab() {
     <div className="space-y-12">
       {/* Header */}
       <div className="text-center max-w-3xl mx-auto">
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-burgundy-100 dark:bg-burgundy-900/50 text-burgundy-700 dark:text-burgundy-400 rounded-full text-sm font-medium mb-4">
-          <span>🌳</span>
-          <span>9,127 Relatives • 7,628 Photos</span>
-        </div>
-        <h2 className="text-3xl md:text-4xl font-bold text-mountain-900 dark:text-white mb-4">
+        <h2 className="text-3xl md:text-3xl font-serif font-bold text-mountain-900 dark:text-cream-50 mb-4">
           Preserving Our Roots, One Generation at a Time
         </h2>
         <p className="text-lg text-mountain-700 dark:text-mountain-300 leading-relaxed">
@@ -767,7 +829,7 @@ function FamilyTreeTab() {
       </div>
 
       {/* Main Feature Card */}
-      <div className="bg-gradient-to-br from-burgundy-50 via-cream-50 to-gold-50 dark:from-burgundy-900/30 dark:via-mountain-800/50 dark:to-gold-900/20 rounded-3xl p-8 md:p-12 border border-burgundy-100 dark:border-burgundy-800 shadow-xl">
+      <div className="bg-white dark:bg-mountain-800/50 rounded-3xl p-8 md:p-12 border border-cream-200 dark:border-mountain-700 shadow-xl">
         <div className="max-w-4xl mx-auto">
           <div className="flex flex-col md:flex-row gap-8 items-center mb-10">
             {/* Tree Icon */}
@@ -984,10 +1046,10 @@ function FamilyTreeTab() {
       </div>
 
       {/* How to Contribute */}
-      <div className="bg-gradient-to-r from-gold-50 to-cream-50 dark:from-gold-900/20 dark:to-mountain-800/50 rounded-2xl p-8 md:p-10 border border-gold-200 dark:border-gold-800/50">
+      <div className="bg-cream-50 dark:bg-mountain-800/50 rounded-2xl p-8 md:p-10 border border-cream-200 dark:border-mountain-700">
         <div className="flex flex-col md:flex-row items-center gap-6">
           <div className="flex-shrink-0">
-            <div className="w-16 h-16 bg-gold-500 rounded-full flex items-center justify-center shadow-lg">
+            <div className="w-16 h-16 bg-burgundy-600 rounded-full flex items-center justify-center shadow-lg">
               <svg
                 className="w-8 h-8 text-white"
                 fill="none"
@@ -1018,7 +1080,7 @@ function FamilyTreeTab() {
               href="https://khumjung.tribalpages.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-mountain-900 dark:bg-white hover:bg-mountain-800 dark:hover:bg-cream-100 text-white dark:text-mountain-900 px-6 py-3 rounded-xl font-semibold transition-colors shadow-lg"
+              className="inline-flex items-center gap-2 bg-burgundy-700 hover:bg-burgundy-800 text-white px-6 py-3 rounded-xl font-semibold transition-colors shadow-lg"
             >
               <span>Explore & Contribute</span>
               <svg
