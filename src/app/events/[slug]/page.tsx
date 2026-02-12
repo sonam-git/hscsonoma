@@ -212,7 +212,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
             <div className="lg:col-span-2 space-y-12">
               {/* Description */}
               <div className="bg-white dark:bg-mountain-800 rounded-2xl p-8 shadow-lg">
-                <p className="text-lg text-mountain-700 dark:text-mountain-300 leading-relaxed">
+                <p className="text-md text-mountain-700 dark:text-mountain-300 leading-relaxed">
                   {event.description}
                 </p>
               </div>
