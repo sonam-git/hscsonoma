@@ -25,18 +25,6 @@ const volunteerOptions = [
   'Translation/Language',
 ];
 
-// Generate a simple client-side token
-function generateClientToken(timestamp: number): string {
-  const data = `${timestamp}-hsc-membership-form`;
-  let hash = 0;
-  for (let i = 0; i < data.length; i++) {
-    const char = data.charCodeAt(i);
-    hash = ((hash << 5) - hash) + char;
-    hash = hash & hash;
-  }
-  return Math.abs(hash).toString(36);
-}
-
 export default function MembershipForm() {
   const [formData, setFormData] = useState<FormState>({
     firstName: '',
@@ -119,7 +107,6 @@ export default function MembershipForm() {
           // Security fields
           _honeypot: honeypot, // Should be empty
           _timestamp: formLoadTime,
-          _token: generateClientToken(formLoadTime),
         }),
       });
 

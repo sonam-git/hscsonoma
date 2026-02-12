@@ -204,39 +204,9 @@ export function sanitizeEmail(email: string): string {
 }
 
 // ============================================
-// CSRF-LIKE TOKEN GENERATION
+// NOTE: Token validation removed - not effective for client-side forms
+// Security is handled by: honeypot, timing, rate limiting, spam detection
 // ============================================
-const FORM_SECRET = process.env.FORM_SECRET || 'hsc-sonoma-form-secret-2024';
-
-export function generateFormToken(): { token: string; timestamp: number } {
-  const timestamp = Date.now();
-  const data = `${timestamp}-${FORM_SECRET}`;
-  
-  // Simple hash for client-side (not cryptographic, but adds a layer)
-  let hash = 0;
-  for (let i = 0; i < data.length; i++) {
-    const char = data.charCodeAt(i);
-    hash = ((hash << 5) - hash) + char;
-    hash = hash & hash;
-  }
-  
-  const token = Math.abs(hash).toString(36);
-  return { token, timestamp };
-}
-
-export function validateFormToken(token: string, timestamp: number): boolean {
-  // Regenerate what the token should be for that timestamp
-  const data = `${timestamp}-${FORM_SECRET}`;
-  let hash = 0;
-  for (let i = 0; i < data.length; i++) {
-    const char = data.charCodeAt(i);
-    hash = ((hash << 5) - hash) + char;
-    hash = hash & hash;
-  }
-  const expectedToken = Math.abs(hash).toString(36);
-  
-  return token === expectedToken;
-}
 
 // ============================================
 // COMBINED SECURITY CHECK
@@ -250,7 +220,6 @@ export interface SecurityCheckOptions {
   ip: string;
   honeypot?: string;
   timestamp?: number;
-  token?: string;
   email: string;
   content: string;
 }
@@ -278,19 +247,12 @@ export function performSecurityChecks(options: SecurityCheckOptions): SecurityCh
     }
   }
 
-  // 4. Token validation
-  if (options.token && options.timestamp) {
-    if (!validateFormToken(options.token, options.timestamp)) {
-      errors.push('Invalid form token');
-    }
-  }
-
-  // 5. Email validation
+  // 4. Email validation
   if (isSuspiciousEmail(options.email)) {
     errors.push('Please use a valid email address');
   }
 
-  // 6. Spam detection
+  // 5. Spam detection
   const spamCheck = detectSpam(options.content);
   if (spamCheck.isSpam) {
     errors.push('Your message was flagged as potential spam. Please revise and try again.');

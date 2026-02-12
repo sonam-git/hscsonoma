@@ -16,7 +16,6 @@ interface ContactFormData {
   // Security fields
   _honeypot?: string;
   _timestamp?: number;
-  _token?: string;
 }
 
 function validateEmail(email: string): boolean {
@@ -89,7 +88,6 @@ export async function POST(request: NextRequest) {
       message: sanitizeInput(body.message || ''),
       _honeypot: body._honeypot,
       _timestamp: body._timestamp,
-      _token: body._token,
     };
 
     // Perform security checks
@@ -97,7 +95,6 @@ export async function POST(request: NextRequest) {
       ip: clientIP,
       honeypot: formData._honeypot,
       timestamp: formData._timestamp,
-      token: formData._token,
       email: formData.email,
       content: `${formData.name} ${formData.subject} ${formData.message}`,
     });
