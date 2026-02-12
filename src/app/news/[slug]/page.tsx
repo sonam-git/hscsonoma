@@ -211,7 +211,7 @@ export default async function NewsArticlePage({ params }: PageProps) {
       {/* Related Stories CTA */}
       <section className="py-12 bg-gradient-to-br from-cream-100 to-cream-50 dark:from-mountain-900 dark:to-mountain-950 border-t border-cream-200 dark:border-mountain-800">
         <div className="container-custom text-center">
-          <h2 className="text-2xl font-bold text-mountain-900 dark:text-white mb-4">
+          <h2 className="text-2xl md:text-3xl font-serif font-bold text-mountain-900 dark:text-cream-50 mb-6">
             Explore More Community Stories
           </h2>
           <p className="text-mountain-600 dark:text-mountain-400 mb-6 max-w-2xl mx-auto">

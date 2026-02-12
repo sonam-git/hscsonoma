@@ -60,7 +60,7 @@ export default function NewsPage() {
 			{/* Featured Stories */}
 			<section className="py-16 bg-gradient-to-br from-cream-50 to-cream-100 dark:from-mountain-900 dark:to-mountain-950">
 				<div className="container-custom">
-					<h2 className="text-2xl md:text-3xl font-bold text-mountain-900 dark:text-white mb-8">
+					<h2 className="text-3xl md:text-4xl font-serif font-bold text-mountain-900 dark:text-cream-50 mb-6">
 						Featured Stories
 					</h2>
 					<div className="grid md:grid-cols-2 gap-8">
@@ -219,9 +219,9 @@ export default function NewsPage() {
 			<section className="py-16 bg-gradient-to-br from-burgundy-50 to-gold-50 dark:from-burgundy-900/20 dark:to-gold-900/20 border-t border-cream-200 dark:border-mountain-700">
 				<div className="container-custom">
 					<div className="text-center max-w-3xl mx-auto mb-12">
-						<h2 className="text-2xl md:text-3xl font-bold text-mountain-900 dark:text-white mb-4">
+						<h3 className="text-3xl md:text-4xl font-serif font-bold text-mountain-900 dark:text-cream-50 mb-6">
 							Our Community Makes Headlines
-						</h2>
+						</h3>
 						<p className="text-mountain-700 dark:text-mountain-300">
 							From conquering the world&apos;s highest peaks to building beloved local businesses,
 							the Sherpa community of Sonoma continues to inspire and achieve.
@@ -233,9 +233,9 @@ export default function NewsPage() {
 							<div className="w-16 h-16 bg-burgundy-100 dark:bg-burgundy-900/50 rounded-full flex items-center justify-center mx-auto mb-4">
 								<span className="text-3xl">🏔️</span>
 							</div>
-							<h3 className="font-bold text-mountain-900 dark:text-white mb-2">
+							<h4 className="font-bold text-mountain-900 dark:text-white mb-2">
 								Mountaineering Excellence
-							</h3>
+							</h4>
 							<p className="text-sm text-mountain-600 dark:text-mountain-400">
 								Our members continue the legendary Sherpa tradition of high-altitude achievement,
 								from Everest to K2 and beyond.
@@ -245,9 +245,9 @@ export default function NewsPage() {
 							<div className="w-16 h-16 bg-gold-100 dark:bg-gold-900/50 rounded-full flex items-center justify-center mx-auto mb-4">
 								<span className="text-3xl">🍷</span>
 							</div>
-							<h3 className="font-bold text-mountain-900 dark:text-white mb-2">
+							<h4 className="font-bold text-mountain-900 dark:text-white mb-2">
 								Wine Country Success
-							</h3>
+							</h4>
 							<p className="text-sm text-mountain-600 dark:text-mountain-400">
 								Sherpa-owned restaurants and businesses have become beloved fixtures of
 								Sonoma County&apos;s vibrant culinary scene.
@@ -257,9 +257,9 @@ export default function NewsPage() {
 							<div className="w-16 h-16 bg-mountain-100 dark:bg-mountain-700/50 rounded-full flex items-center justify-center mx-auto mb-4">
 								<span className="text-3xl">🤝</span>
 							</div>
-							<h3 className="font-bold text-mountain-900 dark:text-white mb-2">
+							<h4 className="font-bold text-mountain-900 dark:text-white mb-2">
 								Community Impact
-							</h3>
+							</h4>
 							<p className="text-sm text-mountain-600 dark:text-mountain-400">
 								Through fundraising, cultural events, and community support, we strengthen
 								bonds both locally and with Nepal.
@@ -273,7 +273,7 @@ export default function NewsPage() {
 			<section className="py-16 bg-white dark:bg-mountain-900">
 				<div className="container-custom">
 					<div className="bg-gradient-to-br from-burgundy-700 to-mountain-800 rounded-2xl p-8 md:p-12 text-center">
-						<h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+						<h2 className="text-xl md:text-3xl font-serif font-bold text-mountain-100 dark:text-cream-50 mb-6">
 							Have a Story to Share?
 						</h2>
 						<p className="text-cream-200 mb-8 max-w-2xl mx-auto">

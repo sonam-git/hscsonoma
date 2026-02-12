@@ -158,7 +158,7 @@ export default function FunctionalBodiesPage() {
                           src={member.image}
                           alt={member.name}
                           fill
-                          className="object-cover object-top"
+                          className="object-contain object-top"
                         />
                       </div>
                       <div className="p-6 text-center">
@@ -235,7 +235,7 @@ export default function FunctionalBodiesPage() {
                           src={member.image}
                           alt={member.name}
                           fill
-                          className="object-cover object-top"
+                          className="object-contain object-top"
                         />
                       </div>
                       <div className="p-6 text-center">
