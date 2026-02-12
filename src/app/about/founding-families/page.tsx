@@ -147,7 +147,7 @@ export default function FoundingFamiliesPage() {
 
             <div className="bg-white dark:bg-mountain-800 rounded-2xl shadow-xl overflow-hidden">
               <div className="p-8 md:p-12">
-                <p className="text-lg text-mountain-600 dark:text-mountain-300 leading-relaxed mb-8">
+                <p className="text-md text-mountain-600 dark:text-mountain-300 leading-relaxed mb-8">
                   <strong className="text-mountain-900 dark:text-cream-50">Chhiring Sherpa, Ongda Sherpa, and Nima Sherpa</strong>—pioneers 
                   of the Sherpa community in Sonoma—were honored in the Fall 2011 edition of Sonoma Magazine, 
                   under the &quot;Faces of Sonoma&quot; section. Written by Kate Williams and photographed by Robbi Pengelly, 

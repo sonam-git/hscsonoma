@@ -164,7 +164,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
   };
 
   return (
-    <main className="min-h-screen bg-cream-50 dark:bg-mountain-950">
+    <main className="min-h-screen bg-cream-50 dark:bg-mountain-950 font-georgia">
       {/* Hero Section */}
       <section className="relative h-[50vh] min-h-[400px]">
         <Image
@@ -177,15 +177,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30" />
         <div className="absolute inset-0 flex items-end">
           <div className="container-custom pb-12">
-            <Link 
-              href="/events" 
-              className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-6 transition-colors"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-              Back to Events
-            </Link>
+            
             <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium mb-4 ${categoryColors[event.categoryColor]}`}>
               {event.category}
             </span>
@@ -205,6 +197,15 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
 
       {/* Content Section */}
       <section className="py-16 md:py-24">
+             <Link 
+              href="/events" 
+              className="inline-flex items-center gap-2 ml-20 text-gray-700 dark:text-gray-50 hover:text-blue-600 transition-colors"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              Back to Events
+            </Link>
         <div className="container-custom">
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Main Content */}
@@ -222,7 +223,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
                   <h2 className="text-2xl font-serif font-bold text-mountain-900 dark:text-cream-50 mb-4">
                     {section.title}
                   </h2>
-                  <div className="text-mountain-600 dark:text-mountain-300 leading-relaxed whitespace-pre-line">
+                  <div className="text-mountain-600 dark:text-mountain-300 leading-relaxed whitespace-pre-line font-georgia">
                     {section.text}
                   </div>
                 </div>

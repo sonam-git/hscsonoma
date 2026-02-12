@@ -93,7 +93,6 @@ const regions: Region[] = [
       {
         name: 'Himalayan Kitchen Marin',
         address: '227 3rd St, San Rafael, CA 94901',
-        description: 'Nepalese, Tibetan, Sherpa & Indian/Himalayan restaurant in San Rafael.',
         mapUrl: 'https://maps.google.com/?q=227+3rd+St,+San+Rafael,+CA+94901',
       },
     ],
