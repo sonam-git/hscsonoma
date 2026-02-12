@@ -1,24 +1,48 @@
 'use client';
 
-import { useState, FormEvent } from 'react';
+import { useState, useEffect, FormEvent } from 'react';
 
 interface FormState {
   name: string;
   email: string;
+  subject: string;
   phone: string;
   message: string;
+}
+
+// Generate a simple client-side token
+function generateClientToken(timestamp: number): string {
+  const data = `${timestamp}-hsc-contact-form`;
+  let hash = 0;
+  for (let i = 0; i < data.length; i++) {
+    const char = data.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash = hash & hash;
+  }
+  return Math.abs(hash).toString(36);
 }
 
 export default function ContactForm() {
   const [formData, setFormData] = useState<FormState>({
     name: '',
     email: '',
+    subject: '',
     phone: '',
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  
+  // Security: Track when form was loaded
+  const [formLoadTime, setFormLoadTime] = useState<number>(0);
+  // Security: Honeypot field (invisible to users, bots will fill it)
+  const [honeypot, setHoneypot] = useState('');
+
+  useEffect(() => {
+    // Record when form was loaded for timing validation
+    setFormLoadTime(Date.now());
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -31,23 +55,50 @@ export default function ContactForm() {
     setSubmitStatus('idle');
     setErrorMessage('');
 
+    // Client-side validation
+    if (formData.name.trim().length < 2) {
+      setErrorMessage('Please enter your full name');
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      setErrorMessage('Please enter a valid email address');
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (formData.message.trim().length < 10) {
+      setErrorMessage('Please enter a longer message');
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          // Security fields
+          _honeypot: honeypot, // Should be empty
+          _timestamp: formLoadTime,
+          _token: generateClientToken(formLoadTime),
+        }),
       });
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Something went wrong');
+        throw new Error(data.message || data.error || 'Something went wrong');
       }
 
       setSubmitStatus('success');
-      setFormData({ name: '', email: '', phone: '', message: '' });
+      setFormData({ name: '', email: '', subject: '', phone: '', message: '' });
+      // Reset form load time for next submission
+      setFormLoadTime(Date.now());
     } catch (error) {
       setSubmitStatus('error');
       setErrorMessage(error instanceof Error ? error.message : 'Failed to send message');
@@ -58,6 +109,20 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      {/* Honeypot field - hidden from real users, bots will fill it */}
+      <div className="absolute -left-[9999px] opacity-0 h-0 w-0 overflow-hidden" aria-hidden="true">
+        <label htmlFor="website">Website</label>
+        <input
+          type="text"
+          id="website"
+          name="website"
+          value={honeypot}
+          onChange={(e) => setHoneypot(e.target.value)}
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
+
       {/* Name */}
       <div>
         <label htmlFor="name" className="label-text">
@@ -70,8 +135,10 @@ export default function ContactForm() {
           value={formData.name}
           onChange={handleChange}
           required
+          maxLength={100}
           className="input-field"
           placeholder="Your full name"
+          autoComplete="name"
         />
       </div>
 
@@ -87,8 +154,10 @@ export default function ContactForm() {
           value={formData.email}
           onChange={handleChange}
           required
+          maxLength={254}
           className="input-field"
           placeholder="your.email@example.com"
+          autoComplete="email"
         />
       </div>
 
@@ -103,8 +172,28 @@ export default function ContactForm() {
           name="phone"
           value={formData.phone}
           onChange={handleChange}
+          maxLength={20}
           className="input-field"
           placeholder="(555) 123-4567"
+          autoComplete="tel"
+        />
+      </div>
+
+      {/* Subject */}
+      <div>
+        <label htmlFor="subject" className="label-text">
+          Subject <span className="text-red-500">*</span>
+        </label>
+        <input
+          type="text"
+          id="subject"
+          name="subject"
+          value={formData.subject}
+          onChange={handleChange}
+          required
+          maxLength={200}
+          className="input-field"
+          placeholder="Subject"
         />
       </div>
 
@@ -120,9 +209,13 @@ export default function ContactForm() {
           onChange={handleChange}
           required
           rows={5}
+          maxLength={5000}
           className="input-field resize-none"
           placeholder="How can we help you?"
         />
+        <p className="text-xs text-mountain-500 dark:text-mountain-400 mt-1">
+          {formData.message.length}/5000 characters
+        </p>
       </div>
 
       {/* Submit Button */}

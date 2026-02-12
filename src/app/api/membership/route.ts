@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
-import sgMail from '@sendgrid/mail';
-
-// Initialize SendGrid with API key
-if (process.env.SENDGRID_API_KEY) {
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-}
+import { sendMultipleEmails, isEmailConfigured, EmailOptions } from '@/lib/email';
+import {
+  performSecurityChecks,
+  getClientIP,
+  sanitizeInput,
+  sanitizeEmail,
+} from '@/lib/security';
 
 interface MembershipFormData {
   firstName: string;
@@ -19,6 +20,10 @@ interface MembershipFormData {
   interests: string[];
   volunteerInterest: boolean;
   message?: string;
+  // Security fields
+  _honeypot?: string;
+  _timestamp?: number;
+  _token?: string;
 }
 
 function validateEmail(email: string): boolean {
@@ -41,29 +46,47 @@ function validateMembershipForm(data: MembershipFormData): { valid: boolean; err
     errors.push('Please provide a valid email address');
   }
 
-  if (!data.phone || !/^[\d\s\-+()]{7,}$/.test(data.phone)) {
+  if (!data.phone || !/^[\d\s\-+()]{7,20}$/.test(data.phone)) {
     errors.push('Please provide a valid phone number');
   }
 
-  if (!data.address || data.address.trim().length < 5) {
-    errors.push('Please provide a valid address');
+  // Length limits
+  if (data.firstName && data.firstName.length > 50) {
+    errors.push('First name is too long');
   }
 
-  if (!data.city || data.city.trim().length < 2) {
-    errors.push('Please provide a valid city');
+  if (data.lastName && data.lastName.length > 50) {
+    errors.push('Last name is too long');
   }
 
-  if (!data.state || data.state.trim().length < 2) {
-    errors.push('Please provide a valid state');
+  if (data.address && data.address.length > 200) {
+    errors.push('Address is too long');
   }
 
-  if (!data.zipCode || !/^\d{5}(-\d{4})?$/.test(data.zipCode)) {
+  if (data.city && data.city.length > 100) {
+    errors.push('City name is too long');
+  }
+
+  if (data.zipCode && !/^\d{5}(-\d{4})?$/.test(data.zipCode)) {
     errors.push('Please provide a valid ZIP code');
+  }
+
+  if (data.message && data.message.length > 2000) {
+    errors.push('Message is too long (max 2000 characters)');
   }
 
   const validMembershipTypes = ['individual', 'family', 'student', 'senior', 'lifetime'];
   if (!data.membershipType || !validMembershipTypes.includes(data.membershipType)) {
     errors.push('Please select a valid membership type');
+  }
+
+  // Validate interests array
+  if (data.interests && !Array.isArray(data.interests)) {
+    errors.push('Invalid interests format');
+  }
+
+  if (data.interests && data.interests.length > 10) {
+    errors.push('Too many interests selected');
   }
 
   return { valid: errors.length === 0, errors };
@@ -79,9 +102,12 @@ const membershipPricing: Record<string, string> = {
 
 export async function POST(request: NextRequest) {
   try {
-    // Check if SendGrid is configured
-    if (!process.env.SENDGRID_API_KEY) {
-      console.error('SendGrid API key is not configured');
+    // Get client IP for rate limiting
+    const clientIP = getClientIP(request);
+
+    // Check if email service is configured
+    if (!isEmailConfigured()) {
+      console.error('Gmail SMTP credentials are not configured');
       return NextResponse.json(
         { success: false, message: 'Email service is not configured' },
         { status: 500 }
@@ -90,20 +116,45 @@ export async function POST(request: NextRequest) {
 
     // Parse request body
     const body = await request.json();
+    
+    // Extract and sanitize form data
     const formData: MembershipFormData = {
-      firstName: body.firstName,
-      lastName: body.lastName,
-      email: body.email,
-      phone: body.phone,
-      address: body.address,
-      city: body.city,
-      state: body.state,
-      zipCode: body.zipCode,
+      firstName: sanitizeInput(body.firstName || ''),
+      lastName: sanitizeInput(body.lastName || ''),
+      email: sanitizeEmail(body.email || ''),
+      phone: sanitizeInput(body.phone || ''),
+      address: sanitizeInput(body.address || ''),
+      city: sanitizeInput(body.city || ''),
+      state: sanitizeInput(body.state || ''),
+      zipCode: sanitizeInput(body.zipCode || ''),
       membershipType: body.membershipType,
-      interests: body.interests || [],
-      volunteerInterest: body.volunteerInterest || false,
-      message: body.message || '',
+      interests: Array.isArray(body.interests) 
+        ? body.interests.slice(0, 10).map((i: string) => sanitizeInput(i)) 
+        : [],
+      volunteerInterest: !!body.volunteerInterest,
+      message: sanitizeInput(body.message || ''),
+      _honeypot: body._honeypot,
+      _timestamp: body._timestamp,
+      _token: body._token,
     };
+
+    // Perform security checks
+    const securityCheck = performSecurityChecks({
+      ip: clientIP,
+      honeypot: formData._honeypot,
+      timestamp: formData._timestamp,
+      token: formData._token,
+      email: formData.email,
+      content: `${formData.firstName} ${formData.lastName} ${formData.address} ${formData.message}`,
+    });
+
+    if (!securityCheck.passed) {
+      console.warn(`Security check failed for IP ${clientIP}:`, securityCheck.errors);
+      return NextResponse.json(
+        { success: false, message: securityCheck.errors[0] || 'Security validation failed' },
+        { status: 400 }
+      );
+    }
 
     // Validate form data
     const validation = validateMembershipForm(formData);
@@ -114,16 +165,16 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const adminEmail = process.env.ADMIN_EMAIL || 'membership@himalayansherpaclubsonoma.org';
-    const fromEmail = process.env.FROM_EMAIL || 'noreply@himalayansherpaclubsonoma.org';
+    const adminEmail = process.env.ADMIN_EMAIL || process.env.GMAIL_USER || '';
 
     const fullName = `${formData.firstName} ${formData.lastName}`;
-    const fullAddress = `${formData.address}, ${formData.city}, ${formData.state} ${formData.zipCode}`;
+    const fullAddress = formData.address 
+      ? `${formData.address}, ${formData.city}, ${formData.state} ${formData.zipCode}`
+      : 'Not provided';
 
-    // Email to admin
-    const adminMessage = {
+    // Email to admin (with security info)
+    const adminMessage: EmailOptions = {
       to: adminEmail,
-      from: fromEmail,
       replyTo: formData.email,
       subject: `[HSCS Membership] New ${formData.membershipType} Application - ${fullName}`,
       html: `
@@ -132,6 +183,9 @@ export async function POST(request: NextRequest) {
             <h1 style="color: white; margin: 0;">New Membership Application</h1>
           </div>
           <div style="padding: 30px; background: #f9f9f9;">
+            <div style="background: #fff3cd; border: 1px solid #ffc107; padding: 10px; border-radius: 5px; margin-bottom: 20px; font-size: 12px;">
+              <strong>Security Info:</strong> IP: ${clientIP} | Time: ${new Date().toISOString()}
+            </div>
             <div style="background: #722F37; color: white; padding: 10px 15px; border-radius: 5px; margin-bottom: 20px;">
               <strong>Membership Type:</strong> ${formData.membershipType.charAt(0).toUpperCase() + formData.membershipType.slice(1)} 
               (${membershipPricing[formData.membershipType]})
@@ -190,6 +244,8 @@ export async function POST(request: NextRequest) {
       text: `
 New Membership Application
 
+Security Info: IP: ${clientIP} | Time: ${new Date().toISOString()}
+
 Membership Type: ${formData.membershipType} (${membershipPricing[formData.membershipType]})
 
 Applicant Information:
@@ -209,9 +265,8 @@ Himalayan Sherpa Club of Sonoma
     };
 
     // Auto-reply to applicant
-    const autoReplyMessage = {
+    const autoReplyMessage: EmailOptions = {
       to: formData.email,
-      from: fromEmail,
       subject: 'Welcome! Your HSCS Membership Application Received',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -260,8 +315,8 @@ Himalayan Sherpa Club of Sonoma
           <div style="padding: 20px; background: #333; text-align: center;">
             <p style="color: #fff; margin: 0 0 10px 0;">Follow us on social media</p>
             <p style="margin: 0;">
-              <a href="https://facebook.com/himalayansherpaclubsonoma" style="color: #fff; margin: 0 10px;">Facebook</a>
-              <a href="https://instagram.com/hscssonoma" style="color: #fff; margin: 0 10px;">Instagram</a>
+              <a href="https://www.facebook.com/profile.php?id=100070462585968" style="color: #fff; margin: 0 10px;">Facebook</a>
+              <a href="https://www.instagram.com/hsc_sonoma/" style="color: #fff; margin: 0 10px;">Instagram</a>
             </p>
           </div>
         </div>
@@ -297,10 +352,9 @@ Membership Committee
     };
 
     // Send emails
-    await Promise.all([
-      sgMail.send(adminMessage),
-      sgMail.send(autoReplyMessage),
-    ]);
+    await sendMultipleEmails([adminMessage, autoReplyMessage]);
+
+    console.log(`Membership application submitted successfully from IP: ${clientIP}`);
 
     return NextResponse.json(
       { success: true, message: 'Your membership application has been submitted successfully!' },

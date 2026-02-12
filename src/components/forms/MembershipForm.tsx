@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, FormEvent } from 'react';
+import { useState, useEffect, FormEvent } from 'react';
 
 interface FormState {
   firstName: string;
@@ -25,6 +25,18 @@ const volunteerOptions = [
   'Translation/Language',
 ];
 
+// Generate a simple client-side token
+function generateClientToken(timestamp: number): string {
+  const data = `${timestamp}-hsc-membership-form`;
+  let hash = 0;
+  for (let i = 0; i < data.length; i++) {
+    const char = data.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash = hash & hash;
+  }
+  return Math.abs(hash).toString(36);
+}
+
 export default function MembershipForm() {
   const [formData, setFormData] = useState<FormState>({
     firstName: '',
@@ -42,6 +54,16 @@ export default function MembershipForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  
+  // Security: Track when form was loaded
+  const [formLoadTime, setFormLoadTime] = useState<number>(0);
+  // Security: Honeypot field (invisible to users, bots will fill it)
+  const [honeypot, setHoneypot] = useState('');
+
+  useEffect(() => {
+    // Record when form was loaded for timing validation
+    setFormLoadTime(Date.now());
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -65,19 +87,46 @@ export default function MembershipForm() {
     setSubmitStatus('idle');
     setErrorMessage('');
 
+    // Client-side validation
+    if (formData.firstName.trim().length < 2 || formData.lastName.trim().length < 2) {
+      setErrorMessage('Please enter your full name');
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      setErrorMessage('Please enter a valid email address');
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (!/^[\d\s\-+()]{7,}$/.test(formData.phone)) {
+      setErrorMessage('Please enter a valid phone number');
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       const response = await fetch('/api/membership', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          interests: formData.volunteerInterest,
+          volunteerInterest: formData.volunteerInterest.length > 0,
+          // Security fields
+          _honeypot: honeypot, // Should be empty
+          _timestamp: formLoadTime,
+          _token: generateClientToken(formLoadTime),
+        }),
       });
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Something went wrong');
+        throw new Error(data.message || data.error || 'Something went wrong');
       }
 
       setSubmitStatus('success');
@@ -94,6 +143,8 @@ export default function MembershipForm() {
         volunteerInterest: [],
         message: '',
       });
+      // Reset form load time for next submission
+      setFormLoadTime(Date.now());
     } catch (error) {
       setSubmitStatus('error');
       setErrorMessage(error instanceof Error ? error.message : 'Failed to submit application');
@@ -104,6 +155,20 @@ export default function MembershipForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      {/* Honeypot field - hidden from real users, bots will fill it */}
+      <div className="absolute -left-[9999px] opacity-0 h-0 w-0 overflow-hidden" aria-hidden="true">
+        <label htmlFor="company">Company</label>
+        <input
+          type="text"
+          id="company"
+          name="company"
+          value={honeypot}
+          onChange={(e) => setHoneypot(e.target.value)}
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
+
       {/* Name Row */}
       <div className="grid grid-cols-2 gap-4">
         <div>
@@ -117,8 +182,10 @@ export default function MembershipForm() {
             value={formData.firstName}
             onChange={handleChange}
             required
+            maxLength={50}
             className="input-field"
             placeholder="First name"
+            autoComplete="given-name"
           />
         </div>
         <div>
@@ -132,8 +199,10 @@ export default function MembershipForm() {
             value={formData.lastName}
             onChange={handleChange}
             required
+            maxLength={50}
             className="input-field"
             placeholder="Last name"
+            autoComplete="family-name"
           />
         </div>
       </div>
@@ -150,8 +219,10 @@ export default function MembershipForm() {
           value={formData.email}
           onChange={handleChange}
           required
+          maxLength={254}
           className="input-field"
           placeholder="your.email@example.com"
+          autoComplete="email"
         />
       </div>
 
@@ -167,8 +238,10 @@ export default function MembershipForm() {
           value={formData.phone}
           onChange={handleChange}
           required
+          maxLength={20}
           className="input-field"
           placeholder="(555) 123-4567"
+          autoComplete="tel"
         />
       </div>
 
@@ -183,8 +256,10 @@ export default function MembershipForm() {
           name="address"
           value={formData.address}
           onChange={handleChange}
+          maxLength={200}
           className="input-field"
           placeholder="123 Main St"
+          autoComplete="street-address"
         />
       </div>
 
@@ -200,8 +275,10 @@ export default function MembershipForm() {
             name="city"
             value={formData.city}
             onChange={handleChange}
+            maxLength={100}
             className="input-field"
             placeholder="Sonoma"
+            autoComplete="address-level2"
           />
         </div>
         <div>
@@ -214,6 +291,7 @@ export default function MembershipForm() {
             value={formData.state}
             onChange={handleChange}
             className="input-field"
+            autoComplete="address-level1"
           >
             <option value="CA">CA</option>
             <option value="other">Other</option>
@@ -229,8 +307,11 @@ export default function MembershipForm() {
             name="zipCode"
             value={formData.zipCode}
             onChange={handleChange}
+            maxLength={10}
+            pattern="^\d{5}(-\d{4})?$"
             className="input-field"
             placeholder="95476"
+            autoComplete="postal-code"
           />
         </div>
       </div>
@@ -248,10 +329,8 @@ export default function MembershipForm() {
           required
           className="input-field"
         >
-          <option value="individual">Individual Member</option>
-          <option value="family">Family Membership</option>
-          <option value="student">Student Member</option>
-          <option value="supporting">Supporting Member</option>
+          <option value="individual">General Member</option>
+          <option value="family">Lifetime Member</option>
         </select>
       </div>
 
@@ -286,9 +365,13 @@ export default function MembershipForm() {
           value={formData.message}
           onChange={handleChange}
           rows={3}
+          maxLength={2000}
           className="input-field resize-none"
           placeholder="Tell us more about yourself or why you'd like to join..."
         />
+        <p className="text-xs text-mountain-500 dark:text-mountain-400 mt-1">
+          {formData.message.length}/2000 characters
+        </p>
       </div>
 
       {/* Submit Button */}

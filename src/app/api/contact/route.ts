@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
-import sgMail from '@sendgrid/mail';
-
-// Initialize SendGrid with API key
-if (process.env.SENDGRID_API_KEY) {
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-}
+import { sendMultipleEmails, isEmailConfigured, EmailOptions } from '@/lib/email';
+import {
+  performSecurityChecks,
+  getClientIP,
+  sanitizeInput,
+  sanitizeEmail,
+} from '@/lib/security';
 
 interface ContactFormData {
   name: string;
@@ -12,6 +13,10 @@ interface ContactFormData {
   phone?: string;
   subject: string;
   message: string;
+  // Security fields
+  _honeypot?: string;
+  _timestamp?: number;
+  _token?: string;
 }
 
 function validateEmail(email: string): boolean {
@@ -38,8 +43,21 @@ function validateContactForm(data: ContactFormData): { valid: boolean; errors: s
     errors.push('Message must be at least 10 characters long');
   }
 
-  if (data.phone && !/^[\d\s\-+()]{7,}$/.test(data.phone)) {
+  if (data.phone && !/^[\d\s\-+()]{7,20}$/.test(data.phone)) {
     errors.push('Please provide a valid phone number');
+  }
+
+  // Length limits
+  if (data.name && data.name.length > 100) {
+    errors.push('Name is too long');
+  }
+
+  if (data.subject && data.subject.length > 200) {
+    errors.push('Subject is too long');
+  }
+
+  if (data.message && data.message.length > 5000) {
+    errors.push('Message is too long (max 5000 characters)');
   }
 
   return { valid: errors.length === 0, errors };
@@ -47,9 +65,12 @@ function validateContactForm(data: ContactFormData): { valid: boolean; errors: s
 
 export async function POST(request: NextRequest) {
   try {
-    // Check if SendGrid is configured
-    if (!process.env.SENDGRID_API_KEY) {
-      console.error('SendGrid API key is not configured');
+    // Get client IP for rate limiting
+    const clientIP = getClientIP(request);
+
+    // Check if email service is configured
+    if (!isEmailConfigured()) {
+      console.error('Gmail SMTP credentials are not configured');
       return NextResponse.json(
         { success: false, message: 'Email service is not configured' },
         { status: 500 }
@@ -58,13 +79,36 @@ export async function POST(request: NextRequest) {
 
     // Parse request body
     const body = await request.json();
+    
+    // Extract and sanitize form data
     const formData: ContactFormData = {
-      name: body.name,
-      email: body.email,
-      phone: body.phone || '',
-      subject: body.subject,
-      message: body.message,
+      name: sanitizeInput(body.name || ''),
+      email: sanitizeEmail(body.email || ''),
+      phone: sanitizeInput(body.phone || ''),
+      subject: sanitizeInput(body.subject || ''),
+      message: sanitizeInput(body.message || ''),
+      _honeypot: body._honeypot,
+      _timestamp: body._timestamp,
+      _token: body._token,
     };
+
+    // Perform security checks
+    const securityCheck = performSecurityChecks({
+      ip: clientIP,
+      honeypot: formData._honeypot,
+      timestamp: formData._timestamp,
+      token: formData._token,
+      email: formData.email,
+      content: `${formData.name} ${formData.subject} ${formData.message}`,
+    });
+
+    if (!securityCheck.passed) {
+      console.warn(`Security check failed for IP ${clientIP}:`, securityCheck.errors);
+      return NextResponse.json(
+        { success: false, message: securityCheck.errors[0] || 'Security validation failed' },
+        { status: 400 }
+      );
+    }
 
     // Validate form data
     const validation = validateContactForm(formData);
@@ -75,13 +119,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const adminEmail = process.env.ADMIN_EMAIL || 'info@himalayansherpaclubsonoma.org';
-    const fromEmail = process.env.FROM_EMAIL || 'noreply@himalayansherpaclubsonoma.org';
+    const adminEmail = process.env.ADMIN_EMAIL || process.env.GMAIL_USER || '';
 
-    // Email to admin
-    const adminMessage = {
+    // Email to admin (with sanitized content)
+    const adminMessage: EmailOptions = {
       to: adminEmail,
-      from: fromEmail,
       replyTo: formData.email,
       subject: `[HSCS Contact] ${formData.subject}`,
       html: `
@@ -90,6 +132,9 @@ export async function POST(request: NextRequest) {
             <h1 style="color: white; margin: 0;">New Contact Form Submission</h1>
           </div>
           <div style="padding: 30px; background: #f9f9f9;">
+            <div style="background: #fff3cd; border: 1px solid #ffc107; padding: 10px; border-radius: 5px; margin-bottom: 20px; font-size: 12px;">
+              <strong>Security Info:</strong> IP: ${clientIP} | Time: ${new Date().toISOString()}
+            </div>
             <h2 style="color: #1a1a1a; margin-top: 0;">Contact Details</h2>
             <table style="width: 100%; border-collapse: collapse;">
               <tr>
@@ -126,6 +171,8 @@ export async function POST(request: NextRequest) {
       text: `
 New Contact Form Submission
 
+Security Info: IP: ${clientIP} | Time: ${new Date().toISOString()}
+
 Name: ${formData.name}
 Email: ${formData.email}
 ${formData.phone ? `Phone: ${formData.phone}\n` : ''}
@@ -140,9 +187,8 @@ Himalayan Sherpa Club of Sonoma
     };
 
     // Auto-reply to sender
-    const autoReplyMessage = {
+    const autoReplyMessage: EmailOptions = {
       to: formData.email,
-      from: fromEmail,
       subject: 'Thank you for contacting Himalayan Sherpa Club of Sonoma',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -172,8 +218,8 @@ Himalayan Sherpa Club of Sonoma
           <div style="padding: 20px; background: #333; text-align: center;">
             <p style="color: #fff; margin: 0 0 10px 0;">Follow us on social media</p>
             <p style="margin: 0;">
-              <a href="https://facebook.com/himalayansherpaclubsonoma" style="color: #fff; margin: 0 10px;">Facebook</a>
-              <a href="https://instagram.com/hscssonoma" style="color: #fff; margin: 0 10px;">Instagram</a>
+              <a href="https://www.facebook.com/profile.php?id=100070462585968" style="color: #fff; margin: 0 10px;">Facebook</a>
+              <a href="https://www.instagram.com/hsc_sonoma/" style="color: #fff; margin: 0 10px;">Instagram</a>
             </p>
           </div>
         </div>
@@ -195,10 +241,9 @@ Himalayan Sherpa Club of Sonoma
     };
 
     // Send emails
-    await Promise.all([
-      sgMail.send(adminMessage),
-      sgMail.send(autoReplyMessage),
-    ]);
+    await sendMultipleEmails([adminMessage, autoReplyMessage]);
+
+    console.log(`Contact form submitted successfully from IP: ${clientIP}`);
 
     return NextResponse.json(
       { success: true, message: 'Your message has been sent successfully!' },
