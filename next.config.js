@@ -36,12 +36,87 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: '/our-vision',
+        destination: '/about/vision',
+        permanent: true,
+      },
+         {
+        source: '/executive-body',
+        destination: '/about/functional-body',
+        permanent: true,
+      },
+         {
+        source: '/hsfc',
+        destination: '/about/hsfc',
+        permanent: true,
+      },
+         {
+        source: '/sherpa-tradition',
+        destination: '/about/sherpa',
+        permanent: true,
+      },
+         {
+        source: '/sherpa-tribal-family-tree',
+        destination: '/about/sherpa',
+        permanent: true,
+      },
+         {
+        source: '/sherpa-businesses',
+        destination: '/about/sherpa-businesses',
+        permanent: true,
+      },
+         {
+        source: '/upcoming-events/category/entertainment',
+        destination: '/events',
+        permanent: true,
+      },
+         {
+        source: '/laborday-soccer',
+        destination: '/events',
+        permanent: true,
+      },
+         {
+        source: '/annual-phang-ngi-party',
+        destination: '/events',
+        permanent: true,
+      },
+       {
+        source: '/sathi-sewa',
+        destination: '/about/sathi-sewa',
+        permanent: true,
+      },
+ {
+        source: '/category/news',
+        destination: '/news',
+        permanent: true,
+      },
+       {
+        source: '/the-sherpa-history/sherpa-clans',
+        destination: '/about/sherpa',
+        permanent: true,
+      },
+         {
+        source: '/past-events',
+        destination: '/events',
+        permanent: true,
+      },
+      {
+        source: '/climber-waves-sonoma-grille-flag-atop-mount-everest',
+        destination: '/news',
+        permanent: true,
+      },
+      {
         source: '/donate.html',
         destination: '/donate',
         permanent: true,
       },
       {
         source: '/donations',
+        destination: '/donate',
+        permanent: true,
+      },
+        {
+        source: '/donate-us',
         destination: '/donate',
         permanent: true,
       },
