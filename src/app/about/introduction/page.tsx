@@ -48,7 +48,7 @@ export default function IntroductionPage() {
                 Introduction
               </h2>
               <div className="space-y-6 text-mountain-600 dark:text-mountain-300">
-                <p className="text-lg leading-relaxed">
+                <p className="text-md leading-relaxed">
                   The Himalayan Sherpa Club was established as a non-profit, non-political organization 
                   in compliance with California state laws in January 2011. Recognized as a tax-exempt 
                   charitable organization under Section 501(c)(3) of the Internal Revenue Code, the club 
