@@ -1,10 +1,23 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 type TabType = 'annual' | 'signature' | 'past' | 'upcoming';
+
+// Type for upcoming events from Storyblok
+interface UpcomingEvent {
+  id: string;
+  title: string;
+  date: string;
+  time: string;
+  location: string;
+  description: string;
+  image?: string;
+  registrationUrl?: string;
+  isFeatured?: boolean;
+}
 
 // SVG Icon Components for tabs
 const AnnualIcon = () => (
@@ -54,6 +67,26 @@ const himalayanCupWinners = [
 
 export default function EventsPage() {
   const [activeTab, setActiveTab] = useState<TabType>('annual');
+  const [upcomingEvents, setUpcomingEvents] = useState<UpcomingEvent[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Fetch upcoming events from Storyblok
+  useEffect(() => {
+    async function fetchUpcomingEvents() {
+      try {
+        const response = await fetch('/api/events');
+        if (response.ok) {
+          const data = await response.json();
+          setUpcomingEvents(data.events || []);
+        }
+      } catch (error) {
+        console.error('Failed to fetch upcoming events:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    fetchUpcomingEvents();
+  }, []);
 
   const tabs = [
     { id: 'annual' as TabType, label: 'Annual Events', icon: AnnualIcon },
@@ -691,28 +724,118 @@ export default function EventsPage() {
                 </div>
 
                 <div className="max-w-4xl mx-auto">
-                  <div className="bg-white dark:bg-mountain-800 rounded-2xl p-8 md:p-12 shadow-lg text-center">
-                    <div className="w-24 h-24 bg-burgundy-100 dark:bg-burgundy-900/50 rounded-full flex items-center justify-center mx-auto mb-6">
-                      <svg className="w-12 h-12 text-burgundy-700 dark:text-burgundy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
+                  {isLoading ? (
+                    /* Loading State */
+                    <div className="bg-white dark:bg-mountain-800 rounded-2xl p-8 md:p-12 shadow-lg text-center">
+                      <div className="animate-pulse">
+                        <div className="w-24 h-24 bg-burgundy-100 dark:bg-burgundy-900/50 rounded-full mx-auto mb-6"></div>
+                        <div className="h-6 bg-mountain-200 dark:bg-mountain-700 rounded w-48 mx-auto mb-4"></div>
+                        <div className="h-4 bg-mountain-100 dark:bg-mountain-600 rounded w-64 mx-auto"></div>
+                      </div>
                     </div>
-                    <h3 className="text-2xl font-serif font-semibold text-mountain-900 dark:text-cream-50 mb-4">
-                      Stay Tuned!
-                    </h3>
-                    <p className="text-mountain-600 dark:text-mountain-300 max-w-xl mx-auto text-lg leading-relaxed mb-8">
-                      We are currently planning exciting events for the community. Check back soon for updates on 
-                      upcoming celebrations, festivals, and gatherings.
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                      <Link href="/contact" className="btn-primary">
-                        Contact Us for Updates
-                      </Link>
-                      <Link href="/join-us" className="btn-secondary">
-                        Join Our Community
-                      </Link>
+                  ) : upcomingEvents.length > 0 ? (
+                    /* Display Storyblok Events */
+                    <div className="grid md:grid-cols-2 gap-6">
+                      {upcomingEvents.map((event) => {
+                        const eventDate = new Date(event.date);
+                        return (
+                          <div key={event.id} className="bg-white dark:bg-mountain-800 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                            {event.image && !event.image.includes('placeholder') && (
+                              <div className="relative h-48 w-full">
+                                <Image
+                                  src={event.image}
+                                  alt={event.title}
+                                  fill
+                                  className="object-cover"
+                                />
+                              </div>
+                            )}
+                            <div className="p-6">
+                              <div className="flex items-start gap-4 mb-4">
+                                <div className="flex-shrink-0 w-16 text-center">
+                                  <div className="bg-burgundy-100 dark:bg-burgundy-900/50 rounded-lg py-2">
+                                    <span className="block text-2xl font-bold text-burgundy-700 dark:text-burgundy-400">
+                                      {eventDate.getDate()}
+                                    </span>
+                                    <span className="block text-xs text-burgundy-600 dark:text-burgundy-500 uppercase">
+                                      {eventDate.toLocaleDateString('en-US', { month: 'short' })}
+                                    </span>
+                                    <span className="block text-xs text-burgundy-500 dark:text-burgundy-600">
+                                      {eventDate.getFullYear()}
+                                    </span>
+                                  </div>
+                                </div>
+                                <div className="flex-1">
+                                  <h3 className="text-xl font-serif font-bold text-mountain-900 dark:text-cream-50 mb-2">
+                                    {event.title}
+                                  </h3>
+                                  <div className="flex flex-wrap gap-2 text-sm text-mountain-500 dark:text-mountain-400">
+                                    {event.time && (
+                                      <span className="flex items-center gap-1">
+                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        {event.time}
+                                      </span>
+                                    )}
+                                    {event.location && (
+                                      <span className="flex items-center gap-1">
+                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        </svg>
+                                        {event.location}
+                                      </span>
+                                    )}
+                                  </div>
+                                </div>
+                              </div>
+                              <p className="text-mountain-600 dark:text-mountain-300 text-sm leading-relaxed mb-4 line-clamp-3">
+                                {event.description}
+                              </p>
+                              {event.registrationUrl && (
+                                <Link
+                                  href={event.registrationUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center text-burgundy-700 dark:text-burgundy-400 font-medium hover:text-burgundy-800 dark:hover:text-burgundy-300 transition-colors text-sm"
+                                >
+                                  Register Now
+                                  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                  </svg>
+                                </Link>
+                              )}
+                            </div>
+                          </div>
+                        );
+                      })}
                     </div>
-                  </div>
+                  ) : (
+                    /* No Events - Stay Tuned UI */
+                    <div className="bg-white dark:bg-mountain-800 rounded-2xl p-8 md:p-12 shadow-lg text-center">
+                      <div className="w-24 h-24 bg-burgundy-100 dark:bg-burgundy-900/50 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg className="w-12 h-12 text-burgundy-700 dark:text-burgundy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                      </div>
+                      <h3 className="text-2xl font-serif font-semibold text-mountain-900 dark:text-cream-50 mb-4">
+                        Stay Tuned!
+                      </h3>
+                      <p className="text-mountain-600 dark:text-mountain-300 max-w-xl mx-auto text-lg leading-relaxed mb-8">
+                        We are currently planning exciting events for the community. Check back soon for updates on 
+                        upcoming celebrations, festivals, and gatherings.
+                      </p>
+                      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <Link href="/contact" className="btn-primary">
+                          Contact Us for Updates
+                        </Link>
+                        <Link href="/join-us" className="btn-secondary">
+                          Join Our Community
+                        </Link>
+                      </div>
+                    </div>
+                  )}
 
                   {/* Newsletter Signup */}
                   <div className="mt-12 bg-burgundy-900 rounded-2xl p-8 text-center">

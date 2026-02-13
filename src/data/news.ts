@@ -182,6 +182,21 @@ Upon returning to Sonoma, Ang D was welcomed as a hero by his family and the loc
       "https://www.sonomanews.com/2023/08/24/sonoma-man-summits-k2-worlds-most-dangerous-mountain/",
     source: "Sonoma Index-Tribune",
   },
+   {
+    slug: "everest-restaurant-climbs-to-flavorful-heights-in-cotati",
+    title: "Everest Restaurant Climbs To Flavorful Heights in Cotati",
+    excerpt:
+      "A mix of Nepalese, Indian and Chinese dishes showcase the culinary diversity of the Himalayas at Cotati's Everest Restauranteve.",
+    content: `In May, legendary Everest climber Kami Rita carried a small flag bearing the logo for Everest restaurants in Petaluma and Cotati on his record-breaking 30th ascent up the 29,032-foot peak. With eyebrows and lashes encrusted with ice, Rita snapped a quick picture at the snowy summit, planting the small banner and smiling like a man ready for a warm cup of daal.`,
+    date: "July 24 , 2024",
+    category: "News",
+    image: "/images/news/everest-cotati.jpg",
+    featured: true,
+    isRecent: false,
+    externalUrl:
+      "https://www.sonomamag.com/everest-restaurant-climbs-to-flavorful-heights-in-cotati/",
+    source: "Sonoma Magazine",
+  },
 ];
 
 export function getNewsArticleBySlug(slug: string): NewsArticle | undefined {
