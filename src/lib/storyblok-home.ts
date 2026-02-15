@@ -48,38 +48,15 @@ interface StoryblokStory {
   };
 }
 
-// Determine if we're in production or development
-const isProduction = process.env.NODE_ENV === 'production';
-
-// Get the access token - use public token for production, preview token for development
-const accessToken = process.env.STORYBLOK_API_TOKEN || process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN;
-
-// Log for debugging (will show in server logs)
-if (!accessToken) {
-  console.error('❌ STORYBLOK_API_TOKEN is not set! Storyblok content will not load.');
-} else {
-  console.log(`✅ Storyblok configured - Environment: ${isProduction ? 'PRODUCTION' : 'DEVELOPMENT'}, Token: ${accessToken.substring(0, 10)}...`);
-}
-
 // Initialize Storyblok client
 // Note: Change region to 'eu' if your space is in Europe
 const Storyblok = new StoryblokClient({
-  accessToken: accessToken,
+  accessToken: process.env.STORYBLOK_API_TOKEN || process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN,
   region: (process.env.STORYBLOK_REGION as 'us' | 'eu') || 'us', // Set to 'eu' if your space is in Europe
 });
 
-// Use cv: Date.now() for fresh content in development
-// In production, use a fixed cache version that updates periodically
+// Use cv: Date.now() for fresh content, or remove for caching
 const cv = Date.now();
-
-// Content version: 'published' for production, 'draft' for development preview
-const contentVersion = isProduction ? 'published' : 'draft';
-
-// Common fetch options for all Storyblok requests
-const sbParams = {
-  cv,
-  version: contentVersion as 'published' | 'draft',
-};
 
 // ===========================================
 // TYPES
@@ -153,7 +130,7 @@ export async function getHomeHero(): Promise<HomeHeroData> {
     
     // 1. First try "settings" path (where hero settings are stored)
     try {
-      const response = await Storyblok.get('cdn/stories/settings', sbParams);
+      const response = await Storyblok.get('cdn/stories/settings', { cv });
       const content = response.data.story?.content;
       if (content?.background_image?.filename) {
         console.log('✅ Hero loaded from settings path');
@@ -168,7 +145,7 @@ export async function getHomeHero(): Promise<HomeHeroData> {
 
     // 2. Try settings/hero path
     try {
-      const response = await Storyblok.get('cdn/stories/settings/hero', sbParams);
+      const response = await Storyblok.get('cdn/stories/settings/hero', { cv });
       const content = response.data.story?.content;
       if (content?.background_image?.filename) {
         console.log('✅ Hero loaded from settings/hero path');
@@ -183,7 +160,7 @@ export async function getHomeHero(): Promise<HomeHeroData> {
 
     // 3. Try just "hero" at root level
     try {
-      const response = await Storyblok.get('cdn/stories/hero', sbParams);
+      const response = await Storyblok.get('cdn/stories/hero', { cv });
       const content = response.data.story?.content;
       if (content?.background_image?.filename) {
         console.log('✅ Hero loaded from hero path');
@@ -198,7 +175,7 @@ export async function getHomeHero(): Promise<HomeHeroData> {
 
     // 4. Search for any story with Hero Settings or hero_settings component
     const response = await Storyblok.get('cdn/stories', {
-      ...sbParams,
+      cv,
       filter_query: {
         component: { in: 'Hero Settings,hero_settings' }
       }
@@ -231,7 +208,7 @@ export async function getHomeEvents(limit: number = 4): Promise<HomeEventData[]>
   try {
     // APPROACH 1: Try to fetch "events" story with nested blocks first
     try {
-      const response = await Storyblok.get('cdn/stories/events', sbParams);
+      const response = await Storyblok.get('cdn/stories/events', { cv });
       const content = response.data.story?.content;
       
       console.log('📦 Events story found!');
@@ -298,7 +275,7 @@ export async function getHomeEvents(limit: number = 4): Promise<HomeEventData[]>
 
     // APPROACH 2: Search for separate stories with upcoming_event component
     const response = await Storyblok.get('cdn/stories', {
-      ...sbParams,
+      cv,
       filter_query: {
         component: { in: 'upcoming_event,Upcoming Event,Event Item,event_item' }
       },
@@ -353,7 +330,7 @@ export async function getHomeNews(limit: number = 3): Promise<HomeNewsData[]> {
   try {
     // APPROACH 1: Try to fetch "news" story with nested blocks first
     try {
-      const response = await Storyblok.get('cdn/stories/news', sbParams);
+      const response = await Storyblok.get('cdn/stories/news', { cv });
       const content = response.data.story?.content;
       
       console.log('📦 News story found!');
@@ -413,7 +390,7 @@ export async function getHomeNews(limit: number = 3): Promise<HomeNewsData[]> {
 
     // APPROACH 2: Search for separate stories with news_item component
     const response = await Storyblok.get('cdn/stories', {
-      ...sbParams,
+      cv,
       filter_query: {
         component: { in: 'news_item,News Item,news,News' }
       },
@@ -466,7 +443,7 @@ export async function getHomeGallery(limit: number = 12): Promise<HomeGalleryIma
     
     for (const path of galleryPaths) {
       try {
-        const response = await Storyblok.get(path, sbParams);
+        const response = await Storyblok.get(path, { cv });
         const content = response.data.story?.content;
         
         console.log('📦 Gallery story content keys:', Object.keys(content || {}));
@@ -518,7 +495,7 @@ export async function getHomeGallery(limit: number = 12): Promise<HomeGalleryIma
 
     // APPROACH 2: Search for separate stories with gallery_image component
     const response = await Storyblok.get('cdn/stories', {
-      ...sbParams,
+      cv,
       filter_query: {
         component: { in: 'gallery_image,Gallery Image' }
       },
@@ -585,7 +562,7 @@ export async function hasStoryblokContent(contentType: 'events' | 'news' | 'gall
 
     const response = await Storyblok.get('cdn/stories', {
       starts_with: startsWithMap[contentType],
-      ...sbParams,
+      cv,
       per_page: 1,
     });
 
