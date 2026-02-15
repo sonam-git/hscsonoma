@@ -11,8 +11,11 @@ export const metadata: Metadata = {
   description: 'The Himalayan Sherpa Club of Sonoma is a 501(c)(3) non-profit dedicated to preserving and promoting Sherpa culture, heritage, and values in the North Bay Area of California.',
 };
 
-// Revalidate every 60 seconds to fetch fresh Storyblok content
-export const revalidate = 60;
+// Revalidate every 30 seconds for fresher Storyblok content
+export const revalidate = 30;
+
+// Force dynamic rendering to always fetch fresh data
+export const dynamic = 'force-dynamic';
 
 export default async function HomePage() {
   // Fetch data from Storyblok (with fallbacks to static content)
