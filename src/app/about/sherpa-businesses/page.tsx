@@ -74,6 +74,11 @@ const regions: Region[] = [
     name: 'Petaluma / Cotati Area',
     emoji: '🍝',
     businesses: [
+       {
+        name: 'Pub Republic',
+        address: '3120 Lakeville Hwy, Petaluma, CA 94952',
+        mapUrl: 'https://maps.google.com/?q=3120+Lakeville+Hwy,+Petaluma,+CA+94954',
+      },
       {
         name: 'Everest Indian Restaurant',
         address: '56 E Washington St, Petaluma, CA 94952',

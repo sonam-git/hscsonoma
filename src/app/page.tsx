@@ -294,33 +294,87 @@ export default async function HomePage() {
           </div>
 
           {latestNewsData && latestNewsData.length > 0 && latestNewsData.some(news => news.title) ? (
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className={`grid gap-8 ${
+              latestNewsData.filter(news => news.title).length === 1 
+                ? 'max-w-md mx-auto' 
+                : latestNewsData.filter(news => news.title).length === 2 
+                  ? 'md:grid-cols-2 max-w-3xl mx-auto' 
+                  : 'md:grid-cols-2 lg:grid-cols-3'
+            }`}>
               {latestNewsData.filter(news => news.title).map((news) => (
-                <article key={news.id} className="bg-cream-50 dark:bg-mountain-700 rounded-xl p-6 hover:shadow-lg transition-shadow">
-                  {news.image && !news.image.includes('placeholder') && (
-                    <div className="relative aspect-[16/9] rounded-lg overflow-hidden mb-4">
+                <article 
+                  key={news.id} 
+                  className="group bg-cream-50 dark:bg-mountain-700 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                >
+                  {/* Image */}
+                  {news.image && !news.image.includes('placeholder') ? (
+                    <div className="relative aspect-[16/9] overflow-hidden">
                       <Image
                         src={news.image}
                         alt={news.title}
                         fill
-                        className="object-cover"
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
                       />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                      <span className="absolute top-4 left-4 px-3 py-1 bg-burgundy-700 text-white text-xs font-medium rounded-full shadow-lg">
+                        {news.category}
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="relative aspect-[16/9] bg-gradient-to-br from-burgundy-100 to-burgundy-200 dark:from-burgundy-900/50 dark:to-mountain-600 flex items-center justify-center">
+                      <svg className="w-16 h-16 text-burgundy-300 dark:text-burgundy-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                      </svg>
+                      <span className="absolute top-4 left-4 px-3 py-1 bg-burgundy-700 text-white text-xs font-medium rounded-full shadow-lg">
+                        {news.category}
+                      </span>
                     </div>
                   )}
-                  <span className="inline-block px-2 py-1 bg-burgundy-100 dark:bg-burgundy-900/50 text-burgundy-700 dark:text-burgundy-400 text-xs font-medium rounded mb-2">
-                    {news.category}
-                  </span>
-                  <h3 className="text-lg font-semibold text-mountain-900 dark:text-cream-50 mb-2 font-[Georgia,'Times_New_Roman',Times,serif]">
-                    {news.title}
-                  </h3>
-                  <p className="text-mountain-600 dark:text-mountain-300 text-sm line-clamp-2 mb-3 font-[Georgia,'Times_New_Roman',Times,serif]">
-                    {news.excerpt}
-                  </p>
-                  {news.date && (
-                    <time className="text-xs text-mountain-500 dark:text-mountain-400">
-                      {new Date(news.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
-                    </time>
-                  )}
+
+                  {/* Content */}
+                  <div className="p-6">
+                    {news.date && (
+                      <time className="text-xs text-mountain-500 dark:text-mountain-400 flex items-center gap-1 mb-3">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        {new Date(news.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                      </time>
+                    )}
+                    
+                    <h3 className="text-xl font-semibold text-mountain-900 dark:text-cream-50 mb-3 line-clamp-2 group-hover:text-burgundy-700 dark:group-hover:text-burgundy-400 transition-colors font-[Georgia,'Times_New_Roman',Times,serif]">
+                      {news.title}
+                    </h3>
+                    
+                    <p className="text-mountain-600 dark:text-mountain-300 text-sm line-clamp-3 mb-4 leading-relaxed font-[Georgia,'Times_New_Roman',Times,serif]">
+                      {news.excerpt}
+                    </p>
+
+                    {/* Read More Link */}
+                    {news.externalUrl ? (
+                      <a
+                        href={news.externalUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center text-burgundy-700 dark:text-burgundy-400 font-medium hover:text-burgundy-800 dark:hover:text-burgundy-300 transition-colors group/link"
+                      >
+                        Read More
+                        <svg className="w-4 h-4 ml-2 transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </a>
+                    ) : (
+                      <Link
+                        href={`/news/${news.slug}`}
+                        className="inline-flex items-center text-burgundy-700 dark:text-burgundy-400 font-medium hover:text-burgundy-800 dark:hover:text-burgundy-300 transition-colors group/link"
+                      >
+                        Read More
+                        <svg className="w-4 h-4 ml-2 transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </Link>
+                    )}
+                  </div>
                 </article>
               ))}
             </div>
