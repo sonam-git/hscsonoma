@@ -66,6 +66,7 @@ const tabs = [
   { id: "clans", label: "Clans" },
   { id: "life", label: "Life" },
   { id: "tradition", label: "Tradition" },
+  { id:"culture", label: "Culture" },
   { id: "family-tree", label: "Family Tree" },
 ];
 
@@ -128,6 +129,7 @@ export default function SherpaPage() {
           {activeTab === "clans" && <ClansTab />}
           {activeTab === "life" && <LifeTab />}
           {activeTab === "tradition" && <TraditionTab />}
+           {activeTab === "culture" && <CultureTab />}
           {activeTab === "family-tree" && <FamilyTreeTab />}
         </div>
       </section>
@@ -1097,6 +1099,249 @@ function FamilyTreeTab() {
                 />
               </svg>
             </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CultureTab() {
+  const culturalAspects = [
+    {
+      title: 'Buddhist Heritage',
+      description: 'The Sherpa people are predominantly Tibetan Buddhists, with spiritual practices deeply woven into daily life. Monasteries, prayer flags, and mantras are central to Sherpa culture.',
+      icon: '🙏',
+    },
+    {
+      title: 'Language',
+      description: 'The Sherpa language belongs to the Tibeto-Burman family and uses a modified Tibetan script. Preserving our language is a key priority for the community.',
+      icon: '📜',
+    },
+    {
+      title: 'Traditional Dress',
+      description: 'Traditional Sherpa clothing includes the chuba (long robe) for men, and Angi, a colorful apron for women, and distinctive hats called Chhiring kyingyap, often worn during festivals and special occasions.',
+      icon: '👘',
+    },
+    {
+      title: 'Cuisine',
+      description: 'Sherpa cuisine features hearty, warming dishes like Shyakpa (stew), thukpa (noodle soup), Riki-kur (potato pancake), momos (dumplings), and butter tea (su chya), reflecting the high-altitude origins of our ancestors.',
+      icon: '🥟',
+    },
+    {
+      title: 'Music & Dance',
+      description: 'Traditional Sherpa music and song features dranyen lute, accompanying vibrant dances performed during festivals and community celebrations.',
+      icon: '🎵',
+    },
+    {
+      title: 'Mountain Traditions',
+      description: 'The Sherpa people have a unique relationship with the mountains, treating peaks as sacred and developing legendary skills in high-altitude climbing and guiding.',
+      icon: '🏔️',
+    },
+  ];
+
+  const festivals = [
+    {
+      name: 'Losar (Sherpa New Year)',
+      timing: 'February | March',
+      description: 'The most important festival, Losar celebrates the new year with family gatherings, feasting, traditional dances, and ceremonies spanning several days.',
+      image: '/images/sherpa/losar.png',
+    },
+    {
+      name: 'Dumji',
+      timing: 'June | July',
+      description: 'A week-long festival celebrating the birth of Guru Rinpoche, featuring masked dances, religious ceremonies, and community feasting.',
+      image: '/images/sherpa/dumji.jpg',
+    },
+    {
+      name: 'Mani Rimdu',
+      timing: 'October | November',
+      description: 'A three-day Buddhist festival featuring colorful masked dances, religious ceremonies, and the blessing of the community.',
+      image: '/images/sherpa/manirimdu.jpg',
+    },
+    {
+      name: 'Phang-Ngi',
+      timing: 'August',
+      description: 'Phang-Ngi is a significant festival that traditionally takes place before the harvest season. Historically, Sherpa communities, primarily engaged in agriculture and farming, observed this festival as a time of celebration before the busy harvest period.',
+      image: '/images/events/annual/phangi-party.jpeg',
+    },
+  ];
+
+  return (
+    <div className="space-y-12">
+      {/* Introduction */}
+      <div className="text-center max-w-4xl mx-auto">
+        <p className="font-tibetan text-xl text-burgundy-600 dark:text-burgundy-400 mb-4">༄༅། ཤར་པའི་རིག་གཞུང་།</p>
+        <h2 className="text-3xl md:text-4xl font-serif font-bold text-mountain-900 dark:text-cream-50 mb-4">
+          Sherpa Culture
+        </h2>
+        <p className="text-lg text-mountain-700 dark:text-mountain-300 leading-relaxed">
+          The Sherpa people originate from the Khumbu region of Nepal, in the shadow of Mount 
+          Everest. Our culture is defined by our deep Buddhist faith, legendary mountaineering 
+          heritage, and warm hospitality. At the Himalayan Sherpa Club of Sonoma, we work to 
+          preserve and share these treasured traditions with new generations and our broader community.
+        </p>
+      </div>
+
+      {/* Cultural Aspects Grid */}
+      <div>
+        <div className="text-center mb-8">
+          <p className="text-burgundy-600 dark:text-burgundy-400 font-medium mb-2 uppercase tracking-wide text-sm">
+            Our Heritage
+          </p>
+          <h3 className="text-2xl md:text-3xl font-serif font-bold text-mountain-900 dark:text-cream-50">
+            Pillars of Sherpa Culture
+          </h3>
+        </div>
+        
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {culturalAspects.map((aspect) => (
+            <div
+              key={aspect.title}
+              className="bg-white dark:bg-mountain-800/50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-cream-200 dark:border-mountain-700"
+            >
+              <div className="w-14 h-14 bg-burgundy-100 dark:bg-burgundy-900/50 rounded-xl flex items-center justify-center mb-4">
+                <span className="text-3xl">{aspect.icon}</span>
+              </div>
+              <h4 className="text-lg font-bold text-mountain-900 dark:text-cream-50 mb-2">
+                {aspect.title}
+              </h4>
+              <p className="text-mountain-600 dark:text-mountain-300 text-sm">
+                {aspect.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Festivals Section */}
+      <div>
+        <div className="text-center mb-8">
+          <p className="text-burgundy-600 dark:text-burgundy-400 font-medium mb-2 uppercase tracking-wide text-sm">
+            Celebrate With Us
+          </p>
+          <h3 className="text-2xl md:text-3xl font-serif font-bold text-mountain-900 dark:text-cream-50 mb-4">
+            Festivals & Celebrations
+          </h3>
+          <p className="text-mountain-600 dark:text-mountain-400 max-w-2xl mx-auto">
+            Our festivals are vibrant expressions of faith, community, and tradition. Join us in celebrating these special occasions.
+          </p>
+        </div>
+        
+        <div className="grid md:grid-cols-2 gap-6">
+          {festivals.map((festival) => (
+            <div
+              key={festival.name}
+              className="group bg-white dark:bg-mountain-800/50 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-cream-200 dark:border-mountain-700"
+            >
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src={festival.image}
+                  alt={festival.name}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <span className="inline-block bg-burgundy-700 text-white text-sm px-3 py-1 rounded-full">
+                    {festival.timing}
+                  </span>
+                </div>
+              </div>
+              <div className="p-6">
+                <h4 className="text-lg font-bold text-mountain-900 dark:text-cream-50 mb-2">
+                  {festival.name}
+                </h4>
+                <p className="text-mountain-600 dark:text-mountain-300 text-sm">
+                  {festival.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Cultural Preservation */}
+      <div className="bg-gradient-to-br from-burgundy-700 to-burgundy-900 rounded-2xl p-8 md:p-12 text-white">
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div>
+            <p className="text-gold-400 font-medium mb-2 uppercase tracking-wide text-sm">
+              Our Mission
+            </p>
+            <h3 className="text-2xl md:text-3xl font-serif font-bold mb-6">
+              Preserving Our Heritage
+            </h3>
+            <div className="space-y-4 text-cream-200">
+              <p>
+                As our community grows in Sonoma County, we remain deeply committed to 
+                preserving and passing on our cultural heritage to future generations.
+              </p>
+              <p>
+                Through language classes, cultural workshops, and community events, we 
+                ensure that young Sherpas born far from the Himalayas maintain a strong 
+                connection to their roots.
+              </p>
+              <p>
+                We also welcome friends and neighbors to learn about our traditions, 
+                fostering understanding and appreciation across cultures.
+              </p>
+            </div>
+          </div>
+          <div className="relative h-[300px] rounded-xl overflow-hidden shadow-xl">
+            <Image
+              src="/images/sherpa/sherpa-children.png"
+              alt="Children learning Sherpa traditions"
+              fill
+              className="object-cover"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Traditional Arts */}
+      <div>
+        <div className="text-center mb-8">
+          <p className="text-burgundy-600 dark:text-burgundy-400 font-medium mb-2 uppercase tracking-wide text-sm">
+            Artisan Heritage
+          </p>
+          <h3 className="text-2xl md:text-3xl font-serif font-bold text-mountain-900 dark:text-cream-50">
+            Traditional Arts & Crafts
+          </h3>
+        </div>
+        
+        <div className="grid md:grid-cols-3 gap-6">
+          <div className="text-center bg-white dark:bg-mountain-800/50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-cream-200 dark:border-mountain-700">
+            <div className="w-16 h-16 mx-auto mb-4 bg-burgundy-100 dark:bg-burgundy-900/50 rounded-full flex items-center justify-center">
+              <span className="text-2xl">🎨</span>
+            </div>
+            <h4 className="text-lg font-bold text-mountain-900 dark:text-cream-50 mb-2">
+              Thangka Painting
+            </h4>
+            <p className="text-mountain-600 dark:text-mountain-300 text-sm">
+              Intricate Buddhist scroll paintings depicting deities, mandalas, and religious scenes, created using traditional techniques.
+            </p>
+          </div>
+          <div className="text-center bg-white dark:bg-mountain-800/50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-cream-200 dark:border-mountain-700">
+            <div className="w-16 h-16 mx-auto mb-4 bg-burgundy-100 dark:bg-burgundy-900/50 rounded-full flex items-center justify-center">
+              <span className="text-2xl">🧶</span>
+            </div>
+            <h4 className="text-lg font-bold text-mountain-900 dark:text-cream-50 mb-2">
+              Weaving & Textiles
+            </h4>
+            <p className="text-mountain-600 dark:text-mountain-300 text-sm">
+              Hand-woven fabrics featuring traditional patterns, used for clothing, blankets, and ceremonial items.
+            </p>
+          </div>
+          <div className="text-center bg-white dark:bg-mountain-800/50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-cream-200 dark:border-mountain-700">
+            <div className="w-16 h-16 mx-auto mb-4 bg-burgundy-100 dark:bg-burgundy-900/50 rounded-full flex items-center justify-center">
+              <span className="text-2xl">🏺</span>
+            </div>
+            <h4 className="text-lg font-bold text-mountain-900 dark:text-cream-50 mb-2">
+              Metalwork & Jewelry
+            </h4>
+            <p className="text-mountain-600 dark:text-mountain-300 text-sm">
+              Traditional silver jewelry, prayer wheels, and ritual objects crafted with ancestral methods.
+            </p>
           </div>
         </div>
       </div>

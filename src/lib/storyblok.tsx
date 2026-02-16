@@ -48,15 +48,24 @@ const components = {
   hero_slide: HeroSlideshow, // For individual slides
 };
 
-// Initialize Storyblok
-storyblokInit({
-  accessToken: process.env.STORYBLOK_API_TOKEN || process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN,
-  use: [apiPlugin],
-  components,
-  apiOptions: {
-    region: 'us',
-  },
-});
+// Initialize Storyblok only if token is available
+const storyblokToken = process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN;
+
+if (storyblokToken) {
+  storyblokInit({
+    accessToken: storyblokToken,
+    use: [apiPlugin],
+    components,
+    apiOptions: {
+      region: 'us',
+    },
+  });
+} else {
+  // Initialize without API plugin for static rendering
+  storyblokInit({
+    components,
+  });
+}
 
 export function StoryblokProvider({ children }: { children: ReactNode }) {
   return <>{children}</>;

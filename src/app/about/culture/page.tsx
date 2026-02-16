@@ -48,44 +48,35 @@ const culturalAspects = [
 const festivals = [
   {
     name: 'Losar (Sherpa New Year)',
-    timing: 'January/February',
+    timing: 'February | March',
     description: 'The most important festival, Losar celebrates the new year with family gatherings, feasting, traditional dances, and ceremonies spanning several days.',
-    image: '/images/losar.jpg',
+    image: '/images/sherpa/losar.png',
   },
   {
     name: 'Dumji',
-    timing: 'May/June',
+    timing: 'June | July',
     description: 'A week-long festival celebrating the birth of Guru Rinpoche, featuring masked dances, religious ceremonies, and community feasting.',
-    image: '/images/dumji.jpg',
+    image: '/images/sherpa/dumji.jpg',
   },
   {
     name: 'Mani Rimdu',
-    timing: 'October/November',
+    timing: 'October |November',
     description: 'A three-day Buddhist festival featuring colorful masked dances, religious ceremonies, and the blessing of the community.',
-    image: '/images/mani-rimdu.jpg',
+    image: '/images/sherpa/manirimdu.jpg',
   },
   {
     name: 'Phang-Ngi',
     timing: 'August',
-    description: 'Phang-Ngi is a significant festival that traditionally takes place before the harvest season. Historically, Sherpa communities, primarily engaged in agriculture and farming, observed this festival as a time of celebration before the busy harvest period. It is a Sherpa-specific new year celebration, distinct from Tibetan Losar, featuring traditional rituals, food, and community gatherings.',
-    image: '/images/lhosar.jpg',
+    description: 'Phang-Ngi is a significant festival that traditionally takes place before the harvest season. Historically, Sherpa communities, primarily engaged in agriculture and farming, observed this festival as a time of celebration before the busy harvest period.',
+    image: '/images/events/annual/phangi-party.jpeg',
   },
 ];
 
 export default function CulturePage() {
   return (
     <main className="min-h-screen">
-      {/* Hero Section - Matching other about pages */}
-      <section className="relative pt-40 pb-32 lg:pt-44 bg-gradient-wine">
-        <div className="absolute inset-0 overflow-hidden">
-          <Image
-            src="/images/culture-hero.jpg"
-            alt="Sherpa cultural celebration"
-            fill
-            className="object-cover opacity-20"
-            priority
-          />
-        </div>
+        {/* Hero Section */}
+      <section className="relative pt-40 pb-32 lg:pt-44 bg-gradient-himalayan">
         <div className="relative container-custom text-center">
           <p className="font-tibetan text-xl text-gold-400 mb-4">༄༅། ཤར་པའི་རིག་གཞུང་།</p>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6">
@@ -241,7 +232,7 @@ export default function CulturePage() {
             </div>
             <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-xl">
               <Image
-                src="/images/cultural-preservation.jpg"
+                src="/images/sherpa/sherpa-children.png"
                 alt="Children learning Sherpa traditions"
                 fill
                 className="object-cover"

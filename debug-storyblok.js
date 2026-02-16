@@ -1,12 +1,5 @@
 // Debug test - checking Storyblok API directly
-const StoryblokClientModule = require('storyblok-js-client');
-
-// Handle both ESM default export and CommonJS
-const StoryblokClient = StoryblokClientModule.default || StoryblokClientModule;
-
-console.log('StoryblokClient module:', typeof StoryblokClientModule);
-console.log('StoryblokClient:', typeof StoryblokClient);
-console.log('StoryblokClient keys:', Object.keys(StoryblokClientModule));
+const { default: StoryblokClient } = require('storyblok-js-client');
 
 const token = 'Vh35iNkFipBbd1955eRWUwtt';
 
