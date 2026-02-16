@@ -54,15 +54,15 @@ const UpcomingIcon = () => (
 
 // Himalayan Cup Winners
 const himalayanCupWinners = [
-  { year: 2023, winner: 'Creative FC', runnerUp: 'Aviyan Bay Area' },
+  { year: 2023, winner: 'Creative Nepal Youth FC', runnerUp: 'Aviyan Bay Area' },
   { year: 2022, winner: 'Aviyan Bay Area', runnerUp: 'Himalayan Sonoma FC' },
-  { year: 2021, winner: 'Bhutanese Youth Sports Center', runnerUp: 'Creative Nepal Youth Center' },
+  { year: 2021, winner: 'Bhutanese Youth Sports Center', runnerUp: 'Creative Nepal Youth FC' },
   { year: 2020, winner: 'Cancelled due to Covid-19', runnerUp: null },
-  { year: 2019, winner: 'East Bay United', runnerUp: null },
-  { year: 2018, winner: 'Himalayan Sonoma FC', runnerUp: null },
+  { year: 2019, winner: 'East Bay United', runnerUp: 'Bay Area Tibetan FC' },
+  { year: 2018, winner: 'Himalayan Sonoma FC', runnerUp: 'Creative Nepal Youth FC' },
   { year: 2017, winner: 'East Bay United', runnerUp: 'Himalayan Sonoma FC' },
-  { year: 2016, winner: 'East Bay United', runnerUp: null },
-  { year: 2015, winner: 'Sunnyvale Football Force', runnerUp: null },
+  { year: 2016, winner: 'SF Ekta FC', runnerUp: 'East Bay United' },
+  { year: 2015, winner: 'Sunnyvale Football Force', runnerUp: 'Lungta FC' },
 ];
 
 export default function EventsPage() {
