@@ -386,17 +386,17 @@ export default function EventsPage() {
                     </div>
                   </div>
                   <div className="p-8 md:p-12">
-                    <p className="text-mountain-600 dark:text-mountain-300 leading-relaxed mb-6 text-lg">
+                    <p className="text-mountain-600 dark:text-mountain-300 leading-relaxed mb-6 text-md">
                       The Himalayan Sherpa Club of Sonoma hosts the annual Phang-Ngi Festival in early August to preserve 
                       and celebrate Sherpa culture. Phang-Ngi is a significant festival that traditionally takes place 
                       before the harvest season. Historically, Sherpa communities, primarily engaged in agriculture and 
                       farming, observed this festival as a time of celebration before the busy harvest period.
                     </p>
-                    <p className="text-mountain-600 dark:text-mountain-300 leading-relaxed text-lg">
-                      To ensure broad community participation, HSC selects a convenient date and secures a venue in Sonoma. 
-                      The event is a vibrant blend of religious rituals, feasting, cultural performances, traditional music, 
-                      and the sharing of authentic Sherpa and Nepali cuisine, including Khapse pastries and traditional drinks. 
-                      This one-day celebration lasts until midnight, providing an opportunity for both young and old generations 
+                    <p className="text-mountain-600 dark:text-mountain-300 leading-relaxed text-md">
+                      To ensure broad community participation, HSC selects a convenient date and secures a venue in Sonoma.
+                      The event is a vibrant blend of religious rituals, feasting, cultural performances, traditional music,
+                      and the sharing of authentic Sherpa and Nepali cuisine, including Khapse pastries and traditional drinks.
+                      This one-day celebration lasts until midnight, providing an opportunity for both young and old generations
                       to connect, share traditions, learn from elders, and take a break from their busy lives.
                     </p>
                   </div>
@@ -420,13 +420,13 @@ export default function EventsPage() {
                     </div>
                   </div>
                   <div className="p-8 md:p-12">
-                    <p className="text-mountain-600 dark:text-mountain-300 leading-relaxed text-lg mb-6">
+                    <p className="text-mountain-600 dark:text-mountain-300 leading-relaxed text-md mb-6">
                       The Himalayan Sherpa Club (HSC) has been hosting the Annual Labor Day Soccer Tournament since 2015, 
                       bringing together teams from both within and outside the state. Traditionally held over two days—Sunday 
                       and Monday of Labor Day weekend—the tournament has become a highly anticipated event in the community. 
                       Winning teams receive trophies and attractive prizes, adding to the competitive spirit.
                     </p>
-                    <p className="text-mountain-600 dark:text-mountain-300 leading-relaxed text-lg">
+                    <p className="text-mountain-600 dark:text-mountain-300 leading-relaxed text-md">
                       Due to rising temperatures caused by climate change, the tournament has been rescheduled to spring or 
                       late winter since 2023. Additionally, to encourage participation from older players, HSC introduced a 
                       35+ category in 2022, specifically designed for veteran players.
