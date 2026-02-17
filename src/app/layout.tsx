@@ -22,33 +22,54 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://www.himalayansherpaclubsonoma.org'),
   title: {
-    default: 'Himalayan Sherpa Club of Sonoma | Preserving Heritage, Uniting Community',
+    default: 'Himalayan Sherpa Club of Sonoma | Sherpa Community in Wine Country California',
     template: '%s | Himalayan Sherpa Club of Sonoma',
   },
-  description: 'The Himalayan Sherpa Club of Sonoma is a 501(c)(3) non-profit organization dedicated to preserving and promoting Sherpa culture, heritage, and values in the North Bay Area of California.',
-  keywords: ['Sherpa', 'Himalayan', 'Sonoma', 'Nepal', 'Community', 'Culture', 'Heritage', 'Non-profit', 'Wine Country', 'California'],
+  description: 'The Himalayan Sherpa Club of Sonoma is a 501(c)(3) non-profit uniting Sherpa people in Sonoma County & Wine Country, California. Cultural events, Losar celebrations, and Sherpa heritage preservation.',
+  keywords: [
+    'Sherpa Sonoma',
+    'Sherpa Wine Country',
+    'Sherpa community California',
+    'Himalayan Sherpa Club',
+    'Sherpa people Sonoma County',
+    'Nepali community Sonoma',
+    'Sherpa culture California',
+    'Losar celebration Sonoma',
+    'Sherpa events Wine Country',
+    'Himalayan community North Bay',
+    'Sherpa Santa Rosa',
+    'Sherpa Petaluma',
+    'Sherpa Napa Valley',
+    'Tibetan Buddhist Sonoma',
+    'Nepal community California',
+    'Mount Everest Sherpa',
+    'Sherpa heritage preservation',
+    'Himalayan festivals California',
+    '501c3 non-profit Sonoma',
+  ],
   authors: [{ name: 'Himalayan Sherpa Club of Sonoma' }],
   creator: 'Himalayan Sherpa Club of Sonoma',
+  publisher: 'Himalayan Sherpa Club of Sonoma',
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://www.himalayansherpaclubsonoma.org',
     siteName: 'Himalayan Sherpa Club of Sonoma',
-    title: 'Himalayan Sherpa Club of Sonoma | Preserving Heritage, Uniting Community',
-    description: 'A 501(c)(3) non-profit dedicated to preserving Sherpa culture and fostering community in Sonoma, California.',
+    title: 'Himalayan Sherpa Club of Sonoma | Sherpa Community in Wine Country',
+    description: 'Join the vibrant Sherpa community in Sonoma County Wine Country, California. Cultural events, Losar celebrations, and heritage preservation.',
     images: [
       {
         url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Himalayan Sherpa Club of Sonoma',
+        alt: 'Himalayan Sherpa Club of Sonoma - Sherpa Community in Wine Country California',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Himalayan Sherpa Club of Sonoma',
-    description: 'Preserving Heritage, Uniting Community - A 501(c)(3) non-profit in Sonoma, California.',
+    title: 'Himalayan Sherpa Club of Sonoma | Sherpa Community Wine Country',
+    description: 'Join the vibrant Sherpa community in Sonoma County, California. Cultural events, festivals, and heritage preservation.',
     images: ['/images/og-image.jpg'],
   },
   robots: {
@@ -62,6 +83,10 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  verification: {
+    // Add your Google Search Console verification code here
+    // google: 'your-google-verification-code',
+  },
   manifest: '/site.webmanifest',
 };
 
@@ -72,6 +97,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`} suppressHydrationWarning>
+      <head>
+        {/* Preconnect to external domains for faster loading */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://a.storyblok.com" />
+        <link rel="dns-prefetch" href="https://www.facebook.com" />
+        <link rel="dns-prefetch" href="https://www.instagram.com" />
+      </head>
       <body className="min-h-screen flex flex-col bg-white dark:bg-mountain-900 transition-colors">
         <ThemeProvider>
           <StoryblokProvider>

@@ -3,26 +3,33 @@ import { MetadataRoute } from 'next';
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.himalayansherpaclubsonoma.org';
   
-  // Static pages
+  // Static pages with SEO priority
   const staticPages = [
-    '',
-    '/about',
-    '/about/introduction',
-    '/about/history',
-    '/about/culture',
-    '/about/founding-families',
-    '/about/functional-bodies',
-    '/events',
-    '/news',
-    '/contact',
-    '/join-us',
+    { route: '', priority: 1.0, changeFreq: 'daily' as const },
+    { route: '/about', priority: 0.9, changeFreq: 'weekly' as const },
+    { route: '/about/introduction', priority: 0.8, changeFreq: 'monthly' as const },
+    { route: '/about/sherpa', priority: 0.9, changeFreq: 'monthly' as const },
+    { route: '/about/history', priority: 0.7, changeFreq: 'monthly' as const },
+    { route: '/about/culture', priority: 0.8, changeFreq: 'monthly' as const },
+    { route: '/about/vision', priority: 0.7, changeFreq: 'monthly' as const },
+    { route: '/about/founding-families', priority: 0.7, changeFreq: 'monthly' as const },
+    { route: '/about/functional-bodies', priority: 0.7, changeFreq: 'monthly' as const },
+    { route: '/about/gallery', priority: 0.6, changeFreq: 'weekly' as const },
+    { route: '/events', priority: 0.9, changeFreq: 'daily' as const },
+    { route: '/events/losar', priority: 0.8, changeFreq: 'monthly' as const },
+    { route: '/events/phangi', priority: 0.8, changeFreq: 'monthly' as const },
+    { route: '/events/himalayan-cup', priority: 0.8, changeFreq: 'monthly' as const },
+    { route: '/news', priority: 0.8, changeFreq: 'daily' as const },
+    { route: '/contact', priority: 0.8, changeFreq: 'monthly' as const },
+    { route: '/join-us', priority: 0.9, changeFreq: 'monthly' as const },
+    { route: '/donate', priority: 0.8, changeFreq: 'monthly' as const },
   ];
 
-  const staticEntries: MetadataRoute.Sitemap = staticPages.map((route) => ({
-    url: `${baseUrl}${route}`,
+  const staticEntries: MetadataRoute.Sitemap = staticPages.map((page) => ({
+    url: `${baseUrl}${page.route}`,
     lastModified: new Date(),
-    changeFrequency: route === '' ? 'daily' : 'weekly',
-    priority: route === '' ? 1 : route.startsWith('/about') ? 0.8 : 0.7,
+    changeFrequency: page.changeFreq,
+    priority: page.priority,
   }));
 
   // Dynamic news pages - In production, fetch from Storyblok
@@ -35,7 +42,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     'sherpa-mountaineering-legacy',
     'community-garden-project',
     'summit-stories-documentary',
-    'annual-scholarship-awards',
+    'thompson-honors-pemba-sherpa'
   ];
 
   const newsEntries: MetadataRoute.Sitemap = newsArticleSlugs.map((slug) => ({

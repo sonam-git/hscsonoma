@@ -256,10 +256,13 @@ export default function Header() {
                       className={`px-4 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2 text-blue-900 dark:text-cream-50 hover:text-burgundy-700 dark:hover:text-white hover:bg-burgundy-50/80 dark:hover:bg-burgundy-900/30 hover:scale-105 hover:shadow-md ${pathname.startsWith(item.href) ? 'text-burgundy-700 dark:text-burgundy-400 bg-burgundy-100/80 dark:bg-burgundy-900/50 shadow-md font-bold border-b-2 border-burgundy-500' : ''}`}
                       onMouseEnter={() => setActiveDropdown(item.name)}
                       onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
+                      aria-expanded={activeDropdown === item.name}
+                      aria-haspopup="true"
+                      aria-label={`${item.name} menu`}
                     >
                       <IconComponent />
                       {item.name}
-                      <svg className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === item.name ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === item.name ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
                     </button>
@@ -298,8 +301,10 @@ export default function Header() {
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="p-2 rounded-lg transition-colors text-blue-900 dark:text-cream-50 hover:bg-burgundy-50/80 dark:hover:bg-burgundy-900/30"
+              aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={isMobileMenuOpen}
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 {isMobileMenuOpen ? (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 ) : (

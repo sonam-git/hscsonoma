@@ -7,8 +7,117 @@ import styles from '@/components/hero3d.module.css';
 import { getHomeHero, getHomeNews, getHomeEvents, getHomeGallery } from '@/lib/storyblok-home';
 
 export const metadata: Metadata = {
-  title: 'Home | Himalayan Sherpa Club of Sonoma',
-  description: 'The Himalayan Sherpa Club of Sonoma is a 501(c)(3) non-profit dedicated to preserving and promoting Sherpa culture, heritage, and values in the North Bay Area of California.',
+  title: 'Himalayan Sherpa Club of Sonoma | Sherpa Community in Wine Country California',
+  description: 'The Himalayan Sherpa Club of Sonoma is a 501(c)(3) non-profit uniting Sherpa people in Sonoma County & Wine Country, California. Join our community for cultural events, Losar celebrations, and Sherpa heritage preservation in the North Bay Area.',
+  keywords: [
+    'Sherpa Sonoma',
+    'Sherpa Wine Country',
+    'Sherpa community California',
+    'Himalayan Sherpa Club',
+    'Himalayan Sherpa Sonoma',
+    'Sherpa people Sonoma County',
+    'Sherpa in North Bay',
+    'Nepali community Sonoma',
+    'Sherpa culture California',
+    'Losar celebration Sonoma',
+    'Sherpa events Wine Country',
+    'Himalayan community North Bay',
+    'Sherpa organization in California',
+    'Tibetan Buddhist community Sonoma',
+    'Mount Everest Sherpa Sonoma',
+    'Sherpa heritage preservation',
+    'Nepali Sherpa Sonoma',
+    'Himalayan festivals California',
+    'Sherpa non-profit organization',
+    'Phangi Party Sonoma',
+    'Himalayan Sherpa events',
+    'Himalayan cup soccer tournament',
+    'Sherpa organization in Sonoma County',
+    'Himalayan Sonoma FC',
+    'Labor Day Soccer Tournament Sonoma',
+    'Everest Summiter in Sonoma',
+    'Mountaineer in Sonoma'
+  ],
+  alternates: {
+    canonical: 'https://www.himalayansherpaclubsonoma.org',
+  },
+  openGraph: {
+    title: 'Himalayan Sherpa Club of Sonoma | Sherpa Community in Wine Country',
+    description: 'Join the vibrant Sherpa community in Sonoma County. Cultural events, Losar celebrations, and heritage preservation in North Bay California Wine Country.',
+    url: 'https://www.himalayansherpaclubsonoma.org',
+    siteName: 'Himalayan Sherpa Club of Sonoma',
+    locale: 'en_US',
+    type: 'website',
+    images: [
+      {
+        url: '/images/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Himalayan Sherpa Club of Sonoma - Sherpa Community in Wine Country California',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Himalayan Sherpa Club of Sonoma | Sherpa Community in Wine Country',
+    description: 'Join the vibrant Sherpa community in Sonoma County, California. Cultural events, festivals, and heritage preservation.',
+    images: ['/images/og-image.jpg'],
+  },
+};
+
+// JSON-LD Structured Data for SEO
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Himalayan Sherpa Club of Sonoma',
+  alternateName: ['HSC Sonoma', 'Sherpa Club Sonoma', 'Himalayan Sherpa Club'],
+  description: 'A 501(c)(3) non-profit organization dedicated to preserving and promoting Sherpa culture, heritage, and values in Sonoma County and the North Bay Area of California.',
+  url: 'https://www.himalayansherpaclubsonoma.org',
+  logo: 'https://www.himalayansherpaclubsonoma.org/images/logos/HSC-logo-dark-border.png',
+  image: 'https://www.himalayansherpaclubsonoma.org/images/og-image.jpg',
+  foundingDate: '2011',
+  areaServed: {
+    '@type': 'Place',
+    name: 'Sonoma County, California',
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 38.2919,
+      longitude: -122.4580,
+    },
+  },
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Sonoma',
+    addressRegion: 'CA',
+    addressCountry: 'US',
+  },
+  sameAs: [
+    'https://www.facebook.com/HimalayanSherpaClubSonoma',
+  ],
+  nonprofitStatus: '501(c)(3)',
+  keywords: 'Sherpa, Himalayan, Sonoma, Wine Country, California, Nepal, Tibetan Buddhist, Losar, cultural heritage, community organization',
+};
+
+// Local Business JSON-LD for better local SEO
+const localBusinessJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CivicStructure',
+  name: 'Himalayan Sherpa Club of Sonoma',
+  description: 'Sherpa community organization in Sonoma County Wine Country, California. Preserving Himalayan heritage and culture.',
+  url: 'https://www.himalayansherpaclubsonoma.org',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Sonoma',
+    addressRegion: 'California',
+    postalCode: '95476',
+    addressCountry: 'US',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 38.2919,
+    longitude: -122.4580,
+  },
+  areaServed: ['Sonoma County', 'Santa Rosa', 'Petaluma', 'Napa', 'North Bay Area', 'Wine Country California'],
 };
 
 // Revalidate every 30 seconds for fresher Storyblok content
@@ -59,6 +168,16 @@ export default async function HomePage() {
 
   return (
     <>
+      {/* JSON-LD Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+      />
+
       {/* Hero Section - Desktop */}
       <section className="relative min-h-screen hidden md:flex items-center justify-center overflow-hidden">
         {/* 3D Background Image - Desktop only */}
@@ -68,9 +187,11 @@ export default async function HomePage() {
             alt={heroData.backgroundAlt}
             fill
             priority
+            fetchPriority="high"
             className="object-contain object-center select-none pointer-events-none"
             sizes="100vw"
             style={{ objectFit: 'cover', objectPosition: 'center' }}
+            quality={85}
           />
           {/* Dark Blue Overlay for readability */}
           <div className="absolute inset-0 bg-gradient-to-b from-blue-950/70 via-blue-900/50 to-mountain-900/60" />
@@ -136,9 +257,11 @@ export default async function HomePage() {
             alt={heroData.isFromStoryblok ? heroData.backgroundAlt : (heroData.mobileAlt || 'Himalayan Sherpa Club')}
             fill
             priority
+            fetchPriority="high"
             className="object-cover"
             sizes="100vw"
             style={{ objectPosition: 'center top' }}
+            quality={80}
           />
           {/* Subtle gradient overlay at bottom for smooth transition */}
           <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-gray-950 to-transparent" />
@@ -345,9 +468,10 @@ export default async function HomePage() {
                   <Link
                     href={`/news/${news.slug}`}
                     className="inline-flex items-center text-burgundy-700 dark:text-burgundy-400 font-medium hover:text-burgundy-800 dark:hover:text-burgundy-300 transition-colors group/link"
+                    aria-label={`Read more about ${news.title}`}
                   >
                     Read More
-                    <svg className="w-4 h-4 ml-2 transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 ml-2 transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </Link>
@@ -432,9 +556,10 @@ export default async function HomePage() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center text-burgundy-700 dark:text-burgundy-400 font-medium hover:text-burgundy-800 dark:hover:text-burgundy-300 transition-colors group/link"
+                        aria-label={`Read more about ${news.title} (opens in new tab)`}
                       >
                         Read More
-                        <svg className="w-4 h-4 ml-2 transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 ml-2 transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                         </svg>
                       </a>
@@ -442,9 +567,10 @@ export default async function HomePage() {
                       <Link
                         href={`/news/${news.slug}`}
                         className="inline-flex items-center text-burgundy-700 dark:text-burgundy-400 font-medium hover:text-burgundy-800 dark:hover:text-burgundy-300 transition-colors group/link"
+                        aria-label={`Read more about ${news.title}`}
                       >
                         Read More
-                        <svg className="w-4 h-4 ml-2 transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 ml-2 transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>
                       </Link>

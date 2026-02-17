@@ -1,5 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Compress and optimize output
+  compress: true,
+  
+  // Enable React strict mode for better development
+  reactStrictMode: true,
+
   images: {
     remotePatterns: [
       {
@@ -11,7 +17,54 @@ const nextConfig = {
         hostname: 'www.himalayansherpaclubsonoma.org',
       },
     ],
+    // Optimize image formats
+    formats: ['image/avif', 'image/webp'],
+    // Minimize image loading size
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256],
+    // Reduce quality slightly for smaller file sizes (still looks good)
+    minimumCacheTTL: 31536000, // Cache for 1 year
   },
+  
+  // Security headers for Best Practices score
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-DNS-Prefetch-Control',
+            value: 'on',
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'SAMEORIGIN',
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()',
+          },
+        ],
+      },
+    ];
+  },
+
   async redirects() {
     return [
       // Old page redirects (301 = permanent)

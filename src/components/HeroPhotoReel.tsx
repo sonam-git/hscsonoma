@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 const reelImages = [
@@ -43,8 +43,50 @@ interface HeroPhotoReelProps {
 }
 
 export default function HeroPhotoReel({ inline = false }: HeroPhotoReelProps) {
-  const [modalImg, setModalImg] = useState<null | typeof reelImages[0]>(null);
+  const [modalImg, setModalImg] = useState<null | { img: typeof reelImages[0]; index: number }>(null);
   const [isPaused, setIsPaused] = useState(false);
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (modalImg) {
+      const newIndex = modalImg.index === 0 ? reelImages.length - 1 : modalImg.index - 1;
+      setModalImg({ img: reelImages[newIndex], index: newIndex });
+    }
+  };
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (modalImg) {
+      const newIndex = modalImg.index === reelImages.length - 1 ? 0 : modalImg.index + 1;
+      setModalImg({ img: reelImages[newIndex], index: newIndex });
+    }
+  };
+
+  const openModal = (img: typeof reelImages[0], index: number) => {
+    // Use modulo to get the actual index from doubled images
+    const actualIndex = index % reelImages.length;
+    setModalImg({ img, index: actualIndex });
+  };
+
+  // Keyboard navigation
+  useEffect(() => {
+    if (!modalImg) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setModalImg(null);
+      } else if (e.key === 'ArrowLeft') {
+        const newIndex = modalImg.index === 0 ? reelImages.length - 1 : modalImg.index - 1;
+        setModalImg({ img: reelImages[newIndex], index: newIndex });
+      } else if (e.key === 'ArrowRight') {
+        const newIndex = modalImg.index === reelImages.length - 1 ? 0 : modalImg.index + 1;
+        setModalImg({ img: reelImages[newIndex], index: newIndex });
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [modalImg]);
 
   const reelContent = (
     <>
@@ -72,8 +114,9 @@ export default function HeroPhotoReel({ inline = false }: HeroPhotoReelProps) {
           {doubledImages.map((img, index) => (
             <button
               key={`${img.src}-${index}`}
-              className="relative group focus:outline-none flex-shrink-0"
-              onClick={() => setModalImg(img)}
+              className="relative group focus:outline-none focus:ring-2 focus:ring-gold-400 focus:ring-offset-2 focus:ring-offset-gray-950 flex-shrink-0 rounded-sm"
+              onClick={() => openModal(img, index)}
+              aria-label={`View ${img.alt} in fullscreen`}
             >
               {/* Film frame with border */}
               <div className="relative w-20 h-14 sm:w-24 sm:h-16 md:w-28 md:h-20 bg-gray-900 rounded-sm overflow-hidden border-2 border-gray-700 group-hover:border-gold-400 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-gold-400/40 group-hover:z-10">
@@ -84,6 +127,7 @@ export default function HeroPhotoReel({ inline = false }: HeroPhotoReelProps) {
                   className="object-cover group-hover:brightness-110 transition-all duration-300"
                   sizes="(max-width: 640px) 80px, (max-width: 768px) 96px, 112px"
                   draggable={false}
+                  loading="lazy"
                 />
               </div>
             </button>
@@ -132,34 +176,85 @@ export default function HeroPhotoReel({ inline = false }: HeroPhotoReelProps) {
       {/* Modal */}
       {modalImg && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-lg animate-fade-in"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-gray-100/40 backdrop-blur-md animate-fade-in p-2 sm:p-4"
           onClick={() => setModalImg(null)}
         >
-          <button
-            className="absolute top-6 right-6 text-white text-4xl bg-black/50 rounded-full w-12 h-12 flex items-center justify-center hover:bg-black/70 hover:scale-110 transition-all duration-300 z-10"
-            onClick={() => setModalImg(null)}
-            aria-label="Close"
-          >
-            ×
-          </button>
-          <div 
-            className="relative w-[90vw] max-w-3xl aspect-[4/3] rounded-lg overflow-hidden shadow-2xl border-4 border-gray-800 bg-black animate-zoom-in"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <Image
-              src={modalImg.src}
-              alt={modalImg.alt}
-              fill
-              className="object-contain"
-              sizes="(max-width: 768px) 90vw, 900px"
-              draggable={false}
-            />
-            {/* Image Title - Bottom Right */}
-            <div className="absolute bottom-0 right-0 left-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4">
-              <p className="text-white text-sm sm:text-base md:text-lg font-medium text-right drop-shadow-lg">
-                {modalImg.alt}
-              </p>
+          {/* Modal content container */}
+          <div className="flex flex-col items-center w-full max-w-4xl" onClick={(e) => e.stopPropagation()}>
+            {/* Image with decorative frame */}
+            <div className="relative w-full">
+              {/* Outer decorative frame */}
+              <div className="bg-gradient-to-br from-amber-700 via-amber-900 to-amber-800 p-2 sm:p-3 rounded-lg shadow-2xl">
+                {/* Inner gold border */}
+                <div className="bg-gradient-to-br from-amber-500 via-amber-600 to-amber-500 p-1 rounded-md">
+                  {/* Image container */}
+                  <div className="relative w-full aspect-[4/3] bg-black rounded overflow-hidden">
+                    <Image
+                      src={modalImg.img.src}
+                      alt={modalImg.img.alt}
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 768px) 95vw, 900px"
+                      draggable={false}
+                    />
+                  </div>
+                </div>
+              </div>
+              
+              {/* Image counter badge */}
+              <div className="absolute top-4 left-4 sm:top-5 sm:left-5 bg-black/70 text-white text-xs sm:text-sm px-2 py-1 rounded-full backdrop-blur-sm">
+                {modalImg.index + 1} / {reelImages.length}
+              </div>
             </div>
+            
+            {/* Image Title */}
+            <p className="text-white text-sm sm:text-base md:text-lg font-medium text-center mt-3 mb-2 px-2 drop-shadow-lg">
+              {modalImg.img.alt}
+            </p>
+            
+            {/* Navigation controls - Prev | Close | Next */}
+            <div className="flex items-center justify-center gap-3 sm:gap-6 mt-2 mb-4">
+              {/* Previous button */}
+              <button
+                onClick={handlePrev}
+                className="flex items-center gap-1 sm:gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-full transition-all duration-300 hover:scale-105 shadow-lg border border-gray-600"
+                aria-label="Previous image"
+              >
+                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+                <span className="text-sm sm:text-base font-medium">Prev</span>
+              </button>
+              
+              {/* Close button */}
+              <button
+                onClick={() => setModalImg(null)}
+                className="flex items-center gap-1 sm:gap-2 px-5 sm:px-8 py-2.5 sm:py-3 bg-red-600 hover:bg-red-700 text-white rounded-full transition-all duration-300 hover:scale-105 shadow-lg border-2 border-white/30"
+                aria-label="Close fullscreen image"
+              >
+                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                <span className="text-sm sm:text-base font-medium">Close</span>
+              </button>
+              
+              {/* Next button */}
+              <button
+                onClick={handleNext}
+                className="flex items-center gap-1 sm:gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-full transition-all duration-300 hover:scale-105 shadow-lg border border-gray-600"
+                aria-label="Next image"
+              >
+                <span className="text-sm sm:text-base font-medium">Next</span>
+                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+            
+            {/* Keyboard hint */}
+            <p className="text-gray-500 text-xs hidden sm:block">
+              Use ← → arrow keys to navigate, ESC to close
+            </p>
           </div>
         </div>
       )}
