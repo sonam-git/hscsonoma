@@ -61,24 +61,55 @@ export default async function HomePage() {
     <>
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* 3D Background Image - Now from Storyblok or fallback */}
+        {/* 3D Background Image - Responsive for desktop/mobile */}
         <div className={`absolute inset-0 w-full h-full ${styles.heroBg}`}>  
-          <Image
-            src={heroData.backgroundImage}
-            alt={heroData.backgroundAlt}
-            fill
-            priority
-            className="object-contain object-center select-none pointer-events-none"
-            sizes="100vw"
-            style={{ objectFit: 'cover', objectPosition: 'center' }}
-          />
+          {/* Desktop Image - shown on large screens */}
+          <div className="hidden md:block absolute inset-0">
+            <Image
+              src={heroData.backgroundImage}
+              alt={heroData.backgroundAlt}
+              fill
+              priority
+              className="object-contain object-center select-none pointer-events-none"
+              sizes="100vw"
+              style={{ objectFit: 'cover', objectPosition: 'center' }}
+            />
+          </div>
+          
+          {/* Mobile Image - shown on small screens */}
+          <div className="block md:hidden absolute inset-0">
+            {heroData.isFromStoryblok ? (
+              /* Storyblok image: use same image with 16:9 aspect ratio / best-fit CSS */
+              <Image
+                src={heroData.backgroundImage}
+                alt={heroData.backgroundAlt}
+                fill
+                priority
+                className="object-cover object-center select-none pointer-events-none"
+                sizes="100vw"
+                style={{ objectFit: 'cover', objectPosition: 'center top' }}
+              />
+            ) : (
+              /* Fallback: use dedicated mobile tall image */
+              <Image
+                src={heroData.mobileImage || '/images/hero/hero-tall.png'}
+                alt={heroData.mobileAlt || 'Himalayan Sherpa Club - Mobile'}
+                fill
+                priority
+                className="object-cover object-center select-none pointer-events-none"
+                sizes="100vw"
+                style={{ objectFit: 'cover', objectPosition: 'center' }}
+              />
+            )}
+          </div>
+          
           {/* Dark Blue Overlay for readability */}
           <div className="absolute inset-0 bg-gradient-to-b from-blue-950/70 via-blue-900/50 to-mountain-900/60" />
           <div className="absolute inset-0 bg-black/30" />
         </div>
 
         {/* Content */}
-        <div className="relative z-10 container-custom text-center px-4 pt-20">
+        <div className="relative z-10 container-custom text-center px-4">
           {/* Tibetan Text */}
           <p className="font-tibetan text-2xl md:text-3xl lg:text-4xl text-gold-400 mb-4 animate-fade-in">
             ༄༅། ཧི་མ་ལ་ཡ་ཤར་པ་སྐྱིད་སྡུག
@@ -96,7 +127,7 @@ export default async function HomePage() {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in  ">
             <Link href="/join-us" className="btn-primary text-lg px-8 py-4">
               Become a Member
             </Link>

@@ -96,6 +96,9 @@ console.log(`📋 Storyblok params: version=${sbParams.version}, cv=${sbParams.c
 export interface HomeHeroData {
   backgroundImage: string;
   backgroundAlt: string;
+  mobileImage?: string;
+  mobileAlt?: string;
+  isFromStoryblok: boolean;
 }
 
 export interface HomeEventData {
@@ -141,8 +144,11 @@ export interface HomePageContent {
 // ===========================================
 
 const fallbackHero: HomeHeroData = {
-  backgroundImage: '/images/hero/summitlegend.jpg',
-  backgroundAlt: 'Summit Legend - Himalayan Mountains',
+  backgroundImage: '/images/hero/sherpa-sonoma.png',
+  backgroundAlt: 'Sherpa Sonoma - Himalayan Sherpa Club',
+  mobileImage: '/images/hero/hero-tall.png',
+  mobileAlt: 'Himalayan Sherpa Club - Mobile',
+  isFromStoryblok: false,
 };
 
 // Note: Events, News, and Gallery return empty arrays when no Storyblok content,
@@ -168,6 +174,7 @@ export async function getHomeHero(): Promise<HomeHeroData> {
         return {
           backgroundImage: content.background_image.filename,
           backgroundAlt: content.background_image.alt || 'Himalayan Mountains',
+          isFromStoryblok: true,
         };
       }
     } catch {
@@ -183,6 +190,7 @@ export async function getHomeHero(): Promise<HomeHeroData> {
         return {
           backgroundImage: content.background_image.filename,
           backgroundAlt: content.background_image.alt || 'Himalayan Mountains',
+          isFromStoryblok: true,
         };
       }
     } catch {
@@ -198,6 +206,7 @@ export async function getHomeHero(): Promise<HomeHeroData> {
         return {
           backgroundImage: content.background_image.filename,
           backgroundAlt: content.background_image.alt || 'Himalayan Mountains',
+          isFromStoryblok: true,
         };
       }
     } catch {
@@ -218,6 +227,7 @@ export async function getHomeHero(): Promise<HomeHeroData> {
       return {
         backgroundImage: content.background_image.filename,
         backgroundAlt: content.background_image.alt || 'Himalayan Mountains',
+        isFromStoryblok: true,
       };
     }
     

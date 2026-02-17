@@ -5,6 +5,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { StoryblokProvider } from '@/lib/storyblok';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import AnnouncementModal from '@/components/AnnouncementModal';
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -79,6 +80,7 @@ export default function RootLayout({
               {children}
             </main>
             <Footer />
+              <AnnouncementModal />
           </StoryblokProvider>
         </ThemeProvider>
       </body>
