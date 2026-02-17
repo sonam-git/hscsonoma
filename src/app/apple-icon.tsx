@@ -8,24 +8,33 @@ export const size = {
 export const contentType = 'image/png';
 
 // Image generation
-export default function Icon() {
+export default async function Icon() {
+  // Fetch the logo from the public folder
+  const logoUrl = new URL('/images/logos/HSC-logo-dark-border.png', process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000');
+
   return new ImageResponse(
     (
       <div
         style={{
-          fontSize: 100,
-          background: 'linear-gradient(135deg, #7c2d12 0%, #1e3a5f 100%)',
           width: '100%',
           height: '100%',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          color: '#fcd34d',
+          background: 'white',
           borderRadius: '24px',
-          fontWeight: 'bold',
         }}
       >
-        H
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={logoUrl.toString()}
+          alt="HSC Logo"
+          width={160}
+          height={160}
+          style={{
+            objectFit: 'contain',
+          }}
+        />
       </div>
     ),
     {

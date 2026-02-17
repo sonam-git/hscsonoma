@@ -59,75 +59,44 @@ export default async function HomePage() {
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* 3D Background Image - Responsive for desktop/mobile */}
+      {/* Hero Section - Desktop */}
+      <section className="relative min-h-screen hidden md:flex items-center justify-center overflow-hidden">
+        {/* 3D Background Image - Desktop only */}
         <div className={`absolute inset-0 w-full h-full ${styles.heroBg}`}>  
-          {/* Desktop Image - shown on large screens */}
-          <div className="hidden md:block absolute inset-0">
-            <Image
-              src={heroData.backgroundImage}
-              alt={heroData.backgroundAlt}
-              fill
-              priority
-              className="object-contain object-center select-none pointer-events-none"
-              sizes="100vw"
-              style={{ objectFit: 'cover', objectPosition: 'center' }}
-            />
-          </div>
-          
-          {/* Mobile Image - shown on small screens */}
-          <div className="block md:hidden absolute inset-0">
-            {heroData.isFromStoryblok ? (
-              /* Storyblok image: use same image with 16:9 aspect ratio / best-fit CSS */
-              <Image
-                src={heroData.backgroundImage}
-                alt={heroData.backgroundAlt}
-                fill
-                priority
-                className="object-cover object-center select-none pointer-events-none"
-                sizes="100vw"
-                style={{ objectFit: 'cover', objectPosition: 'center top' }}
-              />
-            ) : (
-              /* Fallback: use dedicated mobile tall image */
-              <Image
-                src={heroData.mobileImage || '/images/hero/hero-tall.png'}
-                alt={heroData.mobileAlt || 'Himalayan Sherpa Club - Mobile'}
-                fill
-                priority
-                className="object-cover object-center select-none pointer-events-none"
-                sizes="100vw"
-                style={{ objectFit: 'cover', objectPosition: 'center' }}
-              />
-            )}
-          </div>
-          
+          <Image
+            src={heroData.backgroundImage}
+            alt={heroData.backgroundAlt}
+            fill
+            priority
+            className="object-contain object-center select-none pointer-events-none"
+            sizes="100vw"
+            style={{ objectFit: 'cover', objectPosition: 'center' }}
+          />
           {/* Dark Blue Overlay for readability */}
           <div className="absolute inset-0 bg-gradient-to-b from-blue-950/70 via-blue-900/50 to-mountain-900/60" />
           <div className="absolute inset-0 bg-black/30" />
         </div>
 
-        {/* Content */}
+        {/* Content - Desktop */}
         <div className="relative z-10 container-custom text-center px-4">
           {/* Tibetan Text */}
-          <p className="font-tibetan text-2xl md:text-3xl lg:text-4xl text-gold-400 mb-4 animate-fade-in">
+          <p className="font-tibetan text-3xl lg:text-4xl text-gold-400 mb-4 animate-fade-in">
             ༄༅། ཧི་མ་ལ་ཡ་ཤར་པ་སྐྱིད་སྡུག
           </p>
 
           {/* Club Name */}
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-serif font-bold text-white mb-6 text-shadow animate-slide-up ">
+          <h1 className="text-5xl lg:text-7xl font-serif font-bold text-white mb-6 text-shadow animate-slide-up">
             Himalayan Sherpa Club 
-            <span className=" text-gold-300 inline"> of Sonoma</span>
+            <span className="text-gold-300 inline"> of Sonoma</span>
           </h1>
 
           {/* Tagline */}
-        <p className="satisfy-regular text-xl md:text-2xl lg:text-3xl text-cream-100 mb-10 animate-fade-in">
+          <p className="satisfy-regular text-2xl lg:text-3xl text-cream-100 mb-10 animate-fade-in">
             "Preserving Heritage, Uniting Community."
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in  ">
+          <div className="flex flex-row gap-4 justify-center animate-fade-in">
             <Link href="/join-us" className="btn-primary text-lg px-8 py-4">
               Become a Member
             </Link>
@@ -137,7 +106,7 @@ export default async function HomePage() {
           </div>
         </div>
 
-        {/* Mountain Silhouette Bottom (Zig-Zag Border) */}
+        {/* Mountain Silhouette Bottom (Zig-Zag Border) - Desktop */}
         <div className="absolute inset-x-0 bottom-0 h-32 z-10">
           <svg viewBox="0 0 1440 120" className="w-full h-full" preserveAspectRatio="none">
             <path
@@ -147,12 +116,84 @@ export default async function HomePage() {
           </svg>
         </div>
 
-        {/* 3D Photo Reel at Bottom */}
+        {/* 3D Photo Reel at Bottom - Desktop */}
         <HeroPhotoReel />
       </section>
 
+      {/* Hero Section - Mobile (New Structured Layout) */}
+      <section className="md:hidden flex flex-col bg-white dark:bg-mountain-900">
+        {/* Row 1: Tibetan Script Header */}
+        <div className="bg-gradient-to-r from-burgundy-800 via-burgundy-700 to-burgundy-800 py-3 px-4">
+          <p className="font-tibetan text-lg text-gold-400 text-center tracking-wide">
+            ༄༅། ཧི་མ་ལ་ཡ་ཤར་པ་སྐྱིད་སྡུག
+          </p>
+        </div>
+
+        {/* Row 2: Hero Image - adjusted height to fit photo reel in viewport */}
+        <div className="relative" style={{ height: '60vh' }}>
+          <Image
+            src={heroData.isFromStoryblok ? heroData.backgroundImage : (heroData.mobileImage || '/images/hero/hero-tall.png')}
+            alt={heroData.isFromStoryblok ? heroData.backgroundAlt : (heroData.mobileAlt || 'Himalayan Sherpa Club')}
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+            style={{ objectPosition: 'center top' }}
+          />
+          {/* Subtle gradient overlay at bottom for smooth transition */}
+          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-gray-950 to-transparent" />
+          
+          {/* Vertical text label like reference */}
+          <div className="absolute left-0 top-0 bottom-0 flex items-center">
+            <div className="bg-burgundy-800/90 backdrop-blur-sm py-4 px-2 rounded-r-lg shadow-lg">
+              <p className="text-[10px] font-bold text-gold-400 uppercase tracking-[0.2em] writing-vertical">
+               HSC since 2011
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Photo Reel - Mobile (positioned between hero image and content) */}
+        <div className="relative z-20 w-full">
+          <HeroPhotoReel inline />
+        </div>
+
+        {/* Row 3, 4, 5: Content Section */}
+        <div className="bg-white dark:bg-mountain-900 px-5 py-6 space-y-4">
+          {/* Row 3: Club Name */}
+          <h1 className="text-2xl font-serif font-bold text-mountain-900 dark:text-cream-50 text-center leading-tight">
+            Himalayan Sherpa Club
+            <span className="text-burgundy-700 dark:text-gold-400"> of Sonoma</span>
+          </h1>
+
+          {/* Row 4: Tagline */}
+          <p className="satisfy-regular text-lg text-mountain-600 dark:text-cream-200 text-center">
+            "Preserving Heritage, Uniting Community."
+          </p>
+
+          {/* Row 5: CTA Buttons - Two columns */}
+          <div className="flex gap-3 pt-2">
+            <Link 
+              href="/join-us" 
+              className="flex-1 bg-burgundy-700 hover:bg-burgundy-800 text-white text-sm font-semibold py-3 px-4 rounded-lg text-center transition-all duration-200 shadow-md hover:shadow-lg active:scale-[0.98]"
+            >
+              Become a Member
+            </Link>
+            <Link 
+              href="/donate" 
+              className="flex-1 bg-gold-500 hover:bg-gold-600 text-mountain-900 text-sm font-semibold py-3 px-4 rounded-lg text-center transition-all duration-200 shadow-md hover:shadow-lg active:scale-[0.98]"
+            >
+              Donate Now
+            </Link>
+          </div>
+        </div>
+
+        {/* Decorative bottom border */}
+        <div className="h-1 bg-gradient-to-r from-burgundy-700 via-gold-500 to-burgundy-700" />  
+      </section>
+
       {/* About Section */}
-      <section className="py-20 bg-cream-50 dark:bg-mountain-900">
+      <section className="py-10 bg-cream-50 dark:bg-mountain-900">
         <div className="container-custom">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Image */}

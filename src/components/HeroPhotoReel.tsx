@@ -38,66 +38,84 @@ const reelImages = [
 // Duplicate images for seamless infinite scroll
 const doubledImages = [...reelImages, ...reelImages];
 
-export default function HeroPhotoReel() {
+interface HeroPhotoReelProps {
+  inline?: boolean; // When true, renders without absolute positioning (for mobile)
+}
+
+export default function HeroPhotoReel({ inline = false }: HeroPhotoReelProps) {
   const [modalImg, setModalImg] = useState<null | typeof reelImages[0]>(null);
   const [isPaused, setIsPaused] = useState(false);
 
-  return (
+  const reelContent = (
     <>
-      {/* Full-Width Film Strip Reel */}
-      <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none overflow-hidden">
-        <div className="pointer-events-auto w-full bg-gray-950/95 shadow-2xl py-1.5 backdrop-blur-sm border-t border-gray-800">
-          {/* Top Sprocket Holes */}
-          <div className="flex justify-between px-2 mb-1">
-            {Array.from({ length: 60 }).map((_, i) => (
-              <div key={`top-${i}`} className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-sm bg-gray-800" />
-            ))}
-          </div>
-          
-          {/* Scrolling Film Frames - Animated */}
-          <div 
-            className="overflow-hidden py-1"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-          >
-            <div 
-              className="flex gap-1 px-2"
-              style={{
-                animation: `scroll-left 40s linear infinite`,
-                animationPlayState: isPaused ? 'paused' : 'running',
-                width: 'max-content',
-              }}
+      {/* Top Sprocket Holes */}
+      <div className="flex justify-between px-2 mb-1">
+        {Array.from({ length: 60 }).map((_, i) => (
+          <div key={`top-${i}`} className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-sm bg-gray-800" />
+        ))}
+      </div>
+      
+      {/* Scrolling Film Frames - Animated */}
+      <div 
+        className="overflow-hidden py-1"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        <div 
+          className="flex gap-1 px-2"
+          style={{
+            animation: `scroll-left 40s linear infinite`,
+            animationPlayState: isPaused ? 'paused' : 'running',
+            width: 'max-content',
+          }}
+        >
+          {doubledImages.map((img, index) => (
+            <button
+              key={`${img.src}-${index}`}
+              className="relative group focus:outline-none flex-shrink-0"
+              onClick={() => setModalImg(img)}
             >
-              {doubledImages.map((img, index) => (
-                <button
-                  key={`${img.src}-${index}`}
-                  className="relative group focus:outline-none flex-shrink-0"
-                  onClick={() => setModalImg(img)}
-                >
-                  {/* Film frame with border */}
-                  <div className="relative w-20 h-14 sm:w-24 sm:h-16 md:w-28 md:h-20 bg-gray-900 rounded-sm overflow-hidden border-2 border-gray-700 group-hover:border-gold-400 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-gold-400/40 group-hover:z-10">
-                    <Image
-                      src={img.src}
-                      alt={img.alt}
-                      fill
-                      className="object-cover group-hover:brightness-110 transition-all duration-300"
-                      sizes="(max-width: 640px) 80px, (max-width: 768px) 96px, 112px"
-                      draggable={false}
-                    />
-                  </div>
-                </button>
-              ))}
-            </div>
-          </div>
-          
-          {/* Bottom Sprocket Holes */}
-          <div className="flex justify-between px-2 mt-1">
-            {Array.from({ length: 60 }).map((_, i) => (
-              <div key={`bottom-${i}`} className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-sm bg-gray-800" />
-            ))}
-          </div>
+              {/* Film frame with border */}
+              <div className="relative w-20 h-14 sm:w-24 sm:h-16 md:w-28 md:h-20 bg-gray-900 rounded-sm overflow-hidden border-2 border-gray-700 group-hover:border-gold-400 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-gold-400/40 group-hover:z-10">
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover group-hover:brightness-110 transition-all duration-300"
+                  sizes="(max-width: 640px) 80px, (max-width: 768px) 96px, 112px"
+                  draggable={false}
+                />
+              </div>
+            </button>
+          ))}
         </div>
       </div>
+      
+      {/* Bottom Sprocket Holes */}
+      <div className="flex justify-between px-2 mt-1">
+        {Array.from({ length: 60 }).map((_, i) => (
+          <div key={`bottom-${i}`} className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-sm bg-gray-800" />
+        ))}
+      </div>
+    </>
+  );
+
+  return (
+    <>
+      {/* Film Strip Reel - conditional positioning */}
+      {inline ? (
+        // Inline version for mobile - no absolute positioning
+        <div className="w-full bg-gray-950/95 shadow-2xl py-1.5 backdrop-blur-sm">
+          {reelContent}
+        </div>
+      ) : (
+        // Absolute positioned version for desktop
+        <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none overflow-hidden">
+          <div className="pointer-events-auto w-full bg-gray-950/95 shadow-2xl py-1.5 backdrop-blur-sm border-t border-gray-800">
+            {reelContent}
+          </div>
+        </div>
+      )}
 
       {/* CSS Animation */}
       <style jsx>{`
