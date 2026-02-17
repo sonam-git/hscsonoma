@@ -806,8 +806,16 @@ export default async function HomePage() {
 
       {/* CTA Section */}
       <section className="relative py-24 overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-burgundy-900 via-burgundy-800 to-forest-900" />
+       {/* Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/news/hero-ai-image.png"
+            alt="Wine Country Background"
+            fill
+            className="object-cover object-top"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/85 to-white/90 dark:from-mountain-900/95 dark:via-mountain-800/90 dark:to-mountain-900/95" />
+        </div>
         
         {/* Pattern */}
         <div className="absolute inset-x-0 bottom-0 h-20 opacity-10">
@@ -820,18 +828,18 @@ export default async function HomePage() {
         </div>
 
         <div className="relative container-custom text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-white mb-6">
+          <h2 className="section-title">
             Join Our Community
           </h2>
-          <p className="text-xl text-cream-200 max-w-2xl mx-auto mb-10">
+          <p className="text-xl text-gray-600 dark:text-cream-200 max-w-2xl mx-auto mb-10">
             Together, we share our values, support one another, and preserve our rich cultural heritage. 
             By giving and receiving, we create deeper bonds and strengthen our collective spirit.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/join-us" className="btn-gold text-lg px-8 py-4">
+            <Link href="/join-us" className="btn-gold hover:bg-white hover:border-gray-600 text-lg px-8 py-4">
               Become a Member
             </Link>
-            <Link href="/contact" className="btn-secondary border-white text-white hover:bg-white/10 text-lg px-8 py-4">
+            <Link href="/contact" className="btn-secondary border-gray-600 text-gray-600 hover:bg-white text-lg px-8 py-4">
               Contact Us
             </Link>
           </div>
@@ -844,13 +852,16 @@ export default async function HomePage() {
           <div className="bg-white dark:bg-mountain-800 rounded-2xl shadow-xl dark:shadow-mountain-950/50 overflow-hidden">
             <div className="grid md:grid-cols-2">
               {/* Image Side */}
-              <div className="relative aspect-[4/3] md:aspect-auto">
-                <div className="absolute inset-0 bg-gradient-to-br from-himalayan-600 to-himalayan-800 flex items-center justify-center">
+              <div className="relative aspect-[4/3] md:aspect-auto min-h-[300px]">
+                <Image
+                  src="/images/sherpa/sherpa-children.png"
+                  alt="Sherpa Children - Your support helps us build a brighter future"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex items-end justify-center">
                   <div className="text-center text-white p-8">
-                    <svg className="w-20 h-20 mx-auto mb-4 opacity-75" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                    </svg>
-                    <p className="text-2xl font-serif italic opacity-90">
+                    <p className="text-2xl font-serif italic opacity-90 drop-shadow-lg">
                       &quot;Your support helps us build a brighter future&quot;
                     </p>
                   </div>
