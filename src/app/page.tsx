@@ -144,10 +144,10 @@ export default async function HomePage() {
           <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-gray-950 to-transparent" />
           
           {/* Vertical text label like reference */}
-          <div className="absolute left-0 top-0 bottom-0 flex items-center">
-            <div className="bg-burgundy-800/90 backdrop-blur-sm py-4 px-2 rounded-r-lg shadow-lg">
-              <p className="text-[10px] font-bold text-gold-400 uppercase tracking-[0.2em] writing-vertical">
-               HSC since 2011
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 z-10">
+            <div className="bg-burgundy-800/90 backdrop-blur-sm py-3 px-1.5 rounded-r-lg shadow-lg min-w-[24px] flex items-center justify-center">
+              <p className="text-[9px] font-bold text-gold-400 uppercase tracking-[0.15em] writing-vertical whitespace-nowrap">
+                Since 2011
               </p>
             </div>
           </div>

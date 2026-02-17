@@ -246,4 +246,7 @@
   writing-mode: vertical-rl;
   text-orientation: mixed;
   transform: rotate(180deg);
+  -webkit-writing-mode: vertical-rl;
+  -ms-writing-mode: tb-rl;
+  line-height: 1;
 }
