@@ -549,10 +549,10 @@ export default function EventsPage() {
                 <div className="bg-white dark:bg-mountain-800 rounded-2xl overflow-hidden shadow-xl border border-gold-200 dark:border-gold-800/30">
                   <div className="relative h-72 md:h-96 w-full">
                     <Image
-                      src="/images/events/past/summit-legend.jpg"
+                      src="/images/hero/summitlegend.jpg"
                       alt="Summit Legends Event"
                       fill
-                      className="object-cover"
+                      className="object-fit"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 p-8 text-center">
@@ -572,8 +572,13 @@ export default function EventsPage() {
 
                     <div className="grid md:grid-cols-3 gap-6 mb-8">
                     <div className="bg-white dark:bg-mountain-700 rounded-xl p-6 text-center">
-                      <div className="w-20 h-20 bg-gold-100 dark:bg-gold-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-3xl">🥇</span>
+                      <div className="w-20 h-20 rounded-full mx-auto mb-4 border-3 border-gold-400 dark:border-gold-500 overflow-hidden relative shadow-lg">
+                        <Image
+                          src="/images/events/past/kami-rita.jpg"
+                          alt="Kami Rita Sherpa"
+                          fill
+                          className="object-cover object-top"
+                        />
                       </div>
                       <h4 className="font-semibold text-mountain-900 dark:text-cream-50 mb-2">Kami Rita Sherpa</h4>
                       <p className="text-sm text-mountain-500 dark:text-mountain-400">Residing in Santa Rosa, CA</p>
@@ -582,8 +587,13 @@ export default function EventsPage() {
                       </p>
                     </div>
                     <div className="bg-white dark:bg-mountain-700 rounded-xl p-6 text-center">
-                      <div className="w-20 h-20 bg-gold-100 dark:bg-gold-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-3xl">🥇</span>
+                      <div className="w-20 h-20 rounded-full mx-auto mb-4 border-3 border-gold-400 dark:border-gold-500 overflow-hidden relative shadow-lg">
+                        <Image
+                          src="/images/events/past/ngima-nuru.jpg"
+                          alt="Ngima Nuru Sherpa"
+                          fill
+                          className="object-cover object-center"
+                        />
                       </div>
                       <h4 className="font-semibold text-mountain-900 dark:text-cream-50 mb-2">Ngima Nuru Sherpa</h4>
                       <p className="text-sm text-mountain-500 dark:text-mountain-400">Youngest Multi-Summit Record</p>
@@ -592,8 +602,13 @@ export default function EventsPage() {
                       </p>
                     </div>
                     <div className="bg-white dark:bg-mountain-700 rounded-xl p-6 text-center">
-                      <div className="w-20 h-20 bg-gold-100 dark:bg-gold-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-3xl">🥇</span>
+                      <div className="w-20 h-20 rounded-full mx-auto mb-4 border-3 border-gold-400 dark:border-gold-500 overflow-hidden relative shadow-lg">
+                        <Image
+                          src="/images/events/past/ang-d.jpg"
+                          alt="Ang D. Sherpa"
+                          fill
+                          className="object-contain object-bottom"
+                        />
                       </div>
                       <h4 className="font-semibold text-mountain-900 dark:text-cream-50 mb-2">Ang D. Sherpa</h4>
                       <p className="text-sm text-mountain-500 dark:text-mountain-400">Residing in Sonoma, CA</p>
