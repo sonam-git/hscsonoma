@@ -198,7 +198,7 @@ export default function FunctionalBodiesPage() {
                           src={member.image}
                           alt={member.name}
                           fill
-                          className={`${member.isGroup ? 'object-contain p-6' : 'object-cover object-top'}`}
+                          className={`${member.isGroup ? 'object-contain p-6' : 'object-contain object-top'}`}
                         />
                       </div>
                       <div className="p-4 text-center">

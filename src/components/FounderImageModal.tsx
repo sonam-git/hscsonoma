@@ -87,12 +87,12 @@ export default function FounderImageModal({ founders }: FounderImageModalProps) 
           aria-label={`Viewing ${founders[selectedImage].name}`}
         >
           {/* Backdrop */}
-          <div className="absolute inset-0 bg-black/90 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
 
           {/* Close Button */}
           <button
             onClick={closeModal}
-            className="absolute top-4 right-4 z-20 p-3 bg-white/10 hover:bg-white/20 rounded-full text-white transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white"
+            className="absolute top-4 right-4 z-20 p-3 bg-white/10 hover:bg-white/20 rounded-full text-gray-100 transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white"
             aria-label="Close modal"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -131,7 +131,7 @@ export default function FounderImageModal({ founders }: FounderImageModalProps) 
                     src={founders[selectedImage].image}
                     alt={founders[selectedImage].name}
                     fill
-                    className="object-cover"
+                    className="object-contain"
                     sizes="(max-width: 768px) 100vw, 800px"
                     priority
                   />
@@ -170,7 +170,7 @@ export default function FounderImageModal({ founders }: FounderImageModalProps) 
                 onClick={(e) => { e.stopPropagation(); setSelectedImage(index); }}
                 className={`relative w-16 h-20 rounded-lg overflow-hidden border-2 transition-all duration-200 focus:outline-none ${
                   index === selectedImage
-                    ? 'border-gold-400 scale-110 shadow-lg shadow-gold-400/30'
+                    ? 'border-gray-800 scale-110 shadow-lg shadow-gold-400/30'
                     : 'border-white/30 opacity-60 hover:opacity-100 hover:border-white/60'
                 }`}
                 aria-label={`View ${founder.name}`}

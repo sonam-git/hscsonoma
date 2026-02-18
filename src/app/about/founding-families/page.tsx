@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import FounderImageModal from '@/components/FounderImageModal';
 
 export const metadata: Metadata = {
@@ -133,8 +134,19 @@ export default function FoundingFamiliesPage() {
       </section>
 
       {/* Featured in Sonoma Magazine */}
-      <section className="py-20 bg-cream-50 dark:bg-mountain-900">
-        <div className="container-custom">
+      <section className="relative py-20 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/founding-families/sonomamag.jpeg"
+            alt="Sonoma Magazine Background"
+            fill
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/85 to-white/90 dark:from-mountain-900/95 dark:via-mountain-800/90 dark:to-mountain-900/95" />
+        </div>
+    
+        <div className="relative container-custom">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <span className="inline-block px-4 py-2 bg-burgundy-100 dark:bg-burgundy-900/50 text-burgundy-700 dark:text-burgundy-400 rounded-full text-sm font-medium mb-4">
