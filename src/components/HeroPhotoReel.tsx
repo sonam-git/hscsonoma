@@ -11,12 +11,12 @@ const reelImages = [
   { src: "/images/hero/hscpicnic.jpg", alt: "HSC Picnic" },
   { src: "/images/hero/sherpadance2.jpg", alt: "Sherpa Traditional Dance" },
   { src: "/images/hero/IMG_8214.jpg", alt: "HSC Community Event" },
-  { src: "/images/hero/IMG_8287.jpg", alt: "HSC Gathering" },
+  { src: "/images/hero/IMG_8287.jpg", alt: "Fund Raising Event" },
   { src: "/images/hero/Sonoma-Sherpa-Kids-back-in-2013.jpeg", alt: "Sonoma Sherpa Kids 2013" },
   // News images
-  { src: "/images/news/benefit.jpg", alt: "Benefit Event" },
+  { src: "/images/news/benefit.jpg", alt: "Fund raising event for Everest Avalanche victims" },
   { src: "/images/news/fundraising.jpg", alt: "Fundraising" },
-  { src: "/images/news/k2-summit.jpg", alt: "K2 Summit" },
+  { src: "/images/news/k2-summit.jpg", alt: "K2 Summit by HSC member" },
   // Events - Annual
   { src: "/images/events/annual/himalayan cup.jpeg", alt: "Himalayan Cup" },
   { src: "/images/events/annual/losar.jpg", alt: "Losar Celebration" },
@@ -26,7 +26,7 @@ const reelImages = [
   { src: "/images/events/past/earthquake-victims.jpeg", alt: "Earthquake Victims Support" },
   { src: "/images/events/past/everest-avalanche.jpg", alt: "Everest Avalanche Memorial" },
   { src: "/images/events/past/musical-concert.jpeg", alt: "Musical Concert" },
-  { src: "/images/events/past/summit-legend-with hsc members.jpg", alt: "Summit Legend with HSC Members" },
+  { src: "/images/events/past/summit-legend-with hsc members.jpg", alt: "Mountain Legends with HSC Members" },
   // Events - Signature
   { src: "/images/events/signature/Lhosar-Party-.jpeg", alt: "Lhosar Party" },
   { src: "/images/events/signature/labor-day-flex.jpg", alt: "Labor Day Flex" },

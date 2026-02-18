@@ -84,7 +84,7 @@ const timelineEvents: TimelineEvent[] = [
   {
     year: '2011',
     title: 'Formation of the Club',
-    description: 'The Himalayan Sherpa Club of Sonoma was officially formed to provide a more organized structure for community events and support. It received 501(c)(3) status the following year in 2012.',
+    description: 'The Himalayan Sherpa Club of Sonoma was officially formed to provide a more organized structure for community events and support. ',
     category: 'foundation',
     highlight: true,
   },
@@ -97,14 +97,14 @@ const timelineEvents: TimelineEvent[] = [
   {
     year: '2012',
     title: 'First Losar Celebration',
-    description: 'The community organized its first public Losar (Tibetan New Year) celebration, attracting Sherpa families from across Northern California.',
+    description: 'The community organized its first public Losar (Tibetan New Year) celebration, attracting Sherpa families across the Northern Bay Area of California.',
     category: 'culture',
     highlight: true,
   },
   {
     year: '2013',
     title: 'Community Growth',
-    description: 'The club experienced significant growth in membership and community engagement, expanding its programs and outreach efforts.',
+    description: 'The club experienced significant growth in membership and community engagement, expanding its programs and outreach efforts. It also received 501(c)(3) status in the same year 2014.',
     category: 'growth',
   },
   {
@@ -154,7 +154,7 @@ const timelineEvents: TimelineEvent[] = [
   {
     year: '2019',
     title: '100+ Families Strong',
-    description: 'Membership grew to over 100 families, representing one of the largest Sherpa communities in Northern California.',
+    description: 'Membership grew to over 100 families, representing one of the largest Sherpa communities in the Northern Bay Area of California.',
     category: 'growth',
     highlight: true,
   },
@@ -273,7 +273,7 @@ export default function HistoryPage() {
             <p className="text-lg text-mountain-600 dark:text-mountain-300 leading-relaxed">
               The Himalayan Sherpa Club of Sonoma has grown from informal gatherings of a few 
               families to become one of the most vibrant Sherpa community organizations in 
-              Northern California. Our history is a testament to the resilience, cultural pride, 
+              the Northern Bay Area of California. Our history is a testament to the resilience, cultural pride, 
               and community spirit that defines the Sherpa people.
             </p>
           </div>

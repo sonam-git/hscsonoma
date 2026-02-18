@@ -139,7 +139,7 @@ export default async function HomePage() {
   const featuredNews = [
     {
       id: '1',
-      title: 'Raising Funds for Quake Victims',
+      title: 'Raising Funds for Quake Victims in Nepal 2015',
       excerpt: 'Our community came together to support earthquake relief efforts in Nepal, demonstrating the strong bonds that connect us across continents.',
       image: '/images/news/fundraising.jpg',
       category: 'Community',
@@ -148,16 +148,16 @@ export default async function HomePage() {
     },
     {
       id: '2',
-      title: 'Sonoma Sherpas Plan Benefit',
-      excerpt: 'Local Sherpa community organizes benefit event to support cultural preservation initiatives and community programs.',
+      title: 'Raising Funds for Everest Avalanche Victims 2014',
+      excerpt: 'Local Sherpa community organizes fund raising event to help the Everest Avalanche victims 2014.',
       image: '/images/news/benefit.jpg',
       category: 'Events',
       date: '2024-03-20',
-      slug: 'sonoma-sherpas-plan-benefit',
+      slug: 'raising-funds-for-everest-avalanche-victims',
     },
     {
       id: '3',
-      title: 'Sonoma Man Summits K2',
+      title: 'Sonoma Man Summits K2 holding Guinness Book Record',
       excerpt: "A member of our community achieves the remarkable feat of summiting K2, the world's most dangerous mountain.",
       image: '/images/news/k2-summit.jpg',
       category: 'Achievement',
