@@ -8,6 +8,14 @@ const config: Config = {
   ],
   darkMode: 'class',
   theme: {
+    // Custom breakpoints: small screen is <= 820px
+    screens: {
+      'sm': '640px',    // Small devices (kept for fine-tuning)
+      'md': '821px',    // Medium devices start at 821px (820px and below = small screen)
+      'lg': '1024px',   // Large devices
+      'xl': '1280px',   // Extra large devices
+      '2xl': '1536px',  // 2X Extra large devices
+    },
     extend: {
       colors: {
         // Wine Country Palette
