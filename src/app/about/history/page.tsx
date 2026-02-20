@@ -104,7 +104,7 @@ const timelineEvents: TimelineEvent[] = [
   {
     year: '2013',
     title: 'Community Growth',
-    description: 'The club experienced significant growth in membership and community engagement, expanding its programs and outreach efforts. It also received 501(c)(3) status in the same year 2014.',
+    description: 'The club experienced significant growth in membership and community engagement, expanding its programs and outreach efforts. It also received 501(c)(3) status the following year, 2014.',
     category: 'growth',
   },
   {
@@ -135,7 +135,7 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     year: '2016',
-    title: 'Annual Phang-ngi Celebration',
+    title: 'Annual Phang-ngi Celebration Started',
     description: 'The club organized its first annual Phang-ngi celebration, honoring Sherpa culture and traditions with food, music, and dance.',
     category: 'culture',
   },
@@ -194,6 +194,13 @@ const timelineEvents: TimelineEvent[] = [
     year: '2025',
     title: 'Chotrul Monlam Festival',
     description: 'Members contributed to the Chotrul Monlam Festival 2025 at Richmond Civic Center Plaza, San Francisco—three days of sacred prayers and celebration.',
+    category: 'culture',
+    highlight: true,
+  },
+   {
+    year: '2026',
+    title: 'Thotrul(Leaving and Dying)Teaching |',
+    description: 'HSC women group hosted this special teaching by Tulku Nawang Lopsung Rinpoche at the Sonoma Community Center, explaining the significance of leaving and dying in Buddhism.',
     category: 'culture',
     highlight: true,
   },
