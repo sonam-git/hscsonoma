@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 
 // Type for gallery images (both hardcoded and Storyblok)
@@ -137,6 +137,15 @@ export default function GalleryPage() {
   const [activeFilter, setActiveFilter] = useState('New');
   const [storyblokImages, setStoryblokImages] = useState<GalleryImage[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const contentRef = useRef<HTMLElement>(null);
+
+  const handleFilterClick = (category: string) => {
+    setActiveFilter(category);
+    // Scroll content section into view when tab is clicked
+    setTimeout(() => {
+      contentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+  };
 
   // Fetch Storyblok gallery images
   useEffect(() => {
@@ -238,21 +247,18 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      {/* Gallery Section */}
-      <section className="py-16">
-        <div className="container-custom">
-          {/* Category Filter Tabs */}
-          <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-12">
+      {/* Sticky Category Filter Tabs */}
+      <div className="sticky top-24 md:top-[140px] z-40 bg-gradient-to-r from-burgundy-800 via-mountain-800 to-burgundy-800 shadow-lg">
+        <div className="container-custom px-2 sm:px-4 md:px-6 lg:px-8">
+          <div className="flex overflow-x-auto scrollbar-hide justify-start sm:justify-center gap-1 md:gap-2 py-3">
             {categories.map((category) => (
               <button
                 key={category}
-                onClick={() => setActiveFilter(category)}
-                className={`flex items-center gap-1.5 px-4 md:px-6 py-2 md:py-2.5 text-sm font-medium rounded-full transition-all duration-200 ${
+                onClick={() => handleFilterClick(category)}
+                className={`flex items-center gap-1 sm:gap-1.5 px-3 sm:px-4 md:px-5 py-2 text-[11px] sm:text-xs md:text-sm font-medium rounded-full transition-all duration-200 whitespace-nowrap flex-shrink-0 ${
                   activeFilter === category
-                    ? category === 'New'
-                      ? 'bg-gradient-to-r from-gold-500 to-burgundy-600 text-white shadow-lg shadow-burgundy-600/30 scale-105'
-                      : 'bg-burgundy-600 text-white shadow-lg shadow-burgundy-600/30 scale-105'
-                    : 'bg-white dark:bg-mountain-800 text-mountain-600 dark:text-mountain-300 hover:bg-burgundy-50 dark:hover:bg-burgundy-900/30 hover:text-burgundy-700 dark:hover:text-burgundy-400 shadow-md'
+                    ? 'text-burgundy-900 bg-white shadow-md scale-105'
+                    : 'text-white/90 hover:text-white hover:bg-white/20'
                 }`}
               >
                 {category === 'New' && <SparklesIcon />}
@@ -260,6 +266,12 @@ export default function GalleryPage() {
               </button>
             ))}
           </div>
+        </div>
+      </div>
+
+      {/* Gallery Section */}
+      <section ref={contentRef} className="py-16 scroll-mt-[140px] md:scroll-mt-[200px]">
+        <div className="container-custom">
 
           {/* Loading State */}
           {activeFilter === 'New' && isLoading && (

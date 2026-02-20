@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -69,6 +69,15 @@ export default function EventsPage() {
   const [activeTab, setActiveTab] = useState<TabType>('annual');
   const [upcomingEvents, setUpcomingEvents] = useState<UpcomingEvent[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const contentRef = useRef<HTMLElement>(null);
+
+  const handleTabClick = (tabId: TabType) => {
+    setActiveTab(tabId);
+    // Scroll content section into view when tab is clicked
+    setTimeout(() => {
+      contentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+  };
 
   // Fetch upcoming events from Storyblok
   useEffect(() => {
@@ -108,37 +117,35 @@ export default function EventsPage() {
             Join us in celebrating Sherpa heritage through cultural festivals, community gatherings, and special events
           </p>
         </div>
-        
-        {/* Horizontal Submenu - Same style as header */}
-        <div className="absolute inset-x-0 bottom-0">
-          <div className="bg-black/20 backdrop-blur-sm border-t border-white/10">
-            <div className="container-custom">
-              <div className="flex items-center justify-center gap-1 md:gap-2 py-3 overflow-x-auto">
-                {tabs.map((tab) => {
-                  const IconComponent = tab.icon;
-                  return (
-                    <button
-                      key={tab.id}
-                      onClick={() => setActiveTab(tab.id)}
-                      className={`flex items-center gap-1.5 px-3 md:px-5 py-2 text-xs md:text-sm font-medium rounded-full transition-all duration-200 whitespace-nowrap ${
-                        activeTab === tab.id 
-                          ? 'text-burgundy-900 bg-white shadow-md scale-105'
-                          : 'text-white/90 hover:text-white hover:bg-white/20'
-                      }`}
-                    >
-                      <IconComponent />
-                      <span>{tab.label}</span>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
 
+      {/* Sticky Tab Navigation - positioned right below header */}
+      <div className="sticky top-24 z-40 bg-gradient-to-r from-burgundy-800 via-mountain-800 to-burgundy-800 shadow-lg">
+        <div className="container-custom px-2 sm:px-4 md:px-6 lg:px-8">
+          <div className="flex items-center justify-start sm:justify-center gap-1 md:gap-2 py-3 overflow-x-auto scrollbar-hide">
+            {tabs.map((tab) => {
+              const IconComponent = tab.icon;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => handleTabClick(tab.id)}
+                  className={`flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 md:px-5 py-2 text-[11px] sm:text-xs md:text-sm font-medium rounded-full transition-all duration-200 whitespace-nowrap flex-shrink-0 ${
+                    activeTab === tab.id 
+                      ? 'text-burgundy-900 bg-white shadow-md scale-105'
+                      : 'text-white/90 hover:text-white hover:bg-white/20'
+                  }`}
+                >
+                  <IconComponent />
+                  <span>{tab.label}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
       {/* Content Section */}
-      <section className="py-16 bg-cream-50 dark:bg-mountain-900">
+      <section ref={contentRef} className="py-16 bg-cream-50 dark:bg-mountain-900 scroll-mt-[140px]">
         <div className="container-custom">
           {/* Tab Content */}
           <div className="min-h-[600px]">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 
 const reelImages = [
@@ -19,20 +19,23 @@ const reelImages = [
   { src: "/images/news/k2-summit.jpg", alt: "K2 Summit by HSC member" },
   // Events - Annual
   { src: "/images/events/annual/himalayan cup.jpeg", alt: "Himalayan Cup" },
-  { src: "/images/events/annual/losar.jpg", alt: "Losar Celebration" },
+  { src: "/images/events/annual/losar.jpg", alt: "Sherpa Dance Performance" },
   { src: "/images/events/annual/phangi-party.jpeg", alt: "Phangi Party" },
+  { src: "/images/events/past/HSC-picnic2011.png", alt: "HSC Picnic 2011" },
+  { src: "/images/events/annual/HSC-Lhosar-2011.jpg", alt: "Lhosar Serkim 2011" },
+  { src: "/images/events/annual/HSC-Lhosar2013.jpg", alt: "HSC Shebru performance 2013" },
   // Events - Past
   { src: "/images/events/past/HSC-Labor-Day-Volleyball-2012.jpeg", alt: "HSC Labor Day Volleyball 2012" },
-  { src: "/images/events/past/earthquake-victims.jpeg", alt: "Earthquake Victims Support" },
-  { src: "/images/events/past/everest-avalanche.jpg", alt: "Everest Avalanche Memorial" },
+  { src: "/images/events/past/earthquake-victims.jpeg", alt: "HSC in the news" },
+  { src: "/images/events/past/everest-avalanche.jpg", alt: "Everest Avalanche Fund Raise 2014" },
   { src: "/images/events/past/musical-concert.jpeg", alt: "Musical Concert" },
   { src: "/images/events/past/summit-legend-with hsc members.jpg", alt: "Mountain Legends with HSC Members" },
   // Events - Signature
   { src: "/images/events/signature/Lhosar-Party-.jpeg", alt: "Lhosar Party" },
-  { src: "/images/events/signature/labor-day-flex.jpg", alt: "Labor Day Flex" },
+  { src: "/images/events/signature/labor-day-flex.jpg", alt: "Himalayan Cup" },
   { src: "/images/events/signature/phang-ngi.jpg", alt: "Phang Ngi" },
   // HSFC
-  { src: "/images/hsfc/team.jpg", alt: "HSFC Team" },
+  { src: "/images/hsfc/team.jpg", alt: "Sonoma Running Cup Champion HSFC" },
 ];
 
 // Duplicate images for seamless infinite scroll
@@ -45,6 +48,30 @@ interface HeroPhotoReelProps {
 export default function HeroPhotoReel({ inline = false }: HeroPhotoReelProps) {
   const [modalImg, setModalImg] = useState<null | { img: typeof reelImages[0]; index: number }>(null);
   const [isPaused, setIsPaused] = useState(false);
+  const [isImageLoading, setIsImageLoading] = useState(true);
+  const [showDescription, setShowDescription] = useState(false);
+
+  // Reset loading and description states when modal image changes
+  useEffect(() => {
+    if (modalImg) {
+      setIsImageLoading(true);
+      setShowDescription(false);
+    }
+  }, [modalImg]);
+
+  // Delay showing description by 1 second after image loads
+  useEffect(() => {
+    if (!isImageLoading && modalImg) {
+      const timer = setTimeout(() => {
+        setShowDescription(true);
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [isImageLoading, modalImg]);
+
+  const handleImageLoad = useCallback(() => {
+    setIsImageLoading(false);
+  }, []);
 
   const handlePrev = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -176,7 +203,7 @@ export default function HeroPhotoReel({ inline = false }: HeroPhotoReelProps) {
       {/* Modal */}
       {modalImg && (
         <div 
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-gray-100/40 backdrop-blur-md animate-fade-in p-2 sm:p-4"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-gray-800/80 backdrop-blur-md animate-fade-in p-2 sm:p-4"
           onClick={() => setModalImg(null)}
         >
           {/* Modal content container */}
@@ -189,13 +216,24 @@ export default function HeroPhotoReel({ inline = false }: HeroPhotoReelProps) {
                 <div className="bg-gradient-to-br from-amber-500 via-amber-600 to-amber-500 p-1 rounded-md">
                   {/* Image container */}
                   <div className="relative w-full aspect-[4/3] bg-black rounded overflow-hidden">
+                    {/* Loading spinner */}
+                    {isImageLoading && (
+                      <div className="absolute inset-0 flex items-center justify-center bg-gray-900 z-10">
+                        <div className="flex flex-col items-center gap-3">
+                          <div className="w-10 h-10 border-4 border-amber-500 border-t-transparent rounded-full animate-spin"></div>
+                          <span className="text-gray-400 text-sm">Loading image...</span>
+                        </div>
+                      </div>
+                    )}
                     <Image
                       src={modalImg.img.src}
                       alt={modalImg.img.alt}
                       fill
-                      className="object-contain"
+                      className={`object-contain transition-opacity duration-300 ${isImageLoading ? 'opacity-0' : 'opacity-100'}`}
                       sizes="(max-width: 768px) 95vw, 900px"
                       draggable={false}
+                      onLoad={handleImageLoad}
+                      priority
                     />
                   </div>
                 </div>
@@ -207,10 +245,12 @@ export default function HeroPhotoReel({ inline = false }: HeroPhotoReelProps) {
               </div>
             </div>
             
-            {/* Image Title */}
-            <p className="text-white text-sm sm:text-base md:text-lg font-medium text-center mt-3 mb-2 px-2 drop-shadow-lg">
-              {modalImg.img.alt}
-            </p>
+            {/* Image Title - with delayed reveal */}
+            <div className={`transition-all duration-500 ${showDescription ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>
+              <p className="text-white text-sm sm:text-base md:text-lg font-medium text-center mt-3 mb-2 px-2 drop-shadow-lg">
+                {modalImg.img.alt}
+              </p>
+            </div>
             
             {/* Navigation controls - Prev | Close | Next */}
             <div className="flex items-center justify-center gap-3 sm:gap-6 mt-2 mb-4">

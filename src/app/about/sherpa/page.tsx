@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 
 // Expandable Card Component for long text content
@@ -72,6 +72,15 @@ const tabs = [
 
 export default function SherpaPage() {
   const [activeTab, setActiveTab] = useState("history");
+  const contentRef = useRef<HTMLElement>(null);
+
+  const handleTabClick = (tabId: string) => {
+    setActiveTab(tabId);
+    // Scroll content section into view when tab is clicked
+    setTimeout(() => {
+      contentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+  };
 
   return (
     <main className="min-h-screen bg-cream-50 dark:bg-mountain-950">
@@ -102,14 +111,14 @@ export default function SherpaPage() {
       </section>
 
       {/* Tabs Navigation */}
-      <section className="sticky top-20 z-40 bg-white/95 dark:bg-mountain-900/95 backdrop-blur-md shadow-md border-b border-cream-200 dark:border-mountain-700">
-        <div className="container-custom">
-          <div className="flex overflow-x-auto scrollbar-hide gap-1 py-2">
+      <section className="sticky top-24 md:top-[140px] z-40 bg-white/95 dark:bg-mountain-900/95 backdrop-blur-md shadow-md border-b border-cream-200 dark:border-mountain-700">
+        <div className="container-custom px-2 sm:px-4 md:px-6 lg:px-8">
+          <div className="flex overflow-x-auto scrollbar-hide justify-start sm:justify-center gap-1 py-2">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`px-6 py-3 rounded-lg font-medium whitespace-nowrap transition-all duration-200 ${
+                onClick={() => handleTabClick(tab.id)}
+                className={`px-3 sm:px-4 md:px-6 py-2.5 sm:py-3 rounded-lg font-medium whitespace-nowrap transition-all duration-200 text-[11px] sm:text-xs md:text-sm flex-shrink-0 ${
                   activeTab === tab.id
                     ? "bg-burgundy-700 text-white shadow-lg"
                     : "text-mountain-600 dark:text-mountain-300 hover:bg-cream-100 dark:hover:bg-mountain-800 hover:text-burgundy-700 dark:hover:text-burgundy-400"
@@ -123,7 +132,7 @@ export default function SherpaPage() {
       </section>
 
       {/* Tab Content */}
-      <section className="py-16 md:py-24">
+      <section ref={contentRef} className="py-16 md:py-24 scroll-mt-[140px] md:scroll-mt-[200px]">
         <div className="container-custom">
           {activeTab === "history" && <HistoryTab />}
           {activeTab === "clans" && <ClansTab />}

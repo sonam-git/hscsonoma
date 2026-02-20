@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 // Icon components for categories
 const IconFoundation = () => (
@@ -75,6 +75,18 @@ const categoryConfig: Record<Category, { icon: () => JSX.Element; color: string;
 };
 
 const timelineEvents: TimelineEvent[] = [
+    {
+    year: '1990 - 1999',
+    title: 'First Sherpa Arrival',
+    description: 'Chhiring Sherpa, Ongda Sherpa and Nima Sherpa arrived in Sonoma County. More of their friends joined in the mid 90s, laying the foundation for the community.',
+    category: 'foundation',
+  },
+    {
+    year: '2000 - 2009',
+    title: 'Community Growth',
+    description: 'More Sherpa families began settling in Sonoma County, leading to a growing community and increased cultural activities.',
+    category: 'growth',
+  },
   {
     year: '2010',
     title: 'Community Beginnings',
@@ -219,10 +231,17 @@ const years = Object.keys(eventsByYear).sort();
 
 export default function HistoryPage() {
   const [selectedCategory, setSelectedCategory] = useState<Category | 'all'>('all');
+  const contentRef = useRef<HTMLDivElement>(null);
 
   const filteredEvents = selectedCategory === 'all' 
     ? timelineEvents 
     : timelineEvents.filter(e => e.category === selectedCategory);
+
+  const handleCategoryChange = (category: Category | 'all') => {
+    setSelectedCategory(category);
+    // Scroll to content section
+    contentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   const stats = [
     { value: '15+', label: 'Years of Service' },
@@ -345,15 +364,15 @@ export default function HistoryPage() {
       </section>
 
       {/* Category Filter */}
-      <section className="py-6 bg-white dark:bg-mountain-800 sticky top-24 z-30 border-b border-cream-200 dark:border-mountain-700 shadow-sm">
-        <div className="container-custom">
-          <div className="flex flex-wrap items-center justify-center gap-2">
+      <section className="sticky top-24 md:top-[140px] z-30 bg-gradient-himalayan shadow-lg">
+        <div className="container-custom py-4">
+          <div className="flex overflow-x-auto scrollbar-hide gap-2 pb-2 justify-start md:justify-center">
             <button
-              onClick={() => setSelectedCategory('all')}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+              onClick={() => handleCategoryChange('all')}
+              className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all ${
                 selectedCategory === 'all'
                   ? 'bg-burgundy-600 text-white shadow-lg scale-105'
-                  : 'bg-cream-100 dark:bg-mountain-700 text-mountain-600 dark:text-mountain-300 hover:bg-burgundy-50 dark:hover:bg-burgundy-900/30'
+                  : 'bg-mountain-700 text-cream-100 hover:bg-mountain-600'
               }`}
             >
               All ({timelineEvents.length})
@@ -365,11 +384,11 @@ export default function HistoryPage() {
               return (
                 <button
                   key={key}
-                  onClick={() => setSelectedCategory(key as Category)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all flex items-center gap-2 ${
+                  onClick={() => handleCategoryChange(key as Category)}
+                  className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all flex items-center gap-2 ${
                     selectedCategory === key
                       ? 'bg-burgundy-600 text-white shadow-lg scale-105'
-                      : 'bg-cream-100 dark:bg-mountain-700 text-mountain-600 dark:text-mountain-300 hover:bg-burgundy-50 dark:hover:bg-burgundy-900/30'
+                      : 'bg-mountain-700 text-cream-100 hover:bg-mountain-600'
                   }`}
                 >
                   <Icon />
@@ -383,7 +402,7 @@ export default function HistoryPage() {
       </section>
 
       {/* Timeline Events */}
-      <section className="py-16 bg-cream-50 dark:bg-mountain-900">
+      <section ref={contentRef} className="py-16 bg-cream-50 dark:bg-mountain-900 scroll-mt-[140px] md:scroll-mt-[200px]">
         <div className="container-custom">
           <div className="max-w-5xl mx-auto relative">
             {/* Vertical Timeline Line */}

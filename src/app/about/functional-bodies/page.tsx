@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -77,10 +77,56 @@ const ExBoardIcon = () => (
   </svg>
 );
 
+// User icon for fallback when no image is available
+const UserIcon = () => (
+  <svg className="w-8 h-8 text-mountain-400 dark:text-mountain-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+  </svg>
+);
+
+// Ex-Board Members data
+const exBoardMembers2015_2017 = [
+  { role: 'President', name: 'Tsering Namgyal Sherpa', location: 'Sonoma', image: '/images/functional-bodies/founder-member/tshering-n-sherpa.jpg' },
+  { role: 'Vice President', name: 'Kasa Dawa Sherpa', location: 'Sonoma', image: '/images/functional-bodies/ex-member/kasa.jpg' },
+  { role: 'Secretary', name: 'Gombu Sherpa', location: 'Sonoma', image: '/images/functional-bodies/founder-member/gombu-sherpa.jpg' },
+  { role: 'Treasurer', name: 'Mingma Lhamu Sherpa', location: 'Sonoma', image: '/images/functional-bodies/ex-member/mingma-l-sherpa.jpg' },
+];
+
+const boardMembers2015_2017 = [
+  { name: 'Chhiring Diki Sherpa', location: 'Sonoma', image: '/images/functional-bodies/ex-member/chhiring-diki.jpg' },
+  { name: 'Ming Kipa Sherpa', location: 'Sonoma', image: '/images/functional-bodies/ex-member/ming-sherpa.jpg' },
+  { name: 'Mingma Sherpa', location: 'American Canyon', image: '/images/functional-bodies/ex-member/mingma.jpg' },
+  { name: 'Pemba Nuru Sherpa', location: 'Napa', image: '/images/functional-bodies/founder-member/pemba-n-sherpa.jpg' },
+  { name: 'Kandu Sherpa', location: 'Sonoma', image: '/images/functional-bodies/ex-member/kandu-sherpa.jpg' },
+];
+
+const exBoardMembers2011_2015 = [
+  { role: 'President', name: 'Nima Sherpa', location: 'Sonoma', image: '/images/functional-bodies/founder-member/nima-sherpa.jpg' },
+  { role: 'Vice President', name: 'Geljen Sherpa', location: 'Sonoma', image: '/images/functional-bodies/founder-member/gyaljen-sherpa.jpg' },
+  { role: 'Secretary', name: 'Lakpa Dorchi Sherpa', location: 'Sonoma', image: '/images/functional-bodies/founder-member/lhakpa-sherpa.jpg' },
+  { role: 'Treasurer', name: 'Mingma Tenzing Sherpa', location: 'Sonoma', image: '/images/functional-bodies/founder-member/mingma-t-sherpa.jpg' },
+];
+
+const boardMembers2011_2015 = [
+  { name: 'Pasang Sherpa', image: '/images/functional-bodies/ex-member/pasang-makalu-sherpa.jpg' },
+  { name: 'Pasang Nuru Sherpa', image: '/images/functional-bodies/founder-member/pasang-n-sherpa.jpg' },
+  { name: 'Pasang Temba Sherpa', image: '/images/functional-bodies/founder-member/pasang-t-sherpa.jpg' },
+    { name: 'Pasang Sherpa', image: '/images/functional-bodies/ex-member/pasang-mama-sherpa.jpg' },
+];
+
 type TabType = 'executive' | 'founder' | 'advisory' | 'ex-board';
 
 export default function FunctionalBodiesPage() {
   const [activeTab, setActiveTab] = useState<TabType>('executive');
+  const contentRef = useRef<HTMLElement>(null);
+
+  const handleTabClick = (tabId: TabType) => {
+    setActiveTab(tabId);
+    // Scroll content section into view when tab is clicked
+    setTimeout(() => {
+      contentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+  };
 
   const tabs = [
     { id: 'executive' as TabType, label: 'Executive', icon: ExecutiveIcon },
@@ -102,37 +148,35 @@ export default function FunctionalBodiesPage() {
             The dedicated teams that guide and serve our community
           </p>
         </div>
-        
-        {/* Horizontal Submenu - Similar to Header style */}
-        <div className="absolute inset-x-0 bottom-0">
-          <div className="bg-black/20 backdrop-blur-sm border-t border-white/10">
-            <div className="container-custom">
-              <div className="flex items-center justify-center gap-1 md:gap-2 py-3 overflow-x-auto">
-                {tabs.map((tab) => {
-                  const IconComponent = tab.icon;
-                  return (
-                    <button
-                      key={tab.id}
-                      onClick={() => setActiveTab(tab.id)}
-                      className={`flex items-center gap-1.5 px-3 md:px-5 py-2 text-xs md:text-sm font-medium rounded-full transition-all duration-200 whitespace-nowrap ${
-                        activeTab === tab.id 
-                          ? 'text-burgundy-900 bg-white shadow-md scale-105'
-                          : 'text-white/90 hover:text-white hover:bg-white/20'
-                      }`}
-                    >
-                      <IconComponent />
-                      <span>{tab.label}</span>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
 
+      {/* Sticky Tab Navigation - positioned below header (small screens) / header + submenu (large screens) */}
+      <div className="sticky top-24 md:top-[140px] z-40 bg-gradient-to-r from-burgundy-800 via-mountain-800 to-burgundy-800 shadow-lg">
+        <div className="container-custom">
+          <div className="flex items-center justify-center gap-1 md:gap-2 py-3 overflow-x-auto scrollbar-hide">
+            {tabs.map((tab) => {
+              const IconComponent = tab.icon;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => handleTabClick(tab.id)}
+                  className={`flex items-center gap-1.5 px-3 md:px-5 py-2 text-xs md:text-sm font-medium rounded-full transition-all duration-200 whitespace-nowrap ${
+                    activeTab === tab.id 
+                      ? 'text-burgundy-900 bg-white shadow-md scale-105'
+                      : 'text-white/90 hover:text-white hover:bg-white/20'
+                  }`}
+                >
+                  <IconComponent />
+                  <span>{tab.label}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
       {/* Content Section */}
-      <section className="py-16 bg-cream-50 dark:bg-mountain-900">
+      <section ref={contentRef} className="py-16 bg-cream-50 dark:bg-mountain-900 scroll-mt-[140px] md:scroll-mt-[200px]">
         <div className="container-custom">
           <div className="min-h-[500px]">
             {/* Executive Committee */}
@@ -277,35 +321,53 @@ export default function FunctionalBodiesPage() {
                     </div>
                     
                     <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-                      <div className="bg-cream-50 dark:bg-mountain-700 rounded-xl p-4 text-center">
-                        <p className="text-burgundy-600 dark:text-burgundy-400 text-sm font-medium mb-1">President</p>
-                        <p className="text-mountain-900 dark:text-cream-50 font-semibold">Tsering Namgyal Sherpa</p>
-                        <p className="text-mountain-500 dark:text-mountain-400 text-sm">Sonoma</p>
-                      </div>
-                      <div className="bg-cream-50 dark:bg-mountain-700 rounded-xl p-4 text-center">
-                        <p className="text-burgundy-600 dark:text-burgundy-400 text-sm font-medium mb-1">Vice President</p>
-                        <p className="text-mountain-900 dark:text-cream-50 font-semibold">Kasa Dawa Sherpa</p>
-                        <p className="text-mountain-500 dark:text-mountain-400 text-sm">Sonoma</p>
-                      </div>
-                      <div className="bg-cream-50 dark:bg-mountain-700 rounded-xl p-4 text-center">
-                        <p className="text-burgundy-600 dark:text-burgundy-400 text-sm font-medium mb-1">Secretary</p>
-                        <p className="text-mountain-900 dark:text-cream-50 font-semibold">Gombu Sherpa</p>
-                        <p className="text-mountain-500 dark:text-mountain-400 text-sm">Sonoma</p>
-                      </div>
-                      <div className="bg-cream-50 dark:bg-mountain-700 rounded-xl p-4 text-center">
-                        <p className="text-burgundy-600 dark:text-burgundy-400 text-sm font-medium mb-1">Treasurer</p>
-                        <p className="text-mountain-900 dark:text-cream-50 font-semibold">Mingma Lhamu Sherpa</p>
-                        <p className="text-mountain-500 dark:text-mountain-400 text-sm">Sonoma</p>
-                      </div>
+                      {exBoardMembers2015_2017.map((member, index) => (
+                        <div key={index} className="bg-cream-50 dark:bg-mountain-700 rounded-xl p-4 text-center flex flex-col items-center">
+                          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-gold-400 dark:border-gold-500 shadow mb-2 flex items-center justify-center bg-mountain-100 dark:bg-mountain-800">
+                            {member.image ? (
+                              <Image
+                                src={member.image}
+                                alt={member.name}
+                                width={96}
+                                height={96}
+                                className="object-cover w-full h-full"
+                              />
+                            ) : (
+                              <UserIcon />
+                            )}
+                          </div>
+                          <p className="text-burgundy-600 dark:text-burgundy-400 text-sm font-medium mb-1">{member.role}</p>
+                          <p className="text-mountain-900 dark:text-cream-50 font-semibold text-sm">{member.name}</p>
+                          <p className="text-mountain-500 dark:text-mountain-400 text-xs">{member.location}</p>
+                        </div>
+                      ))}
                     </div>
 
                     <div className="border-t border-mountain-200 dark:border-mountain-600 pt-6">
                       <p className="text-center text-burgundy-600 dark:text-burgundy-400 text-sm font-medium mb-4">Board Members</p>
                       <div className="flex flex-wrap justify-center gap-3">
-                        {['Chhiring Diki Sherpa, Sonoma', 'Ming Kipa Sherpa, Sonoma', 'Mingma Sherpa, American Canyon', 'Pemba Nuru Sherpa, Napa', 'Kandu Sherpa, Sonoma'].map((member, idx) => (
-                          <span key={idx} className="px-4 py-2 bg-cream-50 dark:bg-mountain-700 rounded-lg text-mountain-700 dark:text-mountain-300 text-sm">
-                            {member}
-                          </span>
+                        {boardMembers2015_2017.map((member, idx) => (
+                          <div key={idx} className="flex flex-col items-center bg-cream-50 dark:bg-mountain-700 rounded-lg px-3 py-2 min-w-[100px]">
+                              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-gold-400 dark:border-gold-500 shadow mb-2 flex items-center justify-center bg-mountain-100 dark:bg-mountain-800">
+                            {member.image ? (
+                              <Image
+                                src={member.image}
+                                alt={member.name}
+                                width={96}
+                                height={96}
+                                className="object-cover w-full h-full"
+                              />
+                            ) : (
+                              <UserIcon />
+                            )}
+                          </div>
+                            <span className="text-mountain-700 dark:text-mountain-300 text-xs font-medium text-center">
+                              {member.name}
+                            </span>
+                            {member.location && (
+                              <span className="text-[10px] text-mountain-500 dark:text-mountain-400">{member.location}</span>
+                            )}
+                          </div>
                         ))}
                       </div>
                     </div>
@@ -323,35 +385,50 @@ export default function FunctionalBodiesPage() {
                     </div>
                     
                     <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-                      <div className="bg-cream-50 dark:bg-mountain-700 rounded-xl p-4 text-center">
-                        <p className="text-burgundy-600 dark:text-burgundy-400 text-sm font-medium mb-1">President</p>
-                        <p className="text-mountain-900 dark:text-cream-50 font-semibold">Nima Sherpa</p>
-                        <p className="text-mountain-500 dark:text-mountain-400 text-sm">Sonoma</p>
-                      </div>
-                      <div className="bg-cream-50 dark:bg-mountain-700 rounded-xl p-4 text-center">
-                        <p className="text-burgundy-600 dark:text-burgundy-400 text-sm font-medium mb-1">Vice President</p>
-                        <p className="text-mountain-900 dark:text-cream-50 font-semibold">Geljen Sherpa</p>
-                        <p className="text-mountain-500 dark:text-mountain-400 text-sm">Sonoma</p>
-                      </div>
-                      <div className="bg-cream-50 dark:bg-mountain-700 rounded-xl p-4 text-center">
-                        <p className="text-burgundy-600 dark:text-burgundy-400 text-sm font-medium mb-1">Secretary</p>
-                        <p className="text-mountain-900 dark:text-cream-50 font-semibold">Lakpa Dorchi Sherpa</p>
-                        <p className="text-mountain-500 dark:text-mountain-400 text-sm">Sonoma</p>
-                      </div>
-                      <div className="bg-cream-50 dark:bg-mountain-700 rounded-xl p-4 text-center">
-                        <p className="text-burgundy-600 dark:text-burgundy-400 text-sm font-medium mb-1">Treasurer</p>
-                        <p className="text-mountain-900 dark:text-cream-50 font-semibold">Mingma Tenzing Sherpa</p>
-                        <p className="text-mountain-500 dark:text-mountain-400 text-sm">Sonoma</p>
-                      </div>
+                      {exBoardMembers2011_2015.map((member, index) => (
+                        <div key={index} className="bg-cream-50 dark:bg-mountain-700 rounded-xl p-4 text-center flex flex-col items-center">
+                          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-gold-400 dark:border-gold-500 shadow mb-2 flex items-center justify-center bg-mountain-100 dark:bg-mountain-800">
+                            {member.image ? (
+                              <Image
+                                src={member.image}
+                                alt={member.name}
+                                width={96}
+                                height={96}
+                                className="object-cover w-full h-full"
+                              />
+                            ) : (
+                              <UserIcon />
+                            )}
+                          </div>
+                          <p className="text-burgundy-600 dark:text-burgundy-400 text-sm font-medium mb-1">{member.role}</p>
+                          <p className="text-mountain-900 dark:text-cream-50 font-semibold text-sm">{member.name}</p>
+                          <p className="text-mountain-500 dark:text-mountain-400 text-xs">{member.location}</p>
+                        </div>
+                      ))}
                     </div>
 
                     <div className="border-t border-mountain-200 dark:border-mountain-600 pt-6">
                       <p className="text-center text-burgundy-600 dark:text-burgundy-400 text-sm font-medium mb-4">Board Members</p>
                       <div className="flex flex-wrap justify-center gap-3">
-                        {['Pasang Sherpa', 'Pasang Nuru Sherpa', 'Pasang Temba Sherpa'].map((member, idx) => (
-                          <span key={idx} className="px-4 py-2 bg-cream-50 dark:bg-mountain-700 rounded-lg text-mountain-700 dark:text-mountain-300 text-sm">
-                            {member}
-                          </span>
+                        {boardMembers2011_2015.map((member, idx) => (
+                          <div key={idx} className="flex flex-col items-center bg-cream-50 dark:bg-mountain-700 rounded-lg px-3 py-2 min-w-[100px]">
+                               <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-gold-400 dark:border-gold-500 shadow mb-2 flex items-center justify-center bg-mountain-100 dark:bg-mountain-800">
+                            {member.image ? (
+                              <Image
+                                src={member.image}
+                                alt={member.name}
+                                width={96}
+                                height={96}
+                                className="object-cover w-full h-full"
+                              />
+                            ) : (
+                              <UserIcon />
+                            )}
+                          </div>
+                            <span className="text-mountain-700 dark:text-mountain-300 text-xs font-medium text-center">
+                              {member.name}
+                            </span>
+                          </div>
                         ))}
                       </div>
                     </div>

@@ -903,12 +903,14 @@ export default async function HomePage() {
                   <p>Even though all Sherpas share the same last name, they are distinguished by different clans, known as <strong className="text-burgundy-700 dark:text-burgundy-400">Roo</strong>. These clans determine whether individuals are related or not.</p>
                   <p><strong className="text-burgundy-700 dark:text-burgundy-400">Roo</strong>, a Sherpa word meaning &ldquo;bones,&rdquo; is inherited through the male lineage. This means a person&apos;s clan membership is determined by their father&apos;s lineage.</p>
                   <div className="bg-cream-100 dark:bg-mountain-700 rounded-lg p-4">
-                    <h4 className="font-semibold text-mountain-900 dark:text-cream-50 mb-2">Four Original Clans from Kham, Tibet:</h4>
+                    <h4 className="font-semibold text-mountain-900 dark:text-cream-50 mb-2">Some major clans in Sherpa</h4>
                     <div className="flex flex-wrap gap-3">
                       <span className="px-3 py-1 bg-burgundy-100 dark:bg-burgundy-900/50 text-burgundy-700 dark:text-burgundy-400 rounded-full text-sm font-medium">Thimmi</span>
-                      <span className="px-3 py-1 bg-burgundy-100 dark:bg-burgundy-900/50 text-burgundy-700 dark:text-burgundy-400 rounded-full text-sm font-medium">Tharktho</span>
-                      <span className="px-3 py-1 bg-burgundy-100 dark:bg-burgundy-900/50 text-burgundy-700 dark:text-burgundy-400 rounded-full text-sm font-medium">Chawa</span>
+                      <span className="px-3 py-1 bg-burgundy-100 dark:bg-burgundy-900/50 text-burgundy-700 dark:text-burgundy-400 rounded-full text-sm font-medium">Minyakpa</span>
+                      <span className="px-3 py-1 bg-burgundy-100 dark:bg-burgundy-900/50 text-burgundy-700 dark:text-burgundy-400 rounded-full text-sm font-medium">Chyawa</span>
                       <span className="px-3 py-1 bg-burgundy-100 dark:bg-burgundy-900/50 text-burgundy-700 dark:text-burgundy-400 rounded-full text-sm font-medium">Lama</span>
+                      <span className="px-3 py-1 bg-burgundy-100 dark:bg-burgundy-900/50 text-burgundy-700 dark:text-burgundy-400 rounded-full text-sm font-medium">Ngompa</span>
+                      <span className="px-3 py-1 bg-burgundy-100 dark:bg-burgundy-900/50 text-burgundy-700 dark:text-burgundy-400 rounded-full text-sm font-medium">Parwi-Tso</span>
                     </div>
                   </div>
                   <p className="text-sm">Over time, these clans branched into several brother-clans including Salakha, Gole, Gorcha, Phinasa, Serwa, Gombawa, and many more. According to Sherpa customs, marriage within the same clan or brother-clans is strictly forbidden.</p>
