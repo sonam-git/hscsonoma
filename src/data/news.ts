@@ -78,12 +78,12 @@ With an emphasis on sustainability and supporting local producers, Farmhouse Son
   },
   {
     slug: "sonoma-grille-flag-everest",
-    title: "Climber waves Sonoma Grille flag atop Mount Everest",
+    title: "Climber waves Sonoma Grille flag at top of Mount Everest",
     excerpt:
       "During his May 15 ascent, Pasang Tshering Sherpa waved the flag for Sonoma Grille, the popular...",
     content: `During his May 15 ascent, Pasang Tshering Sherpa waved the flag for Sonoma Grille, the popular restaurant in downtown Sonoma, at the summit of Mount Everest.
 
-The gesture was a tribute to the Sherpa community in Sonoma County and the restaurant that has become a gathering place for locals and visitors alike. Sonoma Grille, known for its warm hospitality and delicious food, holds a special place in the hearts of the local Sherpa community.
+The gesture was a tribute to the Sherpa community in Sonoma County and the restaurant that has become a gathering place for locals and visitors alike. Sonoma Grille, known for its warm hospitality and delicious food, holds a special place in the hearts of the local sonoma community as well as the visitors.
 
 Pasang Tshering Sherpa's successful summit marked another achievement in his distinguished mountaineering career. By carrying the restaurant's flag to the top of the world, he created a unique connection between Sonoma's Wine Country and the highest peak on Earth.
 
@@ -141,8 +141,8 @@ Funds raised went directly to earthquake relief efforts, supporting rebuilding h
     source: "Sonoma Index-Tribune",
   },
   {
-    slug: "sonoma-sherpas-plan-benefit",
-    title: "Sonoma Sherpas plan benefit",
+    slug: "raising-funds-for-everest-avalanche-victims",
+    title: "Fundraiser to support Sherpa families affected by Everest avalanche 2014",
     excerpt:
       "A group of Sonoma Sherpas, some with guiding experience on Mt. Everest and at least 10 successful...",
     content: `A group of Sonoma Sherpas, some with guiding experience on Mt. Everest and at least 10 successful summits between them, are planning a benefit to support their community both locally and in Nepal.

@@ -67,10 +67,10 @@ export default async function NewsArticlePage({ params }: PageProps) {
               src={article.image}
               alt={article.title}
               fill
-              className="object-cover"
+              className="object-fill"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/60 to-black/40" />
 
             {/* Overlay Content */}
             <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
@@ -89,7 +89,7 @@ export default async function NewsArticlePage({ params }: PageProps) {
                   </span>
                 )}
               </div>
-              <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-3 max-w-4xl font-[Georgia,'Times_New_Roman',Times,serif]">
+              <h1 className="text-xl md:text-4xl lg:text-5xl font-bold text-white mb-3 max-w-4xl font-[Georgia,'Times_New_Roman',Times,serif]">
                 {article.title}
               </h1>
               <div className="flex flex-wrap items-center gap-4 text-cream-200">

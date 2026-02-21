@@ -32,6 +32,12 @@ const hardcodedGalleryImages: GalleryImage[] = [
     caption: 'Community Gathering 2013',
     category: 'Community',
   },
+   {
+    src: '/images/hero/sherpakids2020.png',
+    alt: 'Sherpa Kids 2020',
+    caption: 'Sherpa Kids in 2020',
+    category: 'Community',
+  },
   {
     src: '/images/hero/Sonoma-Sherpa-Kids-back-in-2013.jpeg',
     alt: 'Sonoma Sherpa Kids 2013',
@@ -48,6 +54,12 @@ const hardcodedGalleryImages: GalleryImage[] = [
     src: '/images/events/annual/losar.jpg',
     alt: 'Annual Losar Celebration',
     caption: 'Annual Nangbi Lhosar Festival',
+    category: 'Cultural',
+  },
+    {
+    src: '/images/events/annual/HSC-Lhosar2013.jpg',
+    alt: 'Annual Losar Celebration',
+    caption: 'Annual Nangbi Lhosar Festival 2013',
     category: 'Cultural',
   },
   {
