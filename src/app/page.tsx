@@ -746,7 +746,7 @@ export default async function HomePage() {
                   </span>
                 </summary>
                 <div className="px-6 pb-6 text-mountain-600 dark:text-mountain-300 leading-relaxed">
-                  The Himalayan Sherpa Club was established in <strong className="text-burgundy-700 dark:text-burgundy-400">2011</strong> to unite Sherpas living in and around Sonoma County. Its mission is to preserve and promote Sherpa culture abroad, educate younger generations about their heritage, and collaborate with other organizations on community-based events.
+                  <p>The Himalayan Sherpa Club was established in <strong className="text-burgundy-700 dark:text-burgundy-400">2011</strong> to unite Sherpas living in and around Sonoma County. Its mission is to preserve and promote Sherpa culture abroad, educate younger generations about their heritage, and collaborate with other organizations on community-based events.</p>
                 </div>
               </details>
 
@@ -763,7 +763,7 @@ export default async function HomePage() {
                   </span>
                 </summary>
                 <div className="px-6 pb-6 text-mountain-600 dark:text-mountain-300 leading-relaxed">
-                  Our main goal is to preserve and promote Sherpa culture and establish a united and prosperous community with a unique and rich cultural heritage, and to strengthen the Sherpa community living in the North Bay Areas.
+                 <p>Our main goal is to preserve and promote Sherpa culture and establish a united and prosperous community with a unique and rich cultural heritage, and to strengthen the Sherpa community living in the North Bay Areas.</p>
                 </div>
               </details>
 
@@ -780,7 +780,7 @@ export default async function HomePage() {
                   </span>
                 </summary>
                 <div className="px-6 pb-6 text-mountain-600 dark:text-mountain-300 leading-relaxed">
-                  To become a member of HSC, you must be of Nepalese origin, reside in Sonoma County, and be willing to volunteer for the organization whenever available. Membership is entirely based on voluntary contributions. Please fill out our <Link href="/join-us" className="text-burgundy-700 dark:text-burgundy-400 underline hover:text-burgundy-800 dark:hover:text-burgundy-300">membership form</Link> and submit.
+                  <p>To become a member of HSC, you must be of Nepalese origin, reside in Sonoma County, and be willing to volunteer for the organization whenever available. Membership is entirely based on voluntary contributions. Please fill out our <Link href="/join-us" className="text-burgundy-700 dark:text-burgundy-400 underline hover:text-burgundy-800 dark:hover:text-burgundy-300">membership form</Link> and submit.</p>
                 </div>
               </details>
 
@@ -797,7 +797,7 @@ export default async function HomePage() {
                   </span>
                 </summary>
                 <div className="px-6 pb-6 text-mountain-600 dark:text-mountain-300 leading-relaxed">
-                  As a member of HSC, you are welcome to participate in all events organized by the club. Since membership is entirely voluntary, your involvement depends on your availability and willingness to contribute. Check our <Link href="/events" className="text-burgundy-700 dark:text-burgundy-400 underline hover:text-burgundy-800 dark:hover:text-burgundy-300">Events page</Link> for upcoming activities.
+                  <p>As a member of HSC, you are welcome to participate in all events organized by the club. Since membership is entirely voluntary, your involvement depends on your availability and willingness to contribute. Check our <Link href="/events" className="text-burgundy-700 dark:text-burgundy-400 underline hover:text-burgundy-800 dark:hover:text-burgundy-300">Events page</Link> for upcoming activities.</p>
                 </div>
               </details>
 
@@ -814,14 +814,14 @@ export default async function HomePage() {
                   </span>
                 </summary>
                 <div className="px-6 pb-6 text-mountain-600 dark:text-mountain-300 leading-relaxed">
-                  You can directly email us through our <Link href="/contact" className="text-burgundy-700 dark:text-burgundy-400 underline hover:text-burgundy-800 dark:hover:text-burgundy-300">Contact Us page</Link> or call us at the given number on the same page.
+                  <p>You can directly email us through our <Link href="/contact" className="text-burgundy-700 dark:text-burgundy-400 underline hover:text-burgundy-800 dark:hover:text-burgundy-300">Contact Us page</Link> or call us at the given number on the same page.</p>  
                 </div>
               </details>
 
               {/* FAQ Item 6 */}
               <details className="group bg-white dark:bg-mountain-800 rounded-xl shadow-md overflow-hidden">
                 <summary className="flex items-center justify-between cursor-pointer p-6 text-left">
-                  <span className="text-lg font-semibold text-mountain-900 dark:text-cream-50 pr-4">
+                   <span className="text-lg font-semibold text-mountain-900 dark:text-cream-50 pr-4">
                     Where is HSC office located?
                   </span>
                   <span className="flex-shrink-0 w-8 h-8 bg-burgundy-100 dark:bg-burgundy-900/50 rounded-full flex items-center justify-center group-open:rotate-180 transition-transform duration-300">
@@ -830,8 +830,8 @@ export default async function HomePage() {
                     </svg>
                   </span>
                 </summary>
-                <div className="px-6 pb-6 text-mountain-600 dark:text-mountain-300 leading-relaxed">
-                  HSC does not have an official office yet. However, you can reach out to any of our <Link href="/about/functional-bodies" className="text-burgundy-700 dark:text-burgundy-400 underline hover:text-burgundy-800 dark:hover:text-burgundy-300">executive members</Link> for information and assistance.
+                <div className="px-6 pb-6 text-mountain-600 dark:text-mountain-300 leading-relaxed space-y-3">
+                   <p>HSC does not have a physical office yet. However, you can reach out to any of our <Link href="/about/functional-bodies" className="text-burgundy-700 dark:text-burgundy-400 underline hover:text-burgundy-800 dark:hover:text-burgundy-300">executive members</Link> for information and assistance.</p>
                 </div>
               </details>
 
