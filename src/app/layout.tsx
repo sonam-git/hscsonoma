@@ -26,6 +26,17 @@ export const metadata: Metadata = {
     template: '%s | Himalayan Sherpa Club of Sonoma',
   },
   description: 'The Himalayan Sherpa Club of Sonoma is a 501(c)(3) non-profit uniting Sherpa people in Sonoma County & Wine Country, California. Cultural events, Losar celebrations, and Sherpa heritage preservation.',
+  icons: {
+    icon: [
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/images/logos/HSC-logo-dark-border.png', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180' },
+    ],
+    shortcut: '/favicon-32x32.png',
+  },
   keywords: [
     'Sherpa Sonoma',
     'Sherpa Wine Country',
@@ -98,6 +109,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable} light`} suppressHydrationWarning>
       <head>
+        {/* Favicon and icons */}
+        <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png" />
+        <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+        
         {/* Preconnect to external domains for faster loading */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
