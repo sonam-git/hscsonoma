@@ -288,7 +288,7 @@ Himalayan Sherpa Club of Sonoma
               <li>Our membership team will review your application within 2-3 business days.</li>
               <li>You'll receive payment instructions via email.</li>
               <li>Once payment is received, your membership will be activated.</li>
-              <li>You'll receive a welcome packet with information about upcoming events and member benefits.</li>
+              <li>You'll receive a welcome email with information about the club, upcoming events and member benefits.</li>
             </ol>
             
             <h3 style="color: #333;">Member Benefits Include:</h3>
@@ -331,7 +331,7 @@ What's Next?
 1. Our membership team will review your application within 2-3 business days.
 2. You'll receive payment instructions via email.
 3. Once payment is received, your membership will be activated.
-4. You'll receive a welcome packet with information about upcoming events and member benefits.
+4. You'll receive a welcome email with information about the club, upcoming events and member benefits.
 
 Member Benefits Include:
 - Access to all community events and celebrations
