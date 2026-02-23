@@ -14,6 +14,7 @@ const reelImages = [
   { src: "/images/hero/IMG_8287.jpg", alt: "Fund Raising Event" },
   { src: "/images/hero/Sonoma-Sherpa-Kids-back-in-2013.jpeg", alt: "Sonoma Sherpa Kids 2013" },
   { src: "/images/hero/sherpakids2020.png", alt: "Sonoma Sherpa Kids 2020" },
+  { src: "/images/hero/desktop-hero.png", alt: "Sherpa Community in Wine Country" },
   // News images
   { src: "/images/news/benefit.jpg", alt: "Fund raising event for Everest Avalanche victims" },
   { src: "/images/news/fundraising.jpg", alt: "Fundraising" },

@@ -180,17 +180,16 @@ export default async function HomePage() {
 
       {/* Hero Section - Desktop */}
       <section className="relative min-h-screen hidden md:flex items-center justify-center overflow-hidden">
-        {/* 3D Background Image - Desktop only */}
-        <div className={`absolute inset-0 w-full h-full ${styles.heroBg}`}>  
+        {/* 3D Background Image - Desktop only - positioned between header and photo reel */}
+        <div className={`absolute top-16 bottom-28 left-0 right-0 ${styles.heroBg}`}>  
           <Image
             src={heroData.backgroundImage}
             alt={heroData.backgroundAlt}
             fill
             priority
             fetchPriority="high"
-            className="object-contain object-center select-none pointer-events-none"
+            className="object-cover object-center select-none pointer-events-none"
             sizes="100vw"
-            style={{ objectFit: 'cover', objectPosition: 'center' }}
             quality={85}
           />
           {/* Dark Blue Overlay for readability */}

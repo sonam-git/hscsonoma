@@ -144,7 +144,7 @@ export interface HomePageContent {
 // ===========================================
 
 const fallbackHero: HomeHeroData = {
-  backgroundImage: '/images/hero/hsc-heroimage.png',
+  backgroundImage: '/images/hero/desktop-hero.png',
   backgroundAlt: 'Sherpa Sonoma - Himalayan Sherpa Club',
   mobileImage: '/images/hero/hsc-heroimage.png',
   mobileAlt: 'Himalayan Sherpa Club - Mobile',
