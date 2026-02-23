@@ -144,9 +144,9 @@ export interface HomePageContent {
 // ===========================================
 
 const fallbackHero: HomeHeroData = {
-  backgroundImage: '/images/hero/sherpa-sonoma.png',
+  backgroundImage: '/images/hero/hsc-heroimage.png',
   backgroundAlt: 'Sherpa Sonoma - Himalayan Sherpa Club',
-  mobileImage: '/images/hero/hero-tall.png',
+  mobileImage: '/images/hero/hsc-heroimage.png',
   mobileAlt: 'Himalayan Sherpa Club - Mobile',
   isFromStoryblok: false,
 };

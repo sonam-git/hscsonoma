@@ -253,7 +253,7 @@ export default async function HomePage() {
         {/* Row 2: Hero Image - adjusted height to fit photo reel in viewport */}
         <div className="relative" style={{ height: '60vh' }}>
           <Image
-            src={heroData.isFromStoryblok ? heroData.backgroundImage : (heroData.mobileImage || '/images/hero/hero-tall.png')}
+            src={heroData.isFromStoryblok ? heroData.backgroundImage : (heroData.mobileImage || '/images/hsc-heroimage.png')}
             alt={heroData.isFromStoryblok ? heroData.backgroundAlt : (heroData.mobileAlt || 'Himalayan Sherpa Club')}
             fill
             priority
