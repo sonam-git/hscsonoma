@@ -213,13 +213,13 @@ export default function Header() {
         />
         
         {/* Light/Dark Overlay for background */}
-        <div className="absolute inset-0 bg-white/70 bg-gray-900/40" />
-        
+        <div className="absolute inset-0 bg-white/40" />
+
         {/* Subtle gradient overlay */}
         <div className={`absolute inset-0 transition-all duration-300 ${
           isScrolled
             ? 'bg-white/60 dark:bg-gray-900 backdrop-blur-sm'
-            : 'bg-white/40 dark:bg-gray-900/40'
+            : 'bg-white/40 dark:bg-gray-800/90'
         }`} />
         
       <div className="container-custom relative">
