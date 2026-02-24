@@ -31,7 +31,9 @@ const reelImages = [
   { src: "/images/events/past/earthquake-victims.jpeg", alt: "HSC in the news" },
   { src: "/images/events/past/everest-avalanche.jpg", alt: "Everest Avalanche Fund Raise 2014" },
   { src: "/images/events/past/musical-concert.jpeg", alt: "Musical Concert" },
-  { src: "/images/events/past/summit-legend-with hsc members.jpg", alt: "Mountain Legends with HSC Members" },
+  { src: "/images/events/past/summit-legends.jpg", alt: "Mountain Legends with HSC Members" },
+  { src: "/images/events/past/Lhosar2013.jpg", alt: "HSC Lhosar 2013" },
+  { src: "/images/events/past/Losar-dinner2013.jpg", alt: "Serving Dinner during HSC Losar 2013" },
   // Events - Signature
   { src: "/images/events/signature/Lhosar-Party-.jpeg", alt: "Lhosar Party" },
   { src: "/images/events/signature/labor-day-flex.jpg", alt: "Himalayan Cup" },
