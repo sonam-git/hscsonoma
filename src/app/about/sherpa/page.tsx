@@ -843,22 +843,16 @@ function FamilyTreeTab() {
       <div className="bg-white dark:bg-mountain-800/50 rounded-3xl p-8 md:p-12 border border-cream-200 dark:border-mountain-700 shadow-xl">
         <div className="max-w-4xl mx-auto">
           <div className="flex flex-col md:flex-row gap-8 items-center mb-10">
-            {/* Tree Icon */}
+            {/* Tree Logo Image */}
             <div className="flex-shrink-0">
-              <div className="w-32 h-32 bg-gradient-to-br from-burgundy-600 to-burgundy-800 rounded-2xl flex items-center justify-center shadow-2xl shadow-burgundy-600/30 transform rotate-3">
-                <svg
-                  className="w-16 h-16 text-gold-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M12 3v18m0-18c-3 3-6 3-9 0m9 0c3 3 6 3 9 0m-9 6c-2 2-4 2-6 0m6 0c2 2 4 2 6 0m-6 6c-1.5 1.5-3 1.5-4.5 0m4.5 0c1.5 1.5 3 1.5 4.5 0"
-                  />
-                </svg>
+              <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-2xl overflow-hidden shadow-2xl shadow-green-800/60 dark:shadow-white transform rotate-3">
+                <Image
+                  src="/images/sherpa/treelogo_d.gif"
+                  alt="Sherpa Tribal Family Tree Logo"
+                  fill
+                  className="object-contain"
+                  unoptimized
+                />
               </div>
             </div>
 
@@ -960,7 +954,7 @@ function FamilyTreeTab() {
       </div>
 
       {/* Quote Section */}
-      <div className="relative bg-mountain-900 dark:bg-mountain-800 rounded-3xl p-8 md:p-12 overflow-hidden">
+      <div className="relative bg-gradient-himalayan dark:bg-mountain-800 rounded-3xl p-8 md:p-12 overflow-hidden">
         {/* Decorative Background */}
         <div className="absolute inset-0 opacity-10">
           <svg
@@ -1017,8 +1011,14 @@ function FamilyTreeTab() {
               </p>
             </blockquote>
             <footer className="flex items-center gap-4 pl-8">
-              <div className="w-12 h-12 bg-gradient-to-br from-gold-400 to-gold-600 rounded-full flex items-center justify-center text-mountain-900 font-bold text-lg">
-                TP
+              <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+                <Image
+                  src="/images/functional-bodies/advisory/Thukten-sherpa.jpg"
+                  alt="Thukten Philip Sherpa"
+                  width={48}
+                  height={48}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div>
                 <cite className="not-italic font-bold text-white text-lg">
