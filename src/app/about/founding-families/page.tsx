@@ -190,10 +190,10 @@ export default function FoundingFamiliesPage() {
               journey while building a brighter future for generations to come.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/about/introduction" className="btn-gold">
+              <Link href="/about/introduction" className="bg-white hover:bg-gold-200 text-mountain-900 font-bold rounded-xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 px-8 py-4">
                 Learn About Our Mission
               </Link>
-              <Link href="/join-us" className="inline-flex items-center justify-center px-6 py-3 border-2 border-white text-base font-medium rounded-md text-white hover:bg-white/10 transition-all duration-200">
+              <Link href="/join-us" className="bg-white hover:bg-gold-200 text-mountain-900 font-bold rounded-xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 px-8 py-4">
                 Join Our Community
               </Link>
             </div>

@@ -931,7 +931,7 @@ export default function EventsPage() {
                         <button 
                           type="submit"
                           disabled={newsletterStatus === 'loading'}
-                          className="px-6 py-3 bg-gold-400 text-mountain-900 font-semibold rounded-lg hover:bg-gold-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                          className="px-6 py-3 bg-white text-mountain-900 font-semibold rounded-lg hover:bg-gold-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                         >
                           {newsletterStatus === 'loading' ? (
                             <>

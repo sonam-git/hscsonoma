@@ -282,7 +282,7 @@ export default function NewsPage() {
 						</p>
 						<a
 							href="/contact"
-							className="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-600 text-mountain-900 px-8 py-4 rounded-xl font-semibold transition-colors shadow-lg"
+							className="inline-flex items-center gap-2 bg-white hover:bg-gold-200 text-mountain-900 px-8 py-4 rounded-xl font-semibold transition-colors shadow-lg"
 						>
 							Submit Your Story
 							<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

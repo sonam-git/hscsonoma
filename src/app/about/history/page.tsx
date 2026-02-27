@@ -551,7 +551,7 @@ export default function HistoryPage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/join-us"
-              className="px-8 py-4 bg-gold-500 hover:bg-gold-600 text-mountain-900 font-bold rounded-xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
+              className="px-8 py-4 bg-white hover:bg-gold-200 text-mountain-900 font-bold rounded-xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
             >
               Become a Member
             </Link>

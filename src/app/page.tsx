@@ -1043,10 +1043,10 @@ export default async function HomePage() {
             By giving and receiving, we create deeper bonds and strengthen our collective spirit.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/join-us" className="btn-gold hover:bg-white hover:border-gray-600 text-lg px-8 py-4">
+             <Link href="/join-us" className="btn-primary text-lg px-8 py-4">
               Become a Member
             </Link>
-            <Link href="/contact" className="btn-secondary border-gray-600 text-gray-600 hover:bg-white text-lg px-8 py-4">
+            <Link href="/contact" className="btn-secondary">
               Contact Us
             </Link>
           </div>
