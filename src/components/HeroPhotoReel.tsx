@@ -23,7 +23,7 @@ const reelImages = [
   { src: "/images/events/annual/himalayan cup.jpeg", alt: "Himalayan Cup" },
   { src: "/images/events/annual/losar.jpg", alt: "Sherpa Dance Performance" },
   { src: "/images/events/annual/phangi-party.jpeg", alt: "Phangi Party" },
-  { src: "/images/events/past/HSC-picnic2011.png", alt: "HSC Picnic 2011" },
+  { src: "/images/events/past/HSC-picnic2011.png", alt: "HSC Camping 2011" },
   { src: "/images/events/annual/HSC-Lhosar-2011.jpg", alt: "Lhosar Serkim 2011" },
   { src: "/images/events/annual/HSC-Lhosar2013.jpg", alt: "HSC Shebru performance 2013" },
   // Events - Past
@@ -34,10 +34,16 @@ const reelImages = [
   { src: "/images/events/past/summit-legends.jpg", alt: "Mountain Legends with HSC Members" },
   { src: "/images/events/past/Lhosar2013.jpg", alt: "HSC Lhosar 2013" },
   { src: "/images/events/past/Losar-dinner2013.jpg", alt: "Serving Dinner during HSC Losar 2013" },
+   { src: "/images/events/past/hsc-executive.JPG", alt: "HSC Executive Team with mountain heroes and Sonoma mayor Sandra Lowe" },
+    { src: "/images/events/past/congratulating.JPG", alt: "Offering blessing to the mountain legends from elderest member of HSC" },
+     { src: "/images/events/past/mountain-hero.JPG", alt: "Mountain Heroes visiting Sonoma" },
+      { src: "/images/events/past/offering-khada.JPG", alt: "Offering Khada during HSC Summit Legend Event 2023" },
+       { src: "/images/events/past/sandra-lowe.JPG", alt: "HSC members with Sonoma mayor 2023 Sandra Lowe" },
+        { src: "/images/events/past/three-summit-legends.JPG", alt: "Three Summit Legends during Summit Legends Event 2023" },
   // Events - Signature
   { src: "/images/events/signature/Lhosar-Party-.jpeg", alt: "Lhosar Party" },
   { src: "/images/events/signature/labor-day-flex.jpg", alt: "Himalayan Cup" },
-  { src: "/images/events/signature/phang-ngi.jpg", alt: "Phang Ngi" },
+  { src: "/images/events/signature/phang-ngi.jpg", alt: "Phang Ngi celebration" },
   // HSFC
   { src: "/images/hsfc/team.jpg", alt: "Sonoma Running Cup Champion HSFC" },
 ];

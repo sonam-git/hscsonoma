@@ -382,44 +382,83 @@ export default async function HomePage() {
             <h2 className="section-title">What We Stand For</h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
             {/* Culture */}
-            <div className="bg-white/80 dark:bg-mountain-800/80 backdrop-blur-sm rounded-2xl p-8 text-center hover:shadow-xl dark:hover:shadow-mountain-950/50 transition-shadow border border-cream-200/50 dark:border-mountain-600/50">
-              <div className="w-20 h-20 bg-burgundy-100 dark:bg-burgundy-900/50 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-10 h-10 text-burgundy-700 dark:text-burgundy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <div className="relative bg-white/90 dark:bg-mountain-800/90 backdrop-blur-sm rounded-2xl text-center hover:shadow-xl dark:hover:shadow-mountain-950/50 transition-shadow border border-cream-200/50 dark:border-mountain-600/50 overflow-hidden">
+              {/* Background Image */}
+              <div 
+                className="absolute inset-0 z-0"
+                style={{
+                  backgroundImage: 'url(/images/logos/sherpa-transparent-box.png)',
+                  backgroundSize: '120% 120%',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat',
+                }}
+              />
+              {/* Large SVG as watermark background */}
+              <div className="absolute inset-0 flex items-center justify-center z-[1] opacity-[0.08] dark:opacity-[0.06]">
+                <svg className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 text-burgundy-700 dark:text-burgundy-400" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-mountain-900 dark:text-cream-50 mb-3 font-[Georgia,'Times_New_Roman',Times,serif]">Preserve Culture</h3>
-              <p className="text-mountain-600 dark:text-mountain-300 font-[Georgia,'Times_New_Roman',Times,serif]">
-                Protecting and promoting Sherpa cultural and linguistic heritage for future generations.
-              </p>
+              <div className="relative z-10 p-5 sm:p-6 md:p-8 flex flex-col items-center justify-center min-h-[200px] sm:min-h-[220px] md:min-h-[240px]">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-mountain-900 dark:text-cream-50 mb-2 sm:mb-3 font-[Georgia,'Times_New_Roman',Times,serif]">Preserve Culture</h3>
+                <p className="text-sm sm:text-base text-mountain-600 dark:text-mountain-300 font-[Georgia,'Times_New_Roman',Times,serif] leading-relaxed max-w-xs">
+                  Protecting and promoting Sherpa cultural and linguistic heritage for future generations.
+                </p>
+              </div>
             </div>
 
             {/* Community */}
-            <div className="bg-white/80 dark:bg-mountain-800/80 backdrop-blur-sm rounded-2xl p-8 text-center hover:shadow-xl dark:hover:shadow-mountain-950/50 transition-shadow border border-cream-200/50 dark:border-mountain-600/50">
-              <div className="w-20 h-20 bg-forest-100 dark:bg-forest-900/50 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-10 h-10 text-forest-700 dark:text-forest-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            <div className="relative bg-white/90 dark:bg-mountain-800/90 backdrop-blur-sm rounded-2xl text-center hover:shadow-xl dark:hover:shadow-mountain-950/50 transition-shadow border border-cream-200/50 dark:border-mountain-600/50 overflow-hidden">
+              {/* Background Image */}
+              <div 
+                className="absolute inset-0 z-0"
+                style={{
+                  backgroundImage: 'url(/images/logos/sherpa-transparent-box.png)',
+                 backgroundSize: '120% 120%',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat',
+                }}
+              />
+              {/* Large SVG as watermark background */}
+              <div className="absolute inset-0 flex items-center justify-center z-[1] opacity-[0.08] dark:opacity-[0.06]">
+                <svg className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 text-forest-700 dark:text-forest-400" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-mountain-900 dark:text-cream-50 mb-3 font-[Georgia,'Times_New_Roman',Times,serif]">Unite Community</h3>
-              <p className="text-mountain-600 dark:text-mountain-300 font-[Georgia,'Times_New_Roman',Times,serif]">
-                Building strong bonds and supporting one another as we thrive in our new home.
-              </p>
+              <div className="relative z-10 p-5 sm:p-6 md:p-8 flex flex-col items-center justify-center min-h-[200px] sm:min-h-[220px] md:min-h-[240px]">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-mountain-900 dark:text-cream-50 mb-2 sm:mb-3 font-[Georgia,'Times_New_Roman',Times,serif]">Unite Community</h3>
+                <p className="text-sm sm:text-base text-mountain-600 dark:text-mountain-300 font-[Georgia,'Times_New_Roman',Times,serif] leading-relaxed max-w-xs">
+                  Building strong bonds and supporting one another as we thrive in our new home.
+                </p>
+              </div>
             </div>
 
             {/* Future */}
-            <div className="bg-white/80 dark:bg-mountain-800/80 backdrop-blur-sm rounded-2xl p-8 text-center hover:shadow-xl dark:hover:shadow-mountain-950/50 transition-shadow border border-cream-200/50 dark:border-mountain-600/50">
-              <div className="w-20 h-20 bg-gold-100 dark:bg-gold-900/50 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-10 h-10 text-gold-700 dark:text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            <div className="relative bg-white/90 dark:bg-mountain-800/90 backdrop-blur-sm rounded-2xl text-center hover:shadow-xl dark:hover:shadow-mountain-950/50 transition-shadow border border-cream-200/50 dark:border-mountain-600/50 overflow-hidden">
+              {/* Background Image */}
+              <div 
+                className="absolute inset-0 z-0"
+                style={{
+                  backgroundImage: 'url(/images/logos/sherpa-transparent-box.png)',
+                  backgroundSize: '120% 120%',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat',
+                }}
+              />
+              {/* Large SVG as watermark background */}
+              <div className="absolute inset-0 flex items-center justify-center z-[1] opacity-[0.08] dark:opacity-[0.06]">
+                <svg className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 text-gold-700 dark:text-gold-400" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-mountain-900 dark:text-cream-50 mb-3 font-[Georgia,'Times_New_Roman',Times,serif]">Inspire Youth</h3>
-              <p className="text-mountain-600 dark:text-mountain-300 font-[Georgia,'Times_New_Roman',Times,serif]">
-                Engaging younger generations in Sherpa traditions through community events and education.
-              </p>
+              <div className="relative z-10 p-5 sm:p-6 md:p-8 flex flex-col items-center justify-center min-h-[200px] sm:min-h-[220px] md:min-h-[240px]">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-mountain-900 dark:text-cream-50 mb-2 sm:mb-3 font-[Georgia,'Times_New_Roman',Times,serif]">Inspire Youth</h3>
+                <p className="text-sm sm:text-base text-mountain-600 dark:text-mountain-300 font-[Georgia,'Times_New_Roman',Times,serif] leading-relaxed max-w-xs">
+                  Engaging younger generations in Sherpa traditions through community events and education.
+                </p>
+              </div>
             </div>
           </div>
         </div>
