@@ -106,7 +106,7 @@ export default function IntroductionPage() {
                 climbers, including Americans. Over time, these relationships opened up opportunities 
                 for Sherpas to move abroad. While working as a trekking guide in Nepal, Chhiring 
                 Sherpa met some American friends who invited him to Sonoma in the early 1990s. A few 
-                years later, Ongda Sherpa won the Diversity Visa (DV) lottery and joined Chhiring. 
+                years later, Ongda Sherpa also joined Chhiring. 
                 Around the same time, Nima Sherpa, a friend of Chhiring from Nepal who had been 
                 living in Colorado, also moved to Sonoma. The three initially settled in Glen Ellen 
                 and are considered the first Sherpas to establish roots in Sonoma. Gradually, more 

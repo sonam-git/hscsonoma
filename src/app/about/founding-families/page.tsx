@@ -82,7 +82,7 @@ export default function FoundingFamiliesPage() {
 
               <p>
                 A few years later, <strong className="text-mountain-900 dark:text-cream-50">Ongda Sherpa</strong>—also a trekking guide—followed 
-                a similar path to the United States. After winning the Diversity Visa (DV) lottery, he joined 
+                a similar path to the United States. Around 1996 he joined 
                 Chhiring in Sonoma. Not long after, their friend <strong className="text-mountain-900 dark:text-cream-50">Nima Sherpa</strong>, 
                 who had been living in Colorado, also relocated to Sonoma to reunite with his close companions. 
                 The three settled in Glen Ellen and became the first Sherpas to establish roots in the area.
@@ -94,14 +94,31 @@ export default function FoundingFamiliesPage() {
                 a growing Sherpa community in Sonoma.
               </p>
 
-              <p>
-                Today, what started with three friends has grown into a vibrant community of over 30 Sherpa 
-                families. More than 20 children have been born here, calling Sonoma their true home. In 2011, 
-                the Himalayan Sherpa Club was founded to preserve and celebrate the culture, language, and 
-                traditions of the Sherpa people. It stands not only as a symbol of their journey but also as 
-                a gift to the younger generation—a way for them to stay connected to their heritage while 
-                thriving in a new land.
-              </p>
+              {/* Two-column layout for paragraph and image */}
+              <div className="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                  <p>
+                    Today, what started with three friends has grown into a vibrant community of over 30 Sherpa 
+                    families. More than 20 children have been born here, calling Sonoma their true home. In 2011, 
+                    the Himalayan Sherpa Club was founded to preserve and celebrate the culture, language, and 
+                    traditions of the Sherpa people. It stands not only as a symbol of their journey but also as 
+                    a gift to the younger generation—a way for them to stay connected to their heritage while 
+                    thriving in a new land.
+                  </p>
+                </div>
+                <div className="relative">
+                  <Image
+                    src="/images/founding-families/root.png"
+                    alt="Sherpa community roots in Sonoma"
+                    width={500}
+                    height={400}
+                    className="w-full rounded-2xl shadow-xl object-cover"
+                  />
+                  <p className="text-sm text-mountain-500 dark:text-mountain-400 text-center mt-3 italic">
+                    Nima, Ongda, and Chhiring Sherpa—pioneers of the Sherpa community in Sonoma back in the 90s.
+                  </p>
+                </div>
+              </div>
 
               <p className="text-xl italic text-burgundy-700 dark:text-burgundy-400 text-center py-4">
                 The Sherpa spirit—resilient, kind, and deeply rooted in culture—continues to flourish in Sonoma, 
