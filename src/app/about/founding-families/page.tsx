@@ -80,18 +80,15 @@ export default function FoundingFamiliesPage() {
                 Inspired by the beauty and opportunities of the area, Chhiring made Sonoma his new home.
               </p>
 
-              <p>
-                A few years later, <strong className="text-mountain-900 dark:text-cream-50">Ongda Sherpa</strong>—also a trekking guide—followed 
-                a similar path to the United States. Around 1996 he joined 
-                Chhiring in Sonoma. Not long after, their friend <strong className="text-mountain-900 dark:text-cream-50">Nima Sherpa</strong>, 
-                who had been living in Colorado, also relocated to Sonoma to reunite with his close companions. 
+              <p> Not long after (around 1996), his friends <strong className="text-mountain-900 dark:text-cream-50">Ongda Sherpa</strong> and
+              <strong className="text-mountain-900 dark:text-cream-50"> Nima Sherpa</strong>, who had been living in Colorado, also relocated to Sonoma to reunite with their close companions.
                 The three settled in Glen Ellen and became the first Sherpas to establish roots in the area.
               </p>
 
               <p>
                 As time passed, they slowly began inviting family members, helping them settle into this new 
                 and welcoming place. Word of opportunity, safety, and community spirit spread—gradually shaping 
-                a growing Sherpa community in Sonoma.
+                a growing Sherpa community in and around Sonoma.
               </p>
 
               {/* Two-column layout for paragraph and image */}
@@ -115,7 +112,7 @@ export default function FoundingFamiliesPage() {
                     className="w-full rounded-2xl shadow-xl object-cover"
                   />
                   <p className="text-sm text-mountain-500 dark:text-mountain-400 text-center mt-3 italic">
-                    Nima, Ongda, and Chhiring Sherpa—pioneers of the Sherpa community in Sonoma back in the 90s.
+                    L: Nima, M: Ongda, and R: Chhiring Sherpa—pioneers of the Sherpa community in Sonoma back in the 90s.
                   </p>
                 </div>
               </div>

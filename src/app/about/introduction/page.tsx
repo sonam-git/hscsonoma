@@ -104,10 +104,8 @@ export default function IntroductionPage() {
               <p>
                 With this new livelihood, the Sherpas developed strong connections with Western 
                 climbers, including Americans. Over time, these relationships opened up opportunities 
-                for Sherpas to move abroad. While working as a trekking guide in Nepal, Chhiring 
-                Sherpa met some American friends who invited him to Sonoma in the early 1990s. A few 
-                years later, Ongda Sherpa also joined Chhiring. 
-                Around the same time, Nima Sherpa, a friend of Chhiring from Nepal who had been 
+                for Sherpas to move abroad. While working as a trekking guide in Nepal, Chhiring Sherpa met some American friends who invited him to Sonoma in the early 1990s. A few 
+                years later, Ongda Sherpa and Nima Sherpa, friends of Chhiring from Nepal who had been 
                 living in Colorado, also moved to Sonoma. The three initially settled in Glen Ellen 
                 and are considered the first Sherpas to establish roots in Sonoma. Gradually, more 
                 Sherpa families joined them, establishing a growing and close-knit community in Sonoma.
