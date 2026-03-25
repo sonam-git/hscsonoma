@@ -112,7 +112,7 @@ export default function FoundingFamiliesPage() {
                     className="w-full rounded-2xl shadow-xl object-cover"
                   />
                   <p className="text-sm text-mountain-500 dark:text-mountain-400 text-center mt-3 italic">
-                    L: Nima, M: Ongda, and R: Chhiring Sherpa—pioneers of the Sherpa community in Sonoma back in the 90s.
+                  Sherpa pioneers of the Sherpa community in Sonoma back in the 90s.
                   </p>
                 </div>
               </div>

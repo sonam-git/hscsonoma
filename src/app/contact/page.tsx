@@ -34,7 +34,7 @@ export default function ContactPage() {
             {/* Welcome Message */}
             <div className="bg-white dark:bg-mountain-800 rounded-2xl p-6 md:p-8 shadow-lg h-fit">
               <h2 className="text-xl md:text-2xl font-serif font-bold text-mountain-900 dark:text-cream-50 mb-4">
-                Welcome
+                Welcome | Tashi Delek | Namaste
               </h2>
               <p className="text-sm md:text-base text-mountain-600 dark:text-mountain-300 leading-relaxed mb-4">
                 Since the Himalayan Sherpa Club (HSC) does not have a physical office and all of our members 
@@ -49,7 +49,7 @@ export default function ContactPage() {
                 Thank you for your understanding and support.
               </p>
               <p className="text-base md:text-lg font-serif font-semibold text-burgundy-700 dark:text-burgundy-400">
-                Thuchi Chey | Danyabaad | Thank You
+                Thank You | Thuchi Chey | Danyabaad
               </p>
             </div>
 
