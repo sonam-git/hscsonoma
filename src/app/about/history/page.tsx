@@ -76,7 +76,7 @@ const categoryConfig: Record<Category, { icon: () => JSX.Element; color: string;
 
 const timelineEvents: TimelineEvent[] = [
     {
-    year: '1990 - 1999',
+    year: '1992 - 1999',
     title: 'First Sherpa Arrival',
     description: 'Chhiring Sherpa, Ongda Sherpa and Nima Sherpa arrived in Sonoma County. More of their friends joined in the mid 90s, laying the foundation for the community.',
     category: 'foundation',
@@ -86,6 +86,12 @@ const timelineEvents: TimelineEvent[] = [
     title: 'Community Growth',
     description: 'More Sherpa families began settling in Sonoma County, leading to a growing community and increased cultural activities.',
     category: 'growth',
+  },
+    {
+    year: '2005',
+    title: 'First Volleyball Tournament',
+    description: 'The club organized its first volleyball tournament, fostering community spirit and engagement through sports.',
+    category: 'sports',
   },
   {
     year: '2010',
@@ -102,14 +108,15 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     year: '2011',
-    title: 'First Volleyball Tournament',
-    description: 'The club organized its first volleyball tournament, fostering community spirit and engagement through sports.',
-    category: 'sports',
-  },
-  {
-    year: '2012',
     title: 'First Losar Celebration',
-    description: 'The community organized its first public Losar (Tibetan New Year) celebration, attracting Sherpa families across the Northern Bay Area of California.',
+    description: 'The HSC community organized its first public Losar ( Sherpa New Year) celebration, attracting Sherpa families across the Northern Bay Area of California.',
+    category: 'culture',
+    highlight: true,
+  },
+    {
+    year: '2012',
+    title: 'Support Nepali Artists',
+    description: 'The HSC community started inviting Nepali artists to showcase their work, fostering cultural exchange and support for the arts.',
     category: 'culture',
     highlight: true,
   },
@@ -122,7 +129,7 @@ const timelineEvents: TimelineEvent[] = [
   {
     year: '2014',
     title: 'Himalayan Sonoma FC Founded',
-    description: 'Pemba Sherpa Founded Himalayan Sonoma FC, a soccer team that would go on to become a beloved part of the community and a platform for youth engagement.',
+    description: 'Pemba Sherpa Founded Himalayan Sonoma FC, a soccer team that would go on to become a beloved part of the community and a platform for youth engagement. Ever since HSC started organizing soccer tournaments (instead of volleyball).',
     category: 'sports',
   },
   {
@@ -131,6 +138,12 @@ const timelineEvents: TimelineEvent[] = [
     description: 'The Himalayan Sherpa Club of Sonoma conducted a fundraising campaign to support the families of Sherpas who lost their lives in the Everest avalanche.',
     category: 'charity',
     highlight: true,
+  },
+    {
+    year: '2015',
+    title: ' Leadership Change',
+    description: 'The founding members of the club began to pass on leadership roles to the next generation, ensuring the continuity of the community’s mission and activities.',
+    category: 'leadership',
   },
   {
     year: '2015',
@@ -142,13 +155,13 @@ const timelineEvents: TimelineEvent[] = [
   {
     year: '2015',
     title: 'Himalayan Cup Soccer Tournament',
-    description: 'The club organized the first-ever Himalayan Cup Soccer Tournament, bringing together teams from the Sherpa community and beyond.',
+    description: 'The club officially organized the first-ever Himalayan Cup Soccer Tournament targeting out-of-state teams, bringing together teams from the Nepali community and beyond.',
     category: 'sports',
   },
   {
     year: '2016',
     title: 'Annual Phang-ngi Celebration Started',
-    description: 'The club organized its first annual Phang-ngi celebration, honoring Sherpa culture and traditions with food, music, and dance.',
+    description: 'The club organized its first annual Phang-ngi celebration, honoring Sherpa culture and traditions with food, music, and dance. Each year, the four families from the community take turns hosting the event, and it has become a beloved tradition that brings everyone together.',
     category: 'culture',
   },
   {
