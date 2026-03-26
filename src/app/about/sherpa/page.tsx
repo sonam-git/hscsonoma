@@ -111,7 +111,7 @@ export default function SherpaPage() {
       </section>
 
       {/* Tabs Navigation */}
-      <section className="sticky top-24 md:top-[140px] z-40 bg-white/95 dark:bg-mountain-900/95 backdrop-blur-md shadow-md border-b border-cream-200 dark:border-mountain-700">
+      <section className="sticky top-[140px] xl:top-[140px] z-40 bg-white/95 dark:bg-mountain-900/95 backdrop-blur-md shadow-md border-b border-cream-200 dark:border-mountain-700">
         <div className="container-custom px-2 sm:px-4 md:px-6 lg:px-8">
           <div className="flex overflow-x-auto scrollbar-hide justify-start sm:justify-center gap-1 py-2">
             {tabs.map((tab) => (
@@ -132,7 +132,7 @@ export default function SherpaPage() {
       </section>
 
       {/* Tab Content */}
-      <section ref={contentRef} className="py-16 md:py-24 scroll-mt-[140px] md:scroll-mt-[200px]">
+      <section ref={contentRef} className="py-16 md:py-24 scroll-mt-[200px] xl:scroll-mt-[200px]">
         <div className="container-custom">
           {activeTab === "history" && <HistoryTab />}
           {activeTab === "clans" && <ClansTab />}

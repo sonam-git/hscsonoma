@@ -150,8 +150,8 @@ export default function FunctionalBodiesPage() {
         </div>
       </section>
 
-      {/* Sticky Tab Navigation - positioned below header (small screens) / header + submenu (large screens) */}
-      <div className="sticky top-24 md:top-[140px] z-40 bg-gradient-to-r from-burgundy-800 via-mountain-800 to-burgundy-800 shadow-lg">
+      {/* Sticky Tab Navigation - positioned below header + submenu */}
+      <div className="sticky top-[140px] xl:top-[140px] z-40 bg-gradient-to-r from-burgundy-800 via-mountain-800 to-burgundy-800 shadow-lg">
         <div className="container-custom">
           <div className="flex items-center justify-center gap-1 md:gap-2 py-3 overflow-x-auto scrollbar-hide">
             {tabs.map((tab) => {
@@ -176,7 +176,7 @@ export default function FunctionalBodiesPage() {
       </div>
 
       {/* Content Section */}
-      <section ref={contentRef} className="py-16 bg-cream-50 dark:bg-mountain-900 scroll-mt-[140px] md:scroll-mt-[200px]">
+      <section ref={contentRef} className="py-16 bg-cream-50 dark:bg-mountain-900 scroll-mt-[200px] xl:scroll-mt-[200px]">
         <div className="container-custom">
           <div className="min-h-[500px]">
             {/* Executive Committee */}

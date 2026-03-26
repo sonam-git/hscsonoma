@@ -346,6 +346,37 @@ export default function Header() {
           </div>
         </div>
 
+        {/* Horizontal Submenu for About - Mobile - Full Width */}
+        <div
+          className={`xl:hidden transition-all duration-300 overflow-hidden ${
+            pathname.startsWith('/about') ? 'max-h-24 opacity-100' : 'max-h-0 opacity-0'
+          }`}
+        >
+          <div className="w-full border-t bg-cream-50/95 dark:bg-mountain-800/95 border-cream-200 dark:border-mountain-700 backdrop-blur-sm">
+            <div className="overflow-x-auto scrollbar-hide">
+              <div className="flex items-center gap-1 py-2 px-3 min-w-max">
+                {navigation.find(item => item.name === 'About')?.children?.map((child) => {
+                  const ChildIcon = child.icon;
+                  return (
+                    <Link
+                      key={child.name}
+                      href={child.href}
+                      className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-200 whitespace-nowrap ${
+                        pathname === child.href 
+                          ? 'text-white bg-burgundy-600 dark:bg-burgundy-500 shadow-md'
+                          : 'text-blue-900 dark:text-cream-100 hover:text-burgundy-700 dark:hover:text-burgundy-400 hover:bg-burgundy-100/80 dark:hover:bg-burgundy-900/40'
+                      }`}
+                    >
+                      <ChildIcon />
+                      <span>{child.name}</span>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+
       <div className="container-custom relative">
         {/* Mobile Menu */}
         <div

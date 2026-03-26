@@ -90,7 +90,7 @@ const timelineEvents: TimelineEvent[] = [
     {
     year: '2005',
     title: 'First Volleyball Tournament',
-    description: 'The club organized its first volleyball tournament, fostering community spirit and engagement through sports.',
+    description: 'The community members organized its first volleyball tournament, fostering community spirit and engagement through sports.',
     category: 'sports',
   },
   {
@@ -377,7 +377,7 @@ export default function HistoryPage() {
       </section>
 
       {/* Category Filter */}
-      <section className="sticky top-24 md:top-[140px] z-30 bg-gradient-himalayan shadow-lg">
+      <section className="sticky top-[140px] xl:top-[140px] z-30 bg-gradient-himalayan shadow-lg">
         <div className="container-custom py-4">
           <div className="flex overflow-x-auto scrollbar-hide gap-2 pb-2 justify-start md:justify-center">
             <button
@@ -415,7 +415,7 @@ export default function HistoryPage() {
       </section>
 
       {/* Timeline Events */}
-      <section ref={contentRef} className="py-16 bg-cream-50 dark:bg-mountain-900 scroll-mt-[140px] md:scroll-mt-[200px]">
+      <section ref={contentRef} className="py-16 bg-cream-50 dark:bg-mountain-900 scroll-mt-[200px] xl:scroll-mt-[200px]">
         <div className="container-custom">
           <div className="max-w-5xl mx-auto relative">
             {/* Vertical Timeline Line */}

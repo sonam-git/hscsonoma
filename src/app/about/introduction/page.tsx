@@ -251,7 +251,7 @@ export default function IntroductionPage() {
             </div>
             <div className="flex gap-4">
               <Link href="/about/history" className="btn-primary">
-                Sherpa History
+               HSC History
               </Link>
               <Link href="/about/founding-families" className="btn-secondary">
                 Founding Families

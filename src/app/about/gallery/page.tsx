@@ -77,7 +77,7 @@ const hardcodedGalleryImages: GalleryImage[] = [
   {
     src: '/images/hsfc/team.jpg',
     alt: 'HSFC Team',
-    caption: 'Himalayan Sonoma Football Club',
+    caption: 'HSFC Winning Sonoma Running Cup',
     category: 'Sports',
   },
   {
@@ -92,10 +92,10 @@ const hardcodedGalleryImages: GalleryImage[] = [
     caption: 'Our Vibrant Community Members',
     category: 'Community',
   },
-  {
-    src: '/images/hero/hsfc.jpg',
-    alt: 'HSFC Soccer',
-    caption: 'HSFC Soccer Team in Action',
+    {
+    src: '/images/hsfc/himalayan-cup-2018.jpg',
+    alt: 'Himalayan Cup 2018',
+    caption: 'HSFC Winning Himalayan Cup 2018',
     category: 'Sports',
   },
   {
@@ -104,17 +104,24 @@ const hardcodedGalleryImages: GalleryImage[] = [
     caption: 'HSC Community Celebration',
     category: 'Community',
   },
+   
+    {
+    src: '/images/events/past/summit-legends.jpg',
+    alt: 'Community Event',
+    caption: 'HSC Summit Legends Celebration',
+    category: 'Community',
+  },
   {
     src: '/images/hero/IMG_8287.jpg',
     alt: 'Cultural Celebration',
-    caption: 'Cultural Heritage Event',
-    category: 'Cultural',
+    caption: 'Fund raising Event for Everest Avalanche Victims',
+    category: 'Community',
   },
   {
     src: '/images/hero/IMG_8299.jpg',
     alt: 'HSC Gathering',
-    caption: 'Sherpa Community Gathering',
-    category: 'Community',
+    caption: 'HSC members perfroming traditional Sherpa dance during Losar Celebration',
+    category: 'Cultural',
   },
 ];
 
@@ -146,7 +153,7 @@ const SparklesIcon = () => (
 export default function GalleryPage() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-  const [activeFilter, setActiveFilter] = useState('New');
+  const [activeFilter, setActiveFilter] = useState('All');
   const [storyblokImages, setStoryblokImages] = useState<GalleryImage[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const contentRef = useRef<HTMLElement>(null);
@@ -260,7 +267,7 @@ export default function GalleryPage() {
       </section>
 
       {/* Sticky Category Filter Tabs */}
-      <div className="sticky top-24 md:top-[140px] z-40 bg-gradient-to-r from-burgundy-800 via-mountain-800 to-burgundy-800 shadow-lg">
+      <div className="sticky top-[140px] xl:top-[140px] z-40 bg-gradient-to-r from-burgundy-800 via-mountain-800 to-burgundy-800 shadow-lg">
         <div className="container-custom px-2 sm:px-4 md:px-6 lg:px-8">
           <div className="flex overflow-x-auto scrollbar-hide justify-start sm:justify-center gap-1 md:gap-2 py-3">
             {categories.map((category) => (
@@ -282,7 +289,7 @@ export default function GalleryPage() {
       </div>
 
       {/* Gallery Section */}
-      <section ref={contentRef} className="py-16 scroll-mt-[140px] md:scroll-mt-[200px]">
+      <section ref={contentRef} className="py-16 scroll-mt-[200px] xl:scroll-mt-[200px]">
         <div className="container-custom">
 
           {/* Loading State */}
