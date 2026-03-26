@@ -203,7 +203,7 @@ export default function Header() {
       >
         {/* Fixed Background Image - doesn't move or resize */}
         <div 
-          className="absolute inset-0 dark:brightness-50"
+          className="absolute inset-0 dark:brightness-50 pointer-events-none"
           style={{
             backgroundImage: 'url(/images/logos/menu-bar.jpg)',
             backgroundRepeat: 'repeat-x',
@@ -213,10 +213,10 @@ export default function Header() {
         />
         
         {/* Light/Dark Overlay for background */}
-        <div className="absolute inset-0 bg-white/40" />
+        <div className="absolute inset-0 bg-white/40 pointer-events-none" />
 
         {/* Subtle gradient overlay */}
-        <div className={`absolute inset-0 transition-all duration-300 ${
+        <div className={`absolute inset-0 transition-all duration-300 pointer-events-none ${
           isScrolled
             ? 'bg-white/60 dark:bg-gray-900 backdrop-blur-sm'
             : 'bg-white/40 dark:bg-gray-800/90'
@@ -348,11 +348,11 @@ export default function Header() {
 
         {/* Horizontal Submenu for About - Mobile - Full Width */}
         <div
-          className={`xl:hidden transition-all duration-300 overflow-hidden ${
+          className={`xl:hidden transition-all duration-300 overflow-hidden relative z-10 ${
             pathname.startsWith('/about') ? 'max-h-24 opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
-          <div className="w-full border-t bg-cream-50/95 dark:bg-mountain-800/95 border-cream-200 dark:border-mountain-700 backdrop-blur-sm">
+          <div className="w-full border-t bg-cream-50 dark:bg-mountain-800 border-cream-200 dark:border-mountain-700">
             <div className="overflow-x-auto scrollbar-hide">
               <div className="flex items-center gap-1 py-2 px-3 min-w-max">
                 {navigation.find(item => item.name === 'About')?.children?.map((child) => {
