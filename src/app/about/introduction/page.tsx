@@ -178,7 +178,7 @@ export default function IntroductionPage() {
             <h2 className="section-title">Our Objectives</h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 max-w-5xl mx-auto">
             {[
               {
                 icon: (
@@ -223,14 +223,14 @@ export default function IntroductionPage() {
                 description: 'Being part of the Sonoma Community ever since its establishment, contributing to local events and initiatives.',
               },
             ].map((objective, index) => (
-              <div key={index} className="bg-white dark:bg-mountain-800 rounded-xl p-6 shadow-lg hover:shadow-xl dark:shadow-mountain-950/50 transition-shadow">
-                <div className="w-14 h-14 bg-burgundy-100 dark:bg-burgundy-900/50 rounded-xl flex items-center justify-center mb-4">
-                  <svg className="w-7 h-7 text-burgundy-700 dark:text-burgundy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div key={index} className="bg-white dark:bg-mountain-800 rounded-xl p-4 md:p-6 shadow-lg hover:shadow-xl dark:shadow-mountain-950/50 transition-shadow">
+                <div className="w-10 h-10 md:w-14 md:h-14 bg-burgundy-100 dark:bg-burgundy-900/50 rounded-xl flex items-center justify-center mb-3 md:mb-4">
+                  <svg className="w-5 h-5 md:w-7 md:h-7 text-burgundy-700 dark:text-burgundy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     {objective.icon}
                   </svg>
                 </div>
-                <h3 className="text-lg font-semibold text-mountain-900 dark:text-cream-50 mb-2">{objective.title}</h3>
-                <p className="text-mountain-600 dark:text-mountain-300 text-sm">{objective.description}</p>
+                <h3 className="text-sm md:text-lg font-semibold text-mountain-900 dark:text-cream-50 mb-1 md:mb-2">{objective.title}</h3>
+                <p className="text-mountain-600 dark:text-mountain-300 text-xs md:text-sm">{objective.description}</p>
               </div>
             ))}
           </div>
