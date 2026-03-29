@@ -39,10 +39,8 @@ const founderMembers = [
 
 // Advisory Committee
 const advisoryMembers = [
-  { name: 'Nima Sherpa', image: '/images/functional-bodies/advisory/nima-sherpa.jpg' },
-  { name: 'Thukten Sherpa', image: '/images/functional-bodies/advisory/Thukten-sherpa.jpg' },
-  { name: 'Ang T Sherpa', image: '/images/functional-bodies/advisory/ang-t-sherpa.png' },
-  { name: 'HSC Women\'s Group', image: '/images/functional-bodies/advisory/sonoma-women-g.png', isGroup: true },
+  { name: 'HSC Father\'s Group', image: '/images/functional-bodies/advisory/hsc-father-logo.png', isGroup: true },
+  { name: 'HSC Women\'s Group', image: '/images/functional-bodies/advisory/hsc-mother-logo.png', isGroup: true },
 ];
 
 // SVG Icon Components for tabs
