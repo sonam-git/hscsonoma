@@ -34,7 +34,7 @@ const founderMembers = [
   { name: 'Tenji Sherpa', image: '/images/functional-bodies/founder-member/tenji-sherpa.jpg' },
   { name: 'Nawang G Sherpa', image: '/images/functional-bodies/founder-member/nawang-g-sherpa.jpg' },
   { name: 'Pasang Sherpa', image: '/images/functional-bodies/founder-member/pasang-sherpa.jpg' },
-  { name: "Sonoma Women's Group",  image: '/images/functional-bodies/advisory/sonoma-women-g.png', isGroup: true },
+  { name: "HSC Women's Group",  image: '/images/functional-bodies/advisory/sonoma-women-g.png', isGroup: true },
 ];
 
 // Advisory Committee
@@ -42,7 +42,7 @@ const advisoryMembers = [
   { name: 'Nima Sherpa', image: '/images/functional-bodies/advisory/nima-sherpa.jpg' },
   { name: 'Thukten Sherpa', image: '/images/functional-bodies/advisory/Thukten-sherpa.jpg' },
   { name: 'Ang T Sherpa', image: '/images/functional-bodies/advisory/ang-t-sherpa.png' },
-  { name: 'Sonoma Women\'s Group', image: '/images/functional-bodies/advisory/sonoma-women-g.png', isGroup: true },
+  { name: 'HSC Women\'s Group', image: '/images/functional-bodies/advisory/sonoma-women-g.png', isGroup: true },
 ];
 
 // SVG Icon Components for tabs
