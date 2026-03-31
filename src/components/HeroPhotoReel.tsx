@@ -16,6 +16,10 @@ const reelImages = [
   { src: "/images/hero/sherpakids2020.png", alt: "Sonoma Sherpa Kids 2020" },
   { src: "/images/hero/desktop-hero.png", alt: "Sherpa Community in Wine Country" },
    { src: "/images/functional-bodies/advisory/sonoma-women-g.png", alt: "Sonoma Women Group" },
+     { src: "/images/hsc/hsc-board-2018.jpg", alt: "HSC Board 2018" },
+      { src: "/images/hsc/hsc-marathon-2017.jpg", alt: "HSC Member Pasang Nuru participating in Napa - Sonoma Marathon 2017" },
+       { src: "/images/hsc/hsc-newyear-celebration-2013.jpg", alt: "HSC New Year Celebration 2013" },
+        { src: "/images/hsc/hsc-picnic-2013.jpg", alt: "HSC Picnic 2013" },
   // News images
   { src: "/images/news/benefit.jpg", alt: "Fund raising event for Everest Avalanche victims" },
   { src: "/images/news/fundraising.jpg", alt: "Fundraising" },
