@@ -11,6 +11,7 @@ const reelImages = [
   { src: "/images/hero/hscpicnic.jpg", alt: "HSC Picnic" },
   { src: "/images/hero/sherpadance2.jpg", alt: "Sherpa Traditional Dance" },
   { src: "/images/hero/IMG_8214.jpg", alt: "HSC Community Event" },
+  { src: "/images/hsc/hsc-tahoe-2016.jpg", alt: "HSC Lake Tahoe Trip 2016" },
   { src: "/images/hero/IMG_8287.jpg", alt: "Fund Raising Event" },
   { src: "/images/hero/Sonoma-Sherpa-Kids-back-in-2013.jpeg", alt: "Sonoma Sherpa Kids 2013" },
   { src: "/images/hero/sherpakids2020.png", alt: "Sonoma Sherpa Kids 2020" },
@@ -20,6 +21,7 @@ const reelImages = [
       { src: "/images/hsc/hsc-marathon-2017.jpg", alt: "HSC Member Pasang Nuru participating in Napa - Sonoma Marathon 2017" },
        { src: "/images/hsc/hsc-newyear-celebration-2013.jpg", alt: "HSC New Year Celebration 2013" },
         { src: "/images/hsc/hsc-picnic-2013.jpg", alt: "HSC Picnic 2013" },
+        { src: "/images/hsc/hsc-laketahoe.jpg", alt: "HSC Lake Tahoe Trip 2016" },
   // News images
   { src: "/images/news/benefit.jpg", alt: "Fund raising event for Everest Avalanche victims" },
   { src: "/images/news/fundraising.jpg", alt: "Fundraising" },

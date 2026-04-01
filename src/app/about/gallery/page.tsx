@@ -68,6 +68,42 @@ const hardcodedGalleryImages: GalleryImage[] = [
     caption: "Labor Day Community Event",
     category: "Community",
   },
+    {
+    src: "/images/events/past/three-summit-legends.JPG",
+    alt: "Three Summit Legends",
+    caption: "Honoring 3 Sherpa Mountaineering Legends at HSC Summit Legends Celebration | L : Ang D Sherpa, M: Nima Nuru Sherpa, R: Kami Rita Sherpa",
+    category: "Community",
+  },
+      {
+    src: "/images/events/past/sandra-lowe.JPG",
+    alt: "Sandra Lowe",
+    caption: "HSC members with Sonoma Mayor 2023 Sandra Lowe",
+    category: "Community",
+  },
+      {
+    src: "/images/events/past/budhist-teaching.jpg",
+    alt: "Buddhist Teaching",
+    caption: "HSC members participating in a Buddhist teaching session in Sonoma 2025",
+    category: "Cultural",
+  },
+     {
+    src: "/images/events/past/hsc-fangi-2024.jpg",
+    alt: "HSC Fangi 2024",
+    caption: "HSC members performing Sherpa Dance during Fangi celebration in Sonoma 2024",
+    category: "Cultural",
+  },
+    {
+    src: "/images/events/past/ang-d.jpg",
+    alt: "Ang D Sherpa",
+    caption: "HSC member Ang D Sherpa Summit World second highest peak K2 ",
+    category: "Sports",
+  },
+      {
+    src: "/images/events/past/himalayan-cup-2024.jpg",
+    alt: "Himalayan Cup 2024",
+    caption: "HSFC 35+ team participating in Himalayan Cup 2024",
+    category: "Sports",
+  },
   {
     src: "/images/hero/sherpadance2.jpg",
     alt: "Sherpa Dance Performance",
@@ -147,6 +183,18 @@ const hardcodedGalleryImages: GalleryImage[] = [
     src: "/images/hsc/hsc-picnic-2013.jpg",
     alt: "HSC Picnic 2013",
     caption: "HSC Picnic 2013",
+    category: "Community",
+  },
+    {
+    src: "/images/hsc/hsc-laketahoe.jpg",
+    alt: "HSC Lake Tahoe 2016",
+    caption: "HSC Lake Tahoe Trip 2016",
+    category: "Community",
+  },
+      {
+    src: "/images/hsc/hsc-tahoe-2016.jpg",
+    alt: "HSC Lake Tahoe 2016",
+    caption: "HSC Lake Tahoe Trip 2016",
     category: "Community",
   },
 ];
