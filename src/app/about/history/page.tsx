@@ -87,6 +87,12 @@ const timelineEvents: TimelineEvent[] = [
     description: 'More Sherpa families began settling in Sonoma County, leading to a growing community and increased cultural activities.',
     category: 'growth',
   },
+  {
+    year: '2004',
+    title: 'Community Beginnings',
+    description: 'A small group of Sherpa families in Sonoma County began gathering informally to celebrate cultural traditions and support one another.',
+    category: 'foundation',
+  },
     {
     year: '2005',
     title: 'First Volleyball Tournament',
@@ -94,9 +100,15 @@ const timelineEvents: TimelineEvent[] = [
     category: 'sports',
   },
   {
-    year: '2010',
-    title: 'Community Beginnings',
-    description: 'A small group of Sherpa families in Sonoma County began gathering informally to celebrate cultural traditions and support one another.',
+    year: '2006 - 2007',
+    title:'Brainstorming for Organization',
+    description: 'Community members began discussing the need for a more formal organization to better coordinate events and support the growing community.',
+    category: 'foundation',
+  },
+  {
+    year: '2008 - 2010',
+    title: 'Started planning for a more formal organization',
+    description: 'Gathered to discuss the need for a more structured community organization with the help of local leaders and organizations.',
     category: 'foundation',
   },
   {
