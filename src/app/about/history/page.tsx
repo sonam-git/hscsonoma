@@ -82,7 +82,7 @@ const timelineEvents: TimelineEvent[] = [
     category: 'foundation',
   },
     {
-    year: '2000 - 2009',
+    year: '2000 - 2003',
     title: 'Community Growth',
     description: 'More Sherpa families began settling in Sonoma County, leading to a growing community and increased cultural activities.',
     category: 'growth',
@@ -90,7 +90,7 @@ const timelineEvents: TimelineEvent[] = [
   {
     year: '2004',
     title: 'Community Beginnings',
-    description: 'A small group of Sherpa families in Sonoma County began gathering informally to celebrate cultural traditions and support one another.',
+    description: 'A small group of Sherpa families in Sonoma County began gathering informally to celebrate cultural traditions and support one another, calling themselves the Sherpa Club.',
     category: 'foundation',
   },
     {
@@ -102,13 +102,13 @@ const timelineEvents: TimelineEvent[] = [
   {
     year: '2006 - 2007',
     title:'Brainstorming for Organization',
-    description: 'Community members began discussing the need for a more formal organization to better coordinate events and support the growing community.',
+    description: 'Community members began discussing the need for a more formal organization to better coordinate events and support the growing community, and Sherpa Club became Himalayan Sherpa Club.',
     category: 'foundation',
   },
   {
     year: '2008 - 2010',
-    title: 'Started planning for a more formal organization',
-    description: 'Gathered to discuss the need for a more structured community organization with the help of local leaders and organizations.',
+    title: 'Started planning HSC upgrade to formal organization',
+    description: 'Gathered to discuss the need for a more structured community organization, documenting the process with the help of local leaders and organizations.',
     category: 'foundation',
   },
   {
