@@ -1,22 +1,60 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { newsArticles } from '@/data/news';
 
-const categories = ['All', 'News', 'Recent'];
+type CategoryType = 'All' | 'News' | 'Recent';
+
+// SVG Icon Components for tabs
+const AllIcon = () => (
+  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+      d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" 
+    />
+  </svg>
+);
+
+const NewsIcon = () => (
+  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+      d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" 
+    />
+  </svg>
+);
+
+const RecentIcon = () => (
+  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" 
+    />
+  </svg>
+);
+
+const categories: { id: CategoryType; label: string; icon: () => JSX.Element }[] = [
+  { id: 'All', label: 'All', icon: AllIcon },
+  { id: 'News', label: 'News', icon: NewsIcon },
+  { id: 'Recent', label: 'Recent', icon: RecentIcon },
+];
 
 export default function NewsPage() {
-	const [activeCategory, setActiveCategory] = useState('All');
+	const [activeCategory, setActiveCategory] = useState<CategoryType>('All');
+	const contentRef = useRef<HTMLElement>(null);
+
+	const handleCategoryClick = (categoryId: CategoryType) => {
+		setActiveCategory(categoryId);
+		// Scroll content section into view when tab is clicked
+		setTimeout(() => {
+			contentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		}, 50);
+	};
 
 	const filteredArticles = newsArticles.filter((article) => {
 		if (activeCategory === 'All') return true;
 		if (activeCategory === 'Recent') return article.isRecent;
 		return article.category === activeCategory;
 	});
-
-	const featuredArticles = newsArticles.filter((article) => article.featured).slice(0, 2);
 
 	return (
 		<main className="min-h-screen bg-cream-50 dark:bg-mountain-950">
@@ -31,12 +69,32 @@ export default function NewsPage() {
 						HSC community in the Spotlight
 					</p>
 				</div>
-				<div className="absolute inset-x-0 bottom-0 h-16">
-					<svg viewBox="0 0 1440 60" className="w-full h-full" preserveAspectRatio="none">
-						<path className="fill-white dark:fill-mountain-900" d="M0,60 L0,30 L240,45 L480,20 L720,40 L960,15 L1200,35 L1440,25 L1440,60 Z" />
-					</svg>
-				</div>
 			</section>
+
+			{/* Sticky Tab Navigation - same style as events page */}
+			<div className="sticky top-24 z-40 bg-gradient-to-r from-burgundy-800 via-mountain-800 to-burgundy-800 shadow-lg">
+				<div className="container-custom px-2 sm:px-4 md:px-6 lg:px-8">
+					<div className="flex items-center justify-center gap-2 md:gap-3 py-3">
+						{categories.map((category) => {
+							const IconComponent = category.icon;
+							return (
+								<button
+									key={category.id}
+									onClick={() => handleCategoryClick(category.id)}
+									className={`flex items-center gap-1.5 px-4 sm:px-5 md:px-6 py-2 text-xs sm:text-sm font-medium rounded-full transition-all duration-200 whitespace-nowrap ${
+										activeCategory === category.id 
+											? 'text-burgundy-900 bg-white shadow-md scale-105'
+											: 'text-white/90 hover:text-white hover:bg-white/20'
+									}`}
+								>
+									<IconComponent />
+									<span>{category.label}</span>
+								</button>
+							);
+						})}
+					</div>
+				</div>
+			</div>
 
 			{/* Introduction */}
 			<section className="py-12 bg-white dark:bg-mountain-900 border-b border-cream-200 dark:border-mountain-700">
@@ -57,92 +115,9 @@ export default function NewsPage() {
 				</div>
 			</section>
 
-			{/* Featured Stories */}
-			<section className="py-16 bg-gradient-to-br from-cream-50 to-cream-100 dark:from-mountain-900 dark:to-mountain-950">
+			{/* Articles Grid */}
+			<section ref={contentRef} className="py-16 scroll-mt-[140px]">
 				<div className="container-custom">
-					<h2 className="text-3xl md:text-4xl font-serif font-bold text-mountain-900 dark:text-cream-50 mb-6">
-						Featured Stories
-					</h2>
-					<div className="grid md:grid-cols-2 gap-8">
-						{featuredArticles.map((article) => (
-							<Link
-								key={article.slug}
-								href={`/news/${article.slug}`}
-								className="group"
-							>
-								<article className="bg-white dark:bg-mountain-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-									<div className="relative aspect-[16/10] overflow-hidden">
-										<Image
-											src={article.image}
-											alt={article.title}
-											fill
-											className="object-cover group-hover:scale-105 transition-transform duration-500"
-										/>
-										<div className="absolute top-4 left-4 flex gap-2 z-10">
-											<span className="px-3 py-1 bg-burgundy-700 text-white text-xs font-medium rounded-full">
-												{article.category}
-											</span>
-											{article.isRecent && (
-												<span className="px-3 py-1 bg-gold-500 text-mountain-900 text-xs font-medium rounded-full">
-													Recent
-												</span>
-											)}
-										</div>
-									</div>
-									<div className="p-6">
-										<time className="text-sm text-mountain-500 dark:text-mountain-400">
-											{article.date}
-										</time>
-										<h3 className="text-xl font-bold text-mountain-900 dark:text-white mt-2 mb-3 group-hover:text-burgundy-700 dark:group-hover:text-burgundy-400 transition-colors font-[Georgia,'Times_New_Roman',Times,serif]">
-											{article.title}
-										</h3>
-										<p className="text-mountain-600 dark:text-mountain-400 mb-4">
-											{article.excerpt}
-										</p>
-										<span className="inline-flex items-center gap-2 text-burgundy-700 dark:text-burgundy-400 font-medium">
-											Read More
-											<svg
-												className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-												fill="none"
-												stroke="currentColor"
-												viewBox="0 0 24 24"
-											>
-												<path
-													strokeLinecap="round"
-													strokeLinejoin="round"
-													strokeWidth={2}
-													d="M17 8l4 4m0 0l-4 4m4-4H3"
-												/>
-											</svg>
-										</span>
-									</div>
-								</article>
-							</Link>
-						))}
-					</div>
-				</div>
-			</section>
-
-			{/* Filter & All Articles */}
-			<section className="py-16">
-				<div className="container-custom">
-					{/* Category Filter */}
-					<div className="flex flex-wrap gap-3 mb-10">
-						{categories.map((category) => (
-							<button
-								key={category}
-								onClick={() => setActiveCategory(category)}
-								className={`px-5 py-2 rounded-full font-medium transition-all duration-200 ${
-									activeCategory === category
-										? 'bg-burgundy-700 text-white shadow-lg'
-										: 'bg-white dark:bg-mountain-800 text-mountain-600 dark:text-mountain-300 hover:bg-cream-100 dark:hover:bg-mountain-700 border border-cream-200 dark:border-mountain-600'
-								}`}
-							>
-								{category}
-							</button>
-						))}
-					</div>
-
 					{/* Articles Grid */}
 					<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 						{filteredArticles.map((article) => (

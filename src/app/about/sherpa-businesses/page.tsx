@@ -112,10 +112,10 @@ export default function SherpaBusinessesPage() {
         <div className="relative container-custom text-center">
           <p className="font-tibetan text-xl text-gold-400 mb-4">༄༅། ཤེར་པ་རིམ་ལས་ཁུངས།</p>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6">
-            Sherpa Businesses
+            Sherpa Owned Businesses
           </h1>
           <p className="text-xl text-cream-200 max-w-2xl mx-auto">
-            Supporting Sherpa-owned businesses in the North Bay Area
+            Businesses owned and operated by HSC members and the broader Sherpa community in Sonoma and surrounding areas.
           </p>
         </div>
         <div className="absolute inset-x-0 bottom-0 h-16">
@@ -133,7 +133,7 @@ export default function SherpaBusinessesPage() {
               Our Community
             </p>
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-mountain-900 dark:text-cream-50 mb-6">
-              Sherpa Entrepreneurs in the Bay Area
+              Sherpa Entrepreneurs in and around Sonoma
             </h2>
             <p className="text-lg text-mountain-600 dark:text-mountain-300 leading-relaxed">
               The Sherpa community has established a strong presence in the restaurant and hospitality 
