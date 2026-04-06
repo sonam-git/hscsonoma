@@ -110,11 +110,11 @@ export default function AnnouncementModal() {
       aria-modal="true"
       aria-labelledby="announcement-modal-title"
       tabIndex={-1}
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-sm transition-all duration-300"
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 md:p-8 bg-black/70 backdrop-blur-sm transition-all duration-300"
       onClick={handleClose}
     >
       <div 
-        className="relative w-full max-w-2xl mx-4 rounded-2xl overflow-hidden shadow-2xl border-4 border-yellow-400/90 animate-fade-in"
+        className="relative w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl max-h-[85vh] rounded-2xl overflow-hidden shadow-2xl border-4 border-yellow-400/90 animate-fade-in"
         style={{
           boxShadow: '0 0 60px rgba(251, 191, 36, 0.5), 0 0 100px rgba(251, 191, 36, 0.3)',
         }}
@@ -126,7 +126,7 @@ export default function AnnouncementModal() {
         
         {/* Close Button */}
         <button
-          className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-black/70 text-white hover:bg-red-600 hover:scale-110 text-3xl font-bold transition-all duration-200 focus:outline-none focus-visible:ring-4 focus-visible:ring-yellow-400 shadow-lg"
+          className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-black/70 text-white hover:bg-red-600 hover:scale-110 text-2xl sm:text-3xl font-bold transition-all duration-200 focus:outline-none focus-visible:ring-4 focus-visible:ring-yellow-400 shadow-lg"
           onClick={handleClose}
           aria-label="Close announcement"
           type="button"
@@ -135,15 +135,15 @@ export default function AnnouncementModal() {
         </button>
 
         {/* Image */}
-        <div className="relative w-full h-auto bg-gradient-to-br from-orange-100 to-yellow-50">
+        <div className="relative w-full bg-gradient-to-br from-orange-100 to-yellow-50">
           <Image
             src={announcementData.image}
             alt={announcementData.alt || "Special Announcement"}
             width={896}
             height={504}
-            className="w-full h-auto object-contain"
+            className="w-full h-auto max-h-[80vh] object-contain"
             priority
-            sizes="(max-width: 768px) 100vw, 896px"
+            sizes="(max-width: 640px) 100vw, (max-width: 768px) 512px, (max-width: 1024px) 576px, 672px"
             quality={95}
           />
         </div>
