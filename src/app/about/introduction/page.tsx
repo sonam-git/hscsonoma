@@ -64,7 +64,7 @@ export default function IntroductionPage() {
                   non-political organization in compliance with California state
                   laws in January 2011. Recognized as a tax-exempt charitable
                   organization under Section 501(c)(3) of the Internal Revenue
-                  Code, the club is dedicated to fostering a united and thriving
+                  Code since 2014, the club is dedicated to fostering a united and thriving
                   Sherpa community. Our mission is to provide a common platform
                   for preserving and promoting the unique socio-cultural and
                   linguistic heritage of the Sherpa people.
@@ -142,8 +142,9 @@ export default function IntroductionPage() {
                 of Nepal. As the community continued to grow, the need for a
                 shared cultural space became even more important. With a strong
                 commitment to preserving their rich heritage and fostering
-                unity, the Himalayan Sherpa Club was officially established as a
-                nonprofit organization in 2011 with California state recognition and 501(c)(3) tax-exempt status.
+                unity, the Himalayan Sherpa Club was officially established in
+                2011 and recognized as a California state nonprofit and 501(c)(3)
+                tax-exempt status in 2014.
               </p>
 
               <p>
