@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function Loading() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-burgundy-900 via-mountain-900 to-burgundy-800">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 via-mountain-900 to-green-800">
       <div className="flex flex-col items-center gap-6">
         {/* HSC Logo with pulse animation */}
         <div className="relative">

@@ -213,6 +213,9 @@ export default function EventsPage() {
                         fill
                         className="object-cover"
                       />
+                         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                        <p className="text-white text-sm text-center"> HSC members Performing Sherpa Dance | Shapdro</p>
+                      </div>
                     </div>
                     <div className="p-8 md:p-10">
                       <span className="inline-block px-3 py-1 bg-gold-100 dark:bg-gold-900/30 text-gold-700 dark:text-gold-400 rounded-full text-sm font-medium mb-4">
@@ -267,6 +270,9 @@ export default function EventsPage() {
                         fill
                         className="object-cover"
                       />
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                        <p className="text-white text-sm text-center">Phang-ngi Celebration</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -282,7 +288,7 @@ export default function EventsPage() {
                         className="object-cover"
                       />
                       <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                        <p className="text-white text-sm text-center">Aviyan Bay Area (Winner of Himalayan Cup 2022)</p>
+                        <p className="text-white text-sm text-center">BYSC | Winner of Himalayan Cup 2021</p>
                       </div>
                     </div>
                     <div className="p-8 md:p-10">
@@ -332,6 +338,9 @@ export default function EventsPage() {
                         fill
                         className="object-cover"
                       />
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                        <p className="text-white text-sm text-center">HSC members welcoming the guest artist from Nepal</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -357,7 +366,7 @@ export default function EventsPage() {
                       src="/images/events/signature/Lhosar-Party-.jpeg"
                       alt="Losar Celebration"
                       fill
-                      className="object-cover"
+                      className="object-fit"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 p-8 text-center">
@@ -423,7 +432,7 @@ export default function EventsPage() {
                       src="/images/events/signature/phang-ngi.jpg"
                       alt="Phang-Ngi Celebration"
                       fill
-                      className="object-cover"
+                      className="object-fit"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 p-8 text-center">
@@ -457,7 +466,7 @@ export default function EventsPage() {
                       src="/images/events/signature/labor-day-flex.jpg"
                       alt="Himalayan Cup Soccer Tournament"
                       fill
-                      className="object-cover"
+                      className="object-fit"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 p-8 text-center">
