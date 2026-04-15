@@ -383,7 +383,7 @@ export default async function HomePage() {
               <p className="text-md text-mountain-600 dark:text-mountain-300 mb-6 leading-relaxed font-[Georgia,'Times_New_Roman',Times,serif]">
                 The Himalayan Sherpa Club of Sonoma is a non-profit,
                 non-political organization, officially established in January
-                2011 under California state law. We've alsobeen recognized as a
+                2011 under California state law. We've also been recognized as a
                 501(c)(3) tax-exempt charitable organization by the IRS since 2014.
               </p>
               <p className="text-md text-mountain-600 dark:text-mountain-300 mb-8 leading-relaxed font-[Georgia,'Times_New_Roman',Times,serif]">
