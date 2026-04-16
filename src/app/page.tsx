@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 import HeroPhotoReel from "@/components/HeroPhotoReel";
 import ConnectWithUs from "@/components/ConnectWithUs";
+import HomeEventsSection from "@/components/HomeEventsSection";
 import styles from "@/components/hero3d.module.css";
 import {
   getHomeHero,
@@ -599,7 +600,7 @@ export default async function HomePage() {
       </section>
 
      {/* Events Section */}
-      <section className="py-20 relative overflow-hidden">
+     <section className="py-20 relative overflow-hidden">
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-top bg-no-repeat"
@@ -620,152 +621,10 @@ export default async function HomePage() {
             </p>
           </div>
 
-          {eventsData.length > 0 ? (
-            <div className="space-y-6 max-w-4xl mx-auto">
-              {eventsData.map((event) => {
-                const eventDate = event.date ? new Date(event.date) : null;
-                const isValidDate = eventDate && !isNaN(eventDate.getTime());
-                
-                return (
-                  <div 
-                    key={event.id} 
-                    className="bg-white dark:bg-mountain-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-cream-200 dark:border-mountain-700"
-                  >
-                    <div className="grid md:grid-cols-2">
-                      {/* Left Column - Text Content */}
-                      <div className="p-6 md:p-8 flex flex-col justify-center order-2 md:order-1">
-                        {/* Featured Badge */}
-                        {event.isFeatured && (
-                          <div className="mb-3">
-                            <span className="px-3 py-1 bg-gold-500 text-mountain-900 text-xs font-bold rounded-full shadow-md">
-                              Featured Event
-                            </span>
-                          </div>
-                        )}
-                        
-                        {/* Date Badge */}
-                        <div className="flex items-start gap-4 mb-4">
-                          <div className="flex-shrink-0 w-16 text-center">
-                            <div className="bg-burgundy-100 dark:bg-burgundy-900/50 rounded-xl py-2 px-1">
-                              {isValidDate ? (
-                                <>
-                                  <span className="block text-2xl font-bold text-burgundy-700 dark:text-burgundy-400">
-                                    {eventDate.getDate()}
-                                  </span>
-                                  <span className="block text-xs text-burgundy-600 dark:text-burgundy-500 uppercase font-medium">
-                                    {eventDate.toLocaleDateString("en-US", { month: "short" })}
-                                  </span>
-                                  <span className="block text-[10px] text-burgundy-500 dark:text-burgundy-600">
-                                    {eventDate.getFullYear()}
-                                  </span>
-                                </>
-                              ) : (
-                                <>
-                                  <span className="block text-lg font-bold text-burgundy-700 dark:text-burgundy-400">
-                                    TBD
-                                  </span>
-                                  <span className="block text-[10px] text-burgundy-500 dark:text-burgundy-600 uppercase">
-                                    Date
-                                  </span>
-                                </>
-                              )}
-                            </div>
-                          </div>
-                          
-                          <div className="flex-1 min-w-0">
-                            <h3 className="text-xl md:text-2xl font-bold text-mountain-900 dark:text-cream-50 mb-2 font-[Georgia,'Times_New_Roman',Times,serif]">
-                              {event.title}
-                            </h3>
-                            
-                            {/* Time & Location */}
-                            <div className="flex flex-col gap-1 text-sm text-mountain-500 dark:text-mountain-400">
-                              <span className="flex items-center gap-2">
-                                <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                                <span>{event.time && event.time.trim() ? event.time : 'TBD'}</span>
-                              </span>
-                              {event.location && (
-                                <span className="flex items-center gap-2">
-                                  <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                                  </svg>
-                                  <span>{event.location}</span>
-                                </span>
-                              )}
-                            </div>
-                          </div>
-                        </div>
-                        
-                        {/* Description */}
-                        <p className="text-mountain-600 dark:text-mountain-300 text-sm md:text-base leading-relaxed mb-5 font-[Georgia,'Times_New_Roman',Times,serif]">
-                          {event.description}
-                        </p>
-                        
-                        {/* Registration Link */}
-                        {event.registrationUrl && (
-                          <div>
-                            <Link
-                              href={event.registrationUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 px-5 py-2.5 bg-burgundy-700 hover:bg-burgundy-800 text-white text-sm font-medium rounded-lg transition-colors"
-                            >
-                              Register Now
-                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                              </svg>
-                            </Link>
-                          </div>
-                        )}
-                      </div>
-                      
-                      {/* Right Column - Image */}
-                      <div className="relative aspect-[16/10] md:aspect-auto md:h-full md:min-h-[300px] order-1 md:order-2 overflow-hidden">
-                        {event.image ? (
-                          <Image
-                            src={event.image}
-                            alt={event.title}
-                            fill
-                            className="object-fit w-full h-full"
-                            sizes="(max-width: 768px) 100vw, 50vw"
-                          />
-                        ) : (
-                          <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-burgundy-100 to-burgundy-200 dark:from-burgundy-900/50 dark:to-mountain-600 flex items-center justify-center">
-                            <svg
-                              className="w-20 h-20 text-burgundy-300 dark:text-burgundy-700"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={1}
-                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                              />
-                            </svg>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          ) : (
-            <div className="text-center py-10">
-              <p className="text-mountain-500 dark:text-mountain-400 text-lg">
-                No upcoming events at the moment. Please check back later.
-              </p>
-            </div>
-          )}
+          <HomeEventsSection events={eventsData} />
         </div>
       </section>
-
-
-      
+  
       {/* Latest News from Storyblok */}
       <section className="py-16 bg-white dark:bg-mountain-800">
         <div className="container-custom">

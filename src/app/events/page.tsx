@@ -71,6 +71,10 @@ export default function EventsPage() {
   const [isLoading, setIsLoading] = useState(true);
   const contentRef = useRef<HTMLElement>(null);
   
+  // Image modal state
+  const [selectedEventImage, setSelectedEventImage] = useState<string | null>(null);
+  const [selectedEventTitle, setSelectedEventTitle] = useState<string>('');
+  
   // Newsletter state
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [newsletterStatus, setNewsletterStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -910,13 +914,31 @@ export default function EventsPage() {
                               {/* Right Column - Image */}
                               <div className="relative aspect-[16/10] md:aspect-auto md:h-full md:min-h-[300px] order-1 md:order-2 overflow-hidden">
                                 {event.image && !event.image.includes('placeholder') ? (
-                                  <Image
-                                    src={event.image}
-                                    alt={event.title}
-                                    fill
-                                    className="object-fit w-full h-full"
-                                    sizes="(max-width: 768px) 100vw, 50vw"
-                                  />
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      setSelectedEventImage(event.image || null);
+                                      setSelectedEventTitle(event.title);
+                                    }}
+                                    className="relative w-full h-full cursor-pointer group"
+                                    aria-label={`View ${event.title} image`}
+                                  >
+                                    <Image
+                                      src={event.image}
+                                      alt={event.title}
+                                      fill
+                                      className="object-fit w-full h-full transition-transform duration-300 group-hover:scale-105"
+                                      sizes="(max-width: 768px) 100vw, 50vw"
+                                    />
+                                    {/* Hover overlay with zoom icon */}
+                                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
+                                      <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 dark:bg-mountain-800/90 rounded-full p-3 shadow-lg">
+                                        <svg className="w-6 h-6 text-burgundy-700 dark:text-burgundy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                                        </svg>
+                                      </div>
+                                    </div>
+                                  </button>
                                 ) : (
                                   <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-burgundy-100 to-burgundy-200 dark:from-burgundy-900/50 dark:to-mountain-600 flex items-center justify-center">
                                     <svg
@@ -1042,7 +1064,7 @@ export default function EventsPage() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-8 max-w-4xl mx-auto">
             <div>
               <h3 className="text-2xl font-serif font-bold text-mountain-900 dark:text-cream-50 mb-2">
-                Want to Host or Sponsor an Event?
+                Want to Attend or Sponsor an Event?
               </h3>
               <p className="text-mountain-600 dark:text-mountain-300">
                 Partner with us to celebrate and preserve Sherpa heritage in Sonoma.
@@ -1059,6 +1081,57 @@ export default function EventsPage() {
           </div>
         </div>
       </section>
+
+      {/* Image Modal */}
+      {selectedEventImage && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in"
+          onClick={() => setSelectedEventImage(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Image preview: ${selectedEventTitle}`}
+        >
+          <div 
+            className="relative max-w-4xl max-h-[90vh] w-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              type="button"
+              onClick={() => setSelectedEventImage(null)}
+              className="absolute -top-12 right-0 md:top-0 md:-right-12 z-10 w-10 h-10 flex items-center justify-center bg-white dark:bg-mountain-800 rounded-full shadow-lg hover:bg-cream-100 dark:hover:bg-mountain-700 transition-colors"
+              aria-label="Close image preview"
+            >
+              <svg className="w-6 h-6 text-mountain-900 dark:text-cream-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            
+            {/* Image Container */}
+            <div className="relative bg-white dark:bg-mountain-800 rounded-xl overflow-hidden border-4 border-white dark:border-mountain-700 shadow-2xl">
+              <div className="relative w-full" style={{ maxHeight: '80vh' }}>
+                <Image
+                  src={selectedEventImage}
+                  alt={selectedEventTitle}
+                  width={1200}
+                  height={800}
+                  className="w-full h-auto object-contain max-h-[80vh]"
+                  priority
+                />
+              </div>
+              
+              {/* Event Title Below Image */}
+              {selectedEventTitle && (
+                <div className="p-4 bg-white dark:bg-mountain-800 border-t border-cream-200 dark:border-mountain-700">
+                  <h3 className="text-lg font-semibold text-mountain-900 dark:text-cream-50 text-center font-[Georgia,'Times_New_Roman',Times,serif]">
+                    {selectedEventTitle}
+                  </h3>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
