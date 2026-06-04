@@ -247,7 +247,7 @@ export default function Footer() {
 
             {/* Developer Credit */}
             <p className="text-xs text-cream-600">
-              Developed by <span className="text-cream-400"><a href="https://sjsherpa.vercel.app/" target="_blank" rel="noopener noreferrer">Sonam J Sherpa</a></span>
+              Built by <span className="text-cream-400"><a href="https://sjsherpa.vercel.app/" target="_blank" rel="noopener noreferrer">Sonam J Sherpa</a></span>
             </p>
           </div>
         </div>
