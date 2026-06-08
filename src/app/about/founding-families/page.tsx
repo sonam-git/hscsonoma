@@ -105,14 +105,17 @@ export default function FoundingFamiliesPage() {
                 </div>
                 <div className="relative">
                   <Image
-                    src="/images/founding-families/root.png"
+                    src="/images/founding-families/first-three.png"
                     alt="Sherpa community roots in Sonoma"
                     width={500}
                     height={400}
                     className="w-full rounded-2xl shadow-xl object-cover"
                   />
                   <p className="text-sm text-mountain-500 dark:text-mountain-400 text-center mt-3 italic">
-                  Sherpa pioneers of the Sherpa community in Sonoma back in the 90s.
+                  L : Nima Sherpa | M : Ongda Sherpa | R : Chhiring Sherpa
+                  </p>
+                    <p className="text-sm text-mountain-500 dark:text-mountain-400 text-center mt-3 italic">
+                  First three Sherpa pioneers of the Sherpa community in Sonoma back in the 90s.
                   </p>
                 </div>
               </div>
