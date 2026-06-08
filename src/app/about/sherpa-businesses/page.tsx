@@ -89,6 +89,11 @@ const regions: Region[] = [
         address: '572 E Cotati Ave, Cotati, CA 94931',
         mapUrl: 'https://maps.google.com/?q=572+E+Cotati+Ave,+Cotati,+CA+94931',
       },
+        {
+        name: 'Shangri - La Cafe & Grill',
+        address: '1706 E Cotati Ave, Rohnert Park, CA 94928',
+        mapUrl: 'https://maps.google.com/?q=1706+E+Cotati+Ave,+Rohnert+Park,+CA+94928',
+      },
     ],
   },
     {
