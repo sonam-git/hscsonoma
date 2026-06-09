@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -177,6 +177,9 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [canScrollAboutLeft, setCanScrollAboutLeft] = useState(false);
+  const [canScrollAboutRight, setCanScrollAboutRight] = useState(false);
+  const mobileAboutSubmenuRef = useRef<HTMLDivElement | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -191,6 +194,47 @@ export default function Header() {
     setIsMobileMenuOpen(false);
     setActiveDropdown(null);
   }, [pathname]);
+
+  useEffect(() => {
+    const container = mobileAboutSubmenuRef.current;
+    if (!container) return;
+
+    const updateScrollHints = () => {
+      const { scrollLeft, scrollWidth, clientWidth } = container;
+      const maxScrollLeft = scrollWidth - clientWidth;
+      setCanScrollAboutLeft(scrollLeft > 2);
+      setCanScrollAboutRight(scrollLeft < maxScrollLeft - 2);
+    };
+
+    const centerActiveTab = () => {
+      const activeTab = container.querySelector('[data-about-active="true"]');
+      if (activeTab instanceof HTMLElement) {
+        activeTab.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }
+      updateScrollHints();
+    };
+
+    updateScrollHints();
+    const frame = window.requestAnimationFrame(centerActiveTab);
+
+    container.addEventListener('scroll', updateScrollHints, { passive: true });
+    window.addEventListener('resize', updateScrollHints);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      container.removeEventListener('scroll', updateScrollHints);
+      window.removeEventListener('resize', updateScrollHints);
+    };
+  }, [pathname]);
+
+  const scrollAboutSubmenu = (direction: 'left' | 'right') => {
+    const container = mobileAboutSubmenuRef.current;
+    if (!container) return;
+
+    const distance = Math.max(140, Math.round(container.clientWidth * 0.7));
+    const delta = direction === 'left' ? -distance : distance;
+    container.scrollBy({ left: delta, behavior: 'smooth' });
+  };
 
   return (
     <>
@@ -353,26 +397,51 @@ export default function Header() {
           }`}
         >
           <div className="w-full border-t bg-cream-50 dark:bg-mountain-800 border-cream-200 dark:border-mountain-700">
-            <div className="overflow-x-auto scrollbar-hide">
-              <div className="flex items-center gap-1 py-2 px-3 min-w-max">
-                {navigation.find(item => item.name === 'About')?.children?.map((child) => {
-                  const ChildIcon = child.icon;
-                  return (
-                    <Link
-                      key={child.name}
-                      href={child.href}
-                      className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-200 whitespace-nowrap ${
-                        pathname === child.href 
-                          ? 'text-white bg-burgundy-600 dark:bg-burgundy-500 shadow-md'
-                          : 'text-blue-900 dark:text-cream-100 hover:text-burgundy-700 dark:hover:text-burgundy-400 hover:bg-burgundy-100/80 dark:hover:bg-burgundy-900/40'
-                      }`}
-                    >
-                      <ChildIcon />
-                      <span>{child.name}</span>
-                    </Link>
-                  );
-                })}
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => scrollAboutSubmenu('left')}
+                aria-label="Scroll about submenu left"
+                className={`absolute left-0 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-none border-y border-r border-burgundy-200/80 dark:border-burgundy-700/60 bg-white/90 dark:bg-mountain-900/90 text-burgundy-700 dark:text-cream-100 shadow-sm transition-opacity duration-200 ${
+                  canScrollAboutLeft ? 'opacity-100' : 'opacity-45'
+                }`}
+              >
+                &lt;
+              </button>
+
+              <div ref={mobileAboutSubmenuRef} className="overflow-x-auto scrollbar-hide scroll-smooth">
+                <div className="flex items-center gap-1 py-2 px-10 min-w-max">
+                  {navigation.find(item => item.name === 'About')?.children?.map((child) => {
+                    const ChildIcon = child.icon;
+                    return (
+                      <Link
+                        key={child.name}
+                        href={child.href}
+                        data-about-active={pathname === child.href ? 'true' : 'false'}
+                        className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-200 whitespace-nowrap ${
+                          pathname === child.href 
+                            ? 'text-white bg-burgundy-600 dark:bg-burgundy-500 shadow-md'
+                            : 'text-blue-900 dark:text-cream-100 hover:text-burgundy-700 dark:hover:text-burgundy-400 hover:bg-burgundy-100/80 dark:hover:bg-burgundy-900/40'
+                        }`}
+                      >
+                        <ChildIcon />
+                        <span>{child.name}</span>
+                      </Link>
+                    );
+                  })}
+                </div>
               </div>
+
+              <button
+                type="button"
+                onClick={() => scrollAboutSubmenu('right')}
+                aria-label="Scroll about submenu right"
+                className={`absolute right-0 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-none border-y border-l border-burgundy-200/80 dark:border-burgundy-700/60 bg-white/90 dark:bg-mountain-900/90 text-burgundy-700 dark:text-cream-100 shadow-sm transition-opacity duration-200 ${
+                  canScrollAboutRight ? 'opacity-100' : 'opacity-45'
+                }`}
+              >
+                &gt;
+              </button>
             </div>
           </div>
         </div>
