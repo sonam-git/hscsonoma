@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import ThemeToggle from '@/components/ThemeToggle';
 
 // SVG Icon Components
@@ -397,20 +398,22 @@ export default function Header() {
           }`}
         >
           <div className="w-full border-t bg-cream-50 dark:bg-mountain-800 border-cream-200 dark:border-mountain-700">
-            <div className="relative">
+            <div className="flex items-stretch">
+              <div className="w-10 flex items-center justify-center bg-cream-50 dark:bg-mountain-800">
               <button
                 type="button"
                 onClick={() => scrollAboutSubmenu('left')}
                 aria-label="Scroll about submenu left"
-                className={`absolute left-0 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-none border-y border-r border-burgundy-200/80 dark:border-burgundy-700/60 bg-white/90 dark:bg-mountain-900/90 text-burgundy-700 dark:text-cream-100 shadow-sm transition-opacity duration-200 ${
+                className={`w-8 h-8 text-burgundy-700 dark:text-cream-100 transition-opacity duration-200 ${
                   canScrollAboutLeft ? 'opacity-100' : 'opacity-45'
                 }`}
               >
-                &lt;
+                <ChevronLeft className="w-4 h-4 mx-auto" aria-hidden="true" />
               </button>
+              </div>
 
-              <div ref={mobileAboutSubmenuRef} className="overflow-x-auto scrollbar-hide scroll-smooth">
-                <div className="flex items-center gap-1 py-2 px-10 min-w-max">
+              <div ref={mobileAboutSubmenuRef} className="flex-1 overflow-x-auto scrollbar-hide scroll-smooth">
+                <div className="flex items-center gap-1 py-2 px-2 min-w-max">
                   {navigation.find(item => item.name === 'About')?.children?.map((child) => {
                     const ChildIcon = child.icon;
                     return (
@@ -432,16 +435,18 @@ export default function Header() {
                 </div>
               </div>
 
+              <div className="w-10 flex items-center justify-center bg-cream-50 dark:bg-mountain-800">
               <button
                 type="button"
                 onClick={() => scrollAboutSubmenu('right')}
                 aria-label="Scroll about submenu right"
-                className={`absolute right-0 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-none border-y border-l border-burgundy-200/80 dark:border-burgundy-700/60 bg-white/90 dark:bg-mountain-900/90 text-burgundy-700 dark:text-cream-100 shadow-sm transition-opacity duration-200 ${
+                className={`w-8 h-8 text-burgundy-700 dark:text-cream-100 transition-opacity duration-200 ${
                   canScrollAboutRight ? 'opacity-100' : 'opacity-45'
                 }`}
               >
-                &gt;
+                <ChevronRight className="w-4 h-4 mx-auto" aria-hidden="true" />
               </button>
+              </div>
             </div>
           </div>
         </div>
