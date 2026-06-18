@@ -9,26 +9,20 @@ interface ThemeToggleProps {
 export default function ThemeToggle({ isScrolled = true }: ThemeToggleProps) {
   const { theme, setTheme, resolvedTheme } = useTheme();
 
-  const cycleTheme = () => {
-    if (theme === 'light') {
-      setTheme('dark');
-    } else if (theme === 'dark') {
-      setTheme('system');
-    } else {
-      setTheme('light');
-    }
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
   };
 
   return (
     <button
-      onClick={cycleTheme}
+      onClick={toggleTheme}
       className={`p-2 rounded-lg transition-colors ${
-        isScrolled 
-          ? 'bg-earth-100 dark:bg-mountain-700 hover:bg-earth-200 dark:hover:bg-mountain-600' 
+        isScrolled
+          ? 'bg-earth-100 dark:bg-mountain-700 hover:bg-earth-200 dark:hover:bg-mountain-600'
           : 'bg-white/20 hover:bg-white/30'
       }`}
-      aria-label={`Current theme: ${theme}. Click to change.`}
-      title={`Theme: ${theme}`}
+      aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
+      title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
     >
       {resolvedTheme === 'dark' ? (
         <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
@@ -39,16 +33,13 @@ export default function ThemeToggle({ isScrolled = true }: ThemeToggleProps) {
           />
         </svg>
       ) : (
-        <svg 
-          className="w-5 h-5 text-mountain-700 dark:text-mountain-600" 
-          fill="currentColor" 
+        <svg
+          className="w-5 h-5 text-mountain-700"
+          fill="currentColor"
           viewBox="0 0 20 20"
         >
           <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
         </svg>
-      )}
-      {theme === 'system' && (
-        <span className="sr-only">(System preference)</span>
       )}
     </button>
   );

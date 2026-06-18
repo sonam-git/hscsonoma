@@ -40,21 +40,21 @@
   }
 
   .dark {
-    /* Dark theme colors */
-    --color-background: 26 26 29; /* mountain-950 */
-    --color-foreground: 253 251 247; /* cream-50 */
-    --color-card: 53 53 59; /* mountain-800 */
+    /* Dark theme colors — near-black */
+    --color-background: 8 8 10;
+    --color-foreground: 253 251 247;
+    --color-card: 18 18 22;
     --color-card-foreground: 253 251 247;
-    --color-primary: 236 120 150; /* burgundy-400 */
+    --color-primary: 236 120 150;
     --color-primary-foreground: 26 26 29;
-    --color-secondary: 63 64 71; /* mountain-700 */
+    --color-secondary: 26 26 32;
     --color-secondary-foreground: 253 251 247;
-    --color-muted: 63 64 71; /* mountain-700 */
-    --color-muted-foreground: 159 160 169; /* mountain-300 */
-    --color-accent: 250 204 21; /* gold-400 */
+    --color-muted: 26 26 32;
+    --color-muted-foreground: 159 160 169;
+    --color-accent: 250 204 21;
     --color-accent-foreground: 26 26 29;
-    --color-border: 63 64 71; /* mountain-700 */
-    --color-input: 63 64 71;
+    --color-border: 36 36 44;
+    --color-input: 36 36 44;
     --color-ring: 236 120 150;
   }
 
@@ -199,9 +199,17 @@
 
 /* Dark mode overrides */
 .dark body {
-  @apply bg-mountain-950 text-cream-100;
+  @apply text-cream-100;
+  background-color: rgb(8 8 10);
   position: relative;
 }
+
+/* Push all mountain dark backgrounds to near-black in dark mode */
+.dark [class*='bg-mountain-950'] { background-color: rgb(8 8 10 / var(--tw-bg-opacity, 1)) !important; }
+.dark [class*='bg-mountain-900'] { background-color: rgb(12 12 15 / var(--tw-bg-opacity, 1)) !important; }
+.dark [class*='bg-mountain-800'] { background-color: rgb(18 18 22 / var(--tw-bg-opacity, 1)) !important; }
+.dark [class*='bg-mountain-700'] { background-color: rgb(26 26 32 / var(--tw-bg-opacity, 1)) !important; }
+.dark [class*='bg-mountain-600'] { background-color: rgb(36 36 44 / var(--tw-bg-opacity, 1)) !important; }
 
 /* Site-wide transparent layover in dark theme */
 .dark body::after {
@@ -211,9 +219,9 @@
   pointer-events: none;
   z-index: 9999;
   background:
-    radial-gradient(120% 80% at 50% 0%, rgba(66, 25, 43, 0.2) 0%, rgba(8, 10, 14, 0) 60%),
-    linear-gradient(180deg, rgba(8, 10, 14, 0.28) 0%, rgba(8, 10, 14, 0.5) 100%);
-  backdrop-filter: saturate(85%);
+    radial-gradient(120% 85% at 50% 0%, rgba(31, 58, 95, 0.12) 0%, rgba(10, 18, 34, 0) 62%),
+    linear-gradient(180deg, rgba(7, 18, 34, 0.1) 0%, rgba(7, 18, 34, 0.22) 100%);
+  backdrop-filter: saturate(95%);
 }
 
 .dark ::selection {
@@ -239,7 +247,7 @@
 
 /* Custom scrollbar - Dark mode */
 .dark ::-webkit-scrollbar-track {
-  @apply bg-mountain-900;
+  background-color: rgb(12 12 15);
 }
 
 .dark ::-webkit-scrollbar-thumb {
@@ -252,7 +260,7 @@
 
 /* Mountain divider - Dark mode variant */
 .dark .mountain-divider {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120'%3E%3Cpath fill='%231a1a1d' d='M0,120 L0,80 L120,60 L240,90 L360,40 L480,70 L600,30 L720,80 L840,50 L960,90 L1080,35 L1200,75 L1320,55 L1440,85 L1440,120 Z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120'%3E%3Cpath fill='%230c0c0f' d='M0,120 L0,80 L120,60 L240,90 L360,40 L480,70 L600,30 L720,80 L840,50 L960,90 L1080,35 L1200,75 L1320,55 L1440,85 L1440,120 Z'/%3E%3C/svg%3E");
 }
 
 /* Vertical writing mode for mobile hero label */

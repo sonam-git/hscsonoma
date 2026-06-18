@@ -160,7 +160,7 @@ export default function FoundingFamiliesPage() {
             fill
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/85 to-white/90 dark:from-mountain-900/95 dark:via-mountain-800/90 dark:to-mountain-900/95" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/85 to-white/90 dark:from-black/75 dark:via-black/65 dark:to-black/70" />
         </div>
     
         <div className="relative container-custom">

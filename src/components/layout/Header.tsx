@@ -258,13 +258,16 @@ export default function Header() {
         />
         
         {/* Light/Dark Overlay for background */}
-        <div className="absolute inset-0 bg-white/40 pointer-events-none" />
+        <div className="absolute inset-0 bg-white/40 dark:hidden pointer-events-none" />
 
-        {/* Subtle gradient overlay */}
-        <div className={`absolute inset-0 transition-all duration-300 pointer-events-none ${
+        {/* Dark mode layover */}
+        <div className="absolute inset-0 hidden dark:block pointer-events-none bg-gradient-to-b from-black/75 via-black/65 to-black/70 backdrop-blur-[2px]" />
+
+        {/* Subtle gradient overlay — light mode only */}
+        <div className={`absolute inset-0 transition-all duration-300 pointer-events-none dark:hidden ${
           isScrolled
-            ? 'bg-white/60 dark:bg-gray-900 backdrop-blur-sm'
-            : 'bg-white/40 dark:bg-gray-800/90'
+            ? 'bg-white/60 backdrop-blur-sm'
+            : 'bg-white/40'
         }`} />
         
       <div className="container-custom relative">
@@ -298,7 +301,7 @@ export default function Header() {
                 <div key={item.name} className="relative group">
                   {item.children ? (
                     <button
-                      className={`px-4 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2 text-blue-900 dark:text-cream-50 hover:text-burgundy-700 dark:hover:text-white hover:bg-burgundy-50/80 dark:hover:bg-burgundy-900/30 hover:scale-105 hover:shadow-md ${pathname.startsWith(item.href) ? 'text-burgundy-700 dark:text-burgundy-400 bg-burgundy-100/80 dark:bg-burgundy-900/50 shadow-md font-bold border-b-2 border-burgundy-500' : ''}`}
+                      className={`px-4 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2 text-blue-900 dark:text-cream-50 hover:text-blue-900 dark:hover:text-cream-100 hover:underline hover:underline-offset-8 hover:decoration-2 hover:decoration-blue-900 dark:hover:decoration-cream-100 hover:scale-105 ${pathname.startsWith(item.href) ? 'text-burgundy-700 dark:text-burgundy-400 bg-burgundy-100/80 dark:bg-burgundy-900/50 shadow-md font-bold border-b-2 border-burgundy-500' : ''}`}
                       onMouseEnter={() => setActiveDropdown(item.name)}
                       onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
                       aria-expanded={activeDropdown === item.name}
@@ -379,7 +382,7 @@ export default function Header() {
                   className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-200 ${
                     pathname === child.href 
                       ? 'text-white bg-burgundy-600 dark:bg-burgundy-500 shadow-md'
-                      : 'text-blue-900 dark:text-cream-100 hover:text-burgundy-700 dark:hover:text-burgundy-400 hover:bg-burgundy-100/80 dark:hover:bg-burgundy-900/40'
+                      : 'text-blue-900 dark:text-cream-100 hover:text-blue-900 dark:hover:text-cream-100 hover:underline hover:underline-offset-4 hover:decoration-2 hover:decoration-blue-900 dark:hover:decoration-cream-100'
                   }`}
                 >
                   <ChildIcon />
@@ -424,7 +427,7 @@ export default function Header() {
                         className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-200 whitespace-nowrap ${
                           pathname === child.href 
                             ? 'text-white bg-burgundy-600 dark:bg-burgundy-500 shadow-md'
-                            : 'text-blue-900 dark:text-cream-100 hover:text-burgundy-700 dark:hover:text-burgundy-400 hover:bg-burgundy-100/80 dark:hover:bg-burgundy-900/40'
+                            : 'text-blue-900 dark:text-cream-100 hover:text-blue-900 dark:hover:text-cream-100 hover:underline hover:underline-offset-4 hover:decoration-2 hover:decoration-blue-900 dark:hover:decoration-cream-100'
                         }`}
                       >
                         <ChildIcon />
@@ -470,7 +473,7 @@ export default function Header() {
                         className={`w-full flex items-center justify-between px-4 py-2.5 font-semibold rounded-lg transition-all duration-200 ${
                           pathname.startsWith(item.href)
                             ? 'text-burgundy-700 dark:text-burgundy-400 bg-burgundy-100 dark:bg-burgundy-900/50 border-l-4 border-burgundy-500'
-                            : 'text-mountain-700 dark:text-mountain-200 hover:bg-burgundy-50 dark:hover:bg-burgundy-900/30'
+                            : 'text-mountain-700 dark:text-mountain-200 hover:underline hover:underline-offset-4 hover:decoration-2 hover:decoration-blue-900 dark:hover:decoration-cream-100'
                         }`}
                       >
                         <span className="flex items-center gap-2">
@@ -496,7 +499,7 @@ export default function Header() {
                               className={`flex items-center gap-2 px-4 py-2.5 text-sm rounded-lg transition-all duration-200 ${
                                 pathname === child.href 
                                   ? 'text-burgundy-700 dark:text-burgundy-400 bg-burgundy-100 dark:bg-burgundy-900/50 font-semibold border-l-4 border-burgundy-500' 
-                                  : 'text-mountain-600 dark:text-mountain-300 hover:bg-burgundy-50 dark:hover:bg-burgundy-900/30 hover:text-burgundy-700 dark:hover:text-burgundy-400'
+                                  : 'text-mountain-600 dark:text-mountain-300 hover:text-mountain-800 dark:hover:text-cream-100 hover:underline hover:underline-offset-4 hover:decoration-2 hover:decoration-blue-900 dark:hover:decoration-cream-100'
                               }`}
                             >
                               <ChildIcon />

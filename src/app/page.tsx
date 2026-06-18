@@ -411,7 +411,7 @@ export default async function HomePage() {
             fill
             className="object-content"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/85 to-white/90 dark:from-mountain-900/95 dark:via-mountain-800/90 dark:to-mountain-900/95" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/85 to-white/90 dark:from-black/75 dark:via-black/65 dark:to-black/70" />
         </div>
 
         <div className="relative container-custom">
@@ -607,7 +607,7 @@ export default async function HomePage() {
           style={{ backgroundImage: "url(/images/logos/hero-image.png)" }}
         />
         {/* Overlay for readability */}
-        <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-cream-50/85 to-white/90 dark:from-mountain-900/95 dark:via-mountain-800/90 dark:to-mountain-900/95" />
+        <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-cream-50/85 to-white/90 dark:from-black/75 dark:via-black/65 dark:to-black/70" />
 
         <div className="container-custom relative z-10">
           <div className="text-center mb-12">
@@ -825,7 +825,7 @@ export default async function HomePage() {
             fill
             className="object-cover object-top"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/85 to-white/90 dark:from-mountain-900/95 dark:via-mountain-800/90 dark:to-mountain-900/95" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/85 to-white/90 dark:from-black/75 dark:via-black/65 dark:to-black/70" />
         </div>
 
         {/* Pattern */}
