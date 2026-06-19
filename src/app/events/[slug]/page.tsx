@@ -174,7 +174,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30 dark:from-black/95 dark:via-black/75 dark:to-black/55" />
         <div className="absolute inset-0 flex items-end">
           <div className="container-custom pb-12">
             

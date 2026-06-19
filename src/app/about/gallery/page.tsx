@@ -461,7 +461,7 @@ export default function GalleryPage() {
                     fill
                     className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent dark:from-black/80" />
                   <div className="absolute bottom-0 left-0 right-0 p-4">
                     <p className="text-white font-medium text-lg">
                       {filteredImages[currentIndex]?.caption}
@@ -542,7 +542,7 @@ export default function GalleryPage() {
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent dark:from-black/85 dark:via-black/45 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                       <p className="text-white font-medium text-lg mb-1">
                         {image.caption}
@@ -640,7 +640,7 @@ export default function GalleryPage() {
               className="object-contain"
             />
             {/* Caption */}
-            <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
+            <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent dark:from-black/90">
               <p className="text-white text-center text-sm md:text-lg font-medium">
                 {filteredImages[currentIndex]?.caption}
               </p>

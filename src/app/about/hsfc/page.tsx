@@ -109,7 +109,7 @@ export default function HSFCPage() {
                 fill
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent dark:from-black/80" />
               <div className="absolute bottom-0 left-0 right-0 p-6">
                 <p className="text-white font-medium text-lg">HSFC Team</p>
               </div>

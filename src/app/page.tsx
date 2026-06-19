@@ -296,7 +296,7 @@ export default async function HomePage() {
             quality={80}
           />
           {/* Subtle gradient overlay at bottom for smooth transition */}
-          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-gray-950 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-gray-950 to-transparent dark:from-black" />
 
           {/* Vertical text label like reference */}
           <div className="absolute left-0 top-1/2 -translate-y-1/2 z-10">
@@ -412,6 +412,7 @@ export default async function HomePage() {
             className="object-content"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/85 to-white/90 dark:from-black/75 dark:via-black/65 dark:to-black/70" />
+          <div className="absolute inset-0 bg-black/10 dark:bg-black/35" />
         </div>
 
         <div className="relative container-custom">
@@ -529,8 +530,19 @@ export default async function HomePage() {
       </section>
 
       {/* Featured News Section (Hardcoded Media Coverage) */}
-      <section className="py-20 bg-cream-50 dark:bg-mountain-900">
-        <div className="container-custom">
+      <section className="relative py-20 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/logos/hsc-wine.png"
+            alt="Wine Country Background"
+            fill
+            className="object-content"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/85 to-white/90 dark:from-black/75 dark:via-black/65 dark:to-black/70" />
+          <div className="absolute inset-0 bg-black/10 dark:bg-black/35" />
+        </div>
+
+        <div className="container-custom relative z-10">
           <div className="text-center mb-12">
             <p className="text-burgundy-600 dark:text-burgundy-400 font-medium mb-2 uppercase tracking-wide text-sm">
               What The Media Says
@@ -608,6 +620,7 @@ export default async function HomePage() {
         />
         {/* Overlay for readability */}
         <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-cream-50/85 to-white/90 dark:from-black/75 dark:via-black/65 dark:to-black/70" />
+        <div className="absolute inset-0 bg-black/10 dark:bg-black/35" />
 
         <div className="container-custom relative z-10">
           <div className="text-center mb-12">
@@ -663,7 +676,7 @@ export default async function HomePage() {
                           fill
                           className="object-cover transition-transform duration-500 group-hover:scale-110"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent dark:from-black/65" />
                         <span className="absolute top-4 left-4 px-3 py-1 bg-burgundy-700 text-white text-xs font-medium rounded-full shadow-lg">
                           {news.category}
                         </span>
@@ -826,6 +839,7 @@ export default async function HomePage() {
             className="object-cover object-top"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/85 to-white/90 dark:from-black/75 dark:via-black/65 dark:to-black/70" />
+          <div className="absolute inset-0 bg-black/10 dark:bg-black/35" />
         </div>
 
         {/* Pattern */}
@@ -873,7 +887,7 @@ export default async function HomePage() {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex items-end justify-center">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent dark:from-black/80 dark:via-black/45 flex items-end justify-center">
                   <div className="text-center text-white p-8">
                     <p className="text-2xl font-serif italic opacity-90 drop-shadow-lg">
                       &quot;Your support helps us build a brighter future&quot;

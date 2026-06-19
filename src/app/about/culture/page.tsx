@@ -168,7 +168,7 @@ export default function CulturePage() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent dark:from-black/80" />
                   <div className="absolute bottom-4 left-4 right-4">
                     <span className="inline-block bg-burgundy-700 text-white text-sm px-3 py-1 rounded-full">
                       {festival.timing}

@@ -66,7 +66,7 @@ const himalayanCupWinners = [
 ];
 
 export default function EventsPage() {
-  const [activeTab, setActiveTab] = useState<TabType>('annual');
+  const [activeTab, setActiveTab] = useState<TabType>('upcoming');
   const [upcomingEvents, setUpcomingEvents] = useState<UpcomingEvent[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const contentRef = useRef<HTMLElement>(null);
@@ -217,7 +217,7 @@ export default function EventsPage() {
                         fill
                         className="object-cover"
                       />
-                         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent dark:from-black/85 p-4">
                         <p className="text-white text-sm text-center"> HSC members Performing Sherpa Dance | Shapdro</p>
                       </div>
                     </div>
@@ -274,7 +274,7 @@ export default function EventsPage() {
                         fill
                         className="object-cover"
                       />
-                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent dark:from-black/85 p-4">
                         <p className="text-white text-sm text-center">Phang-ngi Celebration</p>
                       </div>
                     </div>
@@ -291,7 +291,7 @@ export default function EventsPage() {
                         fill
                         className="object-cover"
                       />
-                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent dark:from-black/85 p-4">
                         <p className="text-white text-sm text-center">BYSC | Winner of Himalayan Cup 2021</p>
                       </div>
                     </div>
@@ -342,7 +342,7 @@ export default function EventsPage() {
                         fill
                         className="object-cover"
                       />
-                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent dark:from-black/85 p-4">
                         <p className="text-white text-sm text-center">HSC members welcoming the guest artist from Nepal</p>
                       </div>
                     </div>
@@ -372,7 +372,7 @@ export default function EventsPage() {
                       fill
                       className="object-fit"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent dark:from-black/95 dark:via-black/65" />
                     <div className="absolute bottom-0 left-0 right-0 p-8 text-center">
                       <h3 className="text-3xl md:text-4xl font-serif font-bold text-white mb-2">
                         Losar (Sherpa New Year)
@@ -438,7 +438,7 @@ export default function EventsPage() {
                       fill
                       className="object-fit"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent dark:from-black/95 dark:via-black/65" />
                     <div className="absolute bottom-0 left-0 right-0 p-8 text-center">
                       <h3 className="text-3xl md:text-4xl font-serif font-bold text-white mb-2">
                         Phang-Ngi Celebration
@@ -472,7 +472,7 @@ export default function EventsPage() {
                       fill
                       className="object-fit"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent dark:from-black/95 dark:via-black/65" />
                     <div className="absolute bottom-0 left-0 right-0 p-8 text-center">
                       <h3 className="text-3xl md:text-4xl font-serif font-bold text-white mb-2">
                         Himalayan Cup
@@ -615,7 +615,7 @@ export default function EventsPage() {
                       fill
                       className="object-fit"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent dark:from-black dark:via-black/70" />
                     <div className="absolute bottom-0 left-0 right-0 p-8 text-center">
                       <span className="text-sm text-gold-400 font-medium">October 23, 2023</span>
                       <h3 className="text-2xl md:text-3xl font-serif font-bold text-white mt-2">

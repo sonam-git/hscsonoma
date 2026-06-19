@@ -70,7 +70,7 @@ export default async function NewsArticlePage({ params }: PageProps) {
               className="object-fill"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/60 to-black/40" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/60 to-black/40 dark:from-black/90 dark:via-black/75 dark:to-black/55" />
 
             {/* Overlay Content */}
             <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">

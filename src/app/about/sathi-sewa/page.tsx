@@ -147,7 +147,7 @@ export default function SathiSewaPage() {
                 className="object-cover"
               />
               {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-red-900/60 to-blue-900/60" />
+              <div className="absolute inset-0 bg-gradient-to-br from-red-900/60 to-blue-900/60 dark:from-red-950/75 dark:to-blue-950/75" />
               {/* Content */}
               <div className="relative z-10 p-8 text-white h-full flex flex-col justify-start items-start">
                 <div className="flex items-center gap-3 mb-3">

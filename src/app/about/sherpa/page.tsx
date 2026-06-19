@@ -229,7 +229,7 @@ function HistoryTab() {
             fill
             className="object-cover"
           />
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent dark:from-black/90 p-6">
             <p className="text-white text-sm">
               Sir Edmund Hillary with Sherpa mountaineers — a partnership that
               changed history
@@ -581,7 +581,7 @@ function LifeTab() {
               fill
               className="object-cover"
             />
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent dark:from-black/90 p-4">
               <p className="text-white text-sm font-medium">
                 Riki Kur — Traditional Sherpa comfort food
               </p>
@@ -1250,7 +1250,7 @@ function CultureTab() {
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent dark:from-black/80" />
                 <div className="absolute bottom-4 left-4 right-4">
                   <span className="inline-block bg-burgundy-700 text-white text-sm px-3 py-1 rounded-full">
                     {festival.timing}
