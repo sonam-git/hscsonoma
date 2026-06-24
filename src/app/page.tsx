@@ -209,7 +209,7 @@ export default async function HomePage() {
             fill
             priority
             fetchPriority="high"
-            className="object-cover object-center select-none pointer-events-none"
+            className="object-fill object-center select-none pointer-events-none"
             sizes="100vw"
             quality={85}
           />
@@ -236,15 +236,6 @@ export default async function HomePage() {
             "Preserving Heritage, Uniting Community."
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-row gap-4 justify-center animate-fade-in">
-            <Link href="/join-us" className="btn-primary text-lg px-8 py-4">
-              Become a Member
-            </Link>
-            <Link href="/donate" className="btn-gold text-lg px-8 py-4">
-              Donate Now
-            </Link>
-          </div>
         </div>
 
         {/* Mountain Silhouette Bottom (Zig-Zag Border) - Desktop */}
@@ -280,7 +271,7 @@ export default async function HomePage() {
             src={
               heroData.isFromStoryblok
                 ? heroData.backgroundImage
-                : heroData.mobileImage || "/images/hsc-heroimage.png"
+                : heroData.mobileImage || "/images/hero/hsc-mobile.png"
             }
             alt={
               heroData.isFromStoryblok
@@ -290,7 +281,7 @@ export default async function HomePage() {
             fill
             priority
             fetchPriority="high"
-            className="object-cover"
+            className="object-fill object-center select-none pointer-events-none"
             sizes="100vw"
             style={{ objectPosition: "center top" }}
             quality={80}
@@ -341,7 +332,7 @@ export default async function HomePage() {
               href="/donate"
               className="flex-1 bg-gold-500 hover:bg-gold-600 text-mountain-900 text-sm font-semibold py-3 px-4 rounded-lg text-center transition-all duration-200 shadow-md hover:shadow-lg active:scale-[0.98]"
             >
-              Donate Now
+              Donate Us
             </Link>
           </div>
         </div>
@@ -361,7 +352,7 @@ export default async function HomePage() {
                   src="/images/hero/hscmember.jpg"
                   alt="Sherpa Community in Sonoma"
                   fill
-                  className="object-cover"
+                  className="object-fill object-center select-none pointer-events-none"
                 />
               </div>
               {/* Floating Card */}
@@ -393,9 +384,23 @@ export default async function HomePage() {
                 united, and thriving Sherpa community in the North Bay Area of
                 California.
               </p>
-              <Link href="/about/introduction" className="btn-secondary">
+              <Link
+                href="/about/introduction"
+                className="btn-secondary md:hidden"
+              >
                 Learn Our Story
               </Link>
+              <div className="hidden md:flex items-center gap-4">
+                <Link href="/about/introduction" className="btn-secondary">
+                  Learn Our Story
+                </Link>
+                <Link href="/join-us" className="btn-primary">
+                  Become a Member
+                </Link>
+                <Link href="/donate" className="btn-gold">
+                  Donate Now
+                </Link>
+              </div>
             </div>
           </div>
         </div>
