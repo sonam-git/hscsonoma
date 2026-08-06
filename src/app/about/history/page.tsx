@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 // Icon components for categories
 const IconFoundation = () => (
@@ -268,7 +268,40 @@ const years = Object.keys(eventsByYear).sort();
 
 export default function HistoryPage() {
   const [selectedCategory, setSelectedCategory] = useState<Category | 'all'>('all');
+  const [scrollProgress, setScrollProgress] = useState(0);
   const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let ticking = false;
+
+    const updateScrollProgress = () => {
+      const { scrollHeight, clientHeight } = document.documentElement;
+      const maxScroll = scrollHeight - clientHeight;
+      const progress = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+      setScrollProgress(Math.min(1, Math.max(0, progress)));
+    };
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(() => {
+        updateScrollProgress();
+        ticking = false;
+      });
+    };
+
+    updateScrollProgress();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, []);
+
+  const redFillProgress = Math.pow(scrollProgress, 1.25);
+  const redFillHeight = `${Math.round(redFillProgress * 100)}%`;
 
   const filteredEvents = selectedCategory === 'all' 
     ? timelineEvents 
@@ -443,7 +476,15 @@ export default function HistoryPage() {
         <div className="container-custom">
           <div className="max-w-5xl mx-auto relative">
             {/* Vertical Timeline Line */}
-            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-burgundy-300 via-burgundy-500 to-burgundy-300 dark:from-burgundy-700 dark:via-burgundy-500 dark:to-burgundy-700 rounded-full transform md:-translate-x-1/2" />
+            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 rounded-full transform md:-translate-x-1/2 overflow-hidden bg-blue-900 dark:bg-blue-800">
+              <div
+                className="absolute inset-x-0 top-0"
+                style={{
+                  height: redFillHeight,
+                  background: 'linear-gradient(to bottom, #ef4444 0%, #dc2626 55%, #7f1d1d 90%, #450a0a 100%)',
+                }}
+              />
+            </div>
             
             {/* Events */}
             <div className="space-y-12">
