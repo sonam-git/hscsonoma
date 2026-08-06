@@ -74,15 +74,15 @@ export default function FoundingFamiliesPage() {
               </p>
               
               <p>
-                It was through these connections that, in the early 1990s, <strong className="text-mountain-900 dark:text-cream-50">Chhiring Sherpa</strong> found 
+                It was through these connections that, in the early 1993s, <strong className="text-mountain-900 dark:text-cream-50">Chhiring Sherpa</strong> found 
                 his way to Sonoma. While working as a trekking guide in Nepal, he formed friendships with 
                 American travelers who invited him to visit this peaceful corner of Northern California. 
                 Inspired by the beauty and opportunities of the area, Chhiring made Sonoma his new home.
               </p>
 
-              <p> Not long after (around 1996), his friends <strong className="text-mountain-900 dark:text-cream-50">Ongda Sherpa</strong> and
-              <strong className="text-mountain-900 dark:text-cream-50"> Nima Sherpa</strong>, who had been living in Colorado, also relocated to Sonoma to reunite with their close companions.
-                The three settled in Glen Ellen and became the first Sherpas to establish roots in the area.
+              <p> Not long after (around 1995), his friends <strong className="text-mountain-900 dark:text-cream-50">Ongda Sherpa</strong> and
+              <strong className="text-mountain-900 dark:text-cream-50"> Nima Sherpa</strong>, who had been living in Montana, also relocated to Sonoma to reunite with their close companions.
+                In the year of 1997, the three  officially settled in Glen Ellen and became the first Sherpas to establish roots in the area.
               </p>
 
               <p>

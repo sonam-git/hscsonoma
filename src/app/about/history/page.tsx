@@ -76,15 +76,27 @@ const categoryConfig: Record<Category, { icon: () => JSX.Element; color: string;
 
 const timelineEvents: TimelineEvent[] = [
     {
-    year: '1992 - 1999',
+    year: '1993',
     title: 'First Sherpa Arrival',
-    description: 'Chhiring Sherpa, Ongda Sherpa and Nima Sherpa arrived in Sonoma County. More of their friends joined in the mid 90s, laying the foundation for the community.',
+    description: 'Chhiring Sherpa, arrived in Sonoma County.',
     category: 'foundation',
   },
     {
-    year: '2000 - 2003',
+    year: '1995',
+    title: 'Reunion of Friends',
+    description: 'Ongda Sherpa and Nima Sherpa from Montana arrived in Sonoma to visit Chhiring Sherpa.',
+    category: 'foundation',
+  },
+    {
+    year: '1997',
+    title: 'Official Settlement in Glen Ellen',
+    description: ' Ongda Sherpa and Nima Sherpa decided to join Chhiring Sherpa, and settled in Glen Ellen, laying the foundation for the community.',
+    category: 'foundation',
+  },
+    {
+    year: '1998 - 2003',
     title: 'Community Growth',
-    description: 'More Sherpa families began settling in Sonoma County, leading to a growing community and increased cultural activities.',
+    description: ' Three Sherpas invited their family and friends. More Sherpa families began settling in Sonoma County, leading to a growing community and increased cultural activities.',
     category: 'growth',
   },
   {
