@@ -150,18 +150,18 @@ export default function DonateContent() {
               <div className="bg-cream-50 dark:bg-mountain-900/50 rounded-xl p-6 space-y-4">
                 <div>
                   <p className="text-sm font-medium text-mountain-500 dark:text-mountain-400 mb-1">Make check payable to:</p>
-                  <p className="font-semibold text-mountain-900 dark:text-white">Himalayan Sherpa Club</p>
+                  <p className="font-semibold text-mountain-900 dark:text-white">Himalaya Sherpa Club</p>
                 </div>
 
                 <div>
                   <p className="text-sm font-medium text-mountain-500 dark:text-mountain-400 mb-1">On the memo line, write:</p>
-                  <p className="font-semibold text-mountain-900 dark:text-white">Himalayan Sherpa Club of Sonoma</p>
+                  <p className="font-semibold text-mountain-900 dark:text-white">Himalaya Sherpa Club of Sonoma</p>
                 </div>
 
                 <div className="pt-4 border-t border-cream-200 dark:border-mountain-700">
                   <p className="text-sm font-medium text-mountain-500 dark:text-mountain-400 mb-2">Mail your check to:</p>
                   <address className="not-italic text-mountain-900 dark:text-white">
-                    <p className="font-semibold">Himalayan Sherpa Club of Sonoma</p>
+                    <p className="font-semibold">Himalaya Sherpa Club of Sonoma</p>
                     <p>464 1st St E Suite F</p>
                     <p>Sonoma, CA 95476</p>
                     <p>United States</p>

@@ -323,10 +323,10 @@ export default async function HomePage() {
           {/* Row 5: CTA Buttons - Two columns */}
           <div className="flex gap-3 pt-2">
             <Link
-              href="/join-us"
+              href="/about/history"
               className="flex-1 bg-burgundy-700 hover:bg-burgundy-800 text-white text-sm font-semibold py-3 px-4 rounded-lg text-center transition-all duration-200 shadow-md hover:shadow-lg active:scale-[0.98]"
             >
-              Become a Member
+              Our History
             </Link>
             <Link
               href="/donate"
@@ -651,6 +651,11 @@ export default async function HomePage() {
               Stay Updated
             </p>
             <h2 className="section-title">Latest News & Announcements</h2>
+            <div className="mt-6">
+              <Link href="/news" className="btn-secondary">
+                View All News
+              </Link>
+            </div>
           </div>
 
           {latestNewsData &&

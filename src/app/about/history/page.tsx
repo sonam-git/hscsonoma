@@ -253,6 +253,13 @@ const timelineEvents: TimelineEvent[] = [
     category: 'culture',
     highlight: true,
   },
+   {
+    year: '2026',
+    title: 'Nepal Flood Relief Charity Dinner',
+    description: 'HSC is organizing a flood relief charity dinner to support affected families in Nepal, raised funds will be directly handed to the Prime Minister\'s Fund Nepal.',
+    category: 'charity',
+    highlight: true,
+  },
 ];
 
 // Group events by year
