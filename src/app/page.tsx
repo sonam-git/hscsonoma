@@ -407,7 +407,7 @@ export default async function HomePage() {
       </section>
 
       {/* Mission & Values Section */}
-      <section className="relative py-20 overflow-hidden">
+      <section className="relative py-14 md:py-20 overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
@@ -535,7 +535,7 @@ export default async function HomePage() {
       </section>
 
       {/* Featured News Section (Hardcoded Media Coverage) */}
-      <section className="relative py-20 overflow-hidden">
+      <section className="relative pt-14 pb-10 md:py-20 overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="/images/logos/hsc-wine.png"
@@ -609,7 +609,7 @@ export default async function HomePage() {
           </div>
         </div>
 
-        <div className="text-center mt-10">
+        <div className="text-center mt-6 md:mt-10">
           <Link href="/news" className="btn-secondary mt-4 md:mt-0">
             View All News
           </Link>
@@ -617,7 +617,7 @@ export default async function HomePage() {
       </section>
 
      {/* Events Section */}
-     <section className="py-20 relative overflow-hidden">
+     <section className="py-14 md:py-20 relative overflow-hidden">
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-top bg-no-repeat"

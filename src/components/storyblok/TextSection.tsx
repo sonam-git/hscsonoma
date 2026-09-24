@@ -1,19 +1,21 @@
-import { storyblokEditable, renderRichText } from '@storyblok/react';
+import { storyblokEditable, renderRichText, SbBlokData } from '@storyblok/react';
 import Image from 'next/image';
 
-interface TextSectionProps {
-  blok: {
-    title?: string;
-    subtitle?: string;
-    content: any;
-    image?: {
-      filename: string;
-      alt: string;
-    };
-    image_position?: 'left' | 'right';
-    background?: 'white' | 'cream' | 'dark';
-    centered?: boolean;
+type TextSectionBlock = SbBlokData & {
+  title?: string;
+  subtitle?: string;
+  content?: string | Record<string, unknown>;
+  image?: {
+    filename: string;
+    alt: string;
   };
+  image_position?: 'left' | 'right';
+  background?: 'white' | 'cream' | 'dark';
+  centered?: boolean;
+};
+
+interface TextSectionProps {
+  blok: TextSectionBlock;
 }
 
 export default function TextSection({ blok }: TextSectionProps) {
@@ -25,10 +27,11 @@ export default function TextSection({ blok }: TextSectionProps) {
 
   const hasImage = blok.image?.filename;
   const imageOnLeft = blok.image_position === 'left';
+  const richTextContent = blok.content as Parameters<typeof renderRichText>[0] | undefined;
 
   return (
     <section
-      {...storyblokEditable(blok)}
+      {...storyblokEditable(blok as SbBlokData)}
       className={`py-16 md:py-24 ${backgroundClasses[blok.background || 'white']}`}
     >
       <div className="container-custom">
@@ -62,7 +65,7 @@ export default function TextSection({ blok }: TextSectionProps) {
                 className={`prose prose-lg max-w-none ${
                   blok.background === 'dark' ? 'prose-invert' : 'prose-mountain'
                 }`}
-                dangerouslySetInnerHTML={{ __html: renderRichText(blok.content) || '' }}
+                dangerouslySetInnerHTML={{ __html: renderRichText(richTextContent) || '' }}
               />
             )}
           </div>

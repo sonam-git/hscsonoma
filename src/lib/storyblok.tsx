@@ -73,12 +73,12 @@ export function StoryblokProvider({ children }: { children: ReactNode }) {
 
 // Helper function to get Storyblok client
 export function getStoryblokApi() {
-  const storyblokApi = (global as any).storyblokApi;
+  const storyblokApi = (globalThis as typeof globalThis & { storyblokApi?: unknown }).storyblokApi;
   return storyblokApi;
 }
 
 // Types for Storyblok content
-export interface StoryblokStory<T = any> {
+export interface StoryblokStory<T = unknown> {
   name: string;
   created_at: string;
   published_at: string;
@@ -92,15 +92,15 @@ export interface StoryblokStory<T = any> {
   tag_list: string[];
   is_startpage: boolean;
   parent_id: number | null;
-  meta_data: Record<string, any> | null;
+  meta_data: Record<string, unknown> | null;
   group_id: string;
   first_published_at: string;
   release_id: number | null;
   lang: string;
   path: string | null;
-  alternates: any[];
+  alternates: Array<Record<string, unknown>>;
   default_full_slug: string | null;
-  translated_slugs: any[] | null;
+  translated_slugs: Array<Record<string, unknown>> | null;
 }
 
 export interface StoryblokImage {

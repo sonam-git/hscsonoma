@@ -540,8 +540,64 @@ export default function EventsPage() {
                   </p>
                 </div>
 
+                {/* Sonoma For Nepal Charity Dinner 2026 */}
+                <div className="bg-white dark:bg-mountain-800 rounded-2xl overflow-hidden shadow-xl ring-1 ring-mountain-200/80 dark:ring-mountain-700/60">
+                  <div className="grid md:grid-cols-2 gap-0">
+                    <div className="relative h-64 md:h-auto min-h-[320px]">
+                      <Image
+                        src="/images/events/charity/donation-2.jpg"
+                        alt="Sonoma For Nepal Charity Dinner"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="p-8 md:p-10">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="w-10 h-10 bg-burgundy-100 dark:bg-burgundy-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <span className="text-xl">🤝</span>
+                        </div>
+                        <span className="text-sm text-burgundy-600 dark:text-burgundy-400 font-medium">September 2026</span>
+                      </div>
+                      <h3 className="text-2xl font-serif font-bold text-mountain-900 dark:text-cream-50 mb-4">
+                        Sonoma For Nepal : Charity Dinner for the flood victims in Nepal
+                      </h3>
+                      <p className="text-mountain-600 dark:text-mountain-300 leading-relaxed mb-5">
+                        Himalayan Sherpa Club organized a fund raise event in collaboration with California Sherpa Association as a fiscal sponsor to help the victims of the recent Rasuwa flood in Nepal. Raised over $100K during the event.
+                      </p>
+                      <a
+                        href="https://www.sonomanews.com/2026/09/23/hundreds-of-sonomans-raise-upwards-of-100000-for-nepal-flood-victims/"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 text-sm font-medium text-burgundy-600 dark:text-burgundy-400 hover:underline mb-6"
+                      >
+                        Read the news article
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </a>
+
+                      <div className="overflow-hidden rounded-xl border border-mountain-200 dark:border-mountain-700 bg-mountain-50 dark:bg-mountain-900/40">
+                        <div className="relative w-full aspect-video">
+                          <iframe
+                            src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1620873139410187%2F&show_text=false&width=560&t=0"
+                            width="560"
+                            height="314"
+                            style={{ border: 'none', overflow: 'hidden' }}
+                            scrolling="no"
+                            frameBorder="0"
+                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                            allowFullScreen={true}
+                            title="Sonoma For Nepal charity dinner video"
+                            className="absolute inset-0 w-full h-full"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 {/* Disaster Relief 2015 */}
-                <div className="bg-white dark:bg-mountain-800 rounded-2xl overflow-hidden shadow-xl">
+                <div className="bg-white dark:bg-mountain-800 rounded-2xl overflow-hidden shadow-xl ring-1 ring-mountain-200/80 dark:ring-mountain-700/60">
                   <div className="grid md:grid-cols-2 gap-0">
                     <div className="relative h-64 md:h-auto min-h-[280px]">
                       <Image
@@ -551,7 +607,7 @@ export default function EventsPage() {
                         className="object-cover"
                       />
                     </div>
-                    <div className="p-8">
+                    <div className="p-8 md:p-10">
                       <div className="flex items-center gap-3 mb-4">
                         <div className="w-10 h-10 bg-red-100 dark:bg-red-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
                           <span className="text-xl">🆘</span>
@@ -566,17 +622,28 @@ export default function EventsPage() {
                         Victims in Nepal,&quot; at Ramekins Culinary School. The event brought together local chefs, restaurants, 
                         and wineries for a special evening featuring wine, dinner, and an auction.
                       </p>
-                      <p className="text-burgundy-600 dark:text-burgundy-400 font-medium">
+                      <p className="text-burgundy-600 dark:text-burgundy-400 font-medium mb-4">
                         100% of the funds raised were directly provided to victims across various regions of Nepal.
                       </p>
+                      <a
+                        href="https://www.sonomanews.com/2015/05/19/raising-funds-for-quake-victims/"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 text-sm font-medium text-burgundy-600 dark:text-burgundy-400 hover:underline"
+                      >
+                        Read the Sonoma News article
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </a>
                     </div>
                   </div>
                 </div>
 
                 {/* Disaster Relief 2014 */}
-                <div className="bg-white dark:bg-mountain-800 rounded-2xl overflow-hidden shadow-xl">
+                <div className="bg-white dark:bg-mountain-800 rounded-2xl overflow-hidden shadow-xl ring-1 ring-mountain-200/80 dark:ring-mountain-700/60">
                   <div className="grid md:grid-cols-2 gap-0">
-                    <div className="p-8 order-2 md:order-1">
+                    <div className="p-8 md:p-10 order-2 md:order-1">
                       <div className="flex items-center gap-3 mb-4">
                         <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
                           <span className="text-xl">🏔️</span>
@@ -591,9 +658,20 @@ export default function EventsPage() {
                         Affected by the Everest Avalanche,&quot; at MacArthur Place. The event aimed to support the families 
                         in Nepal who lost loved ones in the tragic avalanche on Mount Everest.
                       </p>
-                      <p className="text-mountain-500 dark:text-mountain-400 text-sm italic">
+                      <p className="text-mountain-500 dark:text-mountain-400 text-sm italic mb-4">
                         As a gesture of community support, Sonoma Taxi provided complimentary rides home for local attendees.
                       </p>
+                      <a
+                        href="https://www.sonomanews.com/2014/04/25/sonoma-sherpas-plan-benefit/"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline"
+                      >
+                        Read the Sonoma News article
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </a>
                     </div>
                     <div className="relative h-64 md:h-auto min-h-[280px] order-1 md:order-2">
                       <Image
@@ -607,7 +685,7 @@ export default function EventsPage() {
                 </div>
 
                 {/* Summit Legends */}
-                <div className="bg-white dark:bg-mountain-800 rounded-2xl overflow-hidden shadow-xl border border-gold-200 dark:border-gold-800/30">
+                <div className="bg-white dark:bg-mountain-800 rounded-2xl overflow-hidden shadow-xl ring-1 ring-gold-200/80 dark:ring-gold-700/50">
                   <div className="relative h-72 md:h-96 w-full">
                     <Image
                       src="/images/hero/summitlegend.jpg"
@@ -624,7 +702,7 @@ export default function EventsPage() {
                     </div>
                   </div>
                   
-                  <div className="p-8">
+                  <div className="p-8 md:p-10">
                     <p className="text-mountain-600 dark:text-mountain-300 leading-relaxed mb-8 text-center max-w-3xl mx-auto">
                       The Himalayan Sherpa Club proudly hosted this special event at the Veterans Memorial Hall in Sonoma, 
                       celebrating three extraordinary Sherpa mountaineers whose remarkable achievements have set world records 
@@ -632,75 +710,75 @@ export default function EventsPage() {
                     </p>
 
                     <div className="grid md:grid-cols-3 gap-6 mb-8">
-                    <div className="bg-white dark:bg-mountain-700 rounded-xl p-6 text-center">
-                      <div className="w-20 h-20 rounded-full mx-auto mb-4 border-3 border-gold-400 dark:border-gold-500 overflow-hidden relative shadow-lg">
-                        <Image
-                          src="/images/events/past/kami-rita.jpg"
-                          alt="Kami Rita Sherpa"
-                          fill
-                          className="object-cover object-top"
-                        />
+                      <div className="bg-white dark:bg-mountain-700 rounded-xl p-6 text-center ring-1 ring-mountain-200/70 dark:ring-mountain-600">
+                        <div className="w-20 h-20 rounded-full mx-auto mb-4 border-3 border-gold-400 dark:border-gold-500 overflow-hidden relative shadow-lg">
+                          <Image
+                            src="/images/events/past/kami-rita.jpg"
+                            alt="Kami Rita Sherpa"
+                            fill
+                            className="object-cover object-top"
+                          />
+                        </div>
+                        <h4 className="font-semibold text-mountain-900 dark:text-cream-50 mb-2">Kami Rita Sherpa</h4>
+                        <p className="text-sm text-mountain-500 dark:text-mountain-400">Residing in Santa Rosa, CA</p>
+                        <p className="text-sm text-mountain-600 dark:text-mountain-300 mt-2">
+                          World record holder for most Everest summits (30 times as of May 2024)
+                        </p>
                       </div>
-                      <h4 className="font-semibold text-mountain-900 dark:text-cream-50 mb-2">Kami Rita Sherpa</h4>
-                      <p className="text-sm text-mountain-500 dark:text-mountain-400">Residing in Santa Rosa, CA</p>
-                      <p className="text-sm text-mountain-600 dark:text-mountain-300 mt-2">
-                        World record holder for most Everest summits (30 times as of May 2024)
-                      </p>
-                    </div>
-                    <div className="bg-white dark:bg-mountain-700 rounded-xl p-6 text-center">
-                      <div className="w-20 h-20 rounded-full mx-auto mb-4 border-3 border-gold-400 dark:border-gold-500 overflow-hidden relative shadow-lg">
-                        <Image
-                          src="/images/events/past/ngima-nuru.jpg"
-                          alt="Ngima Nuru Sherpa"
-                          fill
-                          className="object-cover object-center"
-                        />
+                      <div className="bg-white dark:bg-mountain-700 rounded-xl p-6 text-center ring-1 ring-mountain-200/70 dark:ring-mountain-600">
+                        <div className="w-20 h-20 rounded-full mx-auto mb-4 border-3 border-gold-400 dark:border-gold-500 overflow-hidden relative shadow-lg">
+                          <Image
+                            src="/images/events/past/ngima-nuru.jpg"
+                            alt="Ngima Nuru Sherpa"
+                            fill
+                            className="object-cover object-center"
+                          />
+                        </div>
+                        <h4 className="font-semibold text-mountain-900 dark:text-cream-50 mb-2">Ngima Nuru Sherpa</h4>
+                        <p className="text-sm text-mountain-500 dark:text-mountain-400">Youngest Multi-Summit Record</p>
+                        <p className="text-sm text-mountain-600 dark:text-mountain-300 mt-2">
+                          Youngest climber to summit Mount Everest 22 times
+                        </p>
                       </div>
-                      <h4 className="font-semibold text-mountain-900 dark:text-cream-50 mb-2">Ngima Nuru Sherpa</h4>
-                      <p className="text-sm text-mountain-500 dark:text-mountain-400">Youngest Multi-Summit Record</p>
-                      <p className="text-sm text-mountain-600 dark:text-mountain-300 mt-2">
-                        Youngest climber to summit Mount Everest 22 times
-                      </p>
-                    </div>
-                    <div className="bg-white dark:bg-mountain-700 rounded-xl p-6 text-center">
-                      <div className="w-20 h-20 rounded-full mx-auto mb-4 border-3 border-gold-400 dark:border-gold-500 overflow-hidden relative shadow-lg">
-                        <Image
-                          src="/images/events/past/ang-d.jpg"
-                          alt="Ang D. Sherpa"
-                          fill
-                          className="object-contain object-bottom"
-                        />
+                      <div className="bg-white dark:bg-mountain-700 rounded-xl p-6 text-center ring-1 ring-mountain-200/70 dark:ring-mountain-600">
+                        <div className="w-20 h-20 rounded-full mx-auto mb-4 border-3 border-gold-400 dark:border-gold-500 overflow-hidden relative shadow-lg">
+                          <Image
+                            src="/images/events/past/ang-d.jpg"
+                            alt="Ang D. Sherpa"
+                            fill
+                            className="object-contain object-bottom"
+                          />
+                        </div>
+                        <h4 className="font-semibold text-mountain-900 dark:text-cream-50 mb-2">Ang D. Sherpa</h4>
+                        <p className="text-sm text-mountain-500 dark:text-mountain-400">Residing in Sonoma, CA</p>
+                        <p className="text-sm text-mountain-600 dark:text-mountain-300 mt-2">
+                          Summited K2 with his three brothers—most siblings to summit K2
+                        </p>
                       </div>
-                      <h4 className="font-semibold text-mountain-900 dark:text-cream-50 mb-2">Ang D. Sherpa</h4>
-                      <p className="text-sm text-mountain-500 dark:text-mountain-400">Residing in Sonoma, CA</p>
-                      <p className="text-sm text-mountain-600 dark:text-mountain-300 mt-2">
-                        Summited K2 with his three brothers—most siblings to summit K2
-                      </p>
                     </div>
-                  </div>
 
-                  <div className="bg-white/50 dark:bg-mountain-700/50 rounded-xl p-6">
-                    <h4 className="font-semibold text-mountain-900 dark:text-cream-50 mb-4">The Event Featured:</h4>
-                    <ul className="space-y-2 text-mountain-600 dark:text-mountain-300">
-                      <li className="flex items-center gap-2">
-                        <span className="text-green-500">✅</span>
-                        Cultural performances showcasing the rich heritage of the Sherpa community
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <span className="text-green-500">✅</span>
-                        A Q&A session with the honored legends
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <span className="text-green-500">✅</span>
-                        Authentic Nepali cuisine including Dal Bhat, Sherpa tea, and traditional delicacies
-                      </li>
-                    </ul>
+                    <div className="bg-white/60 dark:bg-mountain-700/60 rounded-xl p-6 ring-1 ring-mountain-200/70 dark:ring-mountain-600">
+                      <h4 className="font-semibold text-mountain-900 dark:text-cream-50 mb-4">The Event Featured:</h4>
+                      <ul className="space-y-2 text-mountain-600 dark:text-mountain-300">
+                        <li className="flex items-center gap-2">
+                          <span className="text-green-500">✅</span>
+                          Cultural performances showcasing the rich heritage of the Sherpa community
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <span className="text-green-500">✅</span>
+                          A Q&A session with the honored legends
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <span className="text-green-500">✅</span>
+                          Authentic Nepali cuisine including Dal Bhat, Sherpa tea, and traditional delicacies
+                        </li>
+                      </ul>
                     </div>
                   </div>
                 </div>
 
                 {/* Music & Dinner */}
-                <div className="bg-white dark:bg-mountain-800 rounded-2xl overflow-hidden shadow-xl">
+                <div className="bg-white dark:bg-mountain-800 rounded-2xl overflow-hidden shadow-xl ring-1 ring-mountain-200/80 dark:ring-mountain-700/60">
                   <div className="grid md:grid-cols-2 gap-0">
                     <div className="relative h-64 md:h-auto min-h-[280px]">
                       <Image
@@ -710,7 +788,7 @@ export default function EventsPage() {
                         className="object-cover"
                       />
                     </div>
-                    <div className="p-8">
+                    <div className="p-8 md:p-10">
                       <div className="flex items-center gap-3 mb-4">
                         <div className="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
                           <span className="text-xl">🎵</span>
@@ -730,9 +808,9 @@ export default function EventsPage() {
                 </div>
 
                 {/* Labor Day Volleyball */}
-                <div className="bg-white dark:bg-mountain-800 rounded-2xl overflow-hidden shadow-xl">
+                <div className="bg-white dark:bg-mountain-800 rounded-2xl overflow-hidden shadow-xl ring-1 ring-mountain-200/80 dark:ring-mountain-700/60">
                   <div className="grid md:grid-cols-2 gap-0">
-                    <div className="p-8 order-2 md:order-1">
+                    <div className="p-8 md:p-10 order-2 md:order-1">
                       <div className="flex items-center gap-3 mb-4">
                         <div className="w-10 h-10 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
                           <span className="text-xl">🏐</span>
@@ -761,7 +839,7 @@ export default function EventsPage() {
                 </div>
 
                 {/* Chotrul Monlam */}
-                <div className="bg-white dark:bg-mountain-800 rounded-2xl p-8 shadow-xl">
+                <div className="bg-white dark:bg-mountain-800 rounded-2xl p-8 md:p-10 shadow-xl ring-1 ring-mountain-200/80 dark:ring-mountain-700/60">
                   <div className="flex items-start gap-4 mb-6">
                     <div className="w-12 h-12 bg-amber-100 dark:bg-amber-900/30 rounded-xl flex items-center justify-center flex-shrink-0">
                       <span className="text-2xl">🙏</span>

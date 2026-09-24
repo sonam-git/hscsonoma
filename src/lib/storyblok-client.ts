@@ -1,5 +1,12 @@
 import StoryblokClient, { ISbStoriesParams } from 'storyblok-js-client';
 
+type StoryblokEventStory = {
+  content?: {
+    event_date?: string | null;
+    role?: string | null;
+  };
+};
+
 const Storyblok = new StoryblokClient({
   accessToken: process.env.STORYBLOK_API_TOKEN,
   cache: {
@@ -54,11 +61,15 @@ export async function getEvents(params: { past?: boolean } = {}) {
   const now = new Date();
   
   if (params.past === true) {
-    return stories.filter((story: any) => new Date(story.content.event_date) < now);
+    return stories.filter(
+      (story: StoryblokEventStory) => new Date(story.content?.event_date ?? 0) < now,
+    );
   } else if (params.past === false) {
-    return stories.filter((story: any) => new Date(story.content.event_date) >= now);
+    return stories.filter(
+      (story: StoryblokEventStory) => new Date(story.content?.event_date ?? 0) >= now,
+    );
   }
-  
+
   return stories;
 }
 
@@ -69,7 +80,9 @@ export async function getTeamMembers(role?: 'founder' | 'executive' | 'advisory'
   });
 
   if (role) {
-    return stories.filter((story: any) => story.content.role === role);
+    return stories.filter(
+      (story: StoryblokEventStory) => story.content?.role === role,
+    );
   }
 
   return stories;

@@ -277,10 +277,38 @@ export default function HomeEventsSection({ events }: HomeEventsSectionProps) {
           </section>
         </div>
       ) : (
-        <div className="text-center py-10">
-          <p className="text-mountain-500 dark:text-mountain-400 text-lg">
-            No upcoming events at the moment. Please check back later.
-          </p>
+        <div className="py-8 sm:py-10">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6">
+            <div className="relative overflow-hidden rounded-2xl border border-cream-200 dark:border-mountain-700 bg-gradient-to-br from-cream-50 via-white to-burgundy-50/40 dark:from-mountain-800 dark:via-mountain-800 dark:to-burgundy-900/20 shadow-md">
+              <div className="absolute -top-14 -right-14 w-40 h-40 rounded-full bg-burgundy-200/30 dark:bg-burgundy-700/20 blur-2xl" aria-hidden="true" />
+              <div className="absolute -bottom-16 -left-16 w-44 h-44 rounded-full bg-gold-200/30 dark:bg-gold-700/10 blur-2xl" aria-hidden="true" />
+
+              <div className="relative z-10 px-6 py-10 sm:px-10 sm:py-12 text-center">
+                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-700 dark:text-burgundy-300">
+                  <svg className="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                </div>
+
+                <h3 className="text-xl sm:text-2xl font-bold text-mountain-900 dark:text-cream-50 font-[Georgia,'Times_New_Roman',Times,serif]">
+                  No upcoming events at the moment, stay tuned.
+                </h3>
+
+                <div className="mt-6">
+                  <Link
+                    href="/events"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-burgundy-700 hover:bg-burgundy-800 text-white text-sm sm:text-base font-medium rounded-lg transition-colors shadow-sm"
+                  >
+                    Browse Our Previous Events
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                </div>
+
+              </div>
+            </div>
+          </div>
         </div>
       )}
 

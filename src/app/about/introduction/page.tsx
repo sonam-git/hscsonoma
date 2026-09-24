@@ -44,13 +44,18 @@ export default function IntroductionPage() {
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* AI Generated Image */}
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
-              <Image
-                src="/images/logos/hsc-wine.png"
-                alt="Himalayan Sherpa Community"
-                fill
-                className="object-cover"
-              />
+            <div className="relative">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/images/hsc/hsc-intro.jpeg"
+                  alt="Himalayan Sherpa Community"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <p className="mt-3 text-sm italic text-mountain-600 dark:text-mountain-300 text-center">
+                Himalayan Sherpa Club members during an event &quot;Sonoma For Nepal&quot;
+              </p>
             </div>
 
             {/* Content */}

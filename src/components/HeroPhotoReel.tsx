@@ -5,25 +5,54 @@ import Image from "next/image";
 
 const reelImages = [
   // Hero images
-  { src: "/images/hero/HSC-Lhosar-Party-2011.jpeg", alt: "HSC Lhosar Party 2011" },
+  { src: "/images/events/charity/donnation-1.jpg", alt: "charity-dinner 2026" },
+  { src: "/images/events/charity/donation-2.jpg", alt: "charity-dinner 2026" },
+  { src: "/images/events/charity/donation-3.jpg", alt: "charity-dinner 2026" },
+  { src: "/images/events/charity/donation-4.jpg", alt: "charity-dinner 2026" },
+  { src: "/images/events/charity/donation-5.jpg", alt: "charity-dinner 2026" },
+  {
+    src: "/images/hero/HSC-Lhosar-Party-2011.jpeg",
+    alt: "HSC Lhosar Party 2011",
+  },
   { src: "/images/hero/HSC-party-2013.jpeg", alt: "HSC Party 2013" },
-  { src: "/images/hero/HSC-members-Bhajra-guru-program.jpeg", alt: "HSC Members at Bhajra Guru Program" },
+  {
+    src: "/images/hero/HSC-members-Bhajra-guru-program.jpeg",
+    alt: "HSC Members at Bhajra Guru Program",
+  },
   { src: "/images/hero/hscpicnic.jpg", alt: "HSC Picnic" },
   { src: "/images/hero/sherpadance2.jpg", alt: "Sherpa Traditional Dance" },
   { src: "/images/hero/IMG_8214.jpg", alt: "HSC Community Event" },
   { src: "/images/hsc/hsc-tahoe-2016.jpg", alt: "HSC Lake Tahoe Trip 2016" },
   { src: "/images/hero/IMG_8287.jpg", alt: "Fund Raising Event" },
-  { src: "/images/hero/Sonoma-Sherpa-Kids-back-in-2013.jpeg", alt: "Sonoma Sherpa Kids 2013" },
+  {
+    src: "/images/hero/Sonoma-Sherpa-Kids-back-in-2013.jpeg",
+    alt: "Sonoma Sherpa Kids 2013",
+  },
   { src: "/images/hero/sherpakids2020.png", alt: "Sonoma Sherpa Kids 2020" },
-  { src: "/images/hero/desktop-hero.png", alt: "Sherpa Community in Wine Country" },
-   { src: "/images/functional-bodies/advisory/sonoma-women-g.png", alt: "Sonoma Women Group" },
-     { src: "/images/hsc/hsc-board-2018.jpg", alt: "HSC Board 2018" },
-      { src: "/images/hsc/hsc-marathon-2017.jpg", alt: "HSC Member Pasang Nuru participating in Napa - Sonoma Marathon 2017" },
-       { src: "/images/hsc/hsc-newyear-celebration-2013.jpg", alt: "HSC New Year Celebration 2013" },
-        { src: "/images/hsc/hsc-picnic-2013.jpg", alt: "HSC Picnic 2013" },
-        { src: "/images/hsc/hsc-laketahoe.jpg", alt: "HSC Lake Tahoe Trip 2016" },
+  {
+    src: "/images/hero/desktop-hero.png",
+    alt: "Sherpa Community in Wine Country",
+  },
+  {
+    src: "/images/functional-bodies/advisory/sonoma-women-g.png",
+    alt: "Sonoma Women Group",
+  },
+  { src: "/images/hsc/hsc-board-2018.jpg", alt: "HSC Board 2018" },
+  {
+    src: "/images/hsc/hsc-marathon-2017.jpg",
+    alt: "HSC Member Pasang Nuru participating in Napa - Sonoma Marathon 2017",
+  },
+  {
+    src: "/images/hsc/hsc-newyear-celebration-2013.jpg",
+    alt: "HSC New Year Celebration 2013",
+  },
+  { src: "/images/hsc/hsc-picnic-2013.jpg", alt: "HSC Picnic 2013" },
+  { src: "/images/hsc/hsc-laketahoe.jpg", alt: "HSC Lake Tahoe Trip 2016" },
   // News images
-  { src: "/images/news/benefit.jpg", alt: "Fund raising event for Everest Avalanche victims" },
+  {
+    src: "/images/news/benefit.jpg",
+    alt: "Fund raising event for Everest Avalanche victims",
+  },
   { src: "/images/news/fundraising.jpg", alt: "Fundraising" },
   { src: "/images/news/k2-summit.jpg", alt: "K2 Summit by HSC member" },
   // Events - Annual
@@ -31,26 +60,68 @@ const reelImages = [
   { src: "/images/events/annual/losar.jpg", alt: "Sherpa Dance Performance" },
   { src: "/images/events/annual/phangi-party.jpeg", alt: "Phangi Party" },
   { src: "/images/events/past/HSC-picnic2011.png", alt: "HSC Camping 2011" },
-  { src: "/images/events/annual/HSC-Lhosar-2011.jpg", alt: "Lhosar Serkim 2011" },
-  { src: "/images/events/annual/HSC-Lhosar2013.jpg", alt: "HSC Shebru performance 2013" },
+  {
+    src: "/images/events/annual/HSC-Lhosar-2011.jpg",
+    alt: "Lhosar Serkim 2011",
+  },
+  {
+    src: "/images/events/annual/HSC-Lhosar2013.jpg",
+    alt: "HSC Shebru performance 2013",
+  },
   // Events - Past
-  { src: "/images/events/past/HSC-Labor-Day-Volleyball-2012.jpeg", alt: "HSC Labor Day Volleyball 2012" },
-  { src: "/images/events/past/earthquake-victims.jpeg", alt: "HSC in the news" },
-  { src: "/images/events/past/everest-avalanche.jpg", alt: "Everest Avalanche Fund Raise 2014" },
+  {
+    src: "/images/events/past/HSC-Labor-Day-Volleyball-2012.jpeg",
+    alt: "HSC Labor Day Volleyball 2012",
+  },
+  {
+    src: "/images/events/past/earthquake-victims.jpeg",
+    alt: "HSC in the news",
+  },
+  {
+    src: "/images/events/past/everest-avalanche.jpg",
+    alt: "Everest Avalanche Fund Raise 2014",
+  },
   { src: "/images/events/past/musical-concert.jpeg", alt: "Musical Concert" },
-  { src: "/images/events/past/summit-legends.jpg", alt: "Mountain Legends with HSC Members" },
+  {
+    src: "/images/events/past/summit-legends.jpg",
+    alt: "Mountain Legends with HSC Members",
+  },
   { src: "/images/events/past/Lhosar2013.jpg", alt: "HSC Lhosar 2013" },
-  { src: "/images/events/past/Losar-dinner2013.jpg", alt: "Serving Dinner during HSC Losar 2013" },
-   { src: "/images/events/past/hsc-executive.JPG", alt: "HSC Executive Team with mountain heroes and Sonoma mayor Sandra Lowe" },
-    { src: "/images/events/past/congratulating.JPG", alt: "Offering blessing to the mountain legends from elderest member of HSC" },
-     { src: "/images/events/past/mountain-hero.JPG", alt: "Mountain Heroes visiting Sonoma" },
-      { src: "/images/events/past/offering-khada.JPG", alt: "Offering Khada during HSC Summit Legend Event 2023" },
-       { src: "/images/events/past/sandra-lowe.JPG", alt: "HSC members with Sonoma mayor 2023 Sandra Lowe" },
-        { src: "/images/events/past/three-summit-legends.JPG", alt: "Three Summit Legends during Summit Legends Event 2023" },
+  {
+    src: "/images/events/past/Losar-dinner2013.jpg",
+    alt: "Serving Dinner during HSC Losar 2013",
+  },
+  {
+    src: "/images/events/past/hsc-executive.JPG",
+    alt: "HSC Executive Team with mountain heroes and Sonoma mayor Sandra Lowe",
+  },
+  {
+    src: "/images/events/past/congratulating.JPG",
+    alt: "Offering blessing to the mountain legends from elderest member of HSC",
+  },
+  {
+    src: "/images/events/past/mountain-hero.JPG",
+    alt: "Mountain Heroes visiting Sonoma",
+  },
+  {
+    src: "/images/events/past/offering-khada.JPG",
+    alt: "Offering Khada during HSC Summit Legend Event 2023",
+  },
+  {
+    src: "/images/events/past/sandra-lowe.JPG",
+    alt: "HSC members with Sonoma mayor 2023 Sandra Lowe",
+  },
+  {
+    src: "/images/events/past/three-summit-legends.JPG",
+    alt: "Three Summit Legends during Summit Legends Event 2023",
+  },
   // Events - Signature
   { src: "/images/events/signature/Lhosar-Party-.jpeg", alt: "Lhosar Party" },
   { src: "/images/events/signature/labor-day-flex.jpg", alt: "Himalayan Cup" },
-  { src: "/images/events/signature/phang-ngi.jpg", alt: "Phang Ngi celebration" },
+  {
+    src: "/images/events/signature/phang-ngi.jpg",
+    alt: "Phang Ngi celebration",
+  },
   // HSFC
   { src: "/images/hsfc/team.jpg", alt: "Sonoma Running Cup Champion HSFC" },
 ];
@@ -63,7 +134,10 @@ interface HeroPhotoReelProps {
 }
 
 export default function HeroPhotoReel({ inline = false }: HeroPhotoReelProps) {
-  const [modalImg, setModalImg] = useState<null | { img: typeof reelImages[0]; index: number }>(null);
+  const [modalImg, setModalImg] = useState<null | {
+    img: (typeof reelImages)[0];
+    index: number;
+  }>(null);
   const [isPaused, setIsPaused] = useState(false);
   const [isImageLoading, setIsImageLoading] = useState(true);
   const [showDescription, setShowDescription] = useState(false);
@@ -93,7 +167,8 @@ export default function HeroPhotoReel({ inline = false }: HeroPhotoReelProps) {
   const handlePrev = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (modalImg) {
-      const newIndex = modalImg.index === 0 ? reelImages.length - 1 : modalImg.index - 1;
+      const newIndex =
+        modalImg.index === 0 ? reelImages.length - 1 : modalImg.index - 1;
       setModalImg({ img: reelImages[newIndex], index: newIndex });
     }
   };
@@ -101,12 +176,13 @@ export default function HeroPhotoReel({ inline = false }: HeroPhotoReelProps) {
   const handleNext = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (modalImg) {
-      const newIndex = modalImg.index === reelImages.length - 1 ? 0 : modalImg.index + 1;
+      const newIndex =
+        modalImg.index === reelImages.length - 1 ? 0 : modalImg.index + 1;
       setModalImg({ img: reelImages[newIndex], index: newIndex });
     }
   };
 
-  const openModal = (img: typeof reelImages[0], index: number) => {
+  const openModal = (img: (typeof reelImages)[0], index: number) => {
     // Use modulo to get the actual index from doubled images
     const actualIndex = index % reelImages.length;
     setModalImg({ img, index: actualIndex });
@@ -117,19 +193,21 @@ export default function HeroPhotoReel({ inline = false }: HeroPhotoReelProps) {
     if (!modalImg) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
+      if (e.key === "Escape") {
         setModalImg(null);
-      } else if (e.key === 'ArrowLeft') {
-        const newIndex = modalImg.index === 0 ? reelImages.length - 1 : modalImg.index - 1;
+      } else if (e.key === "ArrowLeft") {
+        const newIndex =
+          modalImg.index === 0 ? reelImages.length - 1 : modalImg.index - 1;
         setModalImg({ img: reelImages[newIndex], index: newIndex });
-      } else if (e.key === 'ArrowRight') {
-        const newIndex = modalImg.index === reelImages.length - 1 ? 0 : modalImg.index + 1;
+      } else if (e.key === "ArrowRight") {
+        const newIndex =
+          modalImg.index === reelImages.length - 1 ? 0 : modalImg.index + 1;
         setModalImg({ img: reelImages[newIndex], index: newIndex });
       }
     };
 
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [modalImg]);
 
   const reelContent = (
@@ -137,22 +215,25 @@ export default function HeroPhotoReel({ inline = false }: HeroPhotoReelProps) {
       {/* Top Sprocket Holes */}
       <div className="flex justify-between px-2 mb-1">
         {Array.from({ length: 60 }).map((_, i) => (
-          <div key={`top-${i}`} className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-sm bg-gray-800" />
+          <div
+            key={`top-${i}`}
+            className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-sm bg-gray-800"
+          />
         ))}
       </div>
-      
+
       {/* Scrolling Film Frames - Animated */}
-      <div 
+      <div
         className="overflow-hidden py-1"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        <div 
+        <div
           className="flex gap-1 px-2"
           style={{
             animation: `scroll-left 40s linear infinite`,
-            animationPlayState: isPaused ? 'paused' : 'running',
-            width: 'max-content',
+            animationPlayState: isPaused ? "paused" : "running",
+            width: "max-content",
           }}
         >
           {doubledImages.map((img, index) => (
@@ -178,11 +259,14 @@ export default function HeroPhotoReel({ inline = false }: HeroPhotoReelProps) {
           ))}
         </div>
       </div>
-      
+
       {/* Bottom Sprocket Holes */}
       <div className="flex justify-between px-2 mt-1">
         {Array.from({ length: 60 }).map((_, i) => (
-          <div key={`bottom-${i}`} className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-sm bg-gray-800" />
+          <div
+            key={`bottom-${i}`}
+            className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-sm bg-gray-800"
+          />
         ))}
       </div>
     </>
@@ -219,12 +303,15 @@ export default function HeroPhotoReel({ inline = false }: HeroPhotoReelProps) {
 
       {/* Modal */}
       {modalImg && (
-        <div 
+        <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-gray-800/80 backdrop-blur-md animate-fade-in p-2 sm:p-4"
           onClick={() => setModalImg(null)}
         >
           {/* Modal content container */}
-          <div className="flex flex-col items-center w-full max-w-4xl" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="flex flex-col items-center w-full max-w-4xl"
+            onClick={(e) => e.stopPropagation()}
+          >
             {/* Image with decorative frame */}
             <div className="relative w-full">
               {/* Outer decorative frame */}
@@ -238,7 +325,9 @@ export default function HeroPhotoReel({ inline = false }: HeroPhotoReelProps) {
                       <div className="absolute inset-0 flex items-center justify-center bg-gray-900 z-10">
                         <div className="flex flex-col items-center gap-3">
                           <div className="w-10 h-10 border-4 border-amber-500 border-t-transparent rounded-full animate-spin"></div>
-                          <span className="text-gray-400 text-sm">Loading image...</span>
+                          <span className="text-gray-400 text-sm">
+                            Loading image...
+                          </span>
                         </div>
                       </div>
                     )}
@@ -246,7 +335,7 @@ export default function HeroPhotoReel({ inline = false }: HeroPhotoReelProps) {
                       src={modalImg.img.src}
                       alt={modalImg.img.alt}
                       fill
-                      className={`object-contain transition-opacity duration-300 ${isImageLoading ? 'opacity-0' : 'opacity-100'}`}
+                      className={`object-contain transition-opacity duration-300 ${isImageLoading ? "opacity-0" : "opacity-100"}`}
                       sizes="(max-width: 768px) 95vw, 900px"
                       draggable={false}
                       onLoad={handleImageLoad}
@@ -255,20 +344,22 @@ export default function HeroPhotoReel({ inline = false }: HeroPhotoReelProps) {
                   </div>
                 </div>
               </div>
-              
+
               {/* Image counter badge */}
               <div className="absolute top-4 left-4 sm:top-5 sm:left-5 bg-black/70 text-white text-xs sm:text-sm px-2 py-1 rounded-full backdrop-blur-sm">
                 {modalImg.index + 1} / {reelImages.length}
               </div>
             </div>
-            
+
             {/* Image Title - with delayed reveal */}
-            <div className={`transition-all duration-500 ${showDescription ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>
+            <div
+              className={`transition-all duration-500 ${showDescription ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}
+            >
               <p className="text-white text-sm sm:text-base md:text-lg font-medium text-center mt-3 mb-2 px-2 drop-shadow-lg">
                 {modalImg.img.alt}
               </p>
             </div>
-            
+
             {/* Navigation controls - Prev | Close | Next */}
             <div className="flex items-center justify-center gap-3 sm:gap-6 mt-2 mb-4">
               {/* Previous button */}
@@ -277,24 +368,44 @@ export default function HeroPhotoReel({ inline = false }: HeroPhotoReelProps) {
                 className="flex items-center gap-1 sm:gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-full transition-all duration-300 hover:scale-105 shadow-lg border border-gray-600"
                 aria-label="Previous image"
               >
-                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                <svg
+                  className="w-4 h-4 sm:w-5 sm:h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 19l-7-7 7-7"
+                  />
                 </svg>
                 <span className="text-sm sm:text-base font-medium">Prev</span>
               </button>
-              
+
               {/* Close button */}
               <button
                 onClick={() => setModalImg(null)}
                 className="flex items-center gap-1 sm:gap-2 px-5 sm:px-8 py-2.5 sm:py-3 bg-red-600 hover:bg-red-700 text-white rounded-full transition-all duration-300 hover:scale-105 shadow-lg border-2 border-white/30"
                 aria-label="Close fullscreen image"
               >
-                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <svg
+                  className="w-4 h-4 sm:w-5 sm:h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 </svg>
                 <span className="text-sm sm:text-base font-medium">Close</span>
               </button>
-              
+
               {/* Next button */}
               <button
                 onClick={handleNext}
@@ -302,12 +413,22 @@ export default function HeroPhotoReel({ inline = false }: HeroPhotoReelProps) {
                 aria-label="Next image"
               >
                 <span className="text-sm sm:text-base font-medium">Next</span>
-                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                <svg
+                  className="w-4 h-4 sm:w-5 sm:h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
                 </svg>
               </button>
             </div>
-            
+
             {/* Keyboard hint */}
             <p className="text-gray-500 text-xs hidden sm:block">
               Use ← → arrow keys to navigate, ESC to close

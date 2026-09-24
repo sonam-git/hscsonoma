@@ -165,13 +165,13 @@ const navigation = [
       { name: 'Sherpa Businesses', href: '/about/sherpa-businesses', icon: BusinessIcon },
       { name: 'HSFC', href: '/about/hsfc', icon: SoccerIcon },
       { name: 'Sathi Sewa', href: '/about/sathi-sewa', icon: HeartIcon },
-      { name: 'Gallery', href: '/about/gallery', icon: GalleryIcon },
+      { name: 'Join Us', href: '/about/join-us', icon: JoinIcon },
     ],
   },
   { name: 'Events', href: '/events', icon: CalendarIcon },
   { name: 'News', href: '/news', icon: NewsIcon },
+  { name: 'Gallery', href: '/gallery', icon: GalleryIcon },
   { name: 'Contact', href: '/contact', icon: ContactIcon },
-  { name: 'Join Us', href: '/join-us', icon: JoinIcon },
 ];
 
 export default function Header() {
@@ -182,6 +182,11 @@ export default function Header() {
   const [canScrollAboutRight, setCanScrollAboutRight] = useState(false);
   const mobileAboutSubmenuRef = useRef<HTMLDivElement | null>(null);
   const pathname = usePathname();
+  const isGalleryPage = pathname === '/gallery' || pathname.startsWith('/gallery/');
+  const isJoinUsPage = pathname === '/about/join-us' || pathname.startsWith('/about/join-us/');
+  const isAboutSectionPage =
+    (pathname === '/about' || pathname.startsWith('/about/')) && !isGalleryPage && !isJoinUsPage;
+  const showAboutSubmenu = activeDropdown === 'About' || isAboutSectionPage || isJoinUsPage;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -301,7 +306,7 @@ export default function Header() {
                 <div key={item.name} className="relative group">
                   {item.children ? (
                     <button
-                      className={`px-4 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2 text-blue-900 dark:text-cream-50 hover:text-blue-900 dark:hover:text-cream-100 hover:underline hover:underline-offset-8 hover:decoration-2 hover:decoration-blue-900 dark:hover:decoration-cream-100 hover:scale-105 ${pathname.startsWith(item.href) ? 'text-burgundy-700 dark:text-burgundy-400 bg-burgundy-100/80 dark:bg-burgundy-900/50 shadow-md font-bold border-b-2 border-burgundy-500' : ''}`}
+                      className={`px-4 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2 text-blue-900 dark:text-cream-50 hover:text-blue-900 dark:hover:text-cream-100 hover:underline hover:underline-offset-8 hover:decoration-2 hover:decoration-blue-900 dark:hover:decoration-cream-100 hover:scale-105 ${item.name === 'About' && isAboutSectionPage ? 'text-burgundy-700 dark:text-burgundy-400 bg-burgundy-100/80 dark:bg-burgundy-900/50 shadow-md font-bold border-b-2 border-burgundy-500' : ''}`}
                       onMouseEnter={() => setActiveDropdown(item.name)}
                       onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
                       aria-expanded={activeDropdown === item.name}
@@ -317,7 +322,7 @@ export default function Header() {
                   ) : (
                     <Link
                       href={item.href}
-                      className={`px-4 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2 text-blue-900 dark:text-cream-50 hover:text-burgundy-700 dark:hover:text-white hover:bg-burgundy-50/80 dark:hover:bg-burgundy-900/30 hover:scale-105 hover:shadow-md ${pathname === item.href ? 'text-burgundy-700 dark:text-burgundy-400 bg-burgundy-100/80 dark:bg-burgundy-900/50 shadow-md font-bold border-b-2 border-burgundy-500' : ''}`}
+                      className={`px-4 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2 text-blue-900 dark:text-cream-50 hover:text-burgundy-700 dark:hover:text-white hover:bg-burgundy-50/80 dark:hover:bg-burgundy-900/30 hover:scale-105 hover:shadow-md ${(pathname === item.href || (item.name === 'Gallery' && isGalleryPage)) ? 'text-burgundy-700 dark:text-burgundy-400 bg-burgundy-100/80 dark:bg-burgundy-900/50 shadow-md font-bold border-b-2 border-burgundy-500' : ''}`}
                       onMouseEnter={() => setActiveDropdown(null)}
                     >
                       <IconComponent />
@@ -367,12 +372,12 @@ export default function Header() {
         {/* Horizontal Submenu for About - Desktop - Full Width */}
         <div
           className={`hidden xl:block transition-all duration-300 overflow-hidden ${
-            activeDropdown === 'About' || pathname.startsWith('/about') ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0'
+            showAboutSubmenu ? 'max-h-16 opacity-100' : 'max-h-0 opacity-0'
           }`}
           onMouseEnter={() => setActiveDropdown('About')}
-          onMouseLeave={() => { if (!pathname.startsWith('/about')) setActiveDropdown(null); }}
+          onMouseLeave={() => { if (!showAboutSubmenu) setActiveDropdown(null); }}
         >
-          <div className="w-full flex items-center justify-center gap-1 py-2 border-t bg-cream-50/95 dark:bg-mountain-800/95 border-cream-200 dark:border-mountain-700 backdrop-blur-sm">
+          <div className="w-full flex items-center justify-center gap-1 py-1 border-t bg-cream-50/95 dark:bg-mountain-800/95 border-cream-200 dark:border-mountain-700 backdrop-blur-sm">
             {navigation.find(item => item.name === 'About')?.children?.map((child) => {
               const ChildIcon = child.icon;
               return (
@@ -397,7 +402,7 @@ export default function Header() {
         {/* Horizontal Submenu for About - Mobile - Full Width */}
         <div
           className={`xl:hidden transition-all duration-300 overflow-hidden relative z-10 ${
-            pathname.startsWith('/about') ? 'max-h-24 opacity-100' : 'max-h-0 opacity-0'
+            showAboutSubmenu ? 'max-h-24 opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
           <div className="w-full border-t bg-cream-50 dark:bg-mountain-800 border-cream-200 dark:border-mountain-700">
@@ -471,7 +476,7 @@ export default function Header() {
                       <button
                         onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
                         className={`w-full flex items-center justify-between px-4 py-2.5 font-semibold rounded-lg transition-all duration-200 ${
-                          pathname.startsWith(item.href)
+                          (item.name === 'About' && isAboutSectionPage) || (item.name === 'Gallery' && isGalleryPage)
                             ? 'text-burgundy-700 dark:text-burgundy-400 bg-burgundy-100 dark:bg-burgundy-900/50 border-l-4 border-burgundy-500'
                             : 'text-mountain-700 dark:text-mountain-200 hover:underline hover:underline-offset-4 hover:decoration-2 hover:decoration-blue-900 dark:hover:decoration-cream-100'
                         }`}

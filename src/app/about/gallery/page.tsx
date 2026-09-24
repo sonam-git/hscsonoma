@@ -12,6 +12,13 @@ interface GalleryImage {
   category: string;
 }
 
+interface GalleryVideo {
+  id: string;
+  title: string;
+  platform: "Facebook" | "YouTube";
+  embedUrl: string;
+}
+
 // Hardcoded gallery images
 const hardcodedGalleryImages: GalleryImage[] = [
   {
@@ -199,6 +206,47 @@ const hardcodedGalleryImages: GalleryImage[] = [
   },
 ];
 
+const galleryVideos: GalleryVideo[] = [
+  {
+    id: "fb-reel-1",
+    title: "Video Presentation : Sonoma For Nepal : Charity Dinner 2026 for flood victims in Nepal",
+    platform: "Facebook",
+    embedUrl:
+      "https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1620873139410187%2F&show_text=false&width=560&t=0",
+  },
+  {
+    id: "fb-reel-2",
+    title: "Summit Legends 2023",
+    platform: "Facebook",
+    embedUrl:
+      "https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1290840191535457%2F&show_text=false&width=560&t=0",
+  },
+  {
+    id: "yt-1",
+    title: "Annual Labor Day Soccer Tournament 2022",
+    platform: "YouTube",
+    embedUrl: "https://www.youtube.com/embed/Lgyq8Cl7YaM?si=w6n_TEAABHOXLgCn",
+  },
+  {
+    id: "yt-2",
+    title: "HSC Fund Raising Event For Flood Victims in Nepal 2026",
+    platform: "YouTube",
+    embedUrl: "https://www.youtube.com/embed/Td_WvrF76gw?si=Zifuru_fDTyBDM0E",
+  },
+  {
+    id: "yt-3",
+    title: "HSC Summer Picnic 2026",
+    platform: "YouTube",
+    embedUrl: "https://www.youtube.com/embed/qF3d64AhEH4?si=8LE9HzvxnZGdlC5l",
+  },
+  {
+    id: "yt-sonoma-losar",
+    title: "HSC Annual Losar",
+    platform: "YouTube",
+    embedUrl: "https://www.youtube.com/embed/mldnpkADzxs?si=LVSTTXjT9MrIEF2G",
+  },
+];
+
 // SVG Icons
 const ChevronLeftIcon = () => (
   <svg
@@ -292,12 +340,14 @@ export default function GalleryPage() {
   }, []);
 
   // Tab categories: New/Latest first, then standard categories
-  const categories = ["New", "All", "Cultural", "Community", "Sports"];
+  const categories = ["New", "All", "Cultural", "Community", "Sports", "Video"];
 
   // Get images based on active filter
   const getFilteredImages = (): GalleryImage[] => {
     if (activeFilter === "New") {
       return storyblokImages;
+    } else if (activeFilter === "Video") {
+      return [];
     } else if (activeFilter === "All") {
       return hardcodedGalleryImages;
     } else {
@@ -370,6 +420,52 @@ export default function GalleryPage() {
     </div>
   );
 
+  const renderVideoSection = () => (
+    <div>
+      <div className="text-center mb-8">
+        <h3 className="text-2xl md:text-3xl font-serif font-bold text-mountain-900 dark:text-white mb-2">
+          Some video clips from our major events
+        </h3>
+        <p className="text-mountain-600 dark:text-mountain-400 max-w-2xl mx-auto">
+          Watch highlights from our cultural celebrations, sports activities,
+          and community gatherings.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {galleryVideos.map((video) => (
+          <article
+            key={video.id}
+            className="rounded-2xl overflow-hidden bg-white dark:bg-mountain-900 border border-cream-200 dark:border-mountain-700 shadow-lg"
+          >
+            <div className="relative w-full aspect-video bg-black">
+              <iframe
+                src={video.embedUrl}
+                title={video.title}
+                className="absolute inset-0 w-full h-full"
+                style={{ border: "none", overflow: "hidden" }}
+                scrolling="no"
+                frameBorder="0"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share; accelerometer; gyroscope"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                loading="lazy"
+              />
+            </div>
+            <div className="p-4 md:p-5">
+              <p className="text-mountain-900 dark:text-cream-50 font-semibold font-[Georgia,'Times_New_Roman',Times,serif]">
+                {video.title}
+              </p>
+              <span className="inline-block mt-2 px-3 py-1 rounded-full text-xs font-medium bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-700 dark:text-burgundy-300">
+                {video.platform}
+              </span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  );
+
   return (
     <main className="min-h-screen bg-cream-50 dark:bg-mountain-950">
       {/* Hero Section */}
@@ -400,7 +496,7 @@ export default function GalleryPage() {
       </section>
 
       {/* Sticky Category Filter Tabs */}
-      <div className="sticky top-[140px] xl:top-[140px] z-40 bg-gradient-to-r from-burgundy-800 via-mountain-800 to-burgundy-800 shadow-lg">
+      <div className="sticky top-[96px] z-40 bg-gradient-to-r from-burgundy-800 via-mountain-800 to-burgundy-800 shadow-lg">
         <div className="container-custom px-2 sm:px-4 md:px-6 lg:px-8">
           <div className="flex overflow-x-auto scrollbar-hide justify-start sm:justify-center gap-1 md:gap-2 py-3">
             {categories.map((category) => (
@@ -440,8 +536,10 @@ export default function GalleryPage() {
             filteredImages.length === 0 &&
             renderEmptyState()}
 
+          {activeFilter === "Video" && renderVideoSection()}
+
           {/* Gallery Content */}
-          {filteredImages.length > 0 && (
+          {activeFilter !== "Video" && filteredImages.length > 0 && (
             <>
               {/* Mobile Slider View */}
               <div className="md:hidden relative">

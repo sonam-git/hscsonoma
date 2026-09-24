@@ -256,7 +256,7 @@ const timelineEvents: TimelineEvent[] = [
    {
     year: '2026',
     title: 'Nepal Flood Relief Charity Dinner',
-    description: 'HSC is organizing a flood relief charity dinner to support affected families in Nepal, raised funds will be directly handed to the Prime Minister\'s Fund Nepal.',
+    description: 'HSC organized a flood relief charity dinner " Sonoma For Nepal " on 22 September 2026 in collaboration with CSA as the fiscal sponsor.',
     category: 'charity',
     highlight: true,
   },
