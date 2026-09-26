@@ -113,7 +113,7 @@ export default function Footer() {
             </Link>
             <Link
               href="/donate"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-gold-600 hover:bg-gold-500 text-mountain-200 text-sm font-medium rounded-full transition-colors"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-gold-700 hover:bg-gold-900 text-white text-sm font-medium rounded-full transition-colors"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
