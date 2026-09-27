@@ -111,7 +111,7 @@ export default function SherpaPage() {
       </section>
 
       {/* Tabs Navigation */}
-      <section className="sticky top-[140px] xl:top-[140px] z-40 bg-white/95 dark:bg-mountain-900/95 backdrop-blur-md shadow-md border-b border-cream-200 dark:border-mountain-700">
+      <section className="sticky top-[140px] xl:top-[130px] z-40 bg-white/95 dark:bg-mountain-900/95 backdrop-blur-md shadow-md border-b border-cream-200 dark:border-mountain-700">
         <div className="container-custom px-2 sm:px-4 md:px-6 lg:px-8">
           <div className="flex overflow-x-auto scrollbar-hide justify-start sm:justify-center gap-1 py-2">
             {tabs.map((tab) => (

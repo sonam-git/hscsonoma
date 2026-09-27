@@ -150,7 +150,7 @@ export default function FunctionalBodiesPage() {
       </section>
 
       {/* Sticky Tab Navigation - positioned below header + submenu */}
-      <div className="sticky top-[140px] xl:top-[140px] z-40 bg-gradient-to-r from-burgundy-800 via-mountain-800 to-burgundy-800 shadow-lg">
+      <div className="sticky top-[140px] xl:top-[130px] z-40 bg-gradient-to-r from-burgundy-800 via-mountain-800 to-burgundy-800 shadow-lg">
         <div className="container-custom">
           <div className="flex items-center justify-center gap-1 md:gap-2 py-3 overflow-x-auto scrollbar-hide">
             {tabs.map((tab) => {

@@ -32,10 +32,10 @@ export default function TextSection({ blok }: TextSectionProps) {
   return (
     <section
       {...storyblokEditable(blok as SbBlokData)}
-      className={`py-16 md:py-24 ${backgroundClasses[blok.background || 'white']}`}
+      className={`py-10 md:py-24 ${backgroundClasses[blok.background || 'white']}`}
     >
       <div className="container-custom">
-        <div className={`${hasImage ? 'grid md:grid-cols-2 gap-12 items-center' : ''}`}>
+        <div className={`${hasImage ? 'grid gap-4 md:grid-cols-2 md:gap-12 items-center' : ''}`}>
           {/* Image (if on left) */}
           {hasImage && imageOnLeft && (
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">

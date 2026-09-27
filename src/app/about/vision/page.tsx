@@ -34,7 +34,7 @@ export default function OurVisionPage() {
       </section>
 
       {/* Main Vision Content */}
-      <section className="py-20 bg-cream-50 dark:bg-mountain-900">
+      <section className="py-10 md:py-20 bg-cream-50 dark:bg-mountain-900">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
@@ -65,12 +65,6 @@ export default function OurVisionPage() {
               </p>
 
               <p>
-                To sustain the hall financially, we plan to offer the space for rent to individuals and 
-                other communities for events, helping cover mortgage costs while fostering cross-cultural 
-                exchange.
-              </p>
-
-              <p>
                 By coming together, we can turn this vision into reality—ensuring that the Sherpa culture 
                 remains alive and vibrant for generations to come. It stands as a testament to the 
                 dedication and hard work of the Himalayan Sherpa Club of Sonoma, whose efforts will 
@@ -83,12 +77,12 @@ export default function OurVisionPage() {
       </section>
 
       {/* AI Generated Image Section */}
-      <section className="py-20 bg-white dark:bg-mountain-800">
+      <section className="py-10 md:py-20 bg-white dark:bg-mountain-800">
         <div className="container-custom">
           <div className="max-w-5xl mx-auto">
             <div className="relative aspect-[16/9] rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/our-vision.webp"
+                src="/images/hsc/hsc-hall.png"
                 alt="Imaginary Himalayan Community Hall - AI Generated"
                 fill
                 className="object-cover"
@@ -105,7 +99,7 @@ export default function OurVisionPage() {
       </section>
 
       {/* What the Hall Will Provide */}
-      <section className="py-20 bg-cream-50 dark:bg-mountain-900">
+      <section className="py-10 md:py-20 bg-cream-50 dark:bg-mountain-900">
         <div className="container-custom">
           <div className="text-center mb-12">
             <p className="text-burgundy-600 dark:text-burgundy-400 font-medium mb-2 uppercase tracking-wide text-sm">
@@ -174,7 +168,7 @@ export default function OurVisionPage() {
       </section>
 
       {/* Call to Action - Donate */}
-      <section className="py-20 bg-burgundy-900 text-white">
+      <section className="py-12 md:py-20 bg-burgundy-900 text-white">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold mb-8">
@@ -203,7 +197,7 @@ export default function OurVisionPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-white dark:bg-mountain-800">
+      <section className="py-12 md:py-16 bg-white dark:bg-mountain-800">
         <div className="container-custom">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8 max-w-4xl mx-auto">
             <div>

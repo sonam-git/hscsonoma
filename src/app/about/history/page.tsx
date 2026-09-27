@@ -441,7 +441,7 @@ export default function HistoryPage() {
       </section>
 
       {/* Category Filter */}
-      <section className="sticky top-[140px] xl:top-[140px] z-30 bg-gradient-himalayan shadow-lg">
+      <section className="sticky top-[140px] xl:top-[130px] z-30 bg-gradient-himalayan shadow-lg">
         <div className="container-custom py-4">
           <div className="flex overflow-x-auto scrollbar-hide gap-2 pb-2 justify-start md:justify-center">
             <button
