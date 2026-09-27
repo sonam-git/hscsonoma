@@ -90,7 +90,7 @@ export default function OurVisionPage() {
               {/* Gradient overlay at bottom for caption */}
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent dark:from-black/85 p-6">
                 <p className="text-white text-center italic">
-                  &quot;Imaginary Himalayan community hall – created with AI.&quot;
+                  &quot;Imaginary Himalayan community hall&quot;
                 </p>
               </div>
             </div>
