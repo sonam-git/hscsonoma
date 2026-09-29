@@ -214,25 +214,25 @@ export default async function HomePage() {
             quality={85}
           />
           {/* Dark Blue Overlay for readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-blue-950/70 via-blue-900/50 to-mountain-900/60" />
-          <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-b from-blue-950/40 via-blue-900/25 to-mountain-900/35" />
+          <div className="absolute inset-0 bg-black/10" />
         </div>
 
         {/* Content - Desktop */}
         <div className="relative z-10 container-custom text-center px-4">
           {/* Tibetan Text */}
-          <p className="font-tibetan text-3xl lg:text-4xl text-gold-400 mb-4 animate-fade-in">
+          <p className="font-tibetan text-3xl lg:text-4xl text-gold-400 mb-4 animate-fade-in drop-shadow-[0_3px_8px_rgba(0,0,0,0.55)]">
             ༄༅། ཧི་མ་ལ་ཡ་ཤར་པ་སྐྱིད་སྡུག
           </p>
 
           {/* Club Name */}
-          <h1 className="text-5xl lg:text-7xl font-serif font-bold text-white mb-6 text-shadow animate-slide-up">
+          <h1 className="text-5xl lg:text-7xl font-serif font-bold text-white mb-6 text-shadow animate-slide-up drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]">
             Himalayan Sherpa Club
             <span className="text-gold-300 inline"> of Sonoma</span>
           </h1>
 
           {/* Tagline */}
-          <p className="satisfy-regular text-2xl lg:text-3xl text-cream-100 mb-10 animate-fade-in">
+          <p className="satisfy-regular text-2xl lg:text-3xl text-cream-100 mb-10 animate-fade-in drop-shadow-[0_3px_8px_rgba(0,0,0,0.5)]">
             "Preserving Heritage, Uniting Community."
           </p>
 
@@ -260,7 +260,7 @@ export default async function HomePage() {
       <section className="md:hidden flex flex-col bg-white dark:bg-mountain-900">
         {/* Row 1: Tibetan Script Header */}
         <div className="bg-gradient-to-r from-burgundy-800 via-burgundy-700 to-burgundy-800 py-3 px-4">
-          <p className="font-tibetan text-lg text-gold-400 text-center tracking-wide">
+          <p className="font-tibetan text-lg text-gold-400 text-center tracking-wide drop-shadow-[0_2px_6px_rgba(0,0,0,0.45)]">
             ༄༅། ཧི་མ་ལ་ཡ་ཤར་པ་སྐྱིད་སྡུག
           </p>
         </div>
@@ -307,7 +307,7 @@ export default async function HomePage() {
         {/* Row 3, 4, 5: Content Section */}
         <div className="bg-white dark:bg-mountain-900 px-5 py-6 space-y-4">
           {/* Row 3: Club Name */}
-          <h1 className="text-2xl font-serif font-bold text-mountain-900 dark:text-cream-50 text-center leading-tight">
+          <h1 className="text-2xl font-serif font-bold text-mountain-900 dark:text-cream-50 text-center leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.25)] dark:drop-shadow-[0_3px_8px_rgba(0,0,0,0.45)]">
             Himalayan Sherpa Club
             <span className="text-burgundy-700 dark:text-gold-400">
               {" "}
@@ -316,7 +316,7 @@ export default async function HomePage() {
           </h1>
 
           {/* Row 4: Tagline */}
-          <p className="satisfy-regular text-lg text-mountain-600 dark:text-cream-200 text-center">
+          <p className="satisfy-regular text-lg text-mountain-600 dark:text-cream-200 text-center drop-shadow-[0_2px_5px_rgba(0,0,0,0.2)] dark:drop-shadow-[0_3px_8px_rgba(0,0,0,0.4)]">
             "Preserving Heritage, Uniting Community."
           </p>
 
